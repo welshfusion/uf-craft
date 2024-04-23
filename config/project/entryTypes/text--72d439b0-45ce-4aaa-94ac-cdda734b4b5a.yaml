@@ -69,7 +69,7 @@ fieldLayouts:
         userCondition: null
 handle: text
 hasTitleField: false
-icon: ''
+icon: text
 name: Text
 showSlugField: false
 showStatusField: true

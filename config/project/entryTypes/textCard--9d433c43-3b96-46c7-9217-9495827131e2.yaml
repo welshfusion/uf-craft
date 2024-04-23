@@ -1,6 +1,6 @@
 color: null
 fieldLayouts:
-  40ab32b6-eb91-4a27-8882-57ac33593eeb:
+  8561f758-1c64-42c5-8556-d59244fceda3:
     tabs:
       -
         elementCondition: null
@@ -30,7 +30,7 @@ fieldLayouts:
             tip: null
             title: null
             type: craft\fieldlayoutelements\entries\EntryTitleField
-            uid: 49147769-1ad7-439b-8139-834d073651e1
+            uid: fe0ee4b1-c3f4-410f-b0ee-412b6ca10c83
             userCondition: null
             warning: null
             width: 100
@@ -45,13 +45,13 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: e8e3bbf8-9d8e-4f54-90f0-94585ae0e094
+            uid: 279361fc-3ab0-4550-8694-0d83f959af42
             userCondition: null
             warning: null
             width: 100
           -
             elementCondition: null
-            fieldUid: 134a2c99-8e12-4d05-b077-5957f5e835ce # Social Links
+            fieldUid: 3b6c930d-d00e-4a6c-9e5e-734464c5066a # Simple Text
             handle: null
             includeInCards: false
             instructions: null
@@ -60,17 +60,17 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: f1a716ce-15d4-4ed4-a44f-e1c45faae0ef
+            uid: 6ba18412-7563-46d9-94c5-f8113f8fba4e
             userCondition: null
             warning: null
             width: 100
         name: Content
-        uid: 4dae96d6-b047-4a61-a804-230fa4a57426
+        uid: 1a5697b1-8be8-4023-b6bc-5e00edb34810
         userCondition: null
-handle: contactSocialLinks
+handle: textCard
 hasTitleField: false
-icon: icons
-name: 'Contact Social Links'
+icon: ''
+name: 'Text Card'
 showSlugField: false
 showStatusField: true
 slugTranslationKeyFormat: null

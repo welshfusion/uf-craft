@@ -1,0 +1,20 @@
+columnSuffix: null
+handle: textCard
+instructions: null
+name: 'Text Card'
+searchable: false
+settings:
+  createButtonLabel: 'Text Card'
+  entryTypes:
+    - 9d433c43-3b96-46c7-9217-9495827131e2 # Text Card
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

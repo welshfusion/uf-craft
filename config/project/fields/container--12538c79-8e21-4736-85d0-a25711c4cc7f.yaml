@@ -1,21 +1,17 @@
 columnSuffix: null
-handle: pageBuilder
+handle: container
 instructions: null
-name: 'Page Builder'
+name: Container
 searchable: false
 settings:
-  createButtonLabel: 'Page Builder'
+  createButtonLabel: Container
   entryTypes:
     - aed4b3a7-3590-400d-beca-837fb987570a # Basic Content
     - ad85443f-75fc-45e3-9a29-4592254d416f # Image
     - effa59c4-035a-4910-bf8c-30996bff8047 # Gallery
-    - bdba9605-68a0-44bf-8c48-4e37979c5560 # Text Cards
-    - 2d5c34d8-b71f-4777-a3d6-50cb6a4a5402 # Multimedia
     - 7cfd4bf0-dad6-4968-9012-be339843d47a # Featured Banner
+    - 2d5c34d8-b71f-4777-a3d6-50cb6a4a5402 # Multimedia
     - 4d8649f4-2cd8-4a36-9eaf-2251ec44112c # Form
-    - a7eded6e-c5d3-4099-bb5b-7545b0332f49 # Listing
-    - 832bf49f-111f-4aea-acea-c39597785d33 # Call To Action
-    - 248e89b5-415a-4d5e-aaab-083bc912f7d5 # Container
   includeTableView: false
   maxEntries: null
   minEntries: null

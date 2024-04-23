@@ -1,4 +1,4 @@
-dateModified: 1713866741
+dateModified: 1713870346
 email:
   fromEmail: n.williams@userfusion.com
   fromName: Userfusion
@@ -27,6 +27,7 @@ fs:
     url: '@web/uploads/videos'
 meta:
   __names__:
+    00ddb959-14e4-4e9c-a8dd-38d2fd228e7a: 'Text Card' # Text Card
     0e6d4e36-9f7c-4320-bfad-dcc290f8e135: 'Font Weight' # Font Weight
     0f5da106-4758-4a32-806f-a95ba43b826b: 'Sub Heading' # Sub Heading
     0fb4612a-f62e-4f17-a4c0-d4bb9c731e39: 'Button Color' # Button Color
@@ -39,6 +40,7 @@ meta:
     2ba320e0-e879-4969-b03c-211b60735a5a: 'Section ID' # Section ID
     2d5c34d8-b71f-4777-a3d6-50cb6a4a5402: Multimedia # Multimedia
     2f9ca775-608e-4f5c-9269-282385ed2641: 'Page Builder' # Page Builder
+    3b6c930d-d00e-4a6c-9e5e-734464c5066a: 'Simple Text' # Simple Text
     3f060ced-9de9-4e6c-ada9-05cddd5d7c03: Testimonial # Testimonial
     3f94dff8-7848-41bd-bc80-03e884e498a2: Team # Team
     4a0c1fbc-a84a-4308-8167-ed452f56d3b7: 'Contact Form' # Contact Form
@@ -49,19 +51,24 @@ meta:
     4d8649f4-2cd8-4a36-9eaf-2251ec44112c: Form # Form
     4daa21a6-7d9e-4652-b72d-4b86d193b8cd: 'Content Width' # Content Width
     4de72344-704b-4799-abfa-de28d92a6c41: 'Javascript Code' # Javascript Code
+    4e96aa50-d10e-457b-b419-dc8dab350549: 'Multimedia Card' # Multimedia Card
     05af4b17-93ed-4027-a039-96c368e5b585: Image # Image
     5b639435-9f82-4cfa-9b34-0421722361c9: 'Background Color' # Background Color
     5bdbc0ac-c142-4128-a741-e438819f43c5: Userfusion # Userfusion
     5c2557f5-9953-495f-98c5-6e03acb0161b: Images # Images
     5f91fed7-8dbd-476c-8ff5-a06bc3edde90: 'Social Links' # Social Links
     06c080b4-85ef-4bf1-b169-562706f7d127: 'Pattern Background Color' # Pattern Background Color
+    6ca324c3-1bd9-482d-a2c7-8a9050d33a32: Quote # Quote
     7c1471a7-a014-4b8f-8e10-1d6064ca6ebd: Team # Team
     7c8987af-e9f1-42e8-930e-4a16028b925d: Button # Button
+    7cfd4bf0-dad6-4968-9012-be339843d47a: 'Featured Banner' # Featured Banner
     7e835274-c615-428f-bb84-0acaedf10a47: 'Gallery Layout' # Gallery Layout
     7ef67d6e-85ac-42a0-a25d-e7b1c064b81a: Client # Client
+    7f96d468-e2f9-40b4-9c10-6fbe07d9aafc: Tag # Tag
     07f716e2-b6e5-4aaa-aa76-1a49c9929017: 'Light switch' # Light switch
     8bdd6695-676c-438d-8cd2-caa3a8940ccb: Full # Full
     8c84eddd-0a33-4f51-a9f8-8c5ff353066d: 'Banner Height' # Banner Height
+    9d433c43-3b96-46c7-9217-9495827131e2: 'Text Card' # Text Card
     009ed4ac-c86b-4fc7-9918-9bd7b4f8157d: Header # Header
     12eaafb7-f335-4296-9610-453f6f68c8bb: 'Contact Url' # Contact Url
     19cc1136-5d7a-45af-a877-b34cbec39f80: 'Listing Team' # Listing Team
@@ -81,7 +88,9 @@ meta:
     91c83f59-fe79-4767-b5d1-f236d7a4e02f: 'Social Link' # Social Link
     93edb1b2-0669-4ae4-a9e7-0e5f4826507a: Regular # Regular
     134a2c99-8e12-4d05-b077-5957f5e835ce: 'Social Links' # Social Links
+    248e89b5-415a-4d5e-aaab-083bc912f7d5: Container # Container
     0423d9a0-74e7-4a3d-afc5-a78d494caab4: Navigation # Navigation
+    0450d0a1-9b95-4d31-a113-0563703b35e1: Tags # Tags
     458e4536-0755-47d0-9628-999ff6b7c7c6: 'Listing Testimonials' # Listing Testimonials
     646c20c4-1b47-414d-82f7-2af5d1b73614: Video # Video
     703a980f-eab2-4276-a815-17e7b6f5095a: 'Animation Offset' # Animation Offset
@@ -98,6 +107,7 @@ meta:
     8068b4f8-14d3-4989-9beb-01e047f658c5: 'Script Position' # Script Position
     8404f8a0-0657-4072-9900-4f9c783fed32: 'Listing Style 2' # Listing Style 2
     8924f8be-b7ee-44cf-991c-9fc458096173: 'Page Builder' # Page Builder
+    12538c79-8e21-4736-85d0-a25711c4cc7f: Container # Container
     19036f8c-8350-455e-a721-9938e3cf9811: 'Related Case Study' # Related Case Study
     025101ef-e8fd-4542-bd7f-d5d127b6789f: 'Tracking Scripts' # Tracking Scripts
     86035a0d-51de-4bb2-b452-4bfc32cfc03e: 'Margin Top' # Margin Top
@@ -119,8 +129,10 @@ meta:
     b7656e3d-5aea-4dd8-b626-4559b083998b: 'Related Blog' # Related Blog
     b1245063-e2a0-4567-8d38-0324ca0eba13: 'Joining Date' # Joining Date
     b7524683-0af1-4bdf-b6f5-e4e80993fbbe: 'Banner Card' # Banner Card
+    bdba9605-68a0-44bf-8c48-4e37979c5560: 'Text Cards' # Text Cards
     bff0694b-0a96-4afa-ba0e-b4e834e9a153: 'Padding Bottom' # Padding Bottom
     c0063996-cdc5-42d9-bac2-18ef5ae9c736: 'Contact Cards' # Contact Cards
+    c8e64d8d-7d4e-4182-8bed-ec9013e8aad4: Tag # Tag
     c729cee4-a2ec-48ef-8053-907b01d1a630: Cards # Cards
     c16118bb-d24d-489d-8c5a-2deabdcd6e16: 'Padding Top' # Padding Top
     cafc15ff-e95d-499e-ab60-3cc42608bc25: New # New

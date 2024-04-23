@@ -1,0 +1,23 @@
+columnSuffix: null
+handle: multimediaCard
+instructions: null
+name: 'Multimedia Card'
+searchable: false
+settings:
+  createButtonLabel: 'Multimedia Card'
+  entryTypes:
+    - 72d439b0-45ce-4aaa-94ac-cdda734b4b5a # Text
+    - d5375257-05b7-4c6e-b808-81ca62e56f9f # Contact Social Links
+    - 0450d0a1-9b95-4d31-a113-0563703b35e1 # Tags
+    - 6ca324c3-1bd9-482d-a2c7-8a9050d33a32 # Quote
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix
