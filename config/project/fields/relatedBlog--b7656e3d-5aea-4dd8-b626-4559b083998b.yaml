@@ -1,0 +1,23 @@
+columnSuffix: null
+handle: relatedBlog
+instructions: null
+name: 'Related Blog'
+searchable: false
+settings:
+  allowSelfRelations: false
+  branchLimit: null
+  localizeRelations: false
+  maintainHierarchy: false
+  maxRelations: null
+  minRelations: null
+  selectionLabel: null
+  showCardsInGrid: false
+  showSiteMenu: false
+  sources:
+    - 'section:48ce4dd2-4ca0-4661-bb42-25ef536a2253' # Blog
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: list
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Entries

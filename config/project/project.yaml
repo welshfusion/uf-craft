@@ -1,4 +1,4 @@
-dateModified: 1713849970
+dateModified: 1713857886
 email:
   fromEmail: n.williams@userfusion.com
   fromName: Userfusion
@@ -31,10 +31,12 @@ meta:
     0f5da106-4758-4a32-806f-a95ba43b826b: 'Sub Heading' # Sub Heading
     0fb4612a-f62e-4f17-a4c0-d4bb9c731e39: 'Button Color' # Button Color
     1ac41e27-14a7-47d4-a7a3-ab64f8959ead: Solid # Solid
+    1cb58e0a-7886-40d7-87eb-ec4149cbc280: 'Related Testimonials' # Related Testimonials
     1d563f74-0673-4d93-9848-cfbf74332e88: 'Animation Style' # Animation Style
     1eaebe24-9727-4d24-969d-6c0a6012f7c5: Listing # Listing
     1fa0a156-5d07-4afa-a05a-7f48cebc4c97: Client # Client
     2ba320e0-e879-4969-b03c-211b60735a5a: 'Section ID' # Section ID
+    2d5c34d8-b71f-4777-a3d6-50cb6a4a5402: Multimedia # Multimedia
     3f060ced-9de9-4e6c-ada9-05cddd5d7c03: Testimonial # Testimonial
     3f94dff8-7848-41bd-bc80-03e884e498a2: Team # Team
     4a0c1fbc-a84a-4308-8167-ed452f56d3b7: 'Contact Form' # Contact Form
@@ -52,6 +54,7 @@ meta:
     06c080b4-85ef-4bf1-b169-562706f7d127: 'Pattern Background Color' # Pattern Background Color
     7c1471a7-a014-4b8f-8e10-1d6064ca6ebd: Team # Team
     7c8987af-e9f1-42e8-930e-4a16028b925d: Button # Button
+    7e835274-c615-428f-bb84-0acaedf10a47: 'Gallery Layout' # Gallery Layout
     7ef67d6e-85ac-42a0-a25d-e7b1c064b81a: Client # Client
     07f716e2-b6e5-4aaa-aa76-1a49c9929017: 'Light switch' # Light switch
     8bdd6695-676c-438d-8cd2-caa3a8940ccb: Full # Full
@@ -60,7 +63,10 @@ meta:
     19cc1136-5d7a-45af-a877-b34cbec39f80: 'Listing Team' # Listing Team
     20c4d3d9-29f1-46b9-a578-de6425807cb3: Footer # Footer
     22ffe5d1-c3ff-49ba-8ed8-2ef903d94c54: Userfusion # Userfusion
+    041c3195-abae-4442-8729-c0bb6bd762af: 'Listing Case Study' # Listing Case Study
+    48ce4dd2-4ca0-4661-bb42-25ef536a2253: Blog # Blog
     54a3d4c9-582f-4754-8977-4c342ef8a96e: 'Overlay Opacity' # Overlay Opacity
+    55d7d3ae-03a3-4e89-9f46-9ec237b051c7: 'Listing Style' # Listing Style
     67cc7823-2e87-4d16-bb9f-38b94b68f956: 'Tracking Scripts' # Tracking Scripts
     72d416e1-852e-4aef-b204-c23f104c80c8: Videos # Videos
     83b30345-cc30-4e25-a5f6-5de8adbe8265: Custom # Custom
@@ -70,33 +76,45 @@ meta:
     93edb1b2-0669-4ae4-a9e7-0e5f4826507a: Regular # Regular
     134a2c99-8e12-4d05-b077-5957f5e835ce: 'Social Links' # Social Links
     0423d9a0-74e7-4a3d-afc5-a78d494caab4: Navigation # Navigation
+    458e4536-0755-47d0-9628-999ff6b7c7c6: 'Listing Testimonials' # Listing Testimonials
     703a980f-eab2-4276-a815-17e7b6f5095a: 'Animation Offset' # Animation Offset
     1015ffe6-b7bf-4676-a048-e34055507b5a: Image # Image
     1568efd7-9ad7-471e-ac94-2e679fc981b1: Pages # Pages
     3745cb40-58d5-44cc-9ce5-9339f438f411: Icon # Icon
+    4992b3d0-b6f9-447c-91fa-b2c94f97a938: 'Container Size' # Container Size
     4998b347-a2ba-4814-8789-53adb5d61a41: Text # Text
     5816eb09-d316-4d3a-ac94-403833383582: 'Case study' # Case study
     6343b9b3-faa9-4f99-b112-fdec9bd6d770: 'Related Client' # Related Client
+    7705f44c-daf6-4d92-80a8-dcdc00f86f2d: 'Listing Blog' # Listing Blog
     8068b4f8-14d3-4989-9beb-01e047f658c5: 'Script Position' # Script Position
+    8404f8a0-0657-4072-9900-4f9c783fed32: 'Listing Style 2' # Listing Style 2
     8924f8be-b7ee-44cf-991c-9fc458096173: 'Page Builder' # Page Builder
+    19036f8c-8350-455e-a721-9938e3cf9811: 'Related Case Study' # Related Case Study
     025101ef-e8fd-4542-bd7f-d5d127b6789f: 'Tracking Scripts' # Tracking Scripts
     86035a0d-51de-4bb2-b452-4bfc32cfc03e: 'Margin Top' # Margin Top
+    292523b0-bad0-4ce1-9542-3fe9faffcd40: Blog # Blog
     873433f0-3878-4512-b80a-84e11ace7831: Images # Images
+    1278138f-e268-4a57-b50e-ad8d14eacb53: 'Image Ratio' # Image Ratio
     07973944-8eb1-4911-962e-d81e1787b026: Form # Form
     a083fcfb-b4ce-402b-a0bb-e03d70ddf2ec: 'HTML Code' # HTML Code
+    a2faf60a-48de-4391-a3c4-49283f508b99: 'Related Team Member' # Related Team Member
     a7eded6e-c5d3-4099-bb5b-7545b0332f49: Listing # Listing
+    a48ed5c6-f7f8-47e4-a829-4b6e65fa980c: 'Listing Client' # Listing Client
     a7720afc-ed4d-4b75-bfdd-b504f6f7a9a4: Quote # Quote
+    ad85443f-75fc-45e3-9a29-4592254d416f: Image # Image
     aed4b3a7-3590-400d-beca-837fb987570a: 'Basic Content' # Basic Content
     b3c80522-1b2a-44ca-954e-be2e2544ebd9: SEO # SEO
     b7febf1c-f446-4af6-a112-a27ec4194078: 'Case studies' # Case studies
     b266d78b-963a-4c95-a2c8-3dadd5595399: Telephone # Telephone
     b725ddfa-71d5-44fd-b67b-d2291907d5fd: Buttons # Buttons
+    b7656e3d-5aea-4dd8-b626-4559b083998b: 'Related Blog' # Related Blog
     b1245063-e2a0-4567-8d38-0324ca0eba13: 'Joining Date' # Joining Date
     b7524683-0af1-4bdf-b6f5-e4e80993fbbe: 'Banner Card' # Banner Card
     bff0694b-0a96-4afa-ba0e-b4e834e9a153: 'Padding Bottom' # Padding Bottom
     c729cee4-a2ec-48ef-8053-907b01d1a630: Cards # Cards
     c16118bb-d24d-489d-8c5a-2deabdcd6e16: 'Padding Top' # Padding Top
     cafc15ff-e95d-499e-ab60-3cc42608bc25: New # New
+    cc5e2abd-42a9-498e-a6f6-d6596c99d2c5: Limit # Limit
     cf5012cf-d02e-4ac7-98d1-891c12d25777: Button # Button
     d2ce1189-64b3-48a5-8648-327f21b04a5c: Pages # Pages
     d5b54786-d550-43a6-bc46-0e9b8edbae51: Simple # Simple
@@ -106,7 +124,7 @@ meta:
     e3651006-9863-4745-9226-557c2608dee0: 'Script Files' # Script Files
     ec70c780-286c-4027-8904-ecdb25e3e1c1: Heading # Heading
     ed742f3d-8fc4-44e1-b975-1b03cb9ab839: 'Animation Easing' # Animation Easing
-    effa59c4-035a-4910-bf8c-30996bff8047: Logos # Logos
+    effa59c4-035a-4910-bf8c-30996bff8047: Gallery # Gallery
     f0abdae9-c7c1-4963-b95f-474183ac0b20: Testimonial # Testimonial
     f4be19c5-ac47-4a53-808f-46357722601c: 'Margin Bottom' # Margin Bottom
     f5f3b40a-47d4-42d5-b50a-5e17eae1e600: 'Content Alignment' # Content Alignment

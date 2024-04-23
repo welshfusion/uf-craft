@@ -7,7 +7,9 @@ settings:
   createButtonLabel: 'Page Builder'
   entryTypes:
     - aed4b3a7-3590-400d-beca-837fb987570a # Basic Content
-    - effa59c4-035a-4910-bf8c-30996bff8047 # Logos
+    - ad85443f-75fc-45e3-9a29-4592254d416f # Image
+    - effa59c4-035a-4910-bf8c-30996bff8047 # Gallery
+    - 2d5c34d8-b71f-4777-a3d6-50cb6a4a5402 # Multimedia
     - a7eded6e-c5d3-4099-bb5b-7545b0332f49 # Listing
   includeTableView: false
   maxEntries: null

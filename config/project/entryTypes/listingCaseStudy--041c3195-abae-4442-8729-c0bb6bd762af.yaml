@@ -1,6 +1,6 @@
 color: null
 fieldLayouts:
-  edfeb319-9592-4858-bf8d-9125a0c6b735:
+  2e268647-ae7f-455d-9a90-f9ad6ce001ef:
     tabs:
       -
         elementCondition: null
@@ -30,13 +30,13 @@ fieldLayouts:
             tip: null
             title: null
             type: craft\fieldlayoutelements\entries\EntryTitleField
-            uid: 1ae80644-7cca-4b93-af3a-35790218e8c7
+            uid: 3f473024-42a7-41b7-b353-c3162f69df49
             userCondition: null
             warning: null
             width: 100
           -
             elementCondition: null
-            fieldUid: a2faf60a-48de-4391-a3c4-49283f508b99 # Related Team Member
+            fieldUid: 19036f8c-8350-455e-a721-9938e3cf9811 # Related Case Study
             handle: null
             includeInCards: false
             instructions: null
@@ -45,16 +45,43 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 6c4ec0ca-17d4-45ff-886d-1f4941b87822
+            uid: d624309c-5be3-40ff-b2f0-1eafab4406da
             userCondition: null
             warning: null
             width: 100
         name: Content
-        uid: 9ffa080d-80bb-4434-8ec5-de919a98c3f6
+        uid: 2fe7bb59-45a6-45b7-8250-47c3d21b1e9f
         userCondition: null
       -
         elementCondition: null
         elements:
+          -
+            elementCondition:
+              class: craft\elements\conditions\entries\EntryCondition
+              conditionRules:
+                -
+                  class: craft\fields\conditions\OptionsFieldConditionRule
+                  fieldUid: 8404f8a0-0657-4072-9900-4f9c783fed32 # Listing Style 2
+                  layoutElementUid: 6a2bd411-031e-4306-b667-1a798be5c0b7
+                  operator: ni
+                  uid: 51b8fece-133c-4cd1-96be-94a3dbaceede
+                  values:
+                    - stacked
+              elementType: craft\elements\Entry
+              fieldContext: global
+            fieldUid: d5e72f4c-5e9b-4b94-b75c-b4d69e74f1a2 # Per Row Limit
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 5b06f481-4630-4f14-b15b-fd3ae32aeee0
+            userCondition: null
+            warning: null
+            width: 50
           -
             elementCondition: null
             fieldUid: cc5e2abd-42a9-498e-a6f6-d6596c99d2c5 # Limit
@@ -66,22 +93,22 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: bd9af296-fb3b-4c24-991f-a7e1f6bf573e
+            uid: e94c14e3-faf0-4ae2-aea8-61fb3f3d9053
             userCondition: null
             warning: null
             width: 50
           -
             elementCondition: null
-            fieldUid: 55d7d3ae-03a3-4e89-9f46-9ec237b051c7 # Listing Style
+            fieldUid: 8404f8a0-0657-4072-9900-4f9c783fed32 # Listing Style 2
             handle: null
             includeInCards: false
             instructions: null
-            label: null
+            label: 'Listing Style'
             providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 0732b975-9b0b-4f6f-85e9-9fab5b0625ce
+            uid: 6a2bd411-031e-4306-b667-1a798be5c0b7
             userCondition: null
             warning: null
             width: 50
@@ -96,10 +123,10 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: f0a10f46-5ecd-43a0-b860-ebc94298d436
+            uid: 73e98265-abcf-40a8-b2c6-b47d3a09c9a1
             userCondition: null
             warning: null
-            width: 50
+            width: 25
           -
             elementCondition: null
             fieldUid: 07f716e2-b6e5-4aaa-aa76-1a49c9929017 # Light switch
@@ -111,17 +138,17 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 0164ff63-46a5-461e-84d4-f2d0c45d95f1
+            uid: 421554b6-5781-4df2-8ef5-3356caacd2bf
             userCondition: null
             warning: null
-            width: 50
+            width: 25
         name: Settings
-        uid: 3628e78b-37a1-44d4-8835-e358e6c5c2b3
+        uid: edcebbe3-25a1-447d-83e2-b388048aee64
         userCondition: null
-handle: listingTeam
+handle: listingCaseStudy
 hasTitleField: false
 icon: ''
-name: 'Listing Team'
+name: 'Listing Case Study'
 showSlugField: false
 showStatusField: true
 slugTranslationKeyFormat: null

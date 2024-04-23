@@ -1,0 +1,112 @@
+columnSuffix: null
+handle: galleryLayout
+instructions: null
+name: 'Gallery Layout'
+searchable: false
+settings:
+  displayAsGraphic: true
+  displayFullwidth: null
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - Single
+        -
+          - showLabel
+          - ''
+        -
+          - value
+          - single
+        -
+          - imageUrl
+          - /images/buttonBox/galleryLayout/single.png
+        -
+          - imageAlign
+          - left
+        -
+          - default
+          - '1'
+    -
+      __assoc__:
+        -
+          - label
+          - 'Option 1'
+        -
+          - showLabel
+          - ''
+        -
+          - value
+          - option1
+        -
+          - imageUrl
+          - /images/buttonBox/galleryLayout/option1.png
+        -
+          - imageAlign
+          - left
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - 'Option 2'
+        -
+          - showLabel
+          - ''
+        -
+          - value
+          - option2
+        -
+          - imageUrl
+          - /images/buttonBox/galleryLayout/option2.png
+        -
+          - imageAlign
+          - left
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - 'Option 3'
+        -
+          - showLabel
+          - ''
+        -
+          - value
+          - option3
+        -
+          - imageUrl
+          - /images/buttonBox/galleryLayout/option3.png
+        -
+          - imageAlign
+          - left
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - 'Option 4'
+        -
+          - showLabel
+          - ''
+        -
+          - value
+          - option4
+        -
+          - imageUrl
+          - /images/buttonBox/galleryLayout/option4.png
+        -
+          - imageAlign
+          - left
+        -
+          - default
+          - ''
+translationKeyFormat: null
+translationMethod: none
+type: verbb\buttonbox\fields\Buttons

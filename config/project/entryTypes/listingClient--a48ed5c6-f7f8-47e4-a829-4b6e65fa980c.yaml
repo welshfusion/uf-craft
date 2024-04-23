@@ -1,6 +1,6 @@
 color: null
 fieldLayouts:
-  edfeb319-9592-4858-bf8d-9125a0c6b735:
+  53ca72f3-edd3-43f1-8002-7c694b6b486d:
     tabs:
       -
         elementCondition: null
@@ -30,13 +30,13 @@ fieldLayouts:
             tip: null
             title: null
             type: craft\fieldlayoutelements\entries\EntryTitleField
-            uid: 1ae80644-7cca-4b93-af3a-35790218e8c7
+            uid: 6dfa2ee5-f3c7-40ad-ab3f-ed2bbe72dce2
             userCondition: null
             warning: null
             width: 100
           -
             elementCondition: null
-            fieldUid: a2faf60a-48de-4391-a3c4-49283f508b99 # Related Team Member
+            fieldUid: 6343b9b3-faa9-4f99-b112-fdec9bd6d770 # Related Client
             handle: null
             includeInCards: false
             instructions: null
@@ -45,16 +45,31 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 6c4ec0ca-17d4-45ff-886d-1f4941b87822
+            uid: 137dd50e-75e2-4a22-a7e4-96e52c35b7a2
             userCondition: null
             warning: null
             width: 100
         name: Content
-        uid: 9ffa080d-80bb-4434-8ec5-de919a98c3f6
+        uid: e362838f-41e0-4d8a-ab25-e22849ad8306
         userCondition: null
       -
         elementCondition: null
         elements:
+          -
+            elementCondition: null
+            fieldUid: d5e72f4c-5e9b-4b94-b75c-b4d69e74f1a2 # Per Row Limit
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 476c22f8-7d7b-47df-9db2-b0cfdb0a0562
+            userCondition: null
+            warning: null
+            width: 50
           -
             elementCondition: null
             fieldUid: cc5e2abd-42a9-498e-a6f6-d6596c99d2c5 # Limit
@@ -66,7 +81,7 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: bd9af296-fb3b-4c24-991f-a7e1f6bf573e
+            uid: 3900ae3e-4081-4cb2-ab24-286380430f02
             userCondition: null
             warning: null
             width: 50
@@ -81,47 +96,32 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 0732b975-9b0b-4f6f-85e9-9fab5b0625ce
+            uid: c46847c2-69f0-432e-a9f1-4f3fcd1f9faf
             userCondition: null
             warning: null
             width: 50
           -
             elementCondition: null
             fieldUid: 07f716e2-b6e5-4aaa-aa76-1a49c9929017 # Light switch
-            handle: filter
+            handle: showBorder
             includeInCards: false
             instructions: null
-            label: 'Filter?'
+            label: 'Show Border?'
             providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: f0a10f46-5ecd-43a0-b860-ebc94298d436
-            userCondition: null
-            warning: null
-            width: 50
-          -
-            elementCondition: null
-            fieldUid: 07f716e2-b6e5-4aaa-aa76-1a49c9929017 # Light switch
-            handle: pagination
-            includeInCards: false
-            instructions: null
-            label: 'Pagination?'
-            providesThumbs: false
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: 0164ff63-46a5-461e-84d4-f2d0c45d95f1
+            uid: 05144943-4677-480c-ab0a-b5bd9abbae3b
             userCondition: null
             warning: null
             width: 50
         name: Settings
-        uid: 3628e78b-37a1-44d4-8835-e358e6c5c2b3
+        uid: 8cc99741-1bdc-43c4-842b-f86e84a1c955
         userCondition: null
-handle: listingTeam
+handle: listingClient
 hasTitleField: false
 icon: ''
-name: 'Listing Team'
+name: 'Listing Client'
 showSlugField: false
 showStatusField: true
 slugTranslationKeyFormat: null

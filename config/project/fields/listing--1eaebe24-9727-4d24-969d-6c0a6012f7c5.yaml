@@ -7,6 +7,10 @@ settings:
   createButtonLabel: Listing
   entryTypes:
     - 19cc1136-5d7a-45af-a877-b34cbec39f80 # Listing Team
+    - 458e4536-0755-47d0-9628-999ff6b7c7c6 # Listing Testimonials
+    - a48ed5c6-f7f8-47e4-a829-4b6e65fa980c # Listing Client
+    - 041c3195-abae-4442-8729-c0bb6bd762af # Listing Case Study
+    - 7705f44c-daf6-4d92-80a8-dcdc00f86f2d # Listing Blog
   includeTableView: false
   maxEntries: 1
   minEntries: null

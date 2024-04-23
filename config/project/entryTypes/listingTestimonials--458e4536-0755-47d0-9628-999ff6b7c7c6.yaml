@@ -1,6 +1,6 @@
 color: null
 fieldLayouts:
-  edfeb319-9592-4858-bf8d-9125a0c6b735:
+  59ee7a45-d74c-4c2c-89e6-af8000fa39a4:
     tabs:
       -
         elementCondition: null
@@ -30,13 +30,13 @@ fieldLayouts:
             tip: null
             title: null
             type: craft\fieldlayoutelements\entries\EntryTitleField
-            uid: 1ae80644-7cca-4b93-af3a-35790218e8c7
+            uid: eb197e14-8584-4aa9-9a4c-0f3232937911
             userCondition: null
             warning: null
             width: 100
           -
             elementCondition: null
-            fieldUid: a2faf60a-48de-4391-a3c4-49283f508b99 # Related Team Member
+            fieldUid: 1cb58e0a-7886-40d7-87eb-ec4149cbc280 # Related Testimonials
             handle: null
             includeInCards: false
             instructions: null
@@ -45,12 +45,12 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 6c4ec0ca-17d4-45ff-886d-1f4941b87822
+            uid: 94a85ece-1265-474c-b52d-5027bf4f746d
             userCondition: null
             warning: null
             width: 100
         name: Content
-        uid: 9ffa080d-80bb-4434-8ec5-de919a98c3f6
+        uid: b1c64fc2-eb9b-44d0-82d0-363b76bfcadb
         userCondition: null
       -
         elementCondition: null
@@ -66,7 +66,7 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: bd9af296-fb3b-4c24-991f-a7e1f6bf573e
+            uid: 20d46138-edb5-4018-8e7e-ee865e27df8a
             userCondition: null
             warning: null
             width: 50
@@ -81,47 +81,17 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 0732b975-9b0b-4f6f-85e9-9fab5b0625ce
-            userCondition: null
-            warning: null
-            width: 50
-          -
-            elementCondition: null
-            fieldUid: 07f716e2-b6e5-4aaa-aa76-1a49c9929017 # Light switch
-            handle: filter
-            includeInCards: false
-            instructions: null
-            label: 'Filter?'
-            providesThumbs: false
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: f0a10f46-5ecd-43a0-b860-ebc94298d436
-            userCondition: null
-            warning: null
-            width: 50
-          -
-            elementCondition: null
-            fieldUid: 07f716e2-b6e5-4aaa-aa76-1a49c9929017 # Light switch
-            handle: pagination
-            includeInCards: false
-            instructions: null
-            label: 'Pagination?'
-            providesThumbs: false
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: 0164ff63-46a5-461e-84d4-f2d0c45d95f1
+            uid: 21538220-c78a-4afe-8399-ebfe33fc1b05
             userCondition: null
             warning: null
             width: 50
         name: Settings
-        uid: 3628e78b-37a1-44d4-8835-e358e6c5c2b3
+        uid: 21ea6231-72a0-49ef-83d7-a1c7b8549b99
         userCondition: null
-handle: listingTeam
+handle: listingTestimonials
 hasTitleField: false
 icon: ''
-name: 'Listing Team'
+name: 'Listing Testimonials'
 showSlugField: false
 showStatusField: true
 slugTranslationKeyFormat: null

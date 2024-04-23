@@ -1,6 +1,6 @@
 color: null
 fieldLayouts:
-  edfeb319-9592-4858-bf8d-9125a0c6b735:
+  65788af3-8c4a-4513-a641-ba9d23fd0d40:
     tabs:
       -
         elementCondition: null
@@ -30,13 +30,28 @@ fieldLayouts:
             tip: null
             title: null
             type: craft\fieldlayoutelements\entries\EntryTitleField
-            uid: 1ae80644-7cca-4b93-af3a-35790218e8c7
+            uid: 394fe8fc-f8ff-4937-8c43-9c2fb1e2165b
             userCondition: null
             warning: null
             width: 100
           -
             elementCondition: null
-            fieldUid: a2faf60a-48de-4391-a3c4-49283f508b99 # Related Team Member
+            fieldUid: 4998b347-a2ba-4814-8789-53adb5d61a41 # Text
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: Summary
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 1b55158c-eeaf-42fa-a2a5-630caaf27f7b
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 8924f8be-b7ee-44cf-991c-9fc458096173 # Page Builder
             handle: null
             includeInCards: false
             instructions: null
@@ -45,19 +60,19 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 6c4ec0ca-17d4-45ff-886d-1f4941b87822
+            uid: 6559c186-c21d-465d-b5c1-343f5cfb34cf
             userCondition: null
             warning: null
             width: 100
         name: Content
-        uid: 9ffa080d-80bb-4434-8ec5-de919a98c3f6
+        uid: 05c8072a-b060-47e9-9d20-81229d6ada25
         userCondition: null
       -
         elementCondition: null
         elements:
           -
             elementCondition: null
-            fieldUid: cc5e2abd-42a9-498e-a6f6-d6596c99d2c5 # Limit
+            fieldUid: b3c80522-1b2a-44ca-954e-be2e2544ebd9 # SEO
             handle: null
             includeInCards: false
             instructions: null
@@ -66,63 +81,18 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: bd9af296-fb3b-4c24-991f-a7e1f6bf573e
+            uid: 5f04238b-95aa-4bee-b1cd-c4ba173967cb
             userCondition: null
             warning: null
-            width: 50
-          -
-            elementCondition: null
-            fieldUid: 55d7d3ae-03a3-4e89-9f46-9ec237b051c7 # Listing Style
-            handle: null
-            includeInCards: false
-            instructions: null
-            label: null
-            providesThumbs: false
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: 0732b975-9b0b-4f6f-85e9-9fab5b0625ce
-            userCondition: null
-            warning: null
-            width: 50
-          -
-            elementCondition: null
-            fieldUid: 07f716e2-b6e5-4aaa-aa76-1a49c9929017 # Light switch
-            handle: filter
-            includeInCards: false
-            instructions: null
-            label: 'Filter?'
-            providesThumbs: false
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: f0a10f46-5ecd-43a0-b860-ebc94298d436
-            userCondition: null
-            warning: null
-            width: 50
-          -
-            elementCondition: null
-            fieldUid: 07f716e2-b6e5-4aaa-aa76-1a49c9929017 # Light switch
-            handle: pagination
-            includeInCards: false
-            instructions: null
-            label: 'Pagination?'
-            providesThumbs: false
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: 0164ff63-46a5-461e-84d4-f2d0c45d95f1
-            userCondition: null
-            warning: null
-            width: 50
-        name: Settings
-        uid: 3628e78b-37a1-44d4-8835-e358e6c5c2b3
+            width: 100
+        name: SEO
+        uid: 4a338772-68b6-49a3-b90a-790cc39e75e3
         userCondition: null
-handle: listingTeam
-hasTitleField: false
+handle: blog
+hasTitleField: true
 icon: ''
-name: 'Listing Team'
-showSlugField: false
+name: Blog
+showSlugField: true
 showStatusField: true
 slugTranslationKeyFormat: null
 slugTranslationMethod: site

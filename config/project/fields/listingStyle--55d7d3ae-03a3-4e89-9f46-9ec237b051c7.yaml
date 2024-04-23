@@ -1,0 +1,52 @@
+columnSuffix: null
+handle: listingStyle
+instructions: null
+name: 'Listing Style'
+searchable: false
+settings:
+  displayAsGraphic: true
+  displayFullwidth: null
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - Cards
+        -
+          - showLabel
+          - '1'
+        -
+          - value
+          - cards
+        -
+          - imageUrl
+          - ''
+        -
+          - imageAlign
+          - left
+        -
+          - default
+          - '1'
+    -
+      __assoc__:
+        -
+          - label
+          - Slider
+        -
+          - showLabel
+          - '1'
+        -
+          - value
+          - slider
+        -
+          - imageUrl
+          - ''
+        -
+          - imageAlign
+          - left
+        -
+          - default
+          - ''
+translationKeyFormat: null
+translationMethod: none
+type: verbb\buttonbox\fields\Buttons
