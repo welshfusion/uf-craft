@@ -1,4 +1,4 @@
-dateModified: 1713857886
+dateModified: 1713859717
 email:
   fromEmail: n.williams@userfusion.com
   fromName: Userfusion
@@ -31,6 +31,7 @@ meta:
     0f5da106-4758-4a32-806f-a95ba43b826b: 'Sub Heading' # Sub Heading
     0fb4612a-f62e-4f17-a4c0-d4bb9c731e39: 'Button Color' # Button Color
     1ac41e27-14a7-47d4-a7a3-ab64f8959ead: Solid # Solid
+    1c43e81f-f344-4898-bf18-5aff190f9af3: 'Contact Info' # Contact Info
     1cb58e0a-7886-40d7-87eb-ec4149cbc280: 'Related Testimonials' # Related Testimonials
     1d563f74-0673-4d93-9848-cfbf74332e88: 'Animation Style' # Animation Style
     1eaebe24-9727-4d24-969d-6c0a6012f7c5: Listing # Listing
@@ -44,6 +45,7 @@ meta:
     04addcc4-19dd-4fcc-bef4-b4877e862f6b: Video # Video
     4b8f956e-112a-40a9-a343-78fea17f34cc: 'Tracking Scripts' # Tracking Scripts
     4cf27aa9-e6b0-48e4-a844-bf76258f6101: Full # Full
+    4d8649f4-2cd8-4a36-9eaf-2251ec44112c: Form # Form
     4daa21a6-7d9e-4652-b72d-4b86d193b8cd: 'Content Width' # Content Width
     4de72344-704b-4799-abfa-de28d92a6c41: 'Javascript Code' # Javascript Code
     05af4b17-93ed-4027-a039-96c368e5b585: Image # Image
@@ -60,15 +62,18 @@ meta:
     8bdd6695-676c-438d-8cd2-caa3a8940ccb: Full # Full
     8c84eddd-0a33-4f51-a9f8-8c5ff353066d: 'Banner Height' # Banner Height
     009ed4ac-c86b-4fc7-9918-9bd7b4f8157d: Header # Header
+    12eaafb7-f335-4296-9610-453f6f68c8bb: 'Contact Url' # Contact Url
     19cc1136-5d7a-45af-a877-b34cbec39f80: 'Listing Team' # Listing Team
     20c4d3d9-29f1-46b9-a578-de6425807cb3: Footer # Footer
     22ffe5d1-c3ff-49ba-8ed8-2ef903d94c54: Userfusion # Userfusion
+    32f5e2ff-781a-4e09-8347-1808fb9a7bb2: 'Contact Info' # Contact Info
     041c3195-abae-4442-8729-c0bb6bd762af: 'Listing Case Study' # Listing Case Study
     48ce4dd2-4ca0-4661-bb42-25ef536a2253: Blog # Blog
     54a3d4c9-582f-4754-8977-4c342ef8a96e: 'Overlay Opacity' # Overlay Opacity
     55d7d3ae-03a3-4e89-9f46-9ec237b051c7: 'Listing Style' # Listing Style
     67cc7823-2e87-4d16-bb9f-38b94b68f956: 'Tracking Scripts' # Tracking Scripts
     72d416e1-852e-4aef-b204-c23f104c80c8: Videos # Videos
+    72d439b0-45ce-4aaa-94ac-cdda734b4b5a: Text # Text
     83b30345-cc30-4e25-a5f6-5de8adbe8265: Custom # Custom
     86da9d1c-79b6-4b38-bfe8-d608e36d610c: 'Animation Duration' # Animation Duration
     89eb44c8-5d3c-4643-b7e4-310a10612797: Brands # Brands
@@ -77,6 +82,7 @@ meta:
     134a2c99-8e12-4d05-b077-5957f5e835ce: 'Social Links' # Social Links
     0423d9a0-74e7-4a3d-afc5-a78d494caab4: Navigation # Navigation
     458e4536-0755-47d0-9628-999ff6b7c7c6: 'Listing Testimonials' # Listing Testimonials
+    646c20c4-1b47-414d-82f7-2af5d1b73614: Video # Video
     703a980f-eab2-4276-a815-17e7b6f5095a: 'Animation Offset' # Animation Offset
     1015ffe6-b7bf-4676-a048-e34055507b5a: Image # Image
     1568efd7-9ad7-471e-ac94-2e679fc981b1: Pages # Pages
@@ -111,6 +117,7 @@ meta:
     b1245063-e2a0-4567-8d38-0324ca0eba13: 'Joining Date' # Joining Date
     b7524683-0af1-4bdf-b6f5-e4e80993fbbe: 'Banner Card' # Banner Card
     bff0694b-0a96-4afa-ba0e-b4e834e9a153: 'Padding Bottom' # Padding Bottom
+    c0063996-cdc5-42d9-bac2-18ef5ae9c736: 'Contact Cards' # Contact Cards
     c729cee4-a2ec-48ef-8053-907b01d1a630: Cards # Cards
     c16118bb-d24d-489d-8c5a-2deabdcd6e16: 'Padding Top' # Padding Top
     cafc15ff-e95d-499e-ab60-3cc42608bc25: New # New
@@ -119,6 +126,7 @@ meta:
     d2ce1189-64b3-48a5-8648-327f21b04a5c: Pages # Pages
     d5b54786-d550-43a6-bc46-0e9b8edbae51: Simple # Simple
     d5e72f4c-5e9b-4b94-b75c-b4d69e74f1a2: 'Per Row Limit' # Per Row Limit
+    d5375257-05b7-4c6e-b808-81ca62e56f9f: 'Contact Social Links' # Contact Social Links
     e38ac257-70df-4d50-9384-503f2133f772: 'Heading Size' # Heading Size
     e24737b0-c5aa-4f05-9fb5-fc42d7f31bb0: 'Icon Position' # Icon Position
     e3651006-9863-4745-9226-557c2608dee0: 'Script Files' # Script Files

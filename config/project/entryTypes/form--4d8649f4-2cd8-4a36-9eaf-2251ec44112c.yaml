@@ -1,6 +1,6 @@
 color: null
 fieldLayouts:
-  3d8254ce-845f-49e0-85ae-6ee433d74327:
+  2e7e1f48-4c8c-4753-8ef8-3311780e1a74:
     tabs:
       -
         elementCondition: null
@@ -30,19 +30,64 @@ fieldLayouts:
             tip: null
             title: null
             type: craft\fieldlayoutelements\entries\EntryTitleField
-            uid: 3e40bd01-43b0-4439-bba9-e5358dfa8657
+            uid: 073919a4-ab9d-437d-b635-3dd6a60c49c3
             userCondition: null
             warning: null
             width: 100
           -
             elementCondition: null
-            heading: 'Column 1'
+            fieldUid: ec70c780-286c-4027-8904-ecdb25e3e1c1 # Heading
+            handle: formHeading
+            includeInCards: false
+            instructions: null
+            label: 'Form Heading'
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 1743400f-c01d-4acc-9499-e085313516e1
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 07973944-8eb1-4911-962e-d81e1787b026 # Form
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 4d33bd06-f574-4f25-b525-2670b802c361
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            heading: 'Sidebar Content'
             type: craft\fieldlayoutelements\Heading
-            uid: 5df7fae4-074c-45d0-980e-9d9ed9c2ae8f
+            uid: 78442d5c-ecb0-485c-b3d4-acdd3b042dc6
             userCondition: null
           -
             elementCondition: null
-            fieldUid: 05af4b17-93ed-4027-a039-96c368e5b585 # Image
+            fieldUid: ec70c780-286c-4027-8904-ecdb25e3e1c1 # Heading
+            handle: sidebarHeading
+            includeInCards: false
+            instructions: null
+            label: 'Sidebar Heading'
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 893f0dda-041d-4bbf-88a1-3b9e6556cdcd
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 1c43e81f-f344-4898-bf18-5aff190f9af3 # Contact Info
             handle: null
             includeInCards: false
             instructions: null
@@ -51,31 +96,16 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 2e744308-f434-4a91-9887-20b0170fb631
+            uid: dbb8bb6d-5bd7-4b18-8718-63006a9d2a89
             userCondition: null
             warning: null
             width: 100
-          -
-            elementCondition: null
-            fieldUid: 646c20c4-1b47-414d-82f7-2af5d1b73614 # Video
-            handle: null
-            includeInCards: false
-            instructions: null
-            label: null
-            providesThumbs: false
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: 0839c042-b015-4705-ac38-9e77d412dd0e
-            userCondition: null
-            warning: null
-            width: 100
-          -
-            elementCondition: null
-            heading: 'Column 2'
-            type: craft\fieldlayoutelements\Heading
-            uid: cec649da-c45c-4bc7-a319-5e295abb1522
-            userCondition: null
+        name: Content
+        uid: 641f0bff-d925-492b-8561-359c294b9f19
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
           -
             elementCondition: null
             fieldUid: f7a03cc1-a16d-4c45-9dfd-c869032b4453 # Eyebrow
@@ -87,7 +117,7 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 258135ff-838e-4e17-a67a-ec05bb0c2a2e
+            uid: 29899b0a-bcc9-4b26-8d23-af169a162a1a
             userCondition: null
             warning: null
             width: 100
@@ -102,22 +132,7 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 197bcb38-d63d-4f6d-89ff-cb59909ea02a
-            userCondition: null
-            warning: null
-            width: 100
-          -
-            elementCondition: null
-            fieldUid: 0f5da106-4758-4a32-806f-a95ba43b826b # Sub Heading
-            handle: null
-            includeInCards: false
-            instructions: null
-            label: null
-            providesThumbs: false
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: add95605-10b7-4440-babf-4d9c0ffec846
+            uid: 476ddde4-ba5e-4595-b978-97bf4ba31dd2
             userCondition: null
             warning: null
             width: 100
@@ -132,23 +147,17 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 82ea4452-9e94-4767-868e-a287363a1448
+            uid: 19e9a5e1-0757-4797-a038-6c5635d42240
             userCondition: null
             warning: null
             width: 100
-          -
-            elementCondition: null
-            heading: 'Text Blocks'
-            type: craft\fieldlayoutelements\Heading
-            uid: 54004eb1-fcc4-4450-9fd4-c2d5548eb759
-            userCondition: null
-        name: Content
-        uid: d0112d9a-8886-4767-b88a-4bc625e50586
+        name: Auxiliary
+        uid: b56dd31e-3ad5-4bc9-82fa-38304a67fb8d
         userCondition: null
-handle: multimedia
+handle: form
 hasTitleField: false
 icon: ''
-name: Multimedia
+name: Form
 showSlugField: false
 showStatusField: true
 slugTranslationKeyFormat: null

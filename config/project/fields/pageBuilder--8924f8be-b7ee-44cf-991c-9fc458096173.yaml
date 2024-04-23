@@ -11,6 +11,7 @@ settings:
     - effa59c4-035a-4910-bf8c-30996bff8047 # Gallery
     - 2d5c34d8-b71f-4777-a3d6-50cb6a4a5402 # Multimedia
     - a7eded6e-c5d3-4099-bb5b-7545b0332f49 # Listing
+    - 4d8649f4-2cd8-4a36-9eaf-2251ec44112c # Form
   includeTableView: false
   maxEntries: null
   minEntries: null
