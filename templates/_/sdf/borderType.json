@@ -1,0 +1,15 @@
+[
+    {
+        "label": "Default",
+        "value": "",
+        "default": "yes"
+    },
+    {
+        "label": "Full",
+        "value": "full"
+    },
+    {
+        "label": "Dotted",
+        "value": "dotted"
+    }
+]

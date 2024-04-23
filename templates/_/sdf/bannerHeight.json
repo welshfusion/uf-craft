@@ -1,0 +1,19 @@
+[
+	{
+		"label": "Default",
+		"value": "",
+		"default": "yes"
+	},
+	{
+		"label": "Small",
+		"value": "small"
+	},
+	{
+		"label": "Medium",
+		"value": "medium"
+	},
+	{
+		"label": "Full",
+		"value": "full"
+	}
+]

@@ -1,0 +1,30 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  - d2ce1189-64b3-48a5-8648-327f21b04a5c # Pages
+handle: pages
+maxAuthors: 1
+name: Pages
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primary entry page'
+      -
+        - urlFormat
+        - '{url}'
+      -
+        - refresh
+        - '1'
+propagationMethod: all
+siteSettings:
+  5bdbc0ac-c142-4128-a741-e438819f43c5: # Userfusion
+    enabledByDefault: true
+    hasUrls: true
+    template: _pages/index.twig
+    uriFormat: '{parent.uri}/{slug}'
+structure:
+  maxLevels: null
+  uid: 61f295f7-f1a6-43b0-87e5-8f41dbf0c6ad
+type: structure

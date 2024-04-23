@@ -1,0 +1,8 @@
+baseUrl: $PRIMARY_SITE_URL
+handle: default
+hasUrls: true
+language: en-US
+name: Userfusion
+primary: true
+siteGroup: 22ffe5d1-c3ff-49ba-8ed8-2ef903d94c54 # Userfusion
+sortOrder: 1

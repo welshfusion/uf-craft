@@ -1,0 +1,20 @@
+columnSuffix: null
+handle: trackingScripts
+instructions: null
+name: 'Tracking Scripts'
+searchable: false
+settings:
+  createButtonLabel: 'Add Tracking Script'
+  entryTypes:
+    - 67cc7823-2e87-4d16-bb9f-38b94b68f956 # Tracking Scripts
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

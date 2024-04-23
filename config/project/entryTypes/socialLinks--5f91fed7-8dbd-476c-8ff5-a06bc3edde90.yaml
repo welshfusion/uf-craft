@@ -1,0 +1,80 @@
+color: null
+fieldLayouts:
+  45ce682d-54e6-4d30-893b-3a53f43d7dc9:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 644d686b-8978-4250-abca-006e58563578
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 3745cb40-58d5-44cc-9ce5-9339f438f411 # Icon
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: a0e2716e-b5c9-4c57-85f9-5b90cac98ff8
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 91c83f59-fe79-4767-b5d1-f236d7a4e02f # Social Link
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 41ec69b1-bf89-42f2-917f-2afc3ffdeb35
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 2af31c8c-994d-4a20-9675-a156cf24baa3
+        userCondition: null
+handle: socialLinks
+hasTitleField: false
+icon: ''
+name: 'Social Links'
+showSlugField: false
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: ''
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

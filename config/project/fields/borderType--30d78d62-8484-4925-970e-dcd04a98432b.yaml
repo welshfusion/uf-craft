@@ -1,0 +1,15 @@
+columnSuffix: null
+handle: borderType
+instructions: null
+name: 'Border Type'
+searchable: false
+settings:
+  cachedOptions: true
+  element: null
+  genError: ''
+  json: ''
+  template: _/sdf/borderType.json
+  templateData: ''
+translationKeyFormat: null
+translationMethod: none
+type: amici\SuperDynamicFields\fields\SueprDynamicDropdownField

@@ -1,0 +1,20 @@
+columnSuffix: null
+handle: listing
+instructions: null
+name: Listing
+searchable: false
+settings:
+  createButtonLabel: Listing
+  entryTypes:
+    - 19cc1136-5d7a-45af-a877-b34cbec39f80 # Listing Team
+  includeTableView: false
+  maxEntries: 1
+  minEntries: null
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

@@ -1,0 +1,142 @@
+fieldLayouts:
+  5a1115fb-174f-4ce4-9b6e-fe038af752ad:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 05af4b17-93ed-4027-a039-96c368e5b585 # Image
+            handle: logo
+            includeInCards: false
+            instructions: null
+            label: Logo
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 7245da0f-be45-434b-8973-90c5a46b785c
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: b725ddfa-71d5-44fd-b67b-d2291907d5fd # Buttons
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 97e769d9-766f-4d04-8a24-1a8fe131d424
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            elementCondition: null
+            fieldUid: 0423d9a0-74e7-4a3d-afc5-a78d494caab4 # Navigation
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: d7c13ffb-9229-4ba3-91bd-067f58121239
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            elementCondition: null
+            type: craft\fieldlayoutelements\HorizontalRule
+            uid: 110e2584-cab1-49a5-bc9d-78181fd2fd36
+            userCondition: null
+          -
+            elementCondition: null
+            fieldUid: ec70c780-286c-4027-8904-ecdb25e3e1c1 # Heading
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: 'Address Heading'
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: cee2b722-9484-4c09-b121-346d24c298ff
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 4998b347-a2ba-4814-8789-53adb5d61a41 # Text
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: Address
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: c274bf7c-2856-4764-986a-33944534e05f
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: b266d78b-963a-4c95-a2c8-3dadd5595399 # Telephone
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: dae2f123-9f3c-4a5e-b2f9-1b9a82d4966f
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            type: craft\fieldlayoutelements\HorizontalRule
+            uid: cfbcc084-d78a-40d3-a0f3-c2b6634d11dc
+            userCondition: null
+          -
+            elementCondition: null
+            fieldUid: ec70c780-286c-4027-8904-ecdb25e3e1c1 # Heading
+            handle: heading2
+            includeInCards: false
+            instructions: null
+            label: 'Social Links Heading'
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: ec35ce6f-cc73-4319-8524-683e1af7cd2a
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 134a2c99-8e12-4d05-b077-5957f5e835ce # Social Links
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 578a7dc2-dbd1-46c9-be43-7f6e729c9102
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 5f87bdf9-6c28-4365-a878-a72568406ee6
+        userCondition: null
+handle: header
+name: Header
+sortOrder: 1

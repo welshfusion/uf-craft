@@ -1,0 +1,125 @@
+color: null
+fieldLayouts:
+  9d630efe-1754-4f77-afc0-6704b3d88e51:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 4acc89ab-5d9f-4ea0-a6e1-ba658f8c84d5 # Button Type
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 4ed85cd0-48d0-4e46-9b03-f39a90975543
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            elementCondition: null
+            fieldUid: 0fb4612a-f62e-4f17-a4c0-d4bb9c731e39 # Button Color
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 8e635516-b2ce-41e9-9d5c-280202eda4d2
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            elementCondition: null
+            fieldUid: 3745cb40-58d5-44cc-9ce5-9339f438f411 # Icon
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: d61c7b14-8b59-4b3e-a966-ab074c737a32
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            elementCondition: null
+            fieldUid: e24737b0-c5aa-4f05-9fb5-fc42d7f31bb0 # Icon Position
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 5b510912-d52b-4c42-8062-382e51ab8b80
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            elementCondition: null
+            fieldUid: 7c8987af-e9f1-42e8-930e-4a16028b925d # Button
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e9cf8f0e-8ca8-4165-8854-01d8c6f63773
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 59380e1d-6274-4564-9295-ffc629beecda
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: a7031f59-79a4-4a3e-98d6-3d1ff9fd8691
+        userCondition: null
+handle: button
+hasTitleField: false
+icon: circle-dot
+name: Button
+showSlugField: false
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: ''
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

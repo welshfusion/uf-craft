@@ -1,0 +1,20 @@
+columnSuffix: null
+handle: cards
+instructions: null
+name: Cards
+searchable: false
+settings:
+  createButtonLabel: Card
+  entryTypes:
+    - b7524683-0af1-4bdf-b6f5-e4e80993fbbe # Banner Card
+  includeTableView: false
+  maxEntries: 3
+  minEntries: null
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

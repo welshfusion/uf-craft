@@ -1,0 +1,15 @@
+columnSuffix: null
+handle: bannerHeight
+instructions: null
+name: 'Banner Height'
+searchable: false
+settings:
+  cachedOptions: true
+  element: null
+  genError: ''
+  json: ''
+  template: _/sdf/bannerHeight.json
+  templateData: ''
+translationKeyFormat: null
+translationMethod: none
+type: amici\SuperDynamicFields\fields\SueprDynamicDropdownField

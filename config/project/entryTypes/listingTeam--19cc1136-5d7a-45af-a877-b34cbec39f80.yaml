@@ -1,0 +1,50 @@
+color: null
+fieldLayouts:
+  edfeb319-9592-4858-bf8d-9125a0c6b735:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 1ae80644-7cca-4b93-af3a-35790218e8c7
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 9ffa080d-80bb-4434-8ec5-de919a98c3f6
+        userCondition: null
+handle: listingTeam
+hasTitleField: false
+icon: ''
+name: 'Listing Team'
+showSlugField: false
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: ''
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

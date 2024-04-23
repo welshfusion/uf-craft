@@ -1,0 +1,27 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  - 5816eb09-d316-4d3a-ac94-403833383582 # Case study
+handle: caseStudies
+maxAuthors: 1
+name: 'Case studies'
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primary entry page'
+      -
+        - urlFormat
+        - '{url}'
+      -
+        - refresh
+        - '1'
+propagationMethod: all
+siteSettings:
+  5bdbc0ac-c142-4128-a741-e438819f43c5: # Userfusion
+    enabledByDefault: true
+    hasUrls: true
+    template: _pages/index.twig
+    uriFormat: 'case-study/{slug}'
+type: channel

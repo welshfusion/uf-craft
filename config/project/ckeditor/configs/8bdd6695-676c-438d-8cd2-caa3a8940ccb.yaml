@@ -1,0 +1,30 @@
+headingLevels:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+name: Full
+options:
+  alignment:
+    options:
+      - left
+      - right
+toolbar:
+  - sourceEditing
+  - heading
+  - '|'
+  - bold
+  - italic
+  - underline
+  - strikethrough
+  - bulletedList
+  - numberedList
+  - link
+  - insertImage
+  - mediaEmbed
+  - horizontalLine
+  - blockQuote
+  - insertTable
+  - alignment

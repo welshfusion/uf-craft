@@ -1,0 +1,22 @@
+columnSuffix: null
+handle: pageBuilder
+instructions: null
+name: 'Page Builder'
+searchable: false
+settings:
+  createButtonLabel: 'Page Builder'
+  entryTypes:
+    - aed4b3a7-3590-400d-beca-837fb987570a # Basic Content
+    - effa59c4-035a-4910-bf8c-30996bff8047 # Logos
+    - a7eded6e-c5d3-4099-bb5b-7545b0332f49 # Listing
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

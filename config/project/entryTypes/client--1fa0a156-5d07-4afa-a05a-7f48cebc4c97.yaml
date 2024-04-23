@@ -1,0 +1,95 @@
+color: null
+fieldLayouts:
+  92e6f0ef-529c-4b09-8c74-21f1f192f8dd:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 4bc09239-b5ad-4ebe-b991-4ae7b614afba
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 05af4b17-93ed-4027-a039-96c368e5b585 # Image
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: 'Small Logo'
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: bad56aec-f151-491c-bfdd-59db88c738f8
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            elementCondition: null
+            fieldUid: 1015ffe6-b7bf-4676-a048-e34055507b5a # Image
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: 'Descriptive Logo'
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 04a537e5-fcd3-4e34-a88f-a0b8e2476580
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            elementCondition: null
+            fieldUid: b1245063-e2a0-4567-8d38-0324ca0eba13 # Joining Date
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 99f93f40-5dc8-4b56-b0e6-0c651d57146c
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 8ff6c752-ee95-48f7-a28a-fdc3b5700bae
+        userCondition: null
+handle: client
+hasTitleField: true
+icon: ''
+name: Client
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: ''
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
