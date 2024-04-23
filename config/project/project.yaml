@@ -1,4 +1,4 @@
-dateModified: 1713859717
+dateModified: 1713866741
 email:
   fromEmail: n.williams@userfusion.com
   fromName: Userfusion
@@ -38,6 +38,7 @@ meta:
     1fa0a156-5d07-4afa-a05a-7f48cebc4c97: Client # Client
     2ba320e0-e879-4969-b03c-211b60735a5a: 'Section ID' # Section ID
     2d5c34d8-b71f-4777-a3d6-50cb6a4a5402: Multimedia # Multimedia
+    2f9ca775-608e-4f5c-9269-282385ed2641: 'Page Builder' # Page Builder
     3f060ced-9de9-4e6c-ada9-05cddd5d7c03: Testimonial # Testimonial
     3f94dff8-7848-41bd-bc80-03e884e498a2: Team # Team
     4a0c1fbc-a84a-4308-8167-ed452f56d3b7: 'Contact Form' # Contact Form
@@ -84,8 +85,10 @@ meta:
     458e4536-0755-47d0-9628-999ff6b7c7c6: 'Listing Testimonials' # Listing Testimonials
     646c20c4-1b47-414d-82f7-2af5d1b73614: Video # Video
     703a980f-eab2-4276-a815-17e7b6f5095a: 'Animation Offset' # Animation Offset
+    832bf49f-111f-4aea-acea-c39597785d33: 'Call To Action' # Call To Action
     1015ffe6-b7bf-4676-a048-e34055507b5a: Image # Image
     1568efd7-9ad7-471e-ac94-2e679fc981b1: Pages # Pages
+    3103da10-e23c-4bc6-8d50-79ecfca1013e: CTA # CTA
     3745cb40-58d5-44cc-9ce5-9339f438f411: Icon # Icon
     4992b3d0-b6f9-447c-91fa-b2c94f97a938: 'Container Size' # Container Size
     4998b347-a2ba-4814-8789-53adb5d61a41: Text # Text
@@ -121,6 +124,7 @@ meta:
     c729cee4-a2ec-48ef-8053-907b01d1a630: Cards # Cards
     c16118bb-d24d-489d-8c5a-2deabdcd6e16: 'Padding Top' # Padding Top
     cafc15ff-e95d-499e-ab60-3cc42608bc25: New # New
+    cb57046f-f051-4150-917b-97450a183417: 'Call To Action' # Call To Action
     cc5e2abd-42a9-498e-a6f6-d6596c99d2c5: Limit # Limit
     cf5012cf-d02e-4ac7-98d1-891c12d25777: Button # Button
     d2ce1189-64b3-48a5-8648-327f21b04a5c: Pages # Pages
