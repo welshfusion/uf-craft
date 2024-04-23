@@ -16,6 +16,7 @@ settings:
     - a7eded6e-c5d3-4099-bb5b-7545b0332f49 # Listing
     - 832bf49f-111f-4aea-acea-c39597785d33 # Call To Action
     - 248e89b5-415a-4d5e-aaab-083bc912f7d5 # Container
+    - a1d7dda3-53ff-421c-9f47-007d49c62b5a # Two Columns
   includeTableView: false
   maxEntries: null
   minEntries: null

@@ -1,4 +1,4 @@
-dateModified: 1713870346
+dateModified: 1713871070
 email:
   fromEmail: n.williams@userfusion.com
   fromName: Userfusion
@@ -80,6 +80,7 @@ meta:
     54a3d4c9-582f-4754-8977-4c342ef8a96e: 'Overlay Opacity' # Overlay Opacity
     55d7d3ae-03a3-4e89-9f46-9ec237b051c7: 'Listing Style' # Listing Style
     67cc7823-2e87-4d16-bb9f-38b94b68f956: 'Tracking Scripts' # Tracking Scripts
+    67cd1597-672e-4ec8-a388-c982f3f2291f: 'Two Column Layout' # Two Column Layout
     72d416e1-852e-4aef-b204-c23f104c80c8: Videos # Videos
     72d439b0-45ce-4aaa-94ac-cdda734b4b5a: Text # Text
     83b30345-cc30-4e25-a5f6-5de8adbe8265: Custom # Custom
@@ -112,10 +113,12 @@ meta:
     025101ef-e8fd-4542-bd7f-d5d127b6789f: 'Tracking Scripts' # Tracking Scripts
     86035a0d-51de-4bb2-b452-4bfc32cfc03e: 'Margin Top' # Margin Top
     292523b0-bad0-4ce1-9542-3fe9faffcd40: Blog # Blog
+    681105e2-a5de-4cd8-85e1-68ee5b0f70fa: Column # Column
     873433f0-3878-4512-b80a-84e11ace7831: Images # Images
     1278138f-e268-4a57-b50e-ad8d14eacb53: 'Image Ratio' # Image Ratio
     07973944-8eb1-4911-962e-d81e1787b026: Form # Form
     a083fcfb-b4ce-402b-a0bb-e03d70ddf2ec: 'HTML Code' # HTML Code
+    a1d7dda3-53ff-421c-9f47-007d49c62b5a: 'Two Columns' # Two Columns
     a2faf60a-48de-4391-a3c4-49283f508b99: 'Related Team Member' # Related Team Member
     a7eded6e-c5d3-4099-bb5b-7545b0332f49: Listing # Listing
     a48ed5c6-f7f8-47e4-a829-4b6e65fa980c: 'Listing Client' # Listing Client
@@ -143,6 +146,7 @@ meta:
     d5b54786-d550-43a6-bc46-0e9b8edbae51: Simple # Simple
     d5e72f4c-5e9b-4b94-b75c-b4d69e74f1a2: 'Per Row Limit' # Per Row Limit
     d5375257-05b7-4c6e-b808-81ca62e56f9f: 'Contact Social Links' # Contact Social Links
+    e084ec80-7142-4f11-95cc-afaccaed2cf6: 'Column Alignment' # Column Alignment
     e38ac257-70df-4d50-9384-503f2133f772: 'Heading Size' # Heading Size
     e24737b0-c5aa-4f05-9fb5-fc42d7f31bb0: 'Icon Position' # Icon Position
     e3651006-9863-4745-9226-557c2608dee0: 'Script Files' # Script Files
