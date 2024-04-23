@@ -64,6 +64,21 @@ fieldLayouts:
             userCondition: null
             warning: null
             width: 100
+          -
+            elementCondition: null
+            fieldUid: 8924f8be-b7ee-44cf-991c-9fc458096173 # Page Builder
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 080bf9a5-fdac-4a3c-b787-97c56c864f59
+            userCondition: null
+            warning: null
+            width: 100
         name: Content
         uid: db08312f-8121-4adb-9df0-8f2ddf016424
         userCondition: null
