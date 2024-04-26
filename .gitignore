@@ -23,15 +23,6 @@ storage/*
 !storage/rebrand
 
 /web/imager/*
-/web/vol/usr/*
-/web/vol/img/*
-/web/vol/doc/*
-/web/vol/json/*
-/web/cache/*
 
-/web/uploads/
-/web/transforms/
-
-giving.staging.pem
-id_rsa
-id_rsa.pub
+/web/uploads/*
+/web/transforms/*

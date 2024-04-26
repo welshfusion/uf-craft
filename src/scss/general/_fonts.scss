@@ -1,0 +1,47 @@
+/* @font-face {
+    font-family: 'titillium';
+    font-display: block;
+    src: url("/dist/fonts/titilliumweb-regular-webfont.woff2") format("woff2"), url("/dist/fonts/titilliumweb-regular-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal
+} */
+
+@font-face {
+    font-family: "Interstate";
+    font-display: block;
+    src: url("/dist/fonts/interstate-black.otf") format("opentype");
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Interstate";
+    font-display: block;
+    src: url("/dist/fonts/interstate-bold.otf") format("opentype");
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Interstate";
+    font-display: block;
+    src: url("/dist/fonts/interstate-regular.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Interstate";
+    font-display: block;
+    src: url("/dist/fonts/interstate-light.otf") format("opentype");
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "DrukTextWide";
+    font-display: block;
+    src: url("/dist/fonts/Druk-SuperItalic-Trial.otf") format("opentype");
+    font-weight: 900;
+    font-style: normal;
+}

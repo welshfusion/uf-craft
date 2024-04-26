@@ -24,7 +24,7 @@ return GeneralConfig::create()
     ->preventUserEnumeration()
     ->runQueueAutomatically(App::env('RUN_QUEUE_AUTOMATICALLY') ?? true)
     ->sendPoweredByHeader(false)
-    ->useEmailAsUsername(true)
+    // ->useEmailAsUsername(true)
     ->maxUploadFileSize(104857600) //100 MB
     ->enableGql(false)
     ->errorTemplatePrefix("_messages/")

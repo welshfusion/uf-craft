@@ -1,0 +1,18 @@
+{% extends '_/layouts/main' %}
+
+{% block content %}
+    {{ craft.app.config.general.devMode ? ('<!-- Page: ' ~ _self ~ ' -->') | raw }}
+
+    {#
+    =============================================
+        Include Hero
+    =============================================
+    #}
+    {# {% include "_partials/hero" %} #}
+    {#
+    =============================================
+        Include page Builder
+    =============================================
+    #}
+    {# {% include "_partials/pageBuilder" %} #}
+{% endblock %}

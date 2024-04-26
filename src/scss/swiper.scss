@@ -1,0 +1,8 @@
+@import "swiper/css";
+
+/* @import "swiper/css/navigation"; */
+@import "swiper/css/pagination";
+
+.swiper-bullet-white.swiper-pagination-bullet {
+    @apply bg-white opacity-80;
+}
