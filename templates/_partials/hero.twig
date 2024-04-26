@@ -1,0 +1,4 @@
+{{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
+{% for block in entry.hero.all() %}
+    {% include "_partials/hero/" ~ block.type.handle %}
+{% endfor %}

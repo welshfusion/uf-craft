@@ -1,0 +1,58 @@
+{% if image|length %}
+{% set doWebp = craft.app.config.env != 'dev' and webp and craft.imager.serverSupportsWebp() %}
+{# {% set doWebp = false %} #}
+
+{% set imgWidth = width ? "width = #{width|default(null)}" : null %}
+{% set imgHeight = height ? "height = #{height|default(null)}" : null %}
+
+{% if image.extension|default(null) in ["gif", "svg"] or (not image.extension|default(null)|length and image|split('.')|last  in ["gif", "svg"]) %}
+    <img src="{{ image.getUrl()|default(image) }}"{% if lazy %} loading='lazy'{% endif %}{% if id|length %} id="{{ id }}"{% endif %}{% if class|length %} class="{{ class }}"{% endif %}{% if alt|length %} alt="{{ alt }}"{% endif %} {{ imgWidth }} {{ imgHeight }}>
+{% elseif plainImage %}
+    {% set transform = 'jpg' %}
+    {% set transformedImages = craft.imagerx.transformImage(image, transform) %}
+    <img src="{{ transformedImages[0].url }}" type="image/jpeg"{% if lazy %} loading='lazy'{% endif %}{% if id|length %} id="{{ id }}"{% endif %}{% if class|length %} class="{{ class }}"{% endif %}{% if alt|length %} alt="{{ alt }}"{% endif %} {{ imgWidth }} {{ imgHeight }} {% for key, val in attrs %}{{ key }}= {% if val is iterable %}{{ val|json_encode|raw }}{% else %}{{ val|json_encode|raw }}{% endif %}{% endfor %}/>
+{% else %}
+    {% set found = false %}
+    {# Focal Point #}
+    {% set id = 'image-' ~ image.getId() %}
+    {% if image.hasFocalPoint %}
+        {% set x = image.focalPoint | first * 100 ~ '%' %}
+        {% set y = image.focalPoint | last * 100 ~ '%' %}
+        {% set imageStyles = 'object-position: ' ~ [x, y]|join(' ') %}
+    {% endif %}
+
+    <picture {% if pictureClass %} class="{{ pictureClass }}"{% endif %}>
+        {% if doWebp %}
+            {% set transform = 'webp' %}
+            {% set transformedImages = craft.imagerx.transformImage(image, transform) %}
+            {% if addSrcSet %}
+                {% if transformedImages|length %}
+                <source sizes="100vw" srcset="{{ craft.imagerx.srcset(transformedImages) }}" type="image/webp">
+                {% set found = true %}
+                {% endif %}
+            {% else %}
+                <source sizes="100vw" srcset="{{ transformedImages|length ? transformedImages[0].url }}" type="image/webp">
+                {% set found = true %}
+            {% endif %}
+        {% endif %}
+
+        {% set transform = 'jpg' %}
+
+        {% set transformedImages = craft.imagerx.transformImage(image, transform) %}
+        {% if addSrcSet %}
+            {% if transformedImages|length %}
+            <source sizes="100vw" srcset="{{ craft.imagerx.srcset(transformedImages) }}" type="image/jpeg">
+            {% set found = true %}
+            {% endif %}
+        {% else %}
+            <source sizes="100vw" srcset="{{ transformedImages|length ? transformedImages[0].url() }}" type="image/jpeg">
+            {% set found = true %}
+        {% endif %}
+
+        {% if not found %}
+            <source sizes="100vw" srcset="{{ image.getUrl()|default(image) }}" type="image/jpeg">
+        {% endif %}
+        <img src="{{ craft.imagerx.placeholder({ width: 160, height: 90 }) }}"{% if alt|length %} alt="{{ alt }}"{% endif %}{% if lazy %} loading='lazy'{% endif %}{% if id|length %} id="{{ id }}"{% endif %}{% if class|length %} class="{{ class }}"{% endif %} {% if alpineClass|length %} :class="{{ alpineClass }}"{% endif %} {{ imgWidth }} {{ imgHeight }}{% if image.hasFocalPoint %} style="{{ imageStyles }}"{% endif %} {% for key, val in attrs %}{{ key }}= {% if val is iterable %}{{ val|json_encode|raw }}{% else %}{{ val|json_encode|raw }}{% endif %}{% endfor %}/>
+    </picture>
+{% endif %}
+{% endif %}

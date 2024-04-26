@@ -1,0 +1,39 @@
+{% macro setImage(params) %}
+    {% set defaultsParams = {
+        image: null,
+        fill: null,
+        alt: null,
+        class: null,
+        id: "",
+        lazy: true,
+        addSrcSet: true,
+        plainImage: false,
+        pictureClass: null,
+        width: null,
+        height: null,
+        webp: true,
+        alpineClass:"",
+        attrs: null
+    } %}
+
+    {# Override (overwrite) defaults with passed parameters #}
+    {% set options = defaultsParams|merge(params) %}
+    {% include "_/includes/macros/setImage" with options %}
+{% endmacro %}
+
+{% macro createButton(params) %}
+    {% set defaults = {
+        button: null,
+        buttonType: 'button',
+        buttonColor: null,
+        icon: null,
+        iconPosition: null,
+        class: null,
+        background: null,
+        extraClasses: null,
+    } %}
+
+    {# Override (overwrite) defaults with passed parameters #}
+    {% set options = defaults|merge(params) %}
+    {% include "_/includes/macros/createButton" with options %}
+{% endmacro %}
