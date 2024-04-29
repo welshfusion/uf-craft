@@ -1,0 +1,30 @@
+{% set alignments = {
+    text: {
+        left: 'text-left',
+        center: 'text-center',
+        right: 'text-right',
+    },
+    justify: {
+        left: 'justify-start',
+        center: 'justify-center',
+        right: 'justify-end',
+    },
+    margin: {
+        left: 'mr-auto',
+        center: 'mx-auto',
+        right: 'ml-auto',
+    },
+    items: {
+        left: 'items-start',
+        center: 'items-center',
+        right: 'items-end',
+    }
+} %}
+
+{% if type is iterable %}
+    {% for item in type %}
+        {{ alignments[item][alignment] ?? null }}
+    {% endfor %}
+{% else %}
+    {{ alignments[type][alignment] ?? null }}
+{% endif %}

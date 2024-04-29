@@ -1,0 +1,84 @@
+{% import "_/includes/macros" as render %}
+
+{% set contentAnimation = render.setAnimation({
+    animation: animation,
+    animationStyle: contentAnimationStyle,
+    animationDuration: contentAnimationDuration,
+    animationOffset: contentAnimationOffset,
+    animationEasing: contentAnimationEasing
+}) | raw %}
+{% set delay = 0 %}
+
+{% if eyebrow|length %}
+<h6 class="block font-display text-base font-semibold text-cyprus-500 {{ render.getAlignment({alignment: contentAlignment, type: ['text']}) }}" {{ contentAnimation|raw }}>
+    {{ eyebrow }}
+</h6>
+{% endif %}
+
+{% if heading|length %}
+{% set delay = delay + 200 %}
+{% set contentAnimation = render.setAnimation({
+    animation: animation,
+    animationStyle: contentAnimationStyle,
+    animationDuration: contentAnimationDuration,
+    animationOffset: contentAnimationOffset,
+    animationEasing: contentAnimationEasing,
+    animationDelay: delay
+}) | raw %}
+<{{ headingTag }} class="{{ headingSpacing|length ? headingSpacing : (eyebrow|length ? 'mt-6') }} {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }} {{ headingExtraClasses|length ? headingExtraClasses : 'font-sans tracking-[1px]' }} {{ render.getAlignment({alignment: contentAlignment, type: ['text']}) }} {{ render.getHeadingSize({headingTag: applyHeadingSize ?? headingTag}) }} {{ render.getFontWeight({font: fontWeight}) }}
+    background: backgroundColorLabel,
+    bgOpacity: bgOpacity,
+    type: 'heading',
+}) }}" {{ contentAnimation|raw }}>
+    {{ heading|nl2br }}
+</{{ headingTag }}>
+{% endif %}
+
+{% if text|length %}
+{% set delay = delay + 200 %}
+{% set contentAnimation = render.setAnimation({
+    animation: animation,
+    animationStyle: contentAnimationStyle,
+    animationDuration: contentAnimationDuration,
+    animationOffset: contentAnimationOffset,
+    animationEasing: contentAnimationEasing,
+    animationDelay: delay
+}) | raw %}
+
+<div class="{{ textParentDivClass|length ? textParentDivClass : 'space-y-3' }} {{ heading|length or eyebrow|length ? 'mt-6' }} {{ render.getAlignment({alignment: contentAlignment, type: ['text']}) }}" {{ contentAnimation|raw }}>
+    {{ render.replaceElements(text, {
+        background: backgroundColorLabel,
+        contentAlignment: contentAlignment,
+        paragraphFontSize: overrideParagraphFontSize|length ? overrideParagraphFontSize
+    }) }}
+</div>
+{% endif %}
+
+{% for button in buttons %}
+{% set delay = delay + 200 %}
+{% set contentAnimation = render.setAnimation({
+    animation: animation,
+    animationStyle: contentAnimationStyle,
+    animationDuration: contentAnimationDuration,
+    animationOffset: contentAnimationOffset,
+    animationEasing: contentAnimationEasing,
+    animationDelay: delay
+}) | raw %}
+{% if loop.first %}
+<div class="flex flex-wrap items-center gap-5 {{ (eyebrow|length or heading|length or text|length) ? '!mt-6' }} {{ render.getAlignment({
+    alignment: contentAlignment,
+    type: 'justify'
+}) }}" {{ contentAnimation|raw }}>
+{% endif %}
+    {{ render.createButton({
+        button: button.button,
+        buttonType: button.buttonType.getValue()|default(defaultButtonType|length ? defaultButtonType : "button"),
+        buttonColor: button.buttonColor.label|default('cyprus'),
+        icon: button.icon,
+        iconPosition: button.iconPosition.getValue()|default('right'),
+        background: backgroundColorLabel
+    }) }}
+{% if loop.last %}
+</div>
+{% endif %}
+{% endfor %}

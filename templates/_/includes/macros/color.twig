@@ -1,0 +1,10 @@
+{% set colors = {
+    'background' : {
+        'none'       :  '',
+        'white'      :  'bg-white',
+        'black'      :  'bg-gray-500',
+    },
+} %}
+{% if handle|length %}
+    {{ colors[swatch][handle] }}
+{% endif %}

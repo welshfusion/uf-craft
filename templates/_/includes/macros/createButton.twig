@@ -11,22 +11,22 @@
 
 {% set colors = {
     button : {
-        white: "text-gray-500 bg-white hover:bg-waterloo-50",
-        black: "text-white bg-gray-950 hover:bg-gray-700",
-        gray: "text-white bg-gray-500 hover:bg-gray-600",
-        primary: "text-white bg-primary-500 hover:bg-primary-600",
+        white: "text-cyprus-500 bg-white hover:bg-cyprus-50",
+        black: "text-white bg-neutral-950 hover:bg-neutral-700",
+        green: "text-white bg-green-500 hover:bg-green-600",
+        cyprus: "text-white bg-cyprus-500 hover:bg-cyprus-600",
     },
     outline : {
-        white: "text-white hover:text-gray-950 border-white hover:bg-white",
-        black: "text-gray-950 hover:text-white border-gray-950 hover:bg-gray-950",
-        gray: "text-gray-500 hover:text-white border-gray-500 hover:bg-gray-500",
-        primary: "text-primary-500 hover:text-white border-primary-500 hover:bg-primary-500",
+        white: "text-cyprus-500 hover:text-cyprus-600 border-white hover:bg-white",
+        black: "text-white-950 hover:text-white border-neutral-950 hover:bg-neutral-800",
+        green: "text-white-500 hover:text-white border-green-500 hover:bg-green-600",
+        cyprus: "text-white-500 hover:text-white border-cyprus-500 hover:bg-cyprus-600",
     },
     link : {
         white: "text-white hover:border-white",
-        black: "text-gray-950 hover:border-gray-950",
-        gray: "text-gray-500 hover:border-gray-500",
-        primary: "text-primary-500 hover:border-primary-500",
+        black: "text-neutral-950 hover:border-neutral-950",
+        green: "text-green-500 hover:border-green-500",
+        cyprus: "text-cyprus-500 hover:border-cyprus-500",
     }
 } %}
 
@@ -37,7 +37,7 @@
         colors[buttonType][buttonColor] ?? null,
         extraClasses|length ? extraClasses : buttonType == 'link'
             ? "flex md:text-2xl text-lg font-bold border-b-2 border-transparent duration-300 items-center inline-block leading-6 transition-all #{button.classes}"
-            : "inline-flex rounded-full px-4 py-1.5 text-sm font-semibold transition bg-cyprus-500 text-white hover:bg-cyprus-400 #{button.classes} " ~ (buttonType == 'outline' ? 'border'),
+            : "inline-flex rounded-full text-xl px-4 py-1.5 font-semibold transition bg-cyprus-500 text-white hover:bg-cyprus-400 #{button.classes} " ~ (buttonType == 'outline' ? 'border'),
         icon|length and iconPosition == 'left' ? 'flex-row-reverse' : null
     ]
 }) %}

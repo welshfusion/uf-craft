@@ -1,0 +1,45 @@
+{% if videos|length %}
+    {% switch videoType %}
+        {% case "background" %}
+            {% set rand = "v-" ~ random(9999999, 99999999) %}
+            <video id="{{ rand }}" class="{{ videoClass }}{{ videoLazy ? ' lazy' }}" {% if autoplay %} autoplay{% endif %} {% if loop %} loop{% endif %} {% if muted %} muted{% endif %} {% if playsinline %} playsinline{% endif %} {% for key, val in videoAttrs %} {{ key }}="{% if val is iterable %}{{ val|json_encode|raw }}{% else %}{{ val|raw }}{% endif %}"{% endfor %}>
+                {% for video in videos %}
+                <source {{ videoLazy ? "data-src" : "src" }}="{{ video.getUrl() }}" type="{{ video.mimeType }}">
+                {% endfor %}
+            </video>
+
+            {% if videoPoster|length %}
+                {% set transform = 'webp' %}
+                {% set transformedImages = craft.imagerx.transformImage(videoPoster, transform) %}
+                {% set webpImageUrl = transformedImages|length ? transformedImages[0].url %}
+
+                {% set transform = 'jpg' %}
+                {% set transformedImages = craft.imagerx.transformImage(image, transform) %}
+                {% set imageUrl = transformedImages|length ? transformedImages[0].url %}
+
+                <script>
+                    document.getElementById('{{ rand }}').setAttribute("poster", '{{ webpImageUrl ? webpImageUrl : (imageUrl ? imageUrl : videoPoster.getUrl())  }}');
+                </script>
+            {% endif %}
+        {% case "popup" %}
+            {% if videos|length and videos != '' %}
+            {# Register JS and CSS for glightbox #}
+            {{ craft.vite.script("src/js/glightbox.js", false) }}
+
+            {% set svgColorClass = svgColorClass ?? 'text-white' %}
+            {% set svgSize = svgSize ?? 'w-7 h-7' %}
+            {% set videoSize = videoSize ?? 'w-16 h-16' %}
+            {% set videoWrapperSize = videoWrapperSize ?? 'w-20 h-20' %}
+            {% set extraWrapperClasses = extraWrapperClasses|length ? extraWrapperClasses : '' %}
+            {% set videoSvgUrl = videoSvgUrl ?? '@webroot/icons/custom/play-custom.svg' %}
+            {% set popupClass = popupClass %}
+            {% set videoId = videoId ?? 'glight-video'|t %}
+
+            <a href="{{ videos }}" id="{{ videoId }}" class="glightbox group transition-all duration-300 absolute rounded-full flex items-center justify-center left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 {{ extraWrapperClasses }} {{ videoWrapperSize }}" aria-label="{{ videoId }}">
+                <span class=" bg-crimson-500 rounded-full flex items-center justify-center text-white group-hover:bg-gold-500 transition-all duration-300 {{ popupClass }} {{ videoSize }}">
+                    {{ svg(videoSvgUrl) | attr({ class: "duration-300 #{svgSize} #{svgColorClass}" }) }}
+                </span>
+            </a>
+            {% endif %}
+    {% endswitch %}
+{% endif %}

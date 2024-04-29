@@ -37,3 +37,219 @@
     {% set options = defaults|merge(params) %}
     {% include "_/includes/macros/createButton" with options %}
 {% endmacro %}
+
+{% macro color(params) %}
+    {% set defaultsParams = {
+        handle: null,
+        swatch: null,
+        gradient: null,
+    } %}
+
+    {# Override (overwrite) defaults with passed parameters #}
+    {% set options = defaultsParams|merge(params) %}
+    {% include "_/includes/macros/color" with options %}
+{% endmacro %}
+
+{% macro renderVideo(params) %}
+    {% set defaultsParams = {
+        videos: null,
+        videoClass: null,
+        videoType: 'background',
+        autoplay: true,
+        loop: true,
+        muted: true,
+        playsinline: true,
+        popupClass: null,
+        videoAttrs: null,
+        videoSvgUrl: null,
+        videoLazy: false,
+        videoPoster: null,
+        svgColorClass: null,
+        videoWrapperSize: null,
+        extraWrapperClasses: null,
+        playVideoAs: false,
+        detailUrl: null,
+        svgSize: null,
+        videoSize: null,
+        videoId: null
+    } %}
+
+    {# Override (overwrite) defaults with passed parameters #}
+    {% set options = defaultsParams|merge(params) %}
+    {% include "_/includes/macros/renderVideo" with options %}
+
+    {# Call the 'setImage' macro from the same file using 'self' #}
+    {% if options.videoType != "background" or (not options.videos|length) %}
+        {{ _self.setImage(options) }}
+    {% endif %}
+{% endmacro %}
+
+{% macro setOpacity(params) %}
+    {% set defaults = {
+        opacity: null,
+        opacityType: 'bg'
+    } %}
+
+    {# Override (overwrite) defaults with passed parameters #}
+    {% set options = defaults|merge(params) %}
+    {% include "_/includes/macros/setOpacity" with options %}
+{% endmacro %}
+
+{% macro setAnimation(params) %}
+    {% set defaults = {
+        setDuration: null,
+        animation: null,
+        animationStyle: null,
+        animationDuration: null,
+        animationOffset: null,
+        animationEasing: null,
+        animationDelay: null
+    } %}
+
+    {# Override (overwrite) defaults with passed parameters #}
+    {% set options = defaults|merge(params) %}
+    {% include "_/includes/macros/setAnimation" with options %}
+{% endmacro %}
+
+{% macro basicContents(params) %}
+    {% set defaults = {
+        eyebrow: null,
+        heading: null,
+        text: null,
+        buttons: null,
+        headingTag: null,
+        fontWeight: null,
+        bgOpacity: null,
+        backgroundColorLabel: null,
+        contentAlignment: null,
+        headingSpacing: null,
+        animation: null,
+        textParentDivClass: null,
+        overrideParagraphFontSize: null,
+        applyHeadingSize: null,
+        headingExtraClasses: null,
+        defaultButtonType: null,
+        contentAnimationStyle: null,
+        contentAnimationDuration: null,
+        contentAnimationOffset: null,
+        contentAnimationEasing: null
+    } %}
+
+    {# Override (overwrite) defaults with passed parameters #}
+    {% set options = defaults|merge(params) %}
+    {% include "_/includes/macros/basicContents" with options %}
+{% endmacro %}
+
+{% macro contentWidth(params) %}
+    {% set defaultsParams = {
+        width: null
+    } %}
+
+    {# Override (overwrite) defaults with passed parameters #}
+    {% set options = defaultsParams|merge(params) %}
+    {% include "_/includes/macros/contentWidth" with options %}
+{% endmacro %}
+
+{% macro spacing(params) %}
+    {% set defaults = {
+        type: 'marginPadding',
+        first: false,
+        last: false,
+        section: null,
+        parent: null,
+
+        prev: null,
+        current: null,
+        next: null,
+
+        prevBgColor: null,
+        currentBgColor: null,
+        nextBgColor: null,
+
+        defaultSpacing: "medium",
+        marginTop: null,
+        marginBottom: null,
+        paddingTop: null,
+        paddingBottom: null,
+
+    } %}
+
+    {# Override (overwrite) defaults with passed parameters #}
+    {% set options = defaults|merge(params) %}
+    {% include "_/includes/macros/spacing" with options %}
+    {# {% set ret %}{% include "_/includes/macros/spacing" with options %}{% endset %} #}
+{% endmacro %}
+
+{% macro getAlignment(params) %}
+    {% set defaults = {
+        alignment: 'left',
+        type: 'text'
+    } %}
+
+    {# Override (overwrite) defaults with passed parameters #}
+    {% set options = defaults|merge(params) %}
+
+    {% include "_/includes/macros/getAlignment" with options %}
+{% endmacro %}
+
+{% macro getFontWeight(params) %}
+    {% set defaults = {
+        font: 'medium',
+    } %}
+
+    {# Override (overwrite) defaults with passed parameters #}
+    {% set options = defaults|merge(params) %}
+
+    {% include "_/includes/macros/getFontWeight" with options %}
+{% endmacro %}
+
+{% macro getHeadingSize(params) %}
+    {% set defaults = {
+        headingTag: "h1",
+    } %}
+
+    {# Override (overwrite) defaults with passed parameters #}
+    {% set options = defaults|merge(params) %}
+
+    {% include "_/includes/macros/getHeadingSize" with options %}
+{% endmacro %}
+
+{% macro replaceElements(text = null, params = {}) %}
+    {% set defaultsParams = {
+        text: text,
+        background: 'none',
+        forceTextColor: null,
+        paragraphFontSize: null,
+        spacingClass: null,
+        extraClasses: null,
+        h1: null,
+        h2: null,
+        h3: null,
+        h4: null,
+        h5: null,
+        h6: null,
+        a: null,
+        p: null,
+        ul: null,
+        ol: null,
+        li: null,
+        hr: null,
+        blockquote: null,
+        pre: null,
+    } %}
+
+    {# Override (overwrite) defaults with passed parameters #}
+    {% set options = defaultsParams|merge(params) %}
+    {% include "_/includes/macros/replaceElements" with options %}
+{% endmacro %}
+
+{% macro foregroundColors(params) %}
+    {% set defaultsParams = {
+        background: null,
+        type: null
+    } %}
+
+    {# Override (overwrite) defaults with passed parameters #}
+    {% set options = defaultsParams|merge(params) %}
+    {% include "_/includes/macros/foregroundColors" with options %}
+{% endmacro %}

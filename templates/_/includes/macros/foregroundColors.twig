@@ -1,0 +1,15 @@
+{% set foregroundColors = {
+    'heading' : {
+        'white'        :  'text-cyprus-500',
+        'black'        :  'text-white',
+        'green'        :  'text-white',
+        'cyprus'       :  'text-white',
+    }
+} %}
+{% if type is iterable %}
+    {% for item in type %}
+        {{ foregroundColors[item][background] ?? null }}
+    {% endfor %}
+{% else %}
+    {{ foregroundColors[type][background] ?? null }}
+{% endif %}

@@ -1,0 +1,73 @@
+{#
+===============================================================================
+    Basic Content (basicContent)
+
+    Variables
+        - Block (block)
+
+    Fields:
+        Content:
+            - Eyebrow (eyebrow)
+            - Heading (heading)
+            - Text (text)
+            - Buttons (buttons) [Matrix]
+                - Button Type (buttonType)
+                - Button Color (buttonColor)
+                - Icon (icon)
+                - Icon Position (iconPosition)
+                - Button (button)
+
+        Settings:
+            - Content Width (contentWidth)
+            - Overlay Opacity (overlayOpacity)
+            - Background Color (backgroundColor)
+            - Content Alignment (contentAlignment)
+            - Heading Size (headingSize)
+            - Font Weight (fontWeight)
+===============================================================================
+#}
+{{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
+{% import "_/includes/macros" as render %}
+
+{% set headingTag = block.headingSize.getValue()|default('h2') %}
+{% set fontWeight = block.fontWeight.getValue()|default('bold') %}
+{% set contentAlignment = block.contentAlignment.value|default('left') %}
+{% set contentWidth = block.contentWidth|default('0;12') %}
+{% set overlayOpacity = block.overlayOpacity.getValue()|default('none') %}
+
+{% set conbackgroundColor = conbackgroundColor ?? null %}
+{% set backgroundColorLabel = block.backgroundColor.label|default(conbackgroundColor ?? 'white') %}
+{% set containerBgExist = conbackgroundColor != backgroundColorLabel %}
+{% set backgroundColor = render.color({
+    handle: backgroundColorLabel,
+    swatch: 'background'
+}) %}
+
+{% set bgOpacity = render.setOpacity({
+    opacity: overlayOpacity,
+    opacityType: 'bg'
+}) %}
+
+{% set buttons = block.buttons.all() %}
+
+<section class="{{ containerBgExist ? backgroundColor }} {{ bgOpacity }} {{ containerBgExist ? 'px-4 md:px-6' }}">
+        <div class="{{ render.contentWidth({width: contentWidth}) }}">
+            {{ render.basicContents({
+                eyebrow: block.eyebrow,
+                heading: block.heading,
+                text: block.text,
+                buttons: buttons,
+                headingTag: headingTag,
+                fontWeight: fontWeight,
+                backgroundColorLabel: backgroundColorLabel,
+                bgOpacity: overlayOpacity,
+                contentAlignment: contentAlignment,
+                animation: block.animation,
+                contentAnimationStyle: block.contentAnimationStyle.getValue()|default('fade-up'),
+                contentAnimationDuration: block.contentAnimationDuration.getValue()|default(1500),
+                contentAnimationOffset: block.contentAnimationOffset.getValue()|default(200),
+                contentAnimationEasing: block.contentAnimationEasing.getValue()|default(null)
+            }) }}
+        </div>
+    </div>
+</section>

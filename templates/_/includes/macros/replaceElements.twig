@@ -1,0 +1,69 @@
+{% set backgroundColors = {
+    'none'       : 'text-neutral-600',
+    'white'      : 'text-neutral-600',
+    'black'      : 'text-white',
+    'green'      : 'text-white',
+    'cyprus'     : 'text-white',
+} %}
+
+{% set blockquoteColors = {
+    'none'       : 'border-cyprus-500 bg-cyprus-100/20',
+    'white'      : 'border-cyprus-500 bg-cyprus-100/20',
+    'gray-100'   : 'border-cyprus-500 bg-cyprus-100/20',
+    'black'      : 'border-cyprus-500 bg-cyprus-100/20',
+    'cyprus'     : 'border-green-500 bg-green-100/20',
+    'yellow'     : 'border-cyprus-500 bg-cyprus-200/30',
+} %}
+
+{% set classes = extraClasses|length ? extraClasses ~ ' ' : '' %}
+{% set color = forceTextColor|default(backgroundColors[background]) %}
+{% set quoteColors = forceTextColor|default(blockquoteColors[background]) %}
+{% set paragraphFontSize = paragraphFontSize|default('text-xl') %}
+{% set spacingClass = spacingClass|length ? spacingClass %}
+{% set tableBorder = background == 'white' ? 'border-netural-600' : 'border-white' %}
+
+{% set h1 = h1|default('text-3xl md:text-4.5xl font-normal') %}
+{% set h2 = h2|default('text-4xl font-normal') %}
+{% set h3 = h3|default('text-3xl font-normal') %}
+{% set h4 = h4|default('text-2xl font-normal') %}
+{% set h5 = h5|default('text-xl font-normal') %}
+{% set h6 = h6|default('text-lg font-normal') %}
+{% set a = a|default('underline underline-offset-2') %}
+{% set p = p|default("#{spacingClass} #{paragraphFontSize}") %}
+{% set ul = ul|default("ml-8 list-disc list-outside #{paragraphFontSize}") %}
+{% set ol = ol|default("ml-8 list-decimal list-outside #{paragraphFontSize}") %}
+{% set li = li|default("mb-1") %}
+{% set hr = hr|default('my-6 border-crimson-500') %}
+{% set blockquote = blockquote|default("p-4 border-l-4 text-lg #{quoteColors}") %}
+{% set pre = pre|default('p-4 block whitespace-pre overflow-x-scroll bg-gray-50 text-sm') %}
+{% set iframeFigure = iframeFigure|default('aspect-w-16 aspect-h-9') %}
+{% set table = table|default('min-w-full whitespace-nowrap lg:whitespace-normal') %}
+{% set thead = thead|default('bg-gray-100 border-b text-left') %}
+{% set th = th|default('p-3 text-sm text-left') %}
+{% set td = td|default('p-3 text-sm text-left') %}
+{% set tr = tr|default("border-b even:bg-gray-100 #{tableBorder}") %}
+
+{{ text|replace({
+    "<h1": "<h1 class='#{h1} #{classes} #{color}'",
+    "<h2": "<h2 class='#{h2} #{classes} #{color}'",
+    "<h3": "<h3 class='#{h3} #{classes} #{color}'",
+    "<h4": "<h4 class='#{h4} #{classes} #{color}'",
+    "<h5": "<h5 class='#{h5} #{classes} #{color}'",
+    "<h6": "<h6 class='#{h6} #{classes} #{color}'",
+    "<pre": "<pre class='#{pre} #{classes} #{color}'",
+    "<a": "<a class='#{a} #{classes} #{color}'",
+    "<p": "<p class='#{p} #{classes} #{color}'",
+    "<ul": "<ul class='#{ul} #{classes} #{color}'",
+    "<ol": "<ol class='#{ol} #{classes} #{color}'",
+    "<li": "<li class='#{li} #{classes} #{color}'",
+    "<hr": "<hr class='#{hr} #{classes} #{color}'",
+    '<figure class="table">': "<figure class='#{table} #{classes} #{color}'>",
+    "<table": "<table class='#{table} #{classes} #{color}'",
+    "<thead": "<thead class='#{thead} #{classes} #{color}'",
+    "<th": "<th class='#{th} #{classes} #{color}'",
+    "<td": "<td class='#{td} #{classes} #{color}'",
+    "<tr": "<tr class='#{tr} #{classes} #{color}'",
+    "<figure><iframe" : "<figure class='#{iframeFigure} #{classes} #{color}'><iframe",
+    "<blockquote><p>" : "<figure><blockquote class='#{blockquote} #{classes} #{color}'>“",
+    "</p></blockquote>" : "”</blockquote></figure>",
+})|raw }}
