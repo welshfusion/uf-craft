@@ -1,0 +1,176 @@
+{#
+===============================================================================
+    Image (image)
+
+    Variables
+        - Block (block)
+
+    Fields:
+        Content:
+            - Image (image)
+            - Video (backgroundVideo)
+
+        Auxiliary:
+            - Eyebrow (eyebrow)
+            - Heading (heading)
+            - Text (text)
+            - Buttons (buttons) [Matrix]
+                - Button Type (buttonType)
+                - Button Color (buttonColor)
+                - Icon (icon)
+                - Icon Position (iconPosition)
+                - Button (button)
+
+        Settings:
+            - Content Width (contentWidth)
+            - Container Size (containerSize)
+            - Background Color (backgroundColor)
+            - Image Ratio (imageRatio)
+            - Overlay Opacity (overlayOpacity)
+            - Content Alignment (contentAlignment)
+            - Heading Size (headingSize)
+            - Font Weight (fontWeight)
+            - Overlay Opacity (overlayOpacity)
+            - section Id (sectionId)
+===============================================================================
+#}
+{{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
+{% import "_/includes/macros" as render %}
+
+{# Parent Block Fields Start #}
+{% set parent = parent ?? null %}
+{% set childContainer = childContainer ?? false %}
+{% set containerWrapper = containerWrapper ?? false %}
+{% set containerImage = containerImage ?? false %}
+{% set sectionTag = childContainer or containerWrapper ? 'div' : 'section' %}
+{# Parent Block Fields End #}
+
+{% set headingColor = block.headingColor.label|default('white') %}
+{% set headingTag = block.headingSize.getValue()|default('h2') %}
+{% set fontWeight = block.fontWeight.getValue()|default('bold') %}
+{% set overlayOpacity = block.overlayOpacity.getValue()|default('none') %}
+
+{% set contentAlignment = block.contentAlignment.value|default('center') %}
+{% set contentWidth = block.contentWidth|default('0;12') %}
+{% set containerSize = block.containerSize.getValue()|default('container') %}
+{% set imageRatio = block.imageRatio.getValue()|default('16_9') %}
+
+{% set conbackgroundColor = conbackgroundColor ?? null %}
+{% set backgroundColorLabel = block.backgroundColor.label|default(conbackgroundColor ?? 'white') %}
+{% set containerBgExist = conbackgroundColor != backgroundColorLabel %}
+{% set backgroundColor = render.color({
+    handle: backgroundColorLabel,
+    swatch: 'background'
+}) %}
+
+{% set bgOpacity = render.setOpacity({
+    opacity: overlayOpacity,
+    opacityType: 'bg'
+}) %}
+
+{% set ratio = {
+    'auto'    : 'aspect-auto',
+    '1_1'     : 'lg:aspect-w-1 lg:aspect-h-1',
+    '16_9'    : 'md:aspect-w-16 md:aspect-h-9',
+    '4_3'     : 'lg:aspect-w-4 lg:aspect-h-3',
+    '3_4'     : 'lg:aspect-w-3 lg:aspect-h-4',
+    '7_2'     : 'lg:aspect-w-7 lg:aspect-h-2'
+} %}
+
+{% set buttons = block.buttons.all() %}
+{% set image = block.image.one() %}
+{% set videos = block.video ?? null %}
+
+{% set contentAnimation = render.setAnimation({
+    animation: block.animation,
+    animationStyle: block.animationStyle2.value|default('fade-up'),
+    animationDuration: block.animationDuration2.value|default(1500),
+    animationOffset: block.animationOffset2.value|default(200),
+    animationEasing: block.animationEasing2.value|default(null)
+}) | raw %}
+
+{% set imageAnimation = render.setAnimation({
+    animation: block.animation,
+    animationStyle: block.animationStyle.value|default('fade-up'),
+    animationDuration: block.animationDuration.value|default(1500),
+    animationOffset: block.animationOffset.value|default(200),
+    animationEasing: block.animationEasing.value|default(null)
+}) | raw %}
+
+<{{ sectionTag }} class="{{ backgroundColor }} {{ spacing }} {{ bgOpacity }}">
+    <div class="{{ (not childContainer) and (containerSize == 'container') ? 'container' }} {{ (childContainer and containerBgExist) or containerImage ? 'px-4 md:px-6' }} {{ (containerBgExist and backgroundColorLabel == 'white') or containerImage ? 'py-4 md:py-6' }}">
+        <div class="{{ render.contentWidth({width: contentWidth}) }}">
+            {% if block.heading|length or block.text|length %}
+            <div class="{{ containerSize == 'full' ? 'container' }}" {{ contentAnimation|raw }}>
+                {{ render.basicContents({
+                    eyebrow: block.eyebrow,
+                    heading: block.heading,
+                    text: block.text,
+                    headingTag: headingTag,
+                    fontWeight: fontWeight,
+                    bgOpacity: overlayOpacity,
+                    backgroundColorLabel: backgroundColorLabel,
+                    contentAlignment: contentAlignment,
+                    animation: block.animation,
+                    contentAnimationStyle: block.animationStyle2.getValue()|default('fade-up'),
+                    contentAnimationDuration: block.animationDuration2.getValue()|default(1500),
+                    contentAnimationOffset: block.animationOffset2.getValue()|default(200),
+                    contentAnimationEasing: block.animationEasing2.getValue()|default(null)
+                }) }}
+            </div>
+            {% endif %}
+
+            {% if image|length or videos|length or buttons|length %}
+            <div class="{{ block.heading|length or block.text|length ? 'mt-8 md:mt-10' }}">
+                {% set videoImage = videos.media.image ?? null %}
+                {% set finalImage = image|length ? image : videoImage %}
+                {% set videoId = 'image-video-'|t ~ block.getId() %}
+
+                {% if image|length or videos.media|length %}
+                <div class="relative {{ ratio[imageRatio] }}" {{ imageAnimation|raw }}>
+                    <div class="pt-5">
+                        {{ render.renderVideo({
+                            image: finalImage|length ? finalImage,
+                            alt: image|length ? image.title : videoId,
+                            width: image|length ? image.width,
+                            height: image|length ? image.height,
+                            class: "object-cover w-full h-full",
+                            lazy: false,
+                            plainImage: image|length ? false : true,
+                            videos: videos,
+                            videoClass: "object-cover w-full h-full",
+                            videoType: 'popup',
+                            videoPoster: image,
+                            videoId: videoId,
+                            videoAttrs: {
+                                preload: "none",
+                            }
+                        }) }}
+                    </div>
+                </div>
+                {% endif %}
+
+                {% for button in buttons %}
+                {% if loop.first %}
+                <div class="flex flex-wrap items-center gap-5 mt-10 {{ containerSize == 'full' ? 'container' }} {{ render.getAlignment({
+                    alignment: contentAlignment,
+                    type: 'justify'
+                }) }}" {{ contentAnimation|raw }}>
+                {% endif %}
+                    {{ render.createButton({
+                        button: button.button,
+                        buttonType: button.buttonType.getValue()|default("button"),
+                        buttonColor: button.buttonColor.label|default('cyprus'),
+                        icon: button.icon,
+                        iconPosition: button.iconPosition.getValue()|default('right'),
+                        background: backgroundColorLabel,
+                    }) }}
+                {% if loop.last %}
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</{{ sectionTag }}>
