@@ -10,7 +10,7 @@
 {% set delay = 0 %}
 
 {% if eyebrow|length %}
-<h6 class="block font-display text-base font-semibold text-cyprus-500 {{ render.getAlignment({alignment: contentAlignment, type: ['text']}) }}" {{ contentAnimation|raw }}>
+<h6 class="block font-display text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'eyebrow'}) }} {{ render.getAlignment({alignment: contentAlignment, type: ['text']}) }}" {{ contentAnimation|raw }}>
     {{ eyebrow }}
 </h6>
 {% endif %}

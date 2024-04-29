@@ -29,10 +29,18 @@
 {{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
 {% import "_/includes/macros" as render %}
 
+{# Parent Block Fields Start #}
+{% set parent = parent ?? null %}
+{% set childContainer = childContainer ?? false %}
+{% set containerWrapper = containerWrapper ?? false %}
+{% set containerImage = containerImage ?? false %}
+{% set sectionTag = childContainer or containerWrapper ? 'div' : 'section' %}
+{# Parent Block Fields End #}
+
 {% set headingTag = block.headingSize.getValue()|default('h2') %}
 {% set fontWeight = block.fontWeight.getValue()|default('bold') %}
 {% set contentAlignment = block.contentAlignment.value|default('left') %}
-{% set contentWidth = block.contentWidth|default('0;12') %}
+{% set contentWidth = block.contentWidth|default('2;10') %}
 {% set overlayOpacity = block.overlayOpacity.getValue()|default('none') %}
 
 {% set conbackgroundColor = conbackgroundColor ?? null %}
@@ -50,7 +58,8 @@
 
 {% set buttons = block.buttons.all() %}
 
-<section class="{{ containerBgExist ? backgroundColor }} {{ bgOpacity }} {{ containerBgExist ? 'px-4 md:px-6' }}">
+<{{ sectionTag }} class="{{ spacing }} {{ backgroundColor }} {{ bgOpacity }} {{ containerImage ? render.contentWidth({width: contentWidth}) }}">
+    {% if block.eyebrow|length or block.heading|length or block.text or buttons|length %}
         <div class="{{ render.contentWidth({width: contentWidth}) }}">
             {{ render.basicContents({
                 eyebrow: block.eyebrow,
@@ -69,5 +78,5 @@
                 contentAnimationEasing: block.contentAnimationEasing.getValue()|default(null)
             }) }}
         </div>
-    </div>
-</section>
+    {% endif %}
+</{{ sectionTag }}>
