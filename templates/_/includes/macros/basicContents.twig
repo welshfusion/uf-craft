@@ -10,7 +10,7 @@
 {% set delay = 0 %}
 
 {% if eyebrow|length %}
-<h6 class="block font-display text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'eyebrow'}) }} {{ render.getAlignment({alignment: contentAlignment, type: ['text']}) }}" {{ contentAnimation|raw }}>
+<h6 class="block font-display text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }} {{ render.getAlignment({alignment: contentAlignment, type: ['text']}) }}" {{ contentAnimation|raw }}>
     {{ eyebrow }}
 </h6>
 {% endif %}
@@ -32,6 +32,12 @@
 }) }}" {{ contentAnimation|raw }}>
     {{ heading|nl2br }}
 </{{ headingTag }}>
+{% endif %}
+
+{% if subHeading|length %}
+<p class="block font-display text-xl mt-6 {{ render.foregroundColors({background: backgroundColorLabel, type: 'subHeading'}) }} {{ render.getAlignment({alignment: contentAlignment, type: ['text']}) }}" {{ contentAnimation|raw }}>
+    {{ subHeading }}
+</p>
 {% endif %}
 
 {% if text|length %}
