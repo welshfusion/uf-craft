@@ -19,7 +19,6 @@
 
         Settings:
             - Content Width (contentWidth)
-            - Overlay Opacity (overlayOpacity)
             - Background Color (backgroundColor)
             - Content Alignment (contentAlignment)
             - Heading Size (headingSize)
@@ -41,7 +40,6 @@
 {% set fontWeight = block.fontWeight.getValue()|default('bold') %}
 {% set contentAlignment = block.contentAlignment.value|default('left') %}
 {% set contentWidth = block.contentWidth|default('2;10') %}
-{% set overlayOpacity = block.overlayOpacity.getValue()|default('none') %}
 
 {% set conbackgroundColor = conbackgroundColor ?? null %}
 {% set backgroundColorLabel = block.backgroundColor.label|default(conbackgroundColor ?? 'white') %}
@@ -51,14 +49,9 @@
     swatch: 'background'
 }) %}
 
-{% set bgOpacity = render.setOpacity({
-    opacity: overlayOpacity,
-    opacityType: 'bg'
-}) %}
-
 {% set buttons = block.buttons.all() %}
 
-<{{ sectionTag }} class="{{ spacing }} {{ backgroundColor }} {{ bgOpacity }} {{ containerImage ? render.contentWidth({width: contentWidth}) }}">
+<{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ spacing }} {{ backgroundColor }} {{ containerImage ? render.contentWidth({width: contentWidth}) }}">
     {% if block.eyebrow|length or block.heading|length or block.text or buttons|length %}
         <div class="{{ render.contentWidth({width: contentWidth}) }}">
             {{ render.basicContents({
@@ -69,7 +62,6 @@
                 headingTag: headingTag,
                 fontWeight: fontWeight,
                 backgroundColorLabel: backgroundColorLabel,
-                bgOpacity: overlayOpacity,
                 contentAlignment: contentAlignment,
                 animation: block.animation,
                 contentAnimationStyle: block.contentAnimationStyle.getValue()|default('fade-up'),

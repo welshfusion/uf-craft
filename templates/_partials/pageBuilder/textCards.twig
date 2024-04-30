@@ -56,12 +56,6 @@
     swatch: 'background'
 }) %}
 
-{% set overlayOpacity = block.overlayOpacity.getValue()|default('none') %}
-{% set bgOpacity = render.setOpacity({
-    opacity: overlayOpacity,
-    opacityType: 'bg'
-}) %}
-
 {% set buttons = block.buttons.all() %}
 
 {% set rowLimit = {
@@ -86,7 +80,7 @@
     animationEasing: block.animationEasing.value|default(null)
 }) | raw %}
 
-<{{ sectionTag }} class="{{ spacing }} {{ backgroundColor }} {{ bgOpacity }} {{ render.contentWidth({width: contentWidth}) }}">
+<{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ spacing }} {{ backgroundColor }} {{ render.contentWidth({width: contentWidth}) }}">
     <div class="rounded-4xl {{ render.contentWidth({width: contentWidth}) }}">
     {% if block.eyebrow|length or block.heading|length or block.text or buttons|length %}
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
@@ -99,7 +93,6 @@
                 headingTag: headingTag,
                 fontWeight: fontWeight,
                 backgroundColorLabel: backgroundColorLabel,
-                bgOpacity: overlayOpacity,
                 contentAlignment: contentAlignment,
                 animation: block.animation,
                 contentAnimationStyle: block.contentAnimationStyle.getValue()|default('fade-up'),

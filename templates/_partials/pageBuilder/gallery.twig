@@ -27,7 +27,6 @@
             - Per Row Limit (perRowLimit)
             - Image Ratio (imageRatio)
             - Background Color (backgroundColor)
-            - Overlay Opacity (overlayOpacity)
             - Content Alignment (contentAlignment)
             - Heading Size (headingSize)
             - Font Weight (fontWeight)
@@ -64,11 +63,6 @@
 {% set backgroundColor = render.color({
     handle: backgroundColorLabel,
     swatch: 'background'
-}) %}
-
-{% set bgOpacity = render.setOpacity({
-    opacity: overlayOpacity,
-    opacityType: 'bg'
 }) %}
 
 {% set rowLimit = {
@@ -114,7 +108,7 @@
     animationEasing: block.animationEasing.value|default(null)
 }) | raw %}
 
-<{{ sectionTag }} class="{{ backgroundColor }} {{ spacing }}">
+<{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ backgroundColor }} {{ spacing }}">
     <div class="{{ (not childContainer) and (containerSize == 'container') ? 'container' }} {{ (childContainer and containerBgExist) or containerImage ? 'px-4 md:px-6' }} {{ (containerBgExist and backgroundColorLabel == 'white') or containerImage ? 'py-4 md:py-6' }}">
         <div class="{{ render.contentWidth({width: contentWidth}) }}">
             {% if block.heading|length or block.text|length %}

@@ -1,0 +1,24 @@
+{#
+===============================================================================
+    Call To Action (callToAction)
+
+    Variables
+        - Block (block)
+
+    Fields:
+        Content:
+            - Call To Action (callToAction) [Pagebuilder]
+===============================================================================
+#}
+{{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
+{% import "_/includes/macros" as render %}
+
+{% set cta = block.cta.one() %}
+
+{% if cta|length %}
+    {% set pageBuilder = cta.pageBuilder.all() %}
+    {% include "_partials/blocks" with {
+        pageBuilder: pageBuilder,
+        parent: block.type.handle
+    } %}
+{% endif %}

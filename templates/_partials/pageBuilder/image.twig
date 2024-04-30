@@ -26,11 +26,9 @@
             - Container Size (containerSize)
             - Background Color (backgroundColor)
             - Image Ratio (imageRatio)
-            - Overlay Opacity (overlayOpacity)
             - Content Alignment (contentAlignment)
             - Heading Size (headingSize)
             - Font Weight (fontWeight)
-            - Overlay Opacity (overlayOpacity)
             - section Id (sectionId)
 ===============================================================================
 #}
@@ -48,7 +46,6 @@
 {% set headingColor = block.headingColor.label|default('white') %}
 {% set headingTag = block.headingSize.getValue()|default('h2') %}
 {% set fontWeight = block.fontWeight.getValue()|default('bold') %}
-{% set overlayOpacity = block.overlayOpacity.getValue()|default('none') %}
 
 {% set contentAlignment = block.contentAlignment.value|default('center') %}
 {% set contentWidth = block.contentWidth|default('0;12') %}
@@ -61,11 +58,6 @@
 {% set backgroundColor = render.color({
     handle: backgroundColorLabel,
     swatch: 'background'
-}) %}
-
-{% set bgOpacity = render.setOpacity({
-    opacity: overlayOpacity,
-    opacityType: 'bg'
 }) %}
 
 {% set ratio = {
@@ -97,7 +89,7 @@
     animationEasing: block.animationEasing.value|default(null)
 }) | raw %}
 
-<{{ sectionTag }} class="{{ backgroundColor }} {{ spacing }} {{ bgOpacity }}">
+<{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ backgroundColor }} {{ spacing }}">
     <div class="{{ (not childContainer) and (containerSize == 'container') ? 'container' }} {{ (childContainer and containerBgExist) or containerImage ? 'px-4 md:px-6' }} {{ (containerBgExist and backgroundColorLabel == 'white') or containerImage ? 'py-4 md:py-6' }}">
         <div class="{{ render.contentWidth({width: contentWidth}) }}">
             {% if block.heading|length or block.text|length %}
@@ -108,7 +100,6 @@
                     text: block.text,
                     headingTag: headingTag,
                     fontWeight: fontWeight,
-                    bgOpacity: overlayOpacity,
                     backgroundColorLabel: backgroundColorLabel,
                     contentAlignment: contentAlignment,
                     animation: block.animation,
