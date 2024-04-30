@@ -31,59 +31,6 @@
             - Section Id (sectionId)
 ===============================================================================
 #}
-{# {% set childrens = block.children.all() %}
-<section>
-<div class="mt-24 rounded-4xl bg-cyprus-500 py-24 sm:mt-32 lg:mt-40 lg:py-32">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
-        <div class="mx-auto max-w-2xl lg:max-w-none">
-            <div class="max-w-2xl" style="opacity: 1; transform: none;">
-            <h2>
-                <span class="mb-6 block font-display text-base font-semibold text-white">Our culture</span>
-                <span class="sr-only"> - </span>
-                <span class="block font-display tracking-tight [text-wrap:balance] text-4xl font-medium sm:text-5xl text-white">Balance your passion with your passion for life.</span>
-            </h2>
-            <div class="mt-6 text-xl text-neutral-300">
-                <p>We are a group of like-minded people who share the same core values.</p>
-            </div>
-        </div>
-    </div>
-</div>
-{% if childrens %}
-{% include "_partials/pageBuilder/textCards/#{textCards}" %}
-{% endif %}
- #}
-
-{# <div class="mx-auto max-w-7xl px-6 lg:px-8 mt-16">
-    <div class="mx-auto max-w-2xl lg:max-w-none">
-        <di>
-            <ul role="list" class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
-                <li class="text-base text-neutral-300 before:bg-white after:bg-white/10">
-                    <div style="opacity: 1; transform: none;">
-                        <div class="pl-8 relative before:absolute after:absolute before:bg-green-500 after:bg-white/10 before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px">
-                            <strong class="font-semibold text-white">Loyalty.</strong>Our team has been with us since the beginning because none of them are allowed to have LinkedIn profiles.
-                        </div>
-                    </div>
-                </li>
-                <li class="text-base text-neutral-300 before:bg-white after:bg-white/10">
-                    <div style="opacity: 1; transform: none;">
-                        <div class="pl-8 relative before:absolute after:absolute before:bg-green-500 after:bg-white/10 before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px">
-                            <strong class="font-semibold text-white">Trust.</strong>We don’t care when our team works just as long as they are working every waking second.
-                        </div>
-                    </div>
-                </li>
-                <li class="text-base text-neutral-300 before:bg-white after:bg-white/10">
-                    <div style="opacity: 1; transform: none;">
-                        <div class="pl-8 relative before:absolute after:absolute before:bg-green-500 after:bg-white/10 before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px">
-                            <strong class="font-semibold text-white">Compassion.</strong>You never know what someone is going through at home and we make sure to never find out.
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div> #}
-{# </section> #}
-
 {{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
 {% import "_/includes/macros" as render %}
 

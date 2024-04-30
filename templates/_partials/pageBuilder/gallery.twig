@@ -1,0 +1,164 @@
+{#
+===============================================================================
+    Gallery (gellery)
+
+    Variables
+        - Block (block)
+
+    Fields:
+        Content:
+            - Images (images)
+
+        Auxiliary:
+            - Eyebrow (eyebrow)
+            - Heading (heading)
+            - Text (text)
+            - Buttons (buttons) [Matrix]
+                - Button Type (buttonType)
+                - Button Color (buttonColor)
+                - Icon (icon)
+                - Icon Position (iconPosition)
+                - Button (button)
+
+        Settings:
+            - Content Width (contentWidth)
+            - Gallery Layout (galleryLayout)
+            - Listing Style (listingStyle)
+            - Per Row Limit (perRowLimit)
+            - Image Ratio (imageRatio)
+            - Background Color (backgroundColor)
+            - Overlay Opacity (overlayOpacity)
+            - Content Alignment (contentAlignment)
+            - Heading Size (headingSize)
+            - Font Weight (fontWeight)
+            - section Id (sectionId)
+===============================================================================
+#}
+{{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
+{% import "_/includes/macros" as render %}
+
+{# Parent Block Fields Start #}
+{% set parent = parent ?? null %}
+{% set childContainer = childContainer ?? false %}
+{% set containerWrapper = containerWrapper ?? false %}
+{% set containerImage = containerImage ?? false %}
+{% set sectionTag = childContainer or containerWrapper ? 'div' : 'section' %}
+{# Parent Block Fields End #}
+
+{% set headingColor = block.headingColor.label|default('white') %}
+{% set headingTag = block.headingSize.getValue()|default('h2') %}
+{% set fontWeight = block.fontWeight.getValue()|default('bold') %}
+{% set overlayOpacity = block.overlayOpacity.getValue()|default('none') %}
+
+{% set contentAlignment = block.contentAlignment.value|default('center') %}
+{% set contentWidth = block.contentWidth|default('0;12') %}
+{% set containerSize = block.containerSize.getValue()|default('container') %}
+{% set imageLayout = block.galleryLayout.value|default('option4') %}
+{% set imageRatio = block.imageRatio.getValue()|default('16_9') %}
+{% set listingStyle = block.listingStyle.value|default('cards') %}
+{% set perRowLimit = block.perRowLimit.getValue()|default('1') %}
+
+{% set conbackgroundColor = conbackgroundColor ?? null %}
+{% set backgroundColorLabel = block.backgroundColor.label|default(conbackgroundColor ?? 'white') %}
+{% set containerBgExist = conbackgroundColor != backgroundColorLabel %}
+{% set backgroundColor = render.color({
+    handle: backgroundColorLabel,
+    swatch: 'background'
+}) %}
+
+{% set bgOpacity = render.setOpacity({
+    opacity: overlayOpacity,
+    opacityType: 'bg'
+}) %}
+
+{% set rowLimit = {
+    '1'       : 'grid-cols-1',
+    '2'       : 'grid-cols-1 md:grid-cols-2',
+    '3'       : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3',
+    '4'       : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4'
+} %}
+
+{% set imageGridLayout = {
+    'single'  : "#{rowLimit[perRowLimit]}",
+    'option1' : 'grid-cols-1 md:grid-cols-2',
+    'option2' : 'grid-cols-1 md:grid-cols-2',
+    'option3' : 'grid-cols-12',
+    'option4' : 'grid-cols-12',
+} %}
+
+{% set ratio = {
+    'auto'    : 'aspect-auto',
+    '1_1'     : 'lg:aspect-w-1 lg:aspect-h-1',
+    '16_9'    : 'md:aspect-w-16 md:aspect-h-9',
+    '4_3'     : 'lg:aspect-w-4 lg:aspect-h-3',
+    '3_4'     : 'lg:aspect-w-3 lg:aspect-h-4',
+    '7_2'     : 'lg:aspect-w-7 lg:aspect-h-2'
+} %}
+
+{% set buttons = block.buttons.all() %}
+{% set images = block.images.all() %}
+
+{% set contentAnimation = render.setAnimation({
+    animation: block.animation,
+    animationStyle: block.animationStyle2.value|default('fade-up'),
+    animationDuration: block.animationDuration2.value|default(1500),
+    animationOffset: block.animationOffset2.value|default(200),
+    animationEasing: block.animationEasing2.value|default(null)
+}) | raw %}
+
+{% set galleryAnimation = render.setAnimation({
+    animation: block.animation,
+    animationStyle: block.animationStyle.value|default('fade-up'),
+    animationDuration: block.animationDuration.value|default(1500),
+    animationOffset: block.animationOffset.value|default(200),
+    animationEasing: block.animationEasing.value|default(null)
+}) | raw %}
+
+<{{ sectionTag }} class="{{ backgroundColor }} {{ spacing }}">
+    <div class="{{ (not childContainer) and (containerSize == 'container') ? 'container' }} {{ (childContainer and containerBgExist) or containerImage ? 'px-4 md:px-6' }} {{ (containerBgExist and backgroundColorLabel == 'white') or containerImage ? 'py-4 md:py-6' }}">
+        <div class="{{ render.contentWidth({width: contentWidth}) }}">
+            {% if block.heading|length or block.text|length %}
+            <div class="{{ containerSize == 'full' ? 'container' }}" {{ contentAnimation|raw }}>
+                {{ render.basicContents({
+                    eyebrow: block.eyebrow,
+                    heading: block.heading,
+                    text: block.text,
+                    headingTag: headingTag,
+                    fontWeight: fontWeight,
+                    bgOpacity: overlayOpacity,
+                    backgroundColorLabel: backgroundColorLabel,
+                    contentAlignment: contentAlignment,
+                    animation: block.animation,
+                    contentAnimationStyle: block.animationStyle2.getValue()|default('fade-up'),
+                    contentAnimationDuration: block.animationDuration2.getValue()|default(1500),
+                    contentAnimationOffset: block.animationOffset2.getValue()|default(200),
+                    contentAnimationEasing: block.animationEasing2.getValue()|default(null)
+                }) }}
+            </div>
+            {% endif %}
+
+                {% include "_partials/pageBuilder/gallery/#{listingStyle}" %}
+
+            {% for button in buttons %}
+            {% if loop.first %}
+            <div class="flex flex-wrap items-center gap-5 mt-10 {{ containerSize == 'full' ? 'container' }} {{ render.getAlignment({
+                alignment: contentAlignment,
+                type: 'justify'
+            }) }}" {{ contentAnimation|raw }}>
+            {% endif %}
+                {{ render.createButton({
+                    button: button.button,
+                    buttonType: button.buttonType.getValue()|default("button"),
+                    buttonColor: button.buttonColor.label|default('cyprus'),
+                    icon: button.icon,
+                    iconPosition: button.iconPosition.getValue()|default('right'),
+                    background: backgroundColorLabel,
+                }) }}
+            {% if loop.last %}
+            </div>
+            {% endif %}
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+</{{ sectionTag }}>
