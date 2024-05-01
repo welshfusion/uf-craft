@@ -53,7 +53,7 @@
 
 <{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ spacing }} {{ backgroundColor }} {{ containerImage ? render.contentWidth({width: contentWidth}) }}">
     {% if block.eyebrow|length or block.heading|length or block.text or buttons|length %}
-        <div class="{{ render.contentWidth({width: contentWidth}) }}">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8 {{ render.contentWidth({width: contentWidth}) }}">
             {{ render.basicContents({
                 eyebrow: block.eyebrow,
                 heading: block.heading,
