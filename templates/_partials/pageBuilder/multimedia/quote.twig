@@ -1,0 +1,14 @@
+{{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
+{% import "_/includes/macros" as render %}
+
+<div class="pl-8 mt-12 relative before:absolute after:absolute before:bg-green-500 after:bg-neutral-950/10 before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px">
+    <figure class="text-sm">
+        <blockquote class="text-neutral-600">
+            <p>"{{ block.quote }}"</p>
+        </blockquote>
+        <figcaption class="mt-6 font-semibold text-cyprus-500">
+            {{ block.authorName }},
+            {{ block.designation }}
+        </figcaption>
+    </figure>
+</div>

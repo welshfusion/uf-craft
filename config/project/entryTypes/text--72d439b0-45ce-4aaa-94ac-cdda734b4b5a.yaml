@@ -36,31 +36,16 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: ec70c780-286c-4027-8904-ecdb25e3e1c1 # Heading
+            fieldUid: 00ddb959-14e4-4e9c-a8dd-38d2fd228e7a # Text Card
             handle: null
             includeInCards: false
             instructions: null
-            label: null
+            label: Card
             providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 6f1b5b65-dbd1-4c71-b2eb-ad2d9f4ca932
-            userCondition: null
-            warning: null
-            width: 100
-          -
-            elementCondition: null
-            fieldUid: 4998b347-a2ba-4814-8789-53adb5d61a41 # Text
-            handle: null
-            includeInCards: false
-            instructions: null
-            label: null
-            providesThumbs: false
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: 0163bd90-1f91-44cf-b427-7622054c1a43
+            uid: f1a3232e-2732-4578-ac12-eb2239ea6668
             userCondition: null
             warning: null
             width: 100

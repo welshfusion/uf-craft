@@ -1,0 +1,23 @@
+{{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
+{% import "_/includes/macros" as render %}
+
+<div class="mt-10 relative">
+    <h2 class="font-display text-base font-semibold text-cyprus-500">
+        {{ block.heading }}
+    </h2>
+    <ul role="list" class="flex gap-x-10 text-cyprus-500">
+        {% set socialLinks = block.socialLinks.all() %}
+        {% for socialLink in socialLinks %}
+            <li>
+                <a href="{{ socialLink.socialLink.url }}" class="transition hover:text-neutral-700 {{ socialLink.socialLink.classes }}" aria-label="{{ socialLink.socialLink.text }}"
+                    {% if socialLink.socialLink.linkTitle %} title="{{ socialLink.socialLink.linkTitle }}"{% endif %} {% if socialLink.socialLink.target %} target="{{ socialLink.socialLink.target }}" rel="noopener"{% endif %} {% for attribute in socialLink.socialLink.customAttributes %} {{ attribute.attribute }}="{{ attribute.value }}" {% endfor %}
+                >
+                    {{ svg(socialLink.icon.path)|attr({
+                        class: 'w-6 h-6 mt-6 text-cyprus-500',
+                        fill: 'currentColor'
+                    }) }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
