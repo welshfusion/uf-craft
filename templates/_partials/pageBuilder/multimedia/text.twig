@@ -2,15 +2,17 @@
 {% import "_/includes/macros" as render %}
 
 <div>
-    <ul role="list" class="text-base text-neutral-600 mt-8">
+    <ul role="list" class="text-base  mt-8">
         {% for item in block.textCard.all() %}
             <li class="group mt-10 first:mt-0">
                 <div style="opacity: 1; transform: none;">
-                    <div class="inline-block pt-10 group-first:pt-0 group-first:before:hidden group-first:after:hidden relative before:absolute after:absolute before:bg-green-500 after:bg-neutral-950/10 before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px">
-                        <strong class="font-semibold text-cyprus-500">
+                    <div class="inline-block pt-10 group-first:pt-0 group-first:before:hidden group-first:after:hidden relative before:absolute after:absolute {{ backgroundColorLabel == 'green' ? 'before:bg-neutral-300' : 'before:bg-green-500' }} {{ backgroundColorLabel == 'black' ? 'after:bg-neutral-400' : 'after:bg-neutral-950/10' }} before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px">
+                        <strong class="font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
                             {{ item.heading }}.
                         </strong>
+                        <span class="{{ render.foregroundColors({background: backgroundColorLabel, type: 'subHeading'}) }}">
                         {{ item.simpleText }}
+                        </span>
                     </div>
                 </div>
             </li>

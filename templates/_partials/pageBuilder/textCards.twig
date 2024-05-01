@@ -74,10 +74,10 @@
 
 {% set cardAnimation = render.setAnimation({
     animation: block.animation,
-    animationStyle: block.animationStyle.value|default('fade-up'),
-    animationDuration: block.animationDuration.value|default(1500),
-    animationOffset: block.animationOffset.value|default(200),
-    animationEasing: block.animationEasing.value|default(null)
+    animationStyle: block.animationStyle2.value|default('fade-up'),
+    animationDuration: block.animationDuration2.value|default(1500),
+    animationOffset: block.animationOffset2.value|default(200),
+    animationEasing: block.animationEasing2.value|default(null)
 }) | raw %}
 
 <{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ spacing }} {{ backgroundColor }} {{ render.contentWidth({width: contentWidth}) }}">

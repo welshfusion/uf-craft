@@ -76,8 +76,24 @@
 {% set image = block.image.one() %}
 {% set videos = block.video ?? null %}
 
-<section>
-    <div class="mt-24 space-y-24 [counter-reset:section] sm:mt-32 sm:space-y-32 lg:mt-40 lg:space-y-40">
+{% set contentAnimation = render.setAnimation({
+    animation: block.animation,
+    animationStyle: block.contentAnimationStyle.value|default('fade-up'),
+    animationDuration: block.contentAnimationDuration.value|default(1500),
+    animationOffset: block.contentAnimationOffset.value|default(200),
+    animationEasing: block.contentAnimationEasing.value|default(null)
+}) | raw %}
+
+{% set cardAnimation = render.setAnimation({
+    animation: block.animation,
+    animationStyle: block.animationStyle2.value|default('fade-up'),
+    animationDuration: block.animationDuration2.value|default(1500),
+    animationOffset: block.animationOffset2.value|default(200),
+    animationEasing: block.animationEasing2.value|default(null)
+}) | raw %}
+
+<{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ backgroundColor }} {{ spacing }}">
+    <div class="[counter-reset:section]">
         <div class="mx-auto max-w-7xl px-6 lg:px-8 group/section [counter-increment:section]">
             <div class="mx-auto max-w-2xl lg:max-w-none">
                 {% if block.eyebrow2|length or block.heading3|length or block.text2 or buttons|length %}
@@ -100,9 +116,9 @@
                     </div>
                 {% endif %}
 
-                <div class="lg:flex lg:items-center lg:justify-end lg:gap-x-8 lg:group-even/section:justify-start xl:gap-x-20 {{ imagePosition == 'left' ? 'md:flex-row-reverse' : 'md:flex-row' }}">
+                <div class="mt-10 lg:flex lg:items-center lg:justify-end lg:gap-x-8 lg:group-even/section:justify-start xl:gap-x-20 {{ imagePosition == 'left' ? 'md:flex-row-reverse' : 'md:flex-row' }}">
                     {% if image|length or videos|length %}
-                        <div class="flex justify-center">
+                        <div class="flex justify-center" {{ contentAnimation|raw }}>
                             <div class="w-[33.75rem] flex-none lg:w-[45rem]" style="opacity: 1; transform: none;">
                                 <div class="justify-center lg:justify-end lg:group-even/section:justify-start relative flex aspect-[719/680] w-full grayscale">
                                     <svg viewBox="0 0 655 680" fill="none" class="h-full">
@@ -171,7 +187,6 @@
                                 headingTag: headingTag,
                                 fontWeight: fontWeight,
                                 backgroundColorLabel: backgroundColorLabel,
-                                contentAlignment: contentAlignment,
                                 animation: block.animation,
                                 contentAnimationStyle: block.animationStyle2.getValue()|default('fade-up'),
                                 contentAnimationDuration: block.animationDuration2.getValue()|default(1500),
@@ -182,13 +197,15 @@
                             {% set multimediaCard = block.multimediaCard.type(null).all() %}
 
                             {% if multimediaCard|length or block.heading2|length %}
-                            <h3 class="mt-12 font-display text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
+                            <h3 class="mt-12 font-display text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}" {{ cardAnimation|raw }}>
                                 {{ block.heading2 }}
                             </h3>
                             {% endif %}
 
                             {% for block in multimediaCard %}
+                                <div {{ cardAnimation|raw }}>
                                 {% include '_partials/pageBuilder/multimedia/' ~ block.type.handle ignore missing %}
+                                </div>
                             {% endfor %}
                         </div>
                     </div>
