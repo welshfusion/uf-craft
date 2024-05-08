@@ -22,19 +22,19 @@
     "prefer-stable": true,
     "require": {
         "amici/craft-super-dynamic-fields": "^5.0.1",
-        "craftcms/ckeditor": "^4.0.3",
-        "craftcms/cms": "^5.0.0",
+        "craftcms/ckeditor": "4.0.4",
+        "craftcms/cms": "5.1.2",
         "craftpulse/craft-colour-swatches": "^5.0.0",
         "lewisjenkins/craft-range-slider": "^5.0.0",
         "marionnewlevant/twig-perversion": "dev-feature/craft-5-upgrade",
         "nystudio107/craft-minify": "^5.0.0",
         "nystudio107/craft-seomatic": "^5.0.2",
         "nystudio107/craft-vite": "^5.0.0",
-        "putyourlightson/craft-blitz": "^5.1.3",
+        "putyourlightson/craft-blitz": "5.3.0",
         "spacecatninja/imager-x": "^5.0.0",
-        "spicyweb/craft-neo": "^5.0.0-beta.6",
+        "spicyweb/craft-neo": "5.0.0-beta.10",
         "verbb/buttonbox": "^5.0.0-beta.1",
-        "verbb/formie": "^3.0.0-beta.8",
+        "verbb/formie": "3.0.0-beta.10",
         "verbb/hyper": "^2.0.0-beta.8",
         "verbb/icon-picker": "^3.0.0-beta.3",
         "verbb/navigation": "^3.0.0-beta.3",
@@ -65,6 +65,11 @@
         {
             "type": "git",
             "url": "https://github.com/itsmattsoria/craft-twig_perversion"
+        },
+        {
+            "type": "composer",
+            "url": "https://composer.craftcms.com",
+            "canonical": false
         }
     ],
     "scripts": {

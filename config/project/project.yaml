@@ -1,4 +1,4 @@
-dateModified: 1714545815
+dateModified: 1715147171
 email:
   fromEmail: n.williams@userfusion.com
   fromName: Userfusion
@@ -185,7 +185,7 @@ plugins:
     edition: standard
     enabled: true
     licenseKey: NU5DKSGXHK7BA1FCMGWNA4AV
-    schemaVersion: 3.4.3
+    schemaVersion: 3.4.4
   hyper:
     edition: standard
     enabled: true
