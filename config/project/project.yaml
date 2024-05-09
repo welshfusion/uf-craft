@@ -1,4 +1,44 @@
-dateModified: 1715147171
+dateModified: 1715245401
+elementSources:
+  craft\elements\Entry:
+    -
+      key: '*'
+      type: native
+    -
+      heading: Structures
+      type: heading
+    -
+      defaultSort:
+        - structure
+        - asc
+      disabled: false
+      key: 'section:1568efd7-9ad7-471e-ac94-2e679fc981b1' # Pages
+      tableAttributes:
+        - postDate
+        - expiryDate
+        - link
+      type: native
+    -
+      heading: Channels
+      type: heading
+    -
+      key: 'section:48ce4dd2-4ca0-4661-bb42-25ef536a2253' # Blog
+      type: native
+    -
+      key: 'section:cb57046f-f051-4150-917b-97450a183417' # Call To Action
+      type: native
+    -
+      key: 'section:b7febf1c-f446-4af6-a112-a27ec4194078' # Case studies
+      type: native
+    -
+      key: 'section:7ef67d6e-85ac-42a0-a25d-e7b1c064b81a' # Client
+      type: native
+    -
+      key: 'section:7c1471a7-a014-4b8f-8e10-1d6064ca6ebd' # Team
+      type: native
+    -
+      key: 'section:3f060ced-9de9-4e6c-ada9-05cddd5d7c03' # Testimonial
+      type: native
 email:
   fromEmail: n.williams@userfusion.com
   fromName: Userfusion
@@ -185,7 +225,7 @@ plugins:
     edition: standard
     enabled: true
     licenseKey: NU5DKSGXHK7BA1FCMGWNA4AV
-    schemaVersion: 3.4.4
+    schemaVersion: 3.4.3
   hyper:
     edition: standard
     enabled: true

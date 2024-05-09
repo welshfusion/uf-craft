@@ -80,9 +80,11 @@
     animationEasing: block.animationEasing2.value|default(null)
 }) | raw %}
 
+{% set basicContentsExist = block.eyebrow|length or block.heading|length or block.text|length or buttons|length %}
+
 <{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ spacing }} {{ backgroundColor }} {{ render.contentWidth({width: contentWidth}) }}">
     <div class="rounded-4xl {{ render.contentWidth({width: contentWidth}) }}">
-    {% if block.eyebrow|length or block.heading|length or block.text or buttons|length %}
+    {% if basicContentsExist %}
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
             {{ render.basicContents({
                 eyebrow: block.eyebrow,

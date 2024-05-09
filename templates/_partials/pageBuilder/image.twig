@@ -89,10 +89,12 @@
     animationEasing: block.animationEasing.value|default(null)
 }) | raw %}
 
+{% set basicContentsExist = block.eyebrow|length or block.heading|length or block.text|length %}
+
 <{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ backgroundColor }} {{ spacing }}">
     <div class="{{ (not childContainer) and (containerSize == 'container') ? 'container' }} {{ (childContainer and containerBgExist) or containerImage ? 'px-4 md:px-6' }} {{ (containerBgExist and backgroundColorLabel == 'white') or containerImage ? 'py-4 md:py-6' }}">
         <div class="{{ render.contentWidth({width: contentWidth}) }}">
-            {% if block.heading|length or block.text|length %}
+            {% if basicContentsExist %}
             <div class="{{ containerSize == 'full' ? 'container' }}" {{ contentAnimation|raw }}>
                 {{ render.basicContents({
                     eyebrow: block.eyebrow,
