@@ -80,7 +80,14 @@ module.exports = {
 
             fontFamily: {
                 //Please use font name as variable key instead sans. For example "faro: ['faro']"
-                sans: ["Interstate", "Arial", "sans-serif"],
+                sans: [
+                    ["Mona Sans", "Arial", "sans-serif"],
+                    { fontVariationSettings: '"wdth" 125' },
+                ],
+                display: [
+                    ["Mona Sans", "Arial", "sans-serif"],
+                    { fontVariationSettings: '"wdth" 125' },
+                ],
             },
 
             animation: {

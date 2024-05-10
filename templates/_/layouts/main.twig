@@ -33,7 +33,7 @@
     {% endfor %} #}
 </head>
 
-<body class="flex min-h-full flex-col"  x-data="{ isOverflowHidden: false }" :class="{ 'overflow-hidden lg:overflow-y-auto': isOverflowHidden }">
+<body class="flex min-h-full flex-col font-sans"  x-data="{ isOverflowHidden: false }" :class="{ 'overflow-hidden lg:overflow-y-auto': isOverflowHidden }">
     {# Include Tracking Scripts Head #}
     {# {% for script in trackingScripts|filter(script => script.scriptPosition.value == "bodyStart" and (not script.addOnlyInProduction or (script.addOnlyInProduction and craft.app.config.env == "production"))) %}
         {{ render.trackingMacro({
@@ -60,11 +60,6 @@
     ============================================
     #}
     {% include "_/includes/footer" %}
-
-    <link rel="preload" as="font" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
-    <noscript>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    </noscript>
 
     {# Include Tracking Scripts Head #}
     {# {% for script in trackingScripts|filter(script => script.scriptPosition.value == "bodyEnd" and (not script.addOnlyInProduction or (script.addOnlyInProduction and craft.app.config.env == "production"))) %}

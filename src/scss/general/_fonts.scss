@@ -6,42 +6,59 @@
     font-style: normal
 } */
 
-@font-face {
-    font-family: "Interstate";
-    font-display: block;
-    src: url("/dist/fonts/interstate-black.otf") format("opentype");
-    font-weight: 900;
-    font-style: normal;
-}
+// @font-face {
+//     font-family: "Mona Sans";
+//     font-display: block;
+//     src: url("/dist/fonts/MonaSans-Light.otf") format("opentype");
+//     font-weight: 300;
+//     font-style: normal;
+// }
+
+// @font-face {
+//     font-family: "Mona Sans";
+//     font-display: block;
+//     src: url("/dist/fonts/MonaSans-Regular.otf") format("opentype");
+//     font-weight: normal;
+//     font-style: normal;
+// }
+
+// @font-face {
+//     font-family: "Mona Sans";
+//     font-display: block;
+//     src: url("/dist/fonts/MonaSans-Medium.otf") format("opentype");
+//     font-weight: 500;
+//     font-style: normal;
+// }
+
+// @font-face {
+//     font-family: "Mona Sans";
+//     font-display: block;
+//     src: url("/dist/fonts/MonaSans-SemiBold.otf") format("opentype");
+//     font-weight: 600;
+//     font-style: normal;
+// }
+
+// @font-face {
+//     font-family: "Mona Sans";
+//     font-display: block;
+//     src: url("/dist/fonts/MonaSans-Bold.otf") format("opentype");
+//     font-weight: 700;
+//     font-style: normal;
+// }
+
+// @font-face {
+//     font-family: "Mona Sans";
+//     font-display: block;
+//     src: url("/dist/fonts/MonaSans-Black.otf") format("opentype");
+//     font-weight: 800;
+//     font-style: normal;
+// }
 
 @font-face {
-    font-family: "Interstate";
+    font-family: "Mona Sans";
+    font-weight: 200 900;
     font-display: block;
-    src: url("/dist/fonts/interstate-bold.otf") format("opentype");
-    font-weight: 700;
     font-style: normal;
-}
-
-@font-face {
-    font-family: "Interstate";
-    font-display: block;
-    src: url("/dist/fonts/interstate-regular.otf") format("opentype");
-    font-weight: 400;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: "Interstate";
-    font-display: block;
-    src: url("/dist/fonts/interstate-light.otf") format("opentype");
-    font-weight: 300;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: "DrukTextWide";
-    font-display: block;
-    src: url("/dist/fonts/Druk-SuperItalic-Trial.otf") format("opentype");
-    font-weight: 900;
-    font-style: normal;
+    font-stretch: 75% 125%;
+    src: url("/dist/fonts/Mona-Sans.var.woff2") format("woff2");
 }
