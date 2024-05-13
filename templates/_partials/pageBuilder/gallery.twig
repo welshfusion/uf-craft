@@ -115,33 +115,33 @@
         <div class="{{ render.contentWidth({width: contentWidth}) }}">
             {% if basicContentsExist %}
             <div class="{{ containerSize == 'full' ? 'container' }}" {{ contentAnimation|raw }}>
-                {{ render.basicContents({
-                    eyebrow: block.eyebrow,
-                    heading: block.heading,
-                    text: block.text,
-                    headingTag: headingTag,
-                    fontWeight: fontWeight,
-                    bgOpacity: overlayOpacity,
-                    backgroundColorLabel: backgroundColorLabel,
-                    contentAlignment: contentAlignment,
-                    animation: block.animation,
-                    contentAnimationStyle: block.animationStyle2.getValue()|default('fade-up'),
-                    contentAnimationDuration: block.animationDuration2.getValue()|default(1500),
-                    contentAnimationOffset: block.animationOffset2.getValue()|default(200),
-                    contentAnimationEasing: block.animationEasing2.getValue()|default(null)
-                }) }}
+            {{ render.basicContents({
+                eyebrow: block.eyebrow,
+                heading: block.heading,
+                text: block.text,
+                headingTag: headingTag,
+                fontWeight: fontWeight,
+                bgOpacity: overlayOpacity,
+                backgroundColorLabel: backgroundColorLabel,
+                contentAlignment: contentAlignment,
+                animation: block.animation,
+                contentAnimationStyle: block.animationStyle2.getValue()|default('fade-up'),
+                contentAnimationDuration: block.animationDuration2.getValue()|default(1500),
+                contentAnimationOffset: block.animationOffset2.getValue()|default(200),
+                contentAnimationEasing: block.animationEasing2.getValue()|default(null)
+            }) }}
             </div>
             {% endif %}
 
-                {% include "_partials/pageBuilder/gallery/#{listingStyle}" %}
+            {% include "_partials/pageBuilder/gallery/#{listingStyle}" %}
 
             {% for button in buttons %}
-            {% if loop.first %}
-            <div class="flex flex-wrap items-center gap-5 mt-10 {{ containerSize == 'full' ? 'container' }} {{ render.getAlignment({
-                alignment: contentAlignment,
-                type: 'justify'
-            }) }}" {{ contentAnimation|raw }}>
-            {% endif %}
+                {% if loop.first %}
+                    <div class="flex flex-wrap items-center gap-5 mt-10 {{ containerSize == 'full' ? 'container' }} {{ render.getAlignment({
+                        alignment: contentAlignment,
+                        type: 'justify'
+                    }) }}" {{ contentAnimation|raw }}>
+                {% endif %}
                 {{ render.createButton({
                     button: button.button,
                     buttonType: button.buttonType.getValue()|default("button"),
@@ -150,9 +150,9 @@
                     iconPosition: button.iconPosition.getValue()|default('right'),
                     background: backgroundColorLabel,
                 }) }}
-            {% if loop.last %}
-            </div>
-            {% endif %}
+                {% if loop.last %}
+                    </div>
+                {% endif %}
             {% endfor %}
             </div>
         </div>

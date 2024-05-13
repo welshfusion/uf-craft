@@ -159,6 +159,87 @@ fieldLayouts:
         elements:
           -
             elementCondition: null
+            fieldUid: 4daa21a6-7d9e-4652-b72d-4b86d193b8cd # Content Width
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 95bdfa55-6d72-4858-bc40-5b324ce2027d
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 5b639435-9f82-4cfa-9b34-0421722361c9 # Background Color
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 2417b921-d87e-4b36-a834-5ac989ff0b4e
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            elementCondition: null
+            fieldUid: f5f3b40a-47d4-42d5-b50a-5e17eae1e600 # Content Alignment
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: fee48a63-5a9e-4071-a838-d9ee7a29458f
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            elementCondition: null
+            fieldUid: e38ac257-70df-4d50-9384-503f2133f772 # Heading Size
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 8eadda34-a530-4f39-8639-2d340c699ccd
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            elementCondition: null
+            fieldUid: 0e6d4e36-9f7c-4320-bfad-dcc290f8e135 # Font Weight
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: c6417d27-880f-433d-bd3c-b405d2d56765
+            userCondition: null
+            warning: null
+            width: 50
+        name: Settings
+        uid: 01475a2f-730c-4e12-87ea-67a9e478785b
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
             fieldUid: 86035a0d-51de-4bb2-b452-4bfc32cfc03e # Margin Top
             handle: null
             includeInCards: false
@@ -229,7 +310,7 @@ fieldLayouts:
             handle: null
             includeInCards: false
             instructions: null
-            label: null
+            label: 'Animation?'
             providesThumbs: false
             required: false
             tip: null
@@ -240,7 +321,7 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            heading: 'Content Animation'
+            heading: 'Form Animation'
             type: craft\fieldlayoutelements\Heading
             uid: 36cdbde0-1ddf-437d-8fef-86fe39917406
             userCondition: null
@@ -258,7 +339,7 @@ fieldLayouts:
             uid: b10cadd1-fa97-495e-b96c-cee7b77d482b
             userCondition: null
             warning: null
-            width: 100
+            width: 50
           -
             elementCondition: null
             fieldUid: ed742f3d-8fc4-44e1-b975-1b03cb9ab839 # Animation Easing
@@ -273,7 +354,7 @@ fieldLayouts:
             uid: 4286719f-6974-4ba6-b80d-b9e6f35d7722
             userCondition: null
             warning: null
-            width: 100
+            width: 50
           -
             elementCondition: null
             fieldUid: 86da9d1c-79b6-4b38-bfe8-d608e36d610c # Animation Duration
@@ -288,7 +369,7 @@ fieldLayouts:
             uid: ac9d6cb8-b5fa-444b-a159-bc0031f0ec78
             userCondition: null
             warning: null
-            width: 100
+            width: 50
           -
             elementCondition: null
             fieldUid: 703a980f-eab2-4276-a815-17e7b6f5095a # Animation Offset
@@ -303,7 +384,7 @@ fieldLayouts:
             uid: e3a49bd3-9f27-4f05-9870-95a59a4f0775
             userCondition: null
             warning: null
-            width: 100
+            width: 50
           -
             elementCondition: null
             heading: 'Sidebar Animation'

@@ -74,7 +74,7 @@
 
 {% set buttons = block.buttons.all() %}
 {% set image = block.image.one() %}
-{% set videos = block.video ?? null %}
+{% set videos = block.backgroundVideo ?? null %}
 
 {% set multimediaCard = block.multimediaCard.type(null).all() %}
 
@@ -121,7 +121,7 @@
                     </div>
                 {% endif %}
 
-                <div class="mt-10 lg:flex lg:justify-end lg:gap-x-8 lg:group-even/section:justify-start xl:gap-x-20 {{ imagePosition == 'left' ? 'md:flex-row-reverse' : 'md:flex-row' }}">
+                <div class="mt-10 lg:flex lg:justify-end lg:gap-x-8 lg:group-even/section:justify-start xl:gap-x-20 {{ imagePosition == 'left' ? 'md:flex-row' : 'md:flex-row-reverse' }}">
                     {% if image|length or videos|length %}
                         <div class="flex justify-center" {{ contentAnimation|raw }}>
                             <div class="w-[33.75rem] flex-none lg:w-[45rem]" style="opacity: 1; transform: none;">
@@ -145,7 +145,7 @@
                                                                     alt: image|length ? image.title : videoId,
                                                                     width: '2400',
                                                                     height: '1800',
-                                                                    class: "w-full object-cover",
+                                                                    class: "w-full bg-neutral-100 object-cover md:w-41rem w-31rem",
                                                                     lazy: false,
                                                                     decoding: 'async',
                                                                     plainImage: image|length ? false : true,

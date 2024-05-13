@@ -25,11 +25,11 @@
     animationEasing: contentAnimationEasing,
     animationDelay: delay
 }) | raw %}
-<{{ headingTag }} class="{{ headingSpacing|length ? headingSpacing : (eyebrow|length ? 'mt-6') }} {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }} {{ headingExtraClasses|length ? headingExtraClasses : 'font-sans tracking-[1px]' }} {{ render.getAlignment({alignment: contentAlignment, type: ['text']}) }} {{ render.getHeadingSize({headingTag: applyHeadingSize ?? headingTag}) }} {{ render.getFontWeight({font: fontWeight}) }}
+<{{ headingTag }} class="{{ headingSpacing|length ? headingSpacing : (eyebrow|length ? 'mt-6') }} {{ headingExtraClasses|length ? headingExtraClasses : 'font-sans tracking-[1px]' }} {{ render.getAlignment({alignment: contentAlignment, type: ['text']}) }} {{ render.getHeadingSize({headingTag: applyHeadingSize ?? headingTag}) }} {{ render.getFontWeight({font: fontWeight}) }} {{ render.foregroundColors({
     background: backgroundColorLabel,
-    bgOpacity: bgOpacity,
-    type: 'heading',
-}) }}" {{ contentAnimation|raw }}>
+    type: 'heading'
+}) }}
+" {{ contentAnimation|raw }}>
     {{ heading|nl2br }}
 </{{ headingTag }}>
 {% endif %}

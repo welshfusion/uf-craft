@@ -1,0 +1,95 @@
+{#
+===============================================================================
+    Listing (listing)
+
+    Variables
+        - Block (block)
+
+    Fields:
+        Content:
+            - Listing (listing)
+                Child:
+                    - Testimonials (testimonials)
+                    - Team (team)
+                    - Client (client)
+                    - Case Study (caseStudy)
+                    - Blog (blog)
+
+        Auxiliary:
+            - Heading (heading)
+            - Text (text)
+            - Buttons (buttons) [Matrix]
+                - Button Type (buttonType)
+                - Button Color (buttonColor)
+                - Icon (icon)
+                - Icon Position (iconPosition)
+                - Button (button)
+
+        Settings:
+            - Content Width (contentWidth)
+            - Container Size (containerSize)
+            - Rounded Corners (roundedCorners)
+            - Background Color (backgroundColor)
+            - Content Alignment (contentAlignment)
+            - Heading Size (headingSize)
+            - Font Weight (fontWeight)
+===============================================================================
+#}
+{{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
+{% import "_/includes/macros" as render %}
+
+{# Parent Block Fields Start #}
+{% set parent = parent ?? null %}
+{% set childContainer = childContainer ?? false %}
+{% set containerWrapper = containerWrapper ?? false %}
+{% set containerImage = containerImage ?? false %}
+{% set sectionTag = childContainer or containerWrapper ? 'div' : 'section' %}
+{# Parent Block Fields End #}
+
+{% set contentWidth = block.contentWidth|default('2;10') %}
+{% set containerSize = block.containerSize.getValue()|default('full') %}
+{% set roundedCorners = block.roundedCorners ?? false %}
+{% set contentAlignment = block.contentAlignment.value|default('left') %}
+{% set headingTag = block.headingSize.getValue()|default('h2') %}
+{% set fontWeight = block.fontWeight.getValue()|default('bold') %}
+
+{% set conbackgroundColor = conbackgroundColor ?? null %}
+{% set backgroundColorLabel = block.backgroundColor.label|default(conbackgroundColor ?? 'white') %}
+{% set containerBgExist = conbackgroundColor != backgroundColorLabel %}
+{% set backgroundColor = render.color({
+    handle: backgroundColorLabel,
+    swatch: 'background'
+}) %}
+
+{% set buttons = block.buttons.all() %}
+
+{% set contentAnimation = render.setAnimation({
+    animation: block.animation,
+    animationStyle: block.animationStyle.value|default('fade-up'),
+    animationDuration: block.animationDuration.value|default(1500),
+    animationOffset: block.animationOffset.value|default(200),
+    animationEasing: block.animationEasing.value|default(null)
+}) | raw %}
+
+{% set listingAnimation = render.setAnimation({
+    animation: block.animation,
+    animationStyle: block.animationStyle2.value|default('fade-up'),
+    animationDuration: block.animationDuration2.value|default(1500),
+    animationOffset: block.animationOffset2.value|default(200),
+    animationEasing: block.animationEasing2.value|default(null)
+}) | raw %}
+
+<{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}">
+    <div class="{{ containerSize == 'container' ? 'container' }} {% if roundedCorners %} rounded-3xl {% endif %} {{ spacing }} {{ backgroundColor }}">
+        <div class="{{ containerSize == 'container' ? 'mx-auto max-w-4xl' : 'container' }} {{ render.contentWidth({width: contentWidth}) }}">
+
+            {% set children = block.listing.one() %}
+            {% set childHandle = children.type.handle %}
+
+            {% include "_partials/pageBuilder/listing/#{childHandle}" with {
+                parent: block,
+                block: children,
+            } %}
+        </div>
+    </div>
+</{{ sectionTag }}>

@@ -1,0 +1,124 @@
+{#
+===============================================================================
+    Form (form)
+
+    Variables
+        - Block (block)
+
+    Fields:
+        Content:
+            - Form (form)
+
+        Auxiliary:
+            - Eyebrow (eyebrow)
+            - Heading (heading)
+            - Text (text)
+            - Buttons (buttons) [Matrix]
+                - Button Type (buttonType)
+                - Button Color (buttonColor)
+                - Icon (icon)
+                - Icon Position (iconPosition)
+                - Button (button)
+===============================================================================
+#}
+{{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
+{% import "_/includes/macros" as render %}
+
+{% set form = block.form.one() %}
+{% set contactInfo = block.contactInfo.type(null).all() %}
+
+{% set contentWidth = block.contentWidth|default('2;10') %}
+{% set headingTag = block.headingSize.getValue()|default('h2') %}
+{% set fontWeight = block.fontWeight.getValue()|default('bold') %}
+{% set contentAlignment = block.contentAlignment.value|default('left') %}
+
+{% set conbackgroundColor = conbackgroundColor ?? null %}
+{% set backgroundColorLabel = block.backgroundColor.label|default(conbackgroundColor ?? 'white') %}
+{% set containerBgExist = conbackgroundColor != backgroundColorLabel %}
+{% set backgroundColor = render.color({
+    handle: backgroundColorLabel,
+    swatch: 'background'
+}) %}
+
+{% set contentAnimation = render.setAnimation({
+    animation: block.animation,
+    animationStyle: block.animationStyle2.getValue()|default('fade-up'),
+    animationDuration: block.animationDuration2.getValue()|default(1500),
+    animationOffset: block.animationOffset2.getValue()|default(200),
+    animationEasing: block.animationEasing2.getValue()|default(null)
+}) | raw %}
+
+{% set formAnimation = render.setAnimation({
+    animation: block.animation,
+    animationStyle: block.animationStyle.getValue()|default('fade-up'),
+    animationDuration: block.animationDuration.getValue()|default(1700),
+    animationOffset: block.animationOffset.getValue()|default(400),
+    animationEasing: block.animationEasing.getValue()|default(null)
+}) | raw %}
+
+<div class="mx-auto max-w-7xl px-6 lg:px-8 mt-24 sm:mt-32 lg:mt-40">
+    <div class="mx-auto max-w-2xl lg:max-w-none">
+        <div style="opacity: 1; transform: none;">
+        {{ render.basicContents({
+            eyebrow: block.eyebrow,
+            heading: block.heading,
+            text: block.text,
+            overrideParagraphFontSize: 'text-xl',
+            headingTag: headingTag,
+            fontWeight: fontWeight,
+            backgroundColorLabel: backgroundColorLabel,
+            animation: block.lightSwitch,
+            contentAnimationStyle: block.animationStyle2.getValue()|default('fade-up'),
+            contentAnimationDuration: block.animationDuration2.getValue()|default(1500),
+            contentAnimationOffset: block.animationOffset2.getValue()|default(200),
+            contentAnimationEasing: block.animationEasing2.getValue()|default(null)
+        }) }}
+        </div>
+    </div>
+</div>
+<div class="mx-auto max-w-7xl px-6 lg:px-8 mt-24 sm:mt-32 lg:mt-40">
+    <div class="mx-auto max-w-2xl lg:max-w-none">
+        <div class="grid grid-cols-1 gap-x-8 gap-y-24 lg:grid-cols-2">
+            <div class="lg:order-last" style="opacity: 1; transform: none;">
+                    <h2 class="font-display text-base font-semibold text-cyprus-500">
+                        {{ block.formHeading }}
+                    </h2>
+
+                    {% if form|length %}
+            <div {{ formAnimation|raw }}>
+                {{ craft.formie.renderForm(form) }}
+
+                {% js %}
+                    document.addEventListener('onFormieInit', (event) => {
+                        let Formie = event.detail.formie;
+                        Formie.refreshForCache('{{ form.formId }}');
+                    });
+                {% endjs %}
+            </div>
+            {% endif %}
+
+            </div>
+            <div style="opacity: 1; transform: none;">
+                <h2 class="font-display text-base font-semibold text-cyprus-500">
+                    {{ block.sidebarHeading }}
+                </h2>
+
+                {% if contactInfo|length %}
+                    <div class="mt-10 border-t">
+                        {% for item in contactInfo %}
+                            {% if item.heading|length %}
+                                <h3 class="mt-10 font-display text-base font-semibold" {{ contentAnimation|raw }}>
+                                    {{ item.heading }}
+                                </h3>
+                            {% endif %}
+
+                            {% for block in item.contactCards.all() %}
+                                {% include '_partials/pageBuilder/contactCards/' ~ block.type.handle ignore missing %}
+                            {% endfor %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+{{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
+{% import "_/includes/macros" as render %}
+
+<ul role="list" class="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2" {{ contentAnimation|raw }}>
+    <li>
+        <address class="text-sm not-italic text-neutral-300">
+            {% if block.heading %}
+                <strong class="{{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
+                    {{ block.heading }}
+                </strong>
+            {% endif %}
+            <br>
+            {% for item in block.telephone %}
+                <a href="{{ item.getUrl }}" class="{{ render.foregroundColors({background: backgroundColorLabel, type: 'subHeading'}) }}">
+                    {{ item.getText }}
+                </a>
+            {% endfor %}
+        </address>
+    </li>
+</ul>

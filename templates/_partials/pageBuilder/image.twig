@@ -95,22 +95,22 @@
     <div class="{{ (not childContainer) and (containerSize == 'container') ? 'container' }} {{ (childContainer and containerBgExist) or containerImage ? 'px-4 md:px-6' }} {{ (containerBgExist and backgroundColorLabel == 'white') or containerImage ? 'py-4 md:py-6' }}">
         <div class="{{ render.contentWidth({width: contentWidth}) }}">
             {% if basicContentsExist %}
-            <div class="{{ containerSize == 'full' ? 'container' }}" {{ contentAnimation|raw }}>
-                {{ render.basicContents({
-                    eyebrow: block.eyebrow,
-                    heading: block.heading,
-                    text: block.text,
-                    headingTag: headingTag,
-                    fontWeight: fontWeight,
-                    backgroundColorLabel: backgroundColorLabel,
-                    contentAlignment: contentAlignment,
-                    animation: block.animation,
-                    contentAnimationStyle: block.animationStyle2.getValue()|default('fade-up'),
-                    contentAnimationDuration: block.animationDuration2.getValue()|default(1500),
-                    contentAnimationOffset: block.animationOffset2.getValue()|default(200),
-                    contentAnimationEasing: block.animationEasing2.getValue()|default(null)
-                }) }}
-            </div>
+                <div class="{{ containerSize == 'container' ? 'container' }}" {{ contentAnimation|raw }}>
+                    {{ render.basicContents({
+                        eyebrow: block.eyebrow,
+                        heading: block.heading,
+                        text: block.text,
+                        headingTag: headingTag,
+                        fontWeight: fontWeight,
+                        backgroundColorLabel: backgroundColorLabel,
+                        contentAlignment: contentAlignment,
+                        animation: block.animation,
+                        contentAnimationStyle: block.animationStyle2.getValue()|default('fade-up'),
+                        contentAnimationDuration: block.animationDuration2.getValue()|default(1500),
+                        contentAnimationOffset: block.animationOffset2.getValue()|default(200),
+                        contentAnimationEasing: block.animationEasing2.getValue()|default(null)
+                    }) }}
+                </div>
             {% endif %}
 
             {% if image|length or videos|length or buttons|length %}

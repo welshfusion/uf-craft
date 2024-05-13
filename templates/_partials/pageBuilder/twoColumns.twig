@@ -1,0 +1,127 @@
+{#
+=========================================================
+    Two Columns (twoColumns)
+
+    Variables
+        - Block (block)
+
+    Fields:
+        Content:
+            Child:
+              Columns (columns)
+                - Basic Content (basicContent)
+                - Image (image)
+                - Icon Cards (iconCards)
+
+        Settings:
+            - Content Width (contentWidth)
+            - Background Color (backgroundColor)
+            - Overlay Opacity (overlayOpacity)
+            - Column Alignment (columnAlignment)
+            - Two Column Layout (twoColumnLayout)
+            - Heading Size (headingSize)
+            - Font Weight (fontWeight)
+=========================================================
+#}
+{{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
+{% import "_/includes/macros" as render %}
+
+{# Parent Block Fields Start #}
+{% set parent = parent ?? null %}
+{% set childContainer = childContainer ?? false %}
+{% set containerWrapper = containerWrapper ?? false %}
+{% set containerImage = containerImage ?? false %}
+{% set sectionTag = childContainer or containerWrapper ? 'div' : 'section' %}
+{# Parent Block Fields End #}
+
+{% set contentWidth = block.contentWidth|default('2;10') %}
+{% set headingTag = block.headingSize.getValue()|default('h2') %}
+{% set fontWeight = block.fontWeight.getValue()|default('bold') %}
+{% set contentAlignment = block.contentAlignment.value|default('left') %}
+{% set columnAlignment = block.columnAlignment.getValue|default('start') %}
+{% set columnsWidth = block.twoColumnLayout.getValue|default('6-6') %}
+
+{% set conbackgroundColor = conbackgroundColor ?? null %}
+{% set backgroundColorLabel = block.backgroundColor.label|default(conbackgroundColor ?? 'white') %}
+{% set containerBgExist = conbackgroundColor != backgroundColorLabel %}
+{% set backgroundColor = render.color({
+    handle: backgroundColorLabel,
+    swatch: 'background'
+}) %}
+
+{% set buttons = block.buttons.all() %}
+
+{% set contentAnimation = render.setAnimation({
+    animation: block.animation,
+    animationStyle: block.contentAnimationStyle.value|default('fade-up'),
+    animationDuration: block.contentAnimationDuration.value|default(1500),
+    animationOffset: block.contentAnimationOffset.value|default(200),
+    animationEasing: block.contentAnimationEasing.value|default(null)
+}) | raw %}
+
+{% set firstDiv = {
+    '3-9' : 'md:col-start-1 md:col-end-4',
+    '4-8' : 'md:col-start-1 md:col-end-5',
+    '5-7' : 'md:col-start-1 md:col-end-6',
+    '6-6' : 'md:col-start-1 md:col-end-7',
+    '7-5' : 'md:col-start-1 md:col-end-8',
+    '8-4' : 'md:col-start-1 md:col-end-9',
+    '9-3' : 'md:col-start-1 md:col-end-10'
+} %}
+
+{% set lastDiv = {
+    '3-9' : 'md:col-start-4 md:col-end-13',
+    '4-8' : 'md:col-start-5 md:col-end-13',
+    '5-7' : 'md:col-start-6 md:col-end-13',
+    '6-6' : 'md:col-start-7 md:col-end-13',
+    '7-5' : 'md:col-start-8 md:col-end-13',
+    '8-4' : 'md:col-start-9 md:col-end-13',
+    '9-3' : 'md:col-start-10 md:col-end-13'
+} %}
+
+{% set basicContentsExist = block.eyebrow|length or block.heading|length or block.text|length or buttons|length %}
+
+<{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ spacing }} {{ backgroundColor }} {{ containerImage ? render.contentWidth({width: contentWidth}) }}">
+    {% if basicContentsExist %}
+        <div class="{{ not childContainer ? 'container' }} {{ containerBgExist or (containerImage and backgroundColorLabel == 'white') ? 'px-4 md:px-6' }}">
+            <div class="{{ render.contentWidth({width: contentWidth}) }}" {{ contentAnimation|raw }}>
+            {{ render.basicContents({
+                eyebrow: block.eyebrow,
+                heading: block.heading,
+                text: block.text,
+                buttons: buttons,
+                headingTag: headingTag,
+                fontWeight: fontWeight,
+                backgroundColorLabel: backgroundColorLabel,
+                contentAlignment: contentAlignment,
+                animation: block.animation,
+                contentAnimationStyle: block.contentAnimationStyle.getValue()|default('fade-up'),
+                contentAnimationDuration: block.contentAnimationDuration.getValue()|default(1500),
+                contentAnimationOffset: block.contentAnimationOffset.getValue()|default(200),
+                contentAnimationEasing: block.contentAnimationEasing.getValue()|default(null)
+            }) }}
+            </div>
+        </div>
+    {% endif %}
+
+    {% set columns = block.column.all() %}
+    <div class="grid {{ render.getAlignment({alignment: columnAlignment, type: 'items'}) }}">
+            {% for child in columns %}
+                <div class="{{ loop.first ? firstDiv[columnsWidth] : lastDiv[columnsWidth] }}">
+                    {% include "_partials/blocks" with {
+                        pageBuilder: block.column.all(),
+                        parent: block.type.handle,
+                        conbackgroundColor: backgroundColorLabel,
+                        childContainer: true,
+                        firstBlockSpacing: {
+                            'defaultMarginTop' : 'none',
+                        },
+                        lastBlockSpacing: {
+                            'defaultMarginBottom' : 'none',
+                        },
+                    } %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</{{ sectionTag }}>

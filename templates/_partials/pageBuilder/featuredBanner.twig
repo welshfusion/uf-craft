@@ -1,0 +1,136 @@
+{#
+===============================================================================
+    Featured Banner (featuredBanner)
+
+    Variables
+        - Block (block)
+
+    Fields:
+        Content:
+            - Image (image)
+            - Video (backgroundVideo)
+            - Eyebrow (eyebrow)
+            - Heading (heading)
+            - Text (text)
+            - Buttons (buttons) [Matrix]
+                - Button Type (buttonType)
+                - Button Color (buttonColor)
+                - Icon (icon)
+                - Icon Position (iconPosition)
+                - Button (button)
+            - Contact Info (contactInfo)
+                - Heading (heading)
+                - Contact Cards (contactCards)
+
+        Settings:
+            - Content Width (contentWidth)
+            - Container Size (containerSize)
+            - Rounded Corners (roundedCorners)
+            - Background Color (backgroundColor)
+            - Content Alignment (contentAlignment)
+            - Heading Size (headingSize)
+            - Font Weight (fontWeight)
+===============================================================================
+#}
+{{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
+{% import "_/includes/macros" as render %}
+
+{# Parent Block Fields Start #}
+{% set parent = parent ?? null %}
+{% set childContainer = childContainer ?? false %}
+{% set containerWrapper = containerWrapper ?? false %}
+{% set containerImage = containerImage ?? false %}
+{% set sectionTag = childContainer or containerWrapper ? 'div' : 'section' %}
+{# Parent Block Fields End #}
+
+{% set containerSize = block.containerSize.getValue()|default('container') %}
+{% set headingTag = block.headingSize.getValue()|default('h2') %}
+{% set fontWeight = block.fontWeight.getValue()|default('bold') %}
+{% set contentAlignment = block.contentAlignment.value|default('left') %}
+{% set contentWidth = block.contentWidth|default('2;10') %}
+{% set roundedCorners = block.roundedCorners ?? false %}
+
+{% set conbackgroundColor = conbackgroundColor ?? null %}
+{% set backgroundColorLabel = block.backgroundColor.label|default(conbackgroundColor ?? 'cyprus') %}
+{% set containerBgExist = conbackgroundColor != backgroundColorLabel %}
+{% set backgroundColor = render.color({
+    handle: backgroundColorLabel,
+    swatch: 'background'
+}) %}
+
+{% set buttons = block.buttons.all() %}
+{% set image = block.image.one() %}
+{% set videos = block.backgroundVideo ?? null %}
+
+{% set contactInfo = block.contactInfo.type(null).all() %}
+
+{% set contentAnimation = render.setAnimation({
+    animation: block.animation,
+    animationStyle: block.contentAnimationStyle.value|default('fade-up'),
+    animationDuration: block.contentAnimationDuration.value|default(1500),
+    animationOffset: block.contentAnimationOffset.value|default(200),
+    animationEasing: block.contentAnimationEasing.value|default(null)
+}) | raw %}
+
+{% set basicContentsExist = block.eyebrow|length or block.heading|length or block.text|length or buttons|length %}
+
+<{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}">
+    <div class="{{ containerSize == 'container' ? 'container' }} {% if roundedCorners %} rounded-3xl {% endif %} {{ spacing }} {{ backgroundColor }}">
+        <div class="{{ containerSize == 'container' ? 'mx-auto max-w-4xl' : 'container' }} {{ render.contentWidth({width: contentWidth}) }}">
+            {% if image|length or videos|length  %}
+                {{ render.renderVideo({
+                    image: image,
+                    alt: image.title,
+                    width: image.width,
+                    height: image.height,
+                    class: "-z-10 w-full h-full object-cover rounded-xl",
+                    lazy: false,
+                    videos: videos,
+                    videoClass: "-z-10 w-full h-full object-cover rounded-xl",
+                    videoType: 'background',
+                    videoPoster: image,
+                    videoAttrs: {
+                        preload: "none",
+                    }
+                }) }}
+            {% endif %}
+            {% if basicContentsExist|length %}
+                <div class="max-w-xl">
+                {{ render.basicContents({
+                    eyebrow: block.eyebrow,
+                    heading: block.heading,
+                    text: block.text,
+                    subHeading: block.subHeading,
+                    button: buttons,
+                    overrideParagraphFontSize: 'text-xl',
+                    headingTag: headingTag,
+                    fontWeight: fontWeight,
+                    backgroundColorLabel: backgroundColorLabel,
+                    animation: block.animation,
+                    contentAnimationStyle: block.animationStyle.getValue()|default('fade-up'),
+                    contentAnimationDuration: block.animationDuration.getValue()|default(1500),
+                    contentAnimationOffset: block.animationOffset.getValue()|default(200),
+                    contentAnimationEasing: block.animationEasing.getValue()|default(null)
+                }) }}
+                </div>
+            {% endif %}
+
+            {% if contactInfo|length %}
+                <div class="mt-10 border-t {{ render.foregroundColors({background: backgroundColorLabel, type: 'border'}) }}">
+                    {% for item in contactInfo %}
+                        {% if item.heading|length %}
+                            <h3 class="mt-10 font-display text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}" {{ contentAnimation|raw }}>
+                                {{ item.heading }}
+                            </h3>
+                        {% endif %}
+
+                        {% for block in item.contactCards.all() %}
+                            {% include '_partials/pageBuilder/contactCards/' ~ block.type.handle ignore missing %}
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+</{{ sectionTag }}>

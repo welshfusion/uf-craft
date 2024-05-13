@@ -4,7 +4,9 @@
 <div class="pl-8 mt-12 relative before:absolute after:absolute {{ backgroundColorLabel == 'green' ? 'before:bg-neutral-300' : 'before:bg-green-500' }} {{ backgroundColorLabel == 'black' ? 'after:bg-neutral-400' : 'after:bg-neutral-950/10' }} before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px">
     <figure class="text-sm">
         <blockquote class="{{ render.foregroundColors({background: backgroundColorLabel, type: 'subHeading'}) }}">
-            <p>{{ '“' ~ block.quote|nl2br ~ '”' }}</p>
+            <p>
+                {{ '“' ~ block.quote|nl2br ~ '”' }}
+            </p>
         </blockquote>
         <figcaption class="mt-6 font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
             {{ block.authorName }},

@@ -1,6 +1,6 @@
 {% import "_/includes/macros" as render %}
 {% minify %}
-{# {% set trackingScripts = trackingScripts.trackingScripts.cache().all() %} #}
+{% set trackingScripts = trackingScripts.trackingScripts.cache().all() %}
 <!DOCTYPE html>
 {% set htmlAttrs = {
     lang: craft.app.language,
@@ -22,7 +22,7 @@
     {{ craft.vite.register("src/js/app.js") }}
 
     {# Include Tracking Scripts Head #}
-    {# {% for script in trackingScripts|filter(script => script.scriptPosition.value == "head" and (not script.addOnlyInProduction or (script.addOnlyInProduction and craft.app.config.env == "production"))) %}
+    {% for script in trackingScripts|filter(script => script.scriptPosition.value == "head" and (not script.addOnlyInProduction or (script.addOnlyInProduction and craft.app.config.env == "production"))) %}
         {{ render.trackingMacro({
             script: script,
             scriptHeading: script.heading,
@@ -30,12 +30,12 @@
             javascriptCode: script.javascriptCode,
             htmlCode: script.htmlCode
         }) }}
-    {% endfor %} #}
+    {% endfor %}
 </head>
 
 <body class="flex min-h-full flex-col font-sans"  x-data="{ isOverflowHidden: false }" :class="{ 'overflow-hidden lg:overflow-y-auto': isOverflowHidden }">
     {# Include Tracking Scripts Head #}
-    {# {% for script in trackingScripts|filter(script => script.scriptPosition.value == "bodyStart" and (not script.addOnlyInProduction or (script.addOnlyInProduction and craft.app.config.env == "production"))) %}
+    {% for script in trackingScripts|filter(script => script.scriptPosition.value == "bodyStart" and (not script.addOnlyInProduction or (script.addOnlyInProduction and craft.app.config.env == "production"))) %}
         {{ render.trackingMacro({
             script: script,
             scriptHeading: script.heading,
@@ -43,7 +43,7 @@
             javascriptCode: script.javascriptCode,
             htmlCode: script.htmlCode
         }) }}
-    {% endfor %} #}
+    {% endfor %}
 
     {#
     ============================================
@@ -62,7 +62,7 @@
     {% include "_/includes/footer" %}
 
     {# Include Tracking Scripts Head #}
-    {# {% for script in trackingScripts|filter(script => script.scriptPosition.value == "bodyEnd" and (not script.addOnlyInProduction or (script.addOnlyInProduction and craft.app.config.env == "production"))) %}
+    {% for script in trackingScripts|filter(script => script.scriptPosition.value == "bodyEnd" and (not script.addOnlyInProduction or (script.addOnlyInProduction and craft.app.config.env == "production"))) %}
         {{ render.trackingMacro({
             script: script,
             scriptHeading: script.heading,
@@ -70,7 +70,7 @@
             javascriptCode: script.javascriptCode,
             htmlCode: script.htmlCode
         }) }}
-    {% endfor %} #}
+    {% endfor %}
 
 </body>
 </html>

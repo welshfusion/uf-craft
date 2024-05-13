@@ -1,0 +1,31 @@
+{{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
+{% import "_/includes/macros" as render %}
+
+{% set basicContentsExist = parent.eyebrow|length or parent.heading|length or parent.text|length or buttons|length %}
+{% set teamListingStyle = block.listingStyle.value|default('slider') %}
+
+<div class="grid grid-cols-1 gap-6 pt-12 sm:pt-16 lg:grid-cols-4 xl:gap-8">
+    <div style="opacity: 1; transform: none;">
+        {% if basicContentsExist|length %}
+            <div class="max-w-xl">
+            {{ render.basicContents({
+                eyebrow: parent.eyebrow,
+                heading: parent.heading,
+                text: parent.text,
+                subHeading: parent.subHeading,
+                button: buttons,
+                overrideParagraphFontSize: 'text-xl',
+                headingTag: headingTag,
+                fontWeight: fontWeight,
+                backgroundColorLabel: backgroundColorLabel,
+                animation: parent.animation,
+                contentAnimationStyle: parent.animationStyle.getValue()|default('fade-up'),
+                contentAnimationDuration: parent.animationDuration.getValue()|default(1500),
+                contentAnimationOffset: parent.animationOffset.getValue()|default(200),
+                contentAnimationEasing: parent.animationEasing.getValue()|default(null)
+            }) }}
+            </div>
+        {% endif %}
+    </div>
+    {% include "_partials/pageBuilder/listing/teamListingStyle/#{teamListingStyle}" %}
+</div>

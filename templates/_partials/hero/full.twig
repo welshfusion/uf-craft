@@ -44,7 +44,7 @@
 {% set buttons = block.buttons.all() %}
 
 {% set headingTag = block.headingSize.getValue()|default('h1') %}
-{% set fontWeight = block.fontWeight.getValue()|default('bold') %}
+{% set fontWeight = block.fontWeight.getValue()|default('medium') %}
 {% set bannerHeight = block.bannerHeight.getValue()|default('medium') %}
 {% set contentAlignment = block.contentAlignment.value|default('left') %}
 {% set overlayOpacity = block.overlayOpacity.getValue|default('60') %}
@@ -80,7 +80,7 @@
 }) | raw %}
 
 <section class="{{ height[bannerHeight] }} {{ backgroundColor }} {{ bgOpacity }}">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8 relative flex flex-auto">
+    <div class="px-6 lg:px-8 relative flex flex-auto">
         {% if bgImage|length or backgroundVideos|length %}
         {{ render.renderVideo({
             image: bgImage,
@@ -100,6 +100,7 @@
         {% endif %}
 
         {% if basicContentsExist %}
+        <div style="border-top-left-radius:40px;border-top-right-radius:40px" class="relative flex flex-auto overflow-hidden pt-14">
             <div class="relative isolate flex w-full flex-col pt-9">
                 <svg aria-hidden="true" class="absolute inset-x-0 -top-14 -z-10 h-[1000px] w-full fill-neutral-50 stroke-neutral-950/5 [mask-image:linear-gradient(to_bottom_left,white_40%,transparent_50%)]">
                     <rect width="100%" height="100%" fill="url(#:R6lkq:)" stroke-width="0"></rect>
@@ -118,7 +119,7 @@
                         </defs>
                     {% endif %}
                 </svg>
-                <div class="mt-24 sm:mt-32 md:mt-56 {{ render.contentWidth({width: contentWidth}) }} {{ render.getAlignment([contentAlignment]) }}">
+                <div class="mx-auto max-w-7xl px-6 lg:px-8 mt-24 sm:mt-32 md:mt-56 {{ render.contentWidth({width: contentWidth}) }} {{ render.getAlignment([contentAlignment]) }}">
                     <div class="mx-auto max-w-2xl lg:max-w-none">
                         <div class="max-w-3xl" {{ contentAnimation|raw }}>
                         {{ render.basicContents({
@@ -148,8 +149,12 @@
                                 <dl class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:auto-cols-fr lg:grid-flow-col lg:grid-cols-none">
                                 {% for item in block.cards.all() %}
                                     <div class="flex flex-col-reverse pl-8 relative before:absolute after:absolute before:bg-green-500 after:bg-neutral-950/10 before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px" style="opacity: 1; transform: none;">
-                                        <dt class="mt-2 text-base text-neutral-600">{{ item.text }}</dt>
-                                        <dd class="font-display text-3xl font-semibold text-cyprus-500 sm:text-4xl">{{ item.heading }}</dd>
+                                        <dt class="mt-2 text-base text-neutral-600">
+                                            {{ item.text }}
+                                        </dt>
+                                        <dd class="font-display text-3xl font-semibold text-cyprus-500 sm:text-4xl">
+                                            {{ item.heading }}
+                                        </dd>
                                     </div>
                                 {% endfor %}
                                 </dl>
@@ -158,6 +163,7 @@
                     </div>
                 {% endif %}
             </div>
+        </div>
         {% endif %}
     </div>
 </section>

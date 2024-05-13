@@ -1,7 +1,7 @@
 {{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
 {% import "_/includes/macros" as render %}
 
-<div class="mt-10 relative">
+<div class="mt-10 relative" {{ contentAnimation|raw }}>
     {% if block.heading %}
         <h2 class="font-display text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
             {{ block.heading }}

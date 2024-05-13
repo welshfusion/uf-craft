@@ -1,0 +1,72 @@
+{# {{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
+{% import "_/includes/macros" as render %}
+
+{% set limit = block.limit|default(12) %}
+{% set teamListingStyle = block.listingStyle.value|default('slider') %}
+{% set filter = block.filter ?? null %}
+{% set pagination = block.pagination %}
+
+{% set relatedTeamMember = block.relatedTeamMember.one() %}
+{% set relatedteam = block.relatedTeamMember.limit(limit).with(['image']).cache() %}
+{% if not relatedteam|length %}
+    {% set relatedteam = craft.entries.section("team").limit(limit).with(['image']).cache() %}
+{% endif %}
+
+{% if relatedTeamMember|length %}
+    {% set relatedteam = relatedteam.parentFund(relatedTeamMember.id) %}
+{% endif %}
+
+{% do relatedteam.all() %}
+
+{% set swiperPrev = "swiper-prev-#{parent.getId()}" %}
+{% set swiperNext = "swiper-next-#{parent.getId()}" %}
+
+{% set settings = {
+    "loop":false,
+    "slidesPerView": 1,
+    "spaceBetween": 24,
+    "autoHeight": true,
+    "breakpoints": {"768": { "slidesPerView": "2.2" }, "1024": { "slidesPerView": "4.2" }},
+    "navigation":{"nextEl":".#{swiperNext}","prevEl":".#{swiperPrev}"}
+} %}
+
+{% if relatedteam|length > 3 %}
+<div class="lg:col-span-3">
+    <div role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-8">
+        <div class="swiper swiper-slider !pl-4 sm:!pl-[calc(50vw-252px)] md:!pl-[calc(50vw-366px)] lg:!pl-[calc(50vw-478px)] xl:!pl-[calc(50vw-610px)]"
+            data-modulenav="1"
+            data-modulepagination="1"
+            data-moduleautoplay=""
+            data-settings='{{ settings|json_encode|raw }}'
+        >
+        <div class="swiper-wrapper" {{ listingAnimation|raw }}>
+        {% for item in relatedteam %}
+        {% set image = item.image.one() %}
+            <div class="swiper-slide" style="opacity: 1; transform: none;">
+                <div class="group relative overflow-hidden rounded-3xl bg-neutral-100">
+                    {{ render.setImage({
+                        image: image,
+                        alt: image.title,
+                        width: 600,
+                        height: null,
+                        class: 'h-96 w-full object-cover grayscale transition duration-500 motion-safe:group-hover:scale-105'
+                    }) }}
+
+                    {% if item.title|length or item.designation|length %}
+                        <div class="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black to-black/0 to-40% p-6">
+                            <p class="font-display text-base/6 font-semibold tracking-wide text-white">
+                                {{ item.title }}
+                            </p>
+                            <p class="mt-2 text-sm text-white">
+                                {{ item.designation }}
+                            </p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+{{ craft.vite.script("src/js/swiper.js") }} #}

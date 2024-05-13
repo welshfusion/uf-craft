@@ -1,0 +1,127 @@
+{#
+=========================================================
+    Container (container)
+
+    Variables
+        - Block (block)
+
+    Fields:
+        Content:
+            Child:
+              Container (container)
+
+        Auxiliary:
+            - Eyebrow (eyebrow)
+            - Heading (heading)
+            - Text (text)
+            - Buttons (buttons) [Matrix]
+                - Button Type (buttonType)
+                - Button Color (buttonColor)
+                - Icon (icon)
+                - Icon Position (iconPosition)
+                - Button (button)
+
+        Settings:
+            - Content Width (contentWidth)
+            - Container Size (containerSize)
+            - Rounded Corners (roundedCorners)
+            - Background Image (image)
+            - Video (backgroundVideo)
+            - Background Color (backgroundColor)
+            - Overlay Opacity (overlayOpacity)
+            - Content Alignment (contentAlignment)
+            - Heading Size (headingSize)
+            - Font Weight (fontWeight)
+=========================================================
+#}
+{{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
+{% import "_/includes/macros" as render %}
+
+{# Parent Block Fields Start #}
+{% set parent = parent ?? null %}
+{% set childContainer = childContainer ?? false %}
+{% set containerWrapper = containerWrapper ?? false %}
+{% set containerImage = containerImage ?? false %}
+{% set sectionTag = childContainer or containerWrapper ? 'div' : 'section' %}
+{# Parent Block Fields End #}
+
+{% set containerSize = block.containerSize.getValue()|default('container') %}
+{% set headingTag = block.headingSize.getValue()|default('h2') %}
+{% set fontWeight = block.fontWeight.getValue()|default('bold') %}
+{% set contentAlignment = block.contentAlignment.value|default('left') %}
+{% set contentWidth = block.contentWidth|default('2;10') %}
+{% set roundedCorners = block.roundedCorners ?? false %}
+{% set overlayOpacity = block.overlayOpacity.getValue|default('60') %}
+
+{% set conbackgroundColor = conbackgroundColor ?? null %}
+{% set backgroundColorLabel = block.backgroundColor.label|default(conbackgroundColor ?? 'cyprus') %}
+{% set containerBgExist = conbackgroundColor != backgroundColorLabel %}
+{% set backgroundColor = render.color({
+    handle: backgroundColorLabel,
+    swatch: 'background'
+}) %}
+
+{% set bgOpacity = render.setOpacity({
+    opacity: overlayOpacity,
+    opacityType: 'bg'
+}) %}
+
+{% set containers = block.container.all() %}
+{% set buttons = block.buttons.all() %}
+{% set bgImage = block.image.one() %}
+{% set videos = block.backgroundVideo ?? null %}
+
+{% set basicContentsExist = block.eyebrow|length or block.heading|length or block.text|length or buttons|length %}
+
+<section class="relative {{ spacing }} {{ backgroundColor }} {{ bgOpacity }} {% if roundedCorners %} rounded-3xl {% endif %} {{ containerSize == 'container' ? 'container' }}">
+        {% if bgImage|length or videos|length  %}
+            {{ render.renderVideo({
+                image: bgImage,
+                alt: bgImage.title,
+                width: bgImage.width,
+                height: bgImage.height,
+                class: "absolute inset-0 -z-10 h-full w-full object-cover rounded-3xl",
+                lazy: false,
+                videos: videos,
+                videoClass: "absolute inset-0 -z-10 h-full w-full object-cover rounded-3xl",
+                videoType: 'background',
+                videoPoster: bgImage,
+                videoAttrs: {
+                    preload: "none",
+                }
+            }) }}
+        {% endif %}
+
+        <div class="container relative z-10 {{ render.contentWidth({width: contentWidth}) }}">
+            {% if basicContentsExist %}
+            <div class="mb-14">
+                {{ render.basicContents({
+                    eyebrow: block.eyebrow,
+                    heading: block.heading,
+                    text: block.text,
+                    button: buttons,
+                    overrideParagraphFontSize: 'text-xl',
+                    headingTag: headingTag,
+                    fontWeight: fontWeight,
+                    backgroundColorLabel: backgroundColorLabel,
+                }) }}
+            </div>
+            {% endif %}
+
+            {% include "_partials/blocks" with {
+                pageBuilder: containers,
+                parent: block.type.handle,
+                conbackgroundColor: bgImage|length ? 'none' : backgroundColorLabel,
+                conOverlayOpacity: overlayOpacity,
+                containerImage: bgImage|length,
+                containerWrapper: true,
+                firstBlockSpacing: {
+                    'defaultMarginTop' : 'none',
+                },
+                lastBlockSpacing: {
+                    'defaultMarginBottom' : 'none',
+                },
+            } %}
+        </div>
+    </div>
+</section>
