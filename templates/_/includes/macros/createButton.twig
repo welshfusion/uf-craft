@@ -37,7 +37,7 @@
         colors[buttonType][buttonColor] ?? null,
         extraClasses|length ? extraClasses : buttonType == 'link'
             ? "flex md:text-2xl text-lg font-bold border-b-2 border-transparent duration-300 items-center inline-block leading-6 transition-all #{button.classes}"
-            : "inline-flex rounded-full text-xl px-4 py-1.5 font-semibold transition #{button.classes} " ~ (buttonType == 'outline' ? 'border'),
+            : "inline-flex rounded-full px-4 py-1.5 text-sm font-semibold transition #{button.classes} " ~ (buttonType == 'outline' ? 'border'),
         icon|length and iconPosition == 'left' ? 'flex-row-reverse' : null
     ]
 }) %}

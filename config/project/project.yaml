@@ -1,4 +1,4 @@
-dateModified: 1715600350
+dateModified: 1715694750
 elementSources:
   craft\elements\Entry:
     -
@@ -175,6 +175,7 @@ meta:
     bdba9605-68a0-44bf-8c48-4e37979c5560: 'Text Cards' # Text Cards
     bff0694b-0a96-4afa-ba0e-b4e834e9a153: 'Padding Bottom' # Padding Bottom
     c0063996-cdc5-42d9-bac2-18ef5ae9c736: 'Contact Cards' # Contact Cards
+    c6a95503-819b-4c0f-8d9d-6099c2cdccd5: 'Footer Navigation' # Footer Navigation
     c8e64d8d-7d4e-4182-8bed-ec9013e8aad4: Tag # Tag
     c729cee4-a2ec-48ef-8053-907b01d1a630: Cards # Cards
     c16118bb-d24d-489d-8c5a-2deabdcd6e16: 'Padding Top' # Padding Top
@@ -183,9 +184,11 @@ meta:
     cc5e2abd-42a9-498e-a6f6-d6596c99d2c5: Limit # Limit
     cf5012cf-d02e-4ac7-98d1-891c12d25777: Button # Button
     d2ce1189-64b3-48a5-8648-327f21b04a5c: Pages # Pages
+    d3b98687-8fc8-4293-a0ac-aa5078461933: 'Header Navigation' # Header Navigation
     d5b54786-d550-43a6-bc46-0e9b8edbae51: Simple # Simple
     d5e72f4c-5e9b-4b94-b75c-b4d69e74f1a2: 'Per Row Limit' # Per Row Limit
     d5375257-05b7-4c6e-b808-81ca62e56f9f: 'Contact Social Links' # Contact Social Links
+    dbcfc862-d508-4082-a32b-0a6ff36eb41a: 'Alt Logo' # Alt Logo
     e084ec80-7142-4f11-95cc-afaccaed2cf6: 'Column Alignment' # Column Alignment
     e38ac257-70df-4d50-9384-503f2133f772: 'Heading Size' # Heading Size
     e24737b0-c5aa-4f05-9fb5-fc42d7f31bb0: 'Icon Position' # Icon Position

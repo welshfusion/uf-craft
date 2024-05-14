@@ -18,10 +18,10 @@ fieldLayouts:
             uid: 7245da0f-be45-434b-8973-90c5a46b785c
             userCondition: null
             warning: null
-            width: 100
+            width: 50
           -
             elementCondition: null
-            fieldUid: b725ddfa-71d5-44fd-b67b-d2291907d5fd # Buttons
+            fieldUid: dbcfc862-d508-4082-a32b-0a6ff36eb41a # Alt Logo
             handle: null
             includeInCards: false
             instructions: null
@@ -30,7 +30,7 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 97e769d9-766f-4d04-8a24-1a8fe131d424
+            uid: 3298251e-85bb-4f33-900e-7a2dc2aaf0f8
             userCondition: null
             warning: null
             width: 50
@@ -48,7 +48,22 @@ fieldLayouts:
             uid: d7c13ffb-9229-4ba3-91bd-067f58121239
             userCondition: null
             warning: null
-            width: 50
+            width: 25
+          -
+            elementCondition: null
+            fieldUid: b725ddfa-71d5-44fd-b67b-d2291907d5fd # Buttons
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 97e769d9-766f-4d04-8a24-1a8fe131d424
+            userCondition: null
+            warning: null
+            width: 75
           -
             elementCondition: null
             type: craft\fieldlayoutelements\HorizontalRule

@@ -116,7 +116,7 @@
             {% endif %}
 
             {% if contactInfo|length %}
-                <div class="mt-10 border-t {{ render.foregroundColors({background: backgroundColorLabel, type: 'border'}) }}">
+                <div class="mt-10">
                     {% for item in contactInfo %}
                         {% if item.heading|length %}
                             <h3 class="mt-10 font-display text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}" {{ contentAnimation|raw }}>

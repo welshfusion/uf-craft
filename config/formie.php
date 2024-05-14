@@ -2,9 +2,9 @@
 
 return [
     'themeConfig' => [
-        "fieldInput" => [
+        "formWrapper" => [
             "attributes" => [
-                "class" => 'peer !block !w-full !border !border-neutral-300 !bg-transparent !px-6 !pb-4 !pt-12 !text-base/6 !text-cyprus-500 !ring-4 !ring-transparent !transition focus:!border-neutral-950 focus:!outline-none focus:!ring-neutral-950/5 group-first:!rounded-t-2xl group-last:!rounded-b-2xl',
+                "class" => 'class="!peer !block !w-full !border !border-neutral-300 !bg-transparent !px-6 !pb-4 !pt-12 !ring-4 ring-transparent transition focus:!border-neutral-950 focus:!outline-none focus:!ring-neutral-950/5 group-first:!rounded-t-2xl group-last:!rounded-b-2xl"',
             ],
         ],
 
@@ -16,7 +16,7 @@ return [
 
         "submitButton" => [
             "attributes" => [
-                "class" => '!mt-10 !inline-flex !rounded-full !px-4 !py-1.5 !text-sm !font-semibold !transition !bg-cyprus-500 !text-white hover:!bg-green-500',
+                "class" => '!mt-10 !inline-flex !rounded-full !px-4 !py-1.5 !text-sm !font-semibold !transition !bg-cyprus-500 !text-white hover:!bg-cyprus-600',
             ],
         ],
     ],
