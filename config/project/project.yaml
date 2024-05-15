@@ -1,4 +1,4 @@
-dateModified: 1715694750
+dateModified: 1715772518
 elementSources:
   craft\elements\Entry:
     -
@@ -262,11 +262,6 @@ plugins:
     enabled: true
     licenseKey: F2B5O0X9MYHV941V3SAP806S
     schemaVersion: 2.1.0
-  neo:
-    edition: standard
-    enabled: true
-    licenseKey: ATG0IVUNU15K92BAROSV55RF
-    schemaVersion: 5.0.0.1
   oembed:
     edition: standard
     enabled: true

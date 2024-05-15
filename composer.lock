@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f72e3207a4195db5b5f70c201555f01b",
+    "content-hash": "e9089a00ab49fb18d1385dfa91c3d25c",
     "packages": [
         {
             "name": "amici/craft-super-dynamic-fields",
@@ -6685,59 +6685,6 @@
             "time": "2024-04-10T12:36:07+00:00"
         },
         {
-            "name": "spicyweb/craft-neo",
-            "version": "5.0.0-beta.10",
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spicywebau/craft-neo/zipball/3b17712408b9985ce8c5c65cd5e27aa069330427",
-                "reference": "3b17712408b9985ce8c5c65cd5e27aa069330427",
-                "shasum": ""
-            },
-            "require": {
-                "craftcms/cms": "^5.0.0",
-                "php": "^8.2"
-            },
-            "type": "craft-plugin",
-            "extra": {
-                "handle": "neo",
-                "name": "Neo",
-                "schemaVersion": "5.0.0.1",
-                "class": "benf\\neo\\Plugin",
-                "changelogUrl": "https://github.com/spicywebau/craft-neo/blob/5.x/CHANGELOG.md",
-                "downloadUrl": "https://github.com/spicywebau/craft-neo/archive/refs/tags/5.0.0-beta.10.zip"
-            },
-            "autoload": {
-                "psr-4": {
-                    "benf\\neo\\": "src/"
-                }
-            },
-            "license": [
-                "proprietary"
-            ],
-            "authors": [
-                {
-                    "name": "Spicy Web",
-                    "homepage": "https://github.com/spicywebau"
-                }
-            ],
-            "description": "A Matrix-like field type that uses existing fields",
-            "keywords": [
-                "cms",
-                "craftcms",
-                "field",
-                "matrix",
-                "neo",
-                "plugin"
-            ],
-            "support": {
-                "issues": "https://github.com/spicywebau/craft-neo/issues",
-                "source": "https://github.com/spicywebau/craft-neo",
-                "docs": "https://github.com/spicywebau/craft-neo/blob/5.0.0-beta.10/README.md",
-                "rss": "https://github.com/spicywebau/craft-neo/commits/5.x.atom"
-            },
-            "time": "2024-05-02T02:57:19+00:00"
-        },
-        {
             "name": "spomky-labs/cbor-php",
             "version": "3.0.4",
             "dist": {
@@ -10655,5 +10602,5 @@
     "platform-overrides": {
         "php": "8.2"
     },
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
