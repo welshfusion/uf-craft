@@ -4,26 +4,30 @@
 {% set headerNavigation = header.navigation|length ? craft.navigation.nodes(header.navigation).level(1).cache().all() : null %}
 {% set image = header.logo.one() %}
 {% set altImage = header.altLogo.one() %}
+{% set headerButtons = header.buttons.all() %}
 
-<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-<header x-data="{ isOpen: false }">
+<header
+    x-data="{
+        isOpen: false
+    }"
+>
     <div class="absolute left-0 right-0 top-2 z-40 pt-14">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
             <div class="mx-auto max-w-2xl lg:max-w-none">
                 <div class="flex items-center justify-between">
-                {% if image|length %}
-                    <a href="{{ siteUrl }}" aria-label="Home" class="logo">
+                    {% if image|length %}
+                    <a href="{{ siteUrl }}" aria-label="{{ siteName }}">
                         {{ render.setImage({
                             image: image,
+                            alt: image.title,
                             width: 130,
                             height: 32,
                         }) }}
                     </a>
-                {% endif %}
+                    {% endif %}
+
                     <div class="flex items-center gap-x-8">
-                        <span class="relative top-px">
-                            {% for button in header.buttons.all() %}
+                        {% for button in headerButtons %}
                             {{ render.createButton({
                                 button: button.button,
                                 buttonType: button.buttonType.getValue()|default("button"),
@@ -31,8 +35,7 @@
                                 icon: button.icon,
                                 iconPosition: button.iconPosition.getValue()|default('right'),
                             }) }}
-                            {% endfor %}
-                        </span>
+                        {% endfor %}
 
                         <button type="button"
                             @click="isOpen = !isOpen"
@@ -51,8 +54,7 @@
         </div>
     </div>
 
-    <!-- Navigation menu -->
-    <div id="navigation-menu"
+    <div id="navigation-menu" class="relative z-50 overflow-hidden bg-cyprus-500 pt-2"
         x-show="isOpen"
         x-transition:enter="transition ease-out duration-300"
         x-transition:enter-start="opacity-0 transform -translate-y-2"
@@ -60,25 +62,25 @@
         x-transition:leave="transition ease-in duration-300"
         x-transition:leave-start="opacity-100 transform translate-y-0"
         x-transition:leave-end="opacity-0 transform -translate-y-2"
-        class="relative z-50 overflow-hidden bg-cyprus-500 pt-2"
-            :aria-hidden="!isOpen"
-            style="display: none;"
+        style="display: none;"
     >
-        <div id=":r10:" class="relative z-50 overflow-hidden bg-cyprus-500 pt-2" style="height: auto; transform: none; transform-origin: 50% 50% 0px;">
-            <div class="bg-green-500" style="transform: none; transform-origin: 50% 50% 0px;">
+        <div class="relative z-50 overflow-hidden bg-cyprus-500 pt-2 h-auto transform-none origin-[50%_50%]">
+            <div class="bg-green-500 transform-none origin-[50%_50%]">
                 <div class="bg-cyprus-500 pb-16 pt-14">
                     <div class="mx-auto max-w-7xl px-6 lg:px-8">
                         <div class="mx-auto max-w-2xl lg:max-w-none">
                             <div class="flex items-center justify-between">
+                                <a href="{{ siteUrl }}" aria-label="{{ siteName }}">
                                 {% if altImage|length %}
-                                    <a href="{{ siteUrl }}" aria-label="Home" class="logo">
-                                        {{ render.setImage({
-                                            image: altImage,
-                                            width: 130,
-                                            height: 32,
-                                        }) }}
-                                    </a>
+                                    {{ render.setImage({
+                                        image: altImage,
+                                        alt: image.title,
+                                        width: 130,
+                                        height: 32,
+                                    }) }}
                                 {% endif %}
+                                </a>
+
                                 <div class="flex items-center gap-x-8">
                                     <span class="relative top-px">
                                         {% for button in header.buttons.all() %}

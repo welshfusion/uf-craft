@@ -33,27 +33,32 @@ export function menu(wrapper = "main-menu") {
     //     }
     //   });
 
-    let parentNavigationItemsForMobile = mainNavigationWrapper.querySelectorAll(
-        ".js-toggle-mobile-inner-nav"
-    );
-    parentNavigationItemsForMobile.forEach(function (item) {
-        item.addEventListener("click", () => {
-            if (
-                item.parentElement.nextElementSibling.classList.contains(
-                    "is-open"
-                )
-            ) {
-                item.parentElement.nextElementSibling.classList.remove(
-                    "is-open"
-                );
-                item.parentElement.nextElementSibling.removeAttribute("style");
-                item.querySelector("div").classList.remove("hidden");
-            } else {
-                item.parentElement.nextElementSibling.classList.add("is-open");
-                item.parentElement.nextElementSibling.style.height =
-                    item.parentElement.nextElementSibling.scrollHeight + "px";
-                item.querySelector("div").classList.add("hidden");
-            }
-        });
-    });
+    if (mainNavigationWrapper) {
+        let parentNavigationItemsForMobile = mainNavigationWrapper.querySelectorAll(
+            ".js-toggle-mobile-inner-nav"
+        );
+
+        if (parentNavigationItemsForMobile) {
+            parentNavigationItemsForMobile.forEach(function (item) {
+                item.addEventListener("click", () => {
+                    if (
+                        item.parentElement.nextElementSibling.classList.contains(
+                            "is-open"
+                        )
+                    ) {
+                        item.parentElement.nextElementSibling.classList.remove(
+                            "is-open"
+                        );
+                        item.parentElement.nextElementSibling.removeAttribute("style");
+                        item.querySelector("div").classList.remove("hidden");
+                    } else {
+                        item.parentElement.nextElementSibling.classList.add("is-open");
+                        item.parentElement.nextElementSibling.style.height =
+                            item.parentElement.nextElementSibling.scrollHeight + "px";
+                        item.querySelector("div").classList.add("hidden");
+                    }
+                });
+            });
+        }
+    }
 }

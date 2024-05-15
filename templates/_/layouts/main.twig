@@ -6,7 +6,6 @@
     lang: craft.app.language,
 } %}
 <html {{ attr(htmlAttrs) }}>
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,7 +32,10 @@
     {% endfor %}
 </head>
 
-<body class="flex min-h-full flex-col font-sans"  x-data="{ isOverflowHidden: false }" :class="{ 'overflow-hidden lg:overflow-y-auto': isOverflowHidden }">
+<body class="flex min-h-full flex-col font-sans"
+    x-data="{ isOverflowHidden: false }"
+    :class="{ 'overflow-hidden lg:overflow-y-auto': isOverflowHidden }"
+>
     {# Include Tracking Scripts Head #}
     {% for script in trackingScripts|filter(script => script.scriptPosition.value == "bodyStart" and (not script.addOnlyInProduction or (script.addOnlyInProduction and craft.app.config.env == "production"))) %}
         {{ render.trackingMacro({
@@ -47,7 +49,7 @@
 
     {#
     ============================================
-    Include Header
+        Include Header
     ============================================
     #}
     {% include "_/includes/header" %}
@@ -56,7 +58,7 @@
 
     {#
     ============================================
-    Include Footer
+        Include Footer
     ============================================
     #}
     {% include "_/includes/footer" %}
@@ -71,7 +73,6 @@
             htmlCode: script.htmlCode
         }) }}
     {% endfor %}
-
 </body>
 </html>
 {% endminify %}
