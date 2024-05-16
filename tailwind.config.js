@@ -8,7 +8,9 @@ module.exports = {
         "./templates/**/*.{html,twig,json,php,js}",
         "./config/formie.php",
     ],
-    safelist: [],
+
+    safelist: process.env.PURGE_CSS == "true" ? [] : [{ pattern: /.*/ }],
+
     theme: {
         container: {
             center: true,
@@ -114,9 +116,6 @@ module.exports = {
             //   76: "302px",
             // },
         },
-    },
-    corePlugins: {
-        aspectRatio: false,
     },
     plugins: [
         require("@tailwindcss/aspect-ratio"),
