@@ -111,6 +111,10 @@ module.exports = {
                 custom: "0 9px 26px 0px rgba(23, 15, 73, 0.05)",
             },
 
+            borderRadius: {
+                '4xl': '2.5rem',
+            },
+
             // spacing: {
             //   96: "24rem",
             //   76: "302px",
