@@ -124,7 +124,7 @@
                 <div class="mt-10 lg:flex lg:justify-end lg:gap-x-8 lg:group-even/section:justify-start xl:gap-x-20 {{ imagePosition == 'left' ? 'md:flex-row' : 'md:flex-row-reverse' }}">
                     {% if image|length or videos|length %}
                         <div class="flex justify-center" {{ contentAnimation|raw }}>
-                            <div class="w-[33.75rem] flex-none lg:w-[45rem]" style="opacity: 1; transform: none;">
+                            <div class="w-[33.75rem] flex-none lg:w-[45rem]" >
                                 <div class="justify-center lg:justify-end lg:group-even/section:justify-start relative flex aspect-[719/680] w-full grayscale">
                                     <svg viewBox="0 0 655 680" fill="none" class="h-full">
                                         <g clip-path="url(#:S1:-clip)" class="group">
@@ -182,7 +182,7 @@
 
                     {% if basicContentsExist2 %}
                     <div class="mt-12 lg:mt-0 lg:w-[37rem] lg:flex-none lg:group-even/section:order-first">
-                        <div style="opacity: 1; transform: none;">
+                        <div>
                             {{ render.basicContents({
                                 eyebrow: block.eyebrow,
                                 heading: block.heading,

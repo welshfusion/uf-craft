@@ -5,7 +5,7 @@
 {% set teamListingStyle = block.listingStyle.value|default('slider') %}
 
 <div class="grid grid-cols-1 gap-6 pt-12 sm:pt-16 lg:grid-cols-4 xl:gap-8">
-    <div style="opacity: 1; transform: none;">
+    <div>
         {% if basicContentsExist|length %}
             <div class="max-w-xl">
             {{ render.basicContents({

@@ -51,7 +51,7 @@
 	</div>
 
 	<div id="navigation-menu" class="relative z-50 overflow-hidden bg-cyprus-500 pt-2" aria-hidden="true">
-		<div class="bg-cyprus-500"
+		<div class="bg-green-500"
 			x-show="isOpen"
 			x-transition:enter="transition ease-out duration-300"
 			x-transition:enter-start="opacity-0 transform -translate-y-2"
@@ -95,7 +95,7 @@
 
 									<span class="relative top-px">Contact us</span>
 								</a>
-								<button type="button" aria-expanded="false" aria-controls=":Rkq:" class="group -m-2.5 rounded-full p-2.5 transition hover:bg-white/10" aria-label="Toggle navigation">
+								<button type="button" @click="isOpen = !isOpen" aria-expanded="false" aria-controls=":Rkq:" class="group -m-2.5 rounded-full p-2.5 transition hover:bg-white/10" aria-label="Toggle navigation">
 									<svg viewBox="0 0 24 24" aria-hidden="true" class="h-6 w-6 fill-white group-hover:fill-neutral-200">
 										<path d="m5.636 4.223 14.142 14.142-1.414 1.414L4.222 5.637z"></path>
 										<path d="M4.222 18.363 18.364 4.22l1.414 1.414L5.636 19.777z"></path>
@@ -111,11 +111,11 @@
 					<div class="mx-auto max-w-7xl px-6 lg:px-8">
 						<div class="mx-auto max-w-2xl lg:max-w-none">
 							<div class="grid grid-cols-1 sm:grid-cols-2">
-								<a class="group relative isolate -mx-6 bg-cyprus-500 px-6 py-10 even:mt-px sm:mx-0 sm:px-0 sm:py-16 sm:odd:pr-16 sm:even:mt-0 sm:even:border-l sm:even:border-uf-green sm:even:pl-16" href="/work">
+								<a class="group relative isolate -mx-6 bg-cyprus-500 px-6 py-10 even:mt-px sm:mx-0 sm:px-0 sm:py-16 sm:odd:pr-16 sm:even:mt-0 sm:even:border-l sm:even:border-green-500 sm:even:pl-16" href="/work">
 									Our Work
 									<span class="absolute inset-y-0 -z-10 w-screen bg-neutral-900 opacity-0 transition group-odd:right-0 group-even:left-0 group-hover:opacity-100"></span>
 								</a>
-								<a class="group relative isolate -mx-6 bg-cyprus-500 px-6 py-10 even:mt-px sm:mx-0 sm:px-0 sm:py-16 sm:odd:pr-16 sm:even:mt-0 sm:even:border-l sm:even:border-uf-green sm:even:pl-16" href="/about">
+								<a class="group relative isolate -mx-6 bg-cyprus-500 px-6 py-10 even:mt-px sm:mx-0 sm:px-0 sm:py-16 sm:odd:pr-16 sm:even:mt-0 sm:even:border-l sm:even:border-green-500 sm:even:pl-16" href="/about">
 									About Us
 									<span class="absolute inset-y-0 -z-10 w-screen bg-neutral-900 opacity-0 transition group-odd:right-0 group-even:left-0 group-hover:opacity-100"></span>
 								</a>
@@ -129,11 +129,11 @@
 					<div class="mx-auto max-w-7xl px-6 lg:px-8">
 						<div class="mx-auto max-w-2xl lg:max-w-none">
 							<div class="grid grid-cols-1 sm:grid-cols-2">
-								<a class="group relative isolate -mx-6 bg-cyprus-500 px-6 py-10 even:mt-px sm:mx-0 sm:px-0 sm:py-16 sm:odd:pr-16 sm:even:mt-0 sm:even:border-l sm:even:border-uf-green sm:even:pl-16" href="/process">Our Process
+								<a class="group relative isolate -mx-6 bg-cyprus-500 px-6 py-10 even:mt-px sm:mx-0 sm:px-0 sm:py-16 sm:odd:pr-16 sm:even:mt-0 sm:even:border-l sm:even:border-green-500 sm:even:pl-16" href="/process">Our Process
 									<span class="absolute inset-y-0 -z-10 w-screen bg-neutral-900 opacity-0 transition group-odd:right-0 group-even:left-0 group-hover:opacity-100"></span>
 								</a>
 
-								<a class="group relative isolate -mx-6 bg-cyprus-500 px-6 py-10 even:mt-px sm:mx-0 sm:px-0 sm:py-16 sm:odd:pr-16 sm:even:mt-0 sm:even:border-l sm:even:border-uf-green sm:even:pl-16" href="/blog">
+								<a class="group relative isolate -mx-6 bg-cyprus-500 px-6 py-10 even:mt-px sm:mx-0 sm:px-0 sm:py-16 sm:odd:pr-16 sm:even:mt-0 sm:even:border-l sm:even:border-green-500 sm:even:pl-16" href="/blog">
 									Blog
 									<span class="absolute inset-y-0 -z-10 w-screen bg-neutral-900 opacity-0 transition group-odd:right-0 group-even:left-0 group-hover:opacity-100"></span>
 								</a>
@@ -142,7 +142,7 @@
 					</div>
 				</div>
 			</nav>
-			<div class="relative bg-cyprus-500 before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-uf-green">
+			<div class="relative bg-cyprus-500 before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-green-500">
 				<div class="mx-auto max-w-7xl px-6 lg:px-8">
 					<div class="mx-auto max-w-2xl lg:max-w-none">
 						<div class="grid grid-cols-1 gap-y-10 pb-16 pt-10 sm:grid-cols-2 sm:pt-16">

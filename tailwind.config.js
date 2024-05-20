@@ -82,10 +82,7 @@ module.exports = {
 
             fontFamily: {
                 //Please use font name as variable key instead sans. For example "faro: ['faro']"
-                sans: [
-                    ["Mona Sans", "Arial", "sans-serif"],
-                    { fontVariationSettings: '"wdth" 125' },
-                ],
+                sans: ["Mona Sans", "Arial", "sans-serif"],
                 display: [
                     ["Mona Sans", "Arial", "sans-serif"],
                     { fontVariationSettings: '"wdth" 125' },
@@ -112,7 +109,7 @@ module.exports = {
             },
 
             borderRadius: {
-                '4xl': '2.5rem',
+                "4xl": "2.5rem",
             },
 
             // spacing: {

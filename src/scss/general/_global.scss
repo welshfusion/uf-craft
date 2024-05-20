@@ -1,0 +1,48 @@
+.typography > * {
+    @apply mt-6 mb-6;
+}
+
+.typography p {
+    @apply text-xl text-neutral-950;
+}
+
+/* Headings */
+.typography h2 {
+    @apply mt-4 text-2xl font-semibold;
+}
+
+.typography h3 {
+    @apply mt-10 text-xl font-semibold;
+}
+
+.typography h2,
+.typography h3 {
+    @apply mt-0;
+}
+
+/* Lists */
+.typography ul,
+.typography ol {
+    @apply pl-6;
+}
+
+.typography ul {
+    @apply list-disc;
+}
+
+.typography ol {
+    @apply list-decimal;
+}
+
+.typography li {
+    @apply mt-6 pl-3;
+}
+
+.typography li > *,
+.typography li li {
+    @apply mt-4;
+}
+
+.typography ol > li::marker {
+    @apply font-semibold text-base;
+}

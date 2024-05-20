@@ -32,7 +32,7 @@
             {% for item in relatedteam %}
             {% set image = item.image.one() %}
                 <li>
-                    <div style="opacity: 1; transform: none;">
+                    <div>
                         <div class="group relative overflow-hidden rounded-3xl bg-neutral-100">
                             {{ render.setImage({
                                 image: image,
