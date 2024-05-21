@@ -72,6 +72,21 @@ fieldLayouts:
           -
             elementCondition: null
             fieldUid: ec70c780-286c-4027-8904-ecdb25e3e1c1 # Heading
+            handle: heading3
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 927759bf-1161-49b2-952b-dc8fd46f7629
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: ec70c780-286c-4027-8904-ecdb25e3e1c1 # Heading
             handle: null
             includeInCards: false
             instructions: null

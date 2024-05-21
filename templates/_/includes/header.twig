@@ -2,9 +2,10 @@
 {% import "_/includes/macros" as render %}
 
 {% set headerNavigation = header.navigation|length ? craft.navigation.nodes(header.navigation).level(1).cache().all() : null %}
-{% set image = header.logo.one() %}
-{% set altImage = header.altLogo.one() %}
+{% set headerLogo = header.logo.one() %}
+{% set altLogo = header.altLogo.one() %}
 {% set headerButtons = header.buttons.all() %}
+{% set socialLinks = header.socialLinks.all() %}
 
 <header
     x-data="{
@@ -15,13 +16,12 @@
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
             <div class="mx-auto max-w-2xl lg:max-w-none">
                 <div class="flex items-center justify-between">
-                    {% if image|length %}
+                    {% if headerLogo|length %}
                     <a href="{{ siteUrl }}" aria-label="{{ siteName }}">
                         {{ render.setImage({
-                            image: image,
-                            alt: image.title,
-                            width: 130,
-                            height: 32,
+                            image: headerLogo,
+                            alt: headerLogo.title,
+                            class: 'h-8'
                         }) }}
                     </a>
                     {% endif %}
@@ -37,12 +37,9 @@
                             }) }}
                         {% endfor %}
 
-                        <button type="button"
+                        <button type="button" class="group -m-2.5 rounded-full p-2.5 transition hover:bg-neutral-950/10" aria-label="Toggle navigation"
                             @click="isOpen = !isOpen"
                             :aria-expanded="isOpen"
-                            aria-controls="navigation-menu"
-                            class="group rounded-full p-2.5 transition hover:bg-neutral-950/10"
-                            aria-label="Toggle navigation"
                         >
                             <svg viewBox="0 0 24 24" aria-hidden="true" class="h-6 w-6 fill-neutral-950 group-hover:fill-neutral-700">
                                 <path d="M2 6h20v2H2zM2 16h20v2H2z"></path>
@@ -54,132 +51,139 @@
         </div>
     </div>
 
-    <div id="navigation-menu" class="relative z-50 overflow-hidden bg-cyprus-500 pt-2"
-        x-show="isOpen"
-        x-transition:enter="transition ease-out duration-300"
-        x-transition:enter-start="opacity-0 transform -translate-y-2"
-        x-transition:enter-end="opacity-100 transform translate-y-0"
-        x-transition:leave="transition ease-in duration-300"
-        x-transition:leave-start="opacity-100 transform translate-y-0"
-        x-transition:leave-end="opacity-0 transform -translate-y-2"
-        style="display: none;"
-    >
-        <div class="relative z-50 overflow-hidden bg-cyprus-500 pt-2 h-auto transform-none origin-[50%_50%]">
-            <div class="bg-green-500 transform-none origin-[50%_50%]">
-                <div class="bg-cyprus-500 pb-16 pt-14">
-                    <div class="mx-auto max-w-7xl px-6 lg:px-8">
-                        <div class="mx-auto max-w-2xl lg:max-w-none">
-                            <div class="flex items-center justify-between">
-                                <a href="{{ siteUrl }}" aria-label="{{ siteName }}">
-                                {% if altImage|length %}
-                                    {{ render.setImage({
-                                        image: altImage,
-                                        alt: image.title,
-                                        width: 130,
-                                        height: 32,
-                                    }) }}
-                                {% endif %}
-                                </a>
+    <div id="navigation-menu" class="relative z-50 overflow-hidden bg-cyprus-500 pt-2" aria-hidden="true">
+        <div class="bg-green-500"
+            x-show="isOpen"
+            x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0 transform -translate-y-2"
+            x-transition:enter-end="opacity-100 transform translate-y-0"
+            x-transition:leave="transition ease-in duration-300"
+            x-transition:leave-start="opacity-100 transform translate-y-0"
+            x-transition:leave-end="opacity-0 transform -translate-y-2"
+            style="display: none;"
+        >
+            <div class="bg-cyprus-500 pb-16 pt-14">
+                <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                    <div class="mx-auto max-w-2xl lg:max-w-none">
+                        <div class="flex items-center justify-between">
+                            {% if altLogo|length %}
+                            <a aria-label="Home" href="/html/home">
+                                {{ render.setImage({
+                                    image: altLogo,
+                                    alt: altLogo.title,
+                                    class: 'hidden h-8 sm:block'
+                                }) }}
+                            </a>
+                            {% endif %}
 
-                                <div class="flex items-center gap-x-8">
-                                    <span class="relative top-px">
-                                        {% for button in header.buttons.all() %}
-                                        {{ render.createButton({
-                                            button: button.button,
-                                            buttonType: button.buttonType.getValue()|default("button"),
-                                            buttonColor: button.buttonColor.label|default('white'),
-                                            icon: button.icon,
-                                            iconPosition: button.iconPosition.getValue()|default('right'),
-                                        }) }}
-                                        {% endfor %}
-                                    </span>
-                                    <button type="button"
-                                            @click="isOpen = !isOpen"
-                                            :aria-expanded="isOpen"
-                                            aria-controls="navigation-menu"
-                                            class="group rounded-full p-2.5 transition hover:bg-white/10"
-                                            aria-label="Toggle navigation">
-                                        <svg viewBox="0 0 24 24" aria-hidden="true" class="h-6 w-6 fill-white group-hover:fill-neutral-200">
-                                            <path d="M5.636 4.223 19.778 18.365l-1.414 1.414L4.222 5.637z"></path>
-                                            <path d="M4.222 18.363 18.364 4.22l1.414 1.414L5.636 19.777z"></path>
-                                        </svg>
-                                    </button>
-                                </div>
+                            <div class="flex items-center gap-x-8">
+                                {% for button in headerButtons %}
+                                    {{ render.createButton({
+                                        button: button.button,
+                                        buttonType: button.buttonType.getValue()|default("button"),
+                                        buttonColor: button.buttonColor.label|default('white'),
+                                        icon: button.icon,
+                                        iconPosition: button.iconPosition.getValue()|default('right'),
+                                    }) }}
+                                {% endfor %}
+
+                                <button type="button" @click="isOpen = !isOpen" aria-expanded="false" aria-controls=":Rkq:" class="group -m-2.5 rounded-full p-2.5 transition hover:bg-white/10" aria-label="Toggle navigation">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true" class="h-6 w-6 fill-white group-hover:fill-neutral-200">
+                                        <path d="m5.636 4.223 14.142 14.142-1.414 1.414L4.222 5.637z"></path>
+                                        <path d="M4.222 18.363 18.364 4.22l1.414 1.414L5.636 19.777z"></path>
+                                    </svg>
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                {% if headerNavigation|length %}
-                    <nav class="mt-px font-display text-5xl font-medium tracking-tight text-white ">
-                        {% for node in headerNavigation %}
-                        {% if loop.index % 2 %}
-                        <div class="mt-px sm:bg-cyprus-500">
-                            <div class="mx-auto max-w-7xl px-6 lg:px-8">
-                                <div class="mx-auto max-w-2xl lg:max-w-none">
-                                    <div class="grid grid-cols-1 sm:grid-cols-2">
-                        {% endif %}
-                                    <a href="{{ node.getUrl }}" class="group relative isolate -mx-6 bg-cyprus-500 px-6 py-10 even:mt-px sm:mx-0 sm:px-0 sm:py-16 sm:odd:pr-16 sm:even:mt-0 sm:even:border-l sm:even:border-green-500 sm:even:pl-16">
-                                        {{ node.title }}
-                                        <span class="absolute inset-y-0 -z-10 w-screen bg-neutral-900 opacity-0 transition group-odd:right-0 group-even:left-0 group-hover:opacity-100"></span>
-                                    </a>
-                        {% if not loop.index % 2 %}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {% endif %}
-                        {% endfor %}
-                    </nav>
-                {% endif %}
-
-                <div class="relative bg-cyprus-500 before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-green-500">
+            {% if headerNavigation|length %}
+            <nav class="mt-px font-display text-5xl font-medium tracking-tight text-white">
+                {% for nodes in headerNavigation|batch(2) %}
+                <div class="mt-px sm:bg-cyprus-500">
                     <div class="mx-auto max-w-7xl px-6 lg:px-8">
                         <div class="mx-auto max-w-2xl lg:max-w-none">
-                            <div class="grid grid-cols-1 gap-y-10 pb-16 pt-10 sm:grid-cols-2 sm:pt-16">
-                                <div>
-                                    <h2 class="font-display text-base font-semibold text-white">
-                                        Our office
-                                    </h2>
-                                    <ul role="list" class="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2">
-                                        <li>
-                                            <address class="text-sm not-italic text-neutral-300">
-                                            <strong class="text-white">
-                                                {{ header.heading }}
-                                            </strong>
-                                                {{ header.text }}
-                                            </address>
-                                        </li>
-                                        <li>
-                                            <address class="text-sm not-italic text-neutral-300">
-                                                <strong class="text-white">
-                                                    {{ header.telephone.getText }}
-                                                </strong>
-                                                <br>
-                                                <a href="{{ header.telephone.getUrl }}">
-                                                    {{ header.telephone.getUrl }}
-                                                </a>
-                                            </address>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="sm:border-l sm:border-transparent sm:pl-16">
-                                    <h2 class="font-display text-base font-semibold text-white">
-                                        {{ header.heading2 }}
-                                    </h2>
-                                    <ul role="list" class="flex gap-x-10 text-white mt-6">
-                                        {% for item in header.socialLinks.all() %}
-                                            <li>
-                                                <a href="{{ item.socialLink.getUrl }}" aria-label="{{ item.socialLink.getText }}" class="text-white transition hover:text-neutral-200">
-                                                    {{ svg(item.icon.path)|attr({
-                                                        class: 'h-6 w-6',
-                                                    }) }}
-                                                </a>
-                                            </li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2">
+                                {% for node in nodes %}
+                                {% set passiveLink = node.url ? 'a' : 'div' %}
+                                <{{ passiveLink }} href="{{ node.url }}" class="cursor-pointer group relative isolate -mx-6 bg-cyprus-500 px-6 py-10 even:mt-px sm:mx-0 sm:px-0 sm:py-16 sm:odd:pr-16 sm:even:mt-0 sm:even:border-l sm:even:border-green-500 sm:even:pl-16 {{ node.classes }}" {% if node.newWindow %} target="_blank" rel="noopener" {% endif %}{% for attribute in node.customAttributes %} {{ attribute.attribute }}="{{ attribute.value }}" {% endfor %}>
+                                    {{ node.title }}
+                                    <span class="absolute inset-y-0 -z-10 w-screen bg-neutral-900 opacity-0 transition group-odd:right-0 group-even:left-0 group-hover:opacity-100"></span>
+                                </{{ passiveLink }}>
+                                {% endfor %}
                             </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </nav>
+            {% endif %}
+
+            <div class="relative bg-cyprus-500 before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-green-500">
+                <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                    <div class="mx-auto max-w-2xl lg:max-w-none">
+                        <div class="grid grid-cols-1 gap-y-10 pb-16 pt-10 sm:grid-cols-2 sm:pt-16">
+                            {% if header.heading3|length or header.text|length or (not header.telephone.isEmpty) %}
+                            <div>
+                                {% if header.heading3|length %}
+                                <h2 class="font-display text-base font-semibold text-white">
+                                    {{ header.heading3|nl2br }}
+                                </h2>
+                                {% endif %}
+
+                                {% if header.text|length or (not header.telephone.isEmpty) %}
+                                <ul role="list" class="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2">
+                                    {% if header.text|length %}
+                                    <li>
+                                        {{ render.replaceElements(header.text, {
+                                            background: 'green',
+                                            paragraphFontSize: 'text-sm not-italic'
+                                        }) }}
+                                    </li>
+                                    {% endif %}
+
+                                    {% if not header.telephone.isEmpty %}
+                                    <li>
+                                        <address class="text-sm not-italic text-neutral-300">
+                                            <strong class="text-white">Telephone</strong><br>
+                                            <a href="{{ header.telephone.getUrl() }}">
+                                                {{ header.telephone.getText() }}
+                                            </a>
+                                        </address>
+                                    </li>
+                                    {% endif %}
+                                </ul>
+                                {% endif %}
+                            </div>
+                            {% endif %}
+
+                            {% if header.heading2|length or socialLinks|length %}
+                            <div class="sm:border-l sm:border-transparent sm:pl-16">
+                                {% if header.heading2|length %}
+                                <h2 class="font-display text-base font-semibold text-white">
+                                    {{ header.heading2 }}
+                                </h2>
+                                {% endif %}
+
+                                {% if socialLinks|length %}
+                                <ul role="list" class="flex gap-x-10 text-white mt-6">
+                                    {% for link in socialLinks %}
+                                    <li>
+                                        <a href="{{ link.socialLink.getUrl }}" aria-label="{{ link.socialLink.getText() }}" class="transition hover:text-neutral-200 {{ link.socialLink.classes }}" {% if link.socialLink.newWindow %} target="_blank" rel="noopener" {% endif %}{% for attribute in link.socialLink.customAttributes %} {{ attribute.attribute }}="{{ attribute.value }}" {% endfor %}>
+                                            {% if link.icon|length %}
+                                            {{ svg(link.icon.path)|attr({
+                                                class: 'h-6 w-6 fill-current',
+                                            }) }}
+                                            {% endif %}
+                                        </a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
+                            </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
