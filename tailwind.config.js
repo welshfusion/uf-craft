@@ -23,12 +23,22 @@ module.exports = {
             lg: "991px",
             xl: "1248px",
         },
+        fontSize: {
+            xs: ["0.75rem", { lineHeight: "1rem" }],
+            sm: ["0.875rem", { lineHeight: "1.5rem" }],
+            base: ["1rem", { lineHeight: "1.75rem" }],
+            lg: ["1.125rem", { lineHeight: "1.75rem" }],
+            xl: ["1.25rem", { lineHeight: "2rem" }],
+            "2xl": ["1.5rem", { lineHeight: "2.25rem" }],
+            "3xl": ["1.75rem", { lineHeight: "2.25rem" }],
+            "4xl": ["2rem", { lineHeight: "2.5rem" }],
+            "5xl": ["2.5rem", { lineHeight: "3rem" }],
+            "6xl": ["3rem", { lineHeight: "3.5rem" }],
+            "7xl": ["4rem", { lineHeight: "4.5rem" }],
+        },
         extend: {
-            fontSize: {
-                "6.5xl": ["4rem", "4.5rem"],
-                "4.5xl": ["2.5rem", "2.5rem"],
-                "3.5xl": ["2rem", "2.7rem"],
-                "7.5xl": ["4.875rem", "5.437rem"],
+            borderRadius: {
+                "4xl": "2.5rem",
             },
 
             colors: {
