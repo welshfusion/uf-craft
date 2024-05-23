@@ -6,6 +6,21 @@ fieldLayouts:
         elements:
           -
             elementCondition: null
+            fieldUid: 05af4b17-93ed-4027-a039-96c368e5b585 # Image
+            handle: logo
+            includeInCards: false
+            instructions: null
+            label: Logo
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 9f571e06-58fe-48d0-bd15-9b86116fb162
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
             fieldUid: 0423d9a0-74e7-4a3d-afc5-a78d494caab4 # Navigation
             handle: null
             includeInCards: false

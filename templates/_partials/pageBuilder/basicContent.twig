@@ -36,10 +36,10 @@
 {% set sectionTag = childContainer or containerWrapper ? 'div' : 'section' %}
 {# Parent Block Fields End #}
 
-{% set headingTag = block.headingSize.getValue()|default('h2') %}
-{% set fontWeight = block.fontWeight.getValue()|default('bold') %}
+{% set headingTag = block.headingSize.getValue()|default('h1') %}
+{% set fontWeight = block.fontWeight.getValue()|default('medium') %}
 {% set contentAlignment = block.contentAlignment.value|default('left') %}
-{% set contentWidth = block.contentWidth|default('2;10') %}
+{% set contentWidth = block.contentWidth|default('0;12') %}
 
 {% set conbackgroundColor = conbackgroundColor ?? null %}
 {% set backgroundColorLabel = block.backgroundColor.label|default(conbackgroundColor ?? 'white') %}
@@ -55,7 +55,7 @@
 <{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ spacing }} {{ backgroundColor }} {{ containerImage ? render.contentWidth({width: contentWidth}) }}">
     {% if basicContentsExist %}
         <div class="{{ not childContainer ? 'container' }} {{ containerBgExist or (containerImage and backgroundColorLabel == 'white') ? 'px-4 md:px-6' }}">
-            <div class="{{ render.contentWidth({width: contentWidth}) }}">
+            <div class="transform-none {{ render.contentWidth({width: contentWidth}) }}">
                 {{ render.basicContents({
                     eyebrow: block.eyebrow,
                     heading: block.heading,
@@ -66,10 +66,10 @@
                     backgroundColorLabel: backgroundColorLabel,
                     contentAlignment: contentAlignment,
                     animation: block.animation,
-                    contentAnimationStyle: block.contentAnimationStyle.getValue()|default('fade-up'),
-                    contentAnimationDuration: block.contentAnimationDuration.getValue()|default(1500),
-                    contentAnimationOffset: block.contentAnimationOffset.getValue()|default(200),
-                    contentAnimationEasing: block.contentAnimationEasing.getValue()|default(null)
+                    contentAnimationStyle: block.animationStyle.getValue()|default('fade-up'),
+                    contentAnimationDuration: block.animationDuration.getValue()|default(700),
+                    contentAnimationOffset: block.animationOffset.getValue()|default(100),
+                    contentAnimationEasing: block.animationEasing.getValue()|default(null)
                 }) }}
             </div>
         </div>

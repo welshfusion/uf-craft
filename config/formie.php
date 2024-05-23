@@ -2,9 +2,9 @@
 
 return [
     'themeConfig' => [
-        "formWrapper" => [
+        "fieldInput" => [
             "attributes" => [
-                "class" => 'class="!peer !block !w-full !border !border-neutral-300 !bg-transparent !px-6 !pb-4 !pt-12 !ring-4 ring-transparent transition focus:!border-neutral-950 focus:!outline-none focus:!ring-neutral-950/5 group-first:!rounded-t-2xl group-last:!rounded-b-2xl"',
+                "class" => '!block !w-full !rounded-2xl !border !border-neutral-300 !bg-transparent !py-4 !pl-6 !pr-20 !text-base/6 !text-cyprus-500 !ring-4 !ring-transparent !transition placeholder:!text-neutral-500 focus:!border-neutral-950 focus:!outline-none focus:!ring-neutral-950/5',
             ],
         ],
 
