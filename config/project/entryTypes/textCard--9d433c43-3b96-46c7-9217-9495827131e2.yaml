@@ -36,21 +36,6 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: ec70c780-286c-4027-8904-ecdb25e3e1c1 # Heading
-            handle: null
-            includeInCards: false
-            instructions: null
-            label: null
-            providesThumbs: false
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: 279361fc-3ab0-4550-8694-0d83f959af42
-            userCondition: null
-            warning: null
-            width: 100
-          -
-            elementCondition: null
             fieldUid: 3b6c930d-d00e-4a6c-9e5e-734464c5066a # Simple Text
             handle: null
             includeInCards: false

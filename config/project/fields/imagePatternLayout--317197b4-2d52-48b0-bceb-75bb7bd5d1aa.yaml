@@ -1,0 +1,72 @@
+columnSuffix: null
+handle: imagePatternLayout
+instructions: null
+name: 'Image pattern Layout '
+searchable: false
+settings:
+  displayAsGraphic: true
+  displayFullwidth: null
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - 'Layout 1'
+        -
+          - showLabel
+          - ''
+        -
+          - value
+          - layout1
+        -
+          - imageUrl
+          - /images/buttonBox/imagePatternLayout/layout1.png
+        -
+          - imageAlign
+          - left
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - 'Layout 2'
+        -
+          - showLabel
+          - ''
+        -
+          - value
+          - layout2
+        -
+          - imageUrl
+          - /images/buttonBox/imagePatternLayout/layout2.png
+        -
+          - imageAlign
+          - left
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - 'Layout 3'
+        -
+          - showLabel
+          - ''
+        -
+          - value
+          - layout3
+        -
+          - imageUrl
+          - /images/buttonBox/imagePatternLayout/layout3.png
+        -
+          - imageAlign
+          - left
+        -
+          - default
+          - ''
+translationKeyFormat: null
+translationMethod: none
+type: verbb\buttonbox\fields\Buttons

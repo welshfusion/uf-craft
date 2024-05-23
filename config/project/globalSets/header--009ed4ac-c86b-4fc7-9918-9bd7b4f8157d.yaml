@@ -18,7 +18,7 @@ fieldLayouts:
             uid: 7245da0f-be45-434b-8973-90c5a46b785c
             userCondition: null
             warning: null
-            width: 50
+            width: 25
           -
             elementCondition: null
             fieldUid: dbcfc862-d508-4082-a32b-0a6ff36eb41a # Alt Logo
@@ -30,10 +30,10 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 3298251e-85bb-4f33-900e-7a2dc2aaf0f8
+            uid: 4bb0c853-3344-490b-86ef-44e5c76069ff
             userCondition: null
             warning: null
-            width: 50
+            width: 75
           -
             elementCondition: null
             fieldUid: 0423d9a0-74e7-4a3d-afc5-a78d494caab4 # Navigation

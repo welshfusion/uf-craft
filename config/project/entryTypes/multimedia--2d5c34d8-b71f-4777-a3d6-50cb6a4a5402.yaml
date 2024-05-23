@@ -252,6 +252,21 @@ fieldLayouts:
             userCondition: null
           -
             elementCondition: null
+            fieldUid: 317197b4-2d52-48b0-bceb-75bb7bd5d1aa # Image pattern Layout 
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 557694c9-96c1-4ad8-8e4f-d39689fd6550
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
             fieldUid: 4daa21a6-7d9e-4652-b72d-4b86d193b8cd # Content Width
             handle: null
             includeInCards: false

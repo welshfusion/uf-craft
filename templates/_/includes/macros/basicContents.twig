@@ -25,7 +25,7 @@
     animationEasing: contentAnimationEasing,
     animationDelay: delay
 }) | raw %}
-<{{ headingTag }} class="{{ headingSpacing|length ? headingSpacing : (eyebrow|length ? 'mt-6') }} {{ headingExtraClasses|length ? headingExtraClasses : 'font-sans tracking-[1px]' }} {{ render.getAlignment({alignment: contentAlignment, type: ['text']}) }} {{ render.getHeadingSize({headingTag: applyHeadingSize ?? headingTag}) }} {{ render.getFontWeight({font: fontWeight}) }} {{ render.foregroundColors({
+<{{ headingTag }} class="font-display {{ headingSpacing|length ? headingSpacing : (eyebrow|length ? 'mt-6') }} {{ headingExtraClasses|length ? headingExtraClasses : 'font-sans tracking-[1px]' }} {{ render.getAlignment({alignment: contentAlignment, type: ['text']}) }} {{ render.getHeadingSize({headingTag: applyHeadingSize ?? headingTag}) }} {{ render.getFontWeight({font: fontWeight}) }} {{ render.foregroundColors({
     background: backgroundColorLabel,
     type: 'heading'
 }) }}
