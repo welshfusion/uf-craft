@@ -7,21 +7,21 @@
 
     Fields:
         Content:
-                - Background Image (image)
-                - Video (backgroundVideo)
-                - Eyebrow (eyebrow)
+            - Background Image (image)
+            - Video (backgroundVideo)
+            - Eyebrow (eyebrow)
+            - Heading (heading)
+            - Sub Heading (heading2)
+            - Text (text)
+            - Buttons (buttons) [Matrix]
+                - Button Type (buttonType)
+                - Button Color (buttonColor)
+                - Icon (icon)
+                - Icon Position (iconPosition)
+                - Button (button)
+            - Cards (cards)
                 - Heading (heading)
-                - Sub Heading (heading2)
                 - Text (text)
-                - Buttons (buttons) [Matrix]
-                    - Button Type (buttonType)
-                    - Button Color (buttonColor)
-                    - Icon (icon)
-                    - Icon Position (iconPosition)
-                    - Button (button)
-                - Cards (cards)
-                    - Heading (heading)
-                    - Text (text)
 
         Settings:
             - Content Width (contentWidth)
@@ -38,20 +38,17 @@
 {{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
 {% import "_/includes/macros" as render %}
 
-{% set bgImage = block.image.one() %}
-{% set backgroundVideos = block.backgroundVideo.one() %}
-{% set heading = block.heading %}
-{% set buttons = block.buttons.all() %}
-
 {% set headingTag = block.headingSize.getValue()|default('h1') %}
 {% set fontWeight = block.fontWeight.getValue()|default('medium') %}
 {% set bannerHeight = block.bannerHeight.getValue()|default('medium') %}
 {% set contentAlignment = block.contentAlignment.value|default('left') %}
 {% set overlayOpacity = block.overlayOpacity.getValue|default('60') %}
-{% set contentWidth = block.contentWidth|default('2;10') %}
+{% set contentWidth = block.contentWidth|default('0;12') %}
 {% set showPattern = block.showPattern ?? false %}
 
-{% set backgroundColorLabel = block.backgroundColor.label|default('white') %}
+{% set conbackgroundColor = conbackgroundColor ?? null %}
+{% set backgroundColorLabel = block.backgroundColor.label|default(conbackgroundColor ?? 'white') %}
+{% set containerBgExist = conbackgroundColor != backgroundColorLabel %}
 {% set backgroundColor = render.color({
     handle: backgroundColorLabel,
     swatch: 'background'
@@ -62,8 +59,8 @@
     opacityType: 'bg'
 }) %}
 
-{% set patternBackgroundColorLable = block.patternBackgroundColor.lable|default('light-green') %}
-{% set basicContentsExist = block.eyebrow|length or block.heading|length or block.text or buttons|length %}
+{% set buttons = block.buttons.all() %}
+{% set cards = block.cards.all() %}
 
 {% set height = {
     'small'     : 'md:min-h-[500px]',
@@ -79,91 +76,63 @@
     animationEasing: block.animationEasing.value|default(null)
 }) | raw %}
 
-<section class="{{ height[bannerHeight] }} {{ backgroundColor }} {{ bgOpacity }}">
-    <div class="px-6 lg:px-8 relative flex flex-auto">
-        {% if bgImage|length or backgroundVideos|length %}
-        {{ render.renderVideo({
-            image: bgImage,
-            alt: bgImage.title,
-            width: bgImage.width,
-            height: bgImage.height,
-            class: "absolute inset-0 -z-10 h-full w-full object-cover",
-            lazy: false,
-            videos: backgroundVideos,
-            videoClass: "absolute inset-0 -z-10 h-full w-full object-cover",
-            videoType: 'background',
-            videoPoster: bgImage,
-            videoAttrs: {
-                preload: "none",
-            }
-        }) }}
-        {% endif %}
+{% set basicContentsExist = block.eyebrow|length or block.heading|length or block.subHeading|length or block.text|length or buttons|length %}
 
-        {% if basicContentsExist %}
-        <div class="relative rounded-tl-4xl rounded-tr-4xl flex flex-auto overflow-hidden pt-14">
-            <div class="relative isolate flex w-full flex-col pt-9">
-                <svg aria-hidden="true" class="absolute inset-x-0 -top-14 -z-10 h-[1000px] w-full fill-neutral-50 stroke-neutral-950/5 [mask-image:linear-gradient(to_bottom_left,white_40%,transparent_50%)]">
-                    <rect width="100%" height="100%" fill="url(#:R6lkq:)" stroke-width="0"></rect>
-                    {% if showPattern %}
-                        <svg x="50%" y="-96" stroke-width="0" class="overflow-visible">
-                            <path transform="translate(64 160)" d="M45.119 4.5a11.5 11.5 0 0 0-11.277 9.245l-25.6 128C6.82 148.861 12.262 155.5 19.52 155.5h63.366a11.5 11.5 0 0 0 11.277-9.245l25.6-128c1.423-7.116-4.02-13.755-11.277-13.755H45.119Z"></path><path transform="translate(128 320)" d="M45.119 4.5a11.5 11.5 0 0 0-11.277 9.245l-25.6 128C6.82 148.861 12.262 155.5 19.52 155.5h63.366a11.5 11.5 0 0 0 11.277-9.245l25.6-128c1.423-7.116-4.02-13.755-11.277-13.755H45.119Z"></path>
-                            <path transform="translate(288 480)" d="M45.119 4.5a11.5 11.5 0 0 0-11.277 9.245l-25.6 128C6.82 148.861 12.262 155.5 19.52 155.5h63.366a11.5 11.5 0 0 0 11.277-9.245l25.6-128c1.423-7.116-4.02-13.755-11.277-13.755H45.119Z"></path>
-                            <path transform="translate(512 320)" d="M45.119 4.5a11.5 11.5 0 0 0-11.277 9.245l-25.6 128C6.82 148.861 12.262 155.5 19.52 155.5h63.366a11.5 11.5 0 0 0 11.277-9.245l25.6-128c1.423-7.116-4.02-13.755-11.277-13.755H45.119Z"></path>
-                            <path transform="translate(544 640)" d="M45.119 4.5a11.5 11.5 0 0 0-11.277 9.245l-25.6 128C6.82 148.861 12.262 155.5 19.52 155.5h63.366a11.5 11.5 0 0 0 11.277-9.245l25.6-128c1.423-7.116-4.02-13.755-11.277-13.755H45.119Z"></path>
-                            <path transform="translate(320 800)" d="M45.119 4.5a11.5 11.5 0 0 0-11.277 9.245l-25.6 128C6.82 148.861 12.262 155.5 19.52 155.5h63.366a11.5 11.5 0 0 0 11.277-9.245l25.6-128c1.423-7.116-4.02-13.755-11.277-13.755H45.119Z"></path>
-                        </svg>
-                        <defs>
-                            <pattern id=":R6lkq:" width="96" height="480" x="50%" patternUnits="userSpaceOnUse" patternTransform="translate(0 -96)" fill="none">
-                                <path d="M128 0 98.572 147.138A16 16 0 0 1 82.883 160H13.117a16 16 0 0 0-15.69 12.862l-26.855 134.276A16 16 0 0 1-45.117 320H-116M64-160 34.572-12.862A16 16 0 0 1 18.883 0h-69.766a16 16 0 0 0-15.69 12.862l-26.855 134.276A16 16 0 0 1-109.117 160H-180M192 160l-29.428 147.138A15.999 15.999 0 0 1 146.883 320H77.117a16 16 0 0 0-15.69 12.862L34.573 467.138A16 16 0 0 1 18.883 480H-52M-136 480h58.883a16 16 0 0 0 15.69-12.862l26.855-134.276A16 16 0 0 1-18.883 320h69.766a16 16 0 0 0 15.69-12.862l26.855-134.276A16 16 0 0 1 109.117 160H192M-72 640h58.883a16 16 0 0 0 15.69-12.862l26.855-134.276A16 16 0 0 1 45.117 480h69.766a15.999 15.999 0 0 0 15.689-12.862l26.856-134.276A15.999 15.999 0 0 1 173.117 320H256M-200 320h58.883a15.999 15.999 0 0 0 15.689-12.862l26.856-134.276A16 16 0 0 1-82.883 160h69.766a16 16 0 0 0 15.69-12.862L29.427 12.862A16 16 0 0 1 45.117 0H128"></path>
-                            </pattern>
-                        </defs>
-                    {% endif %}
-                </svg>
-                <div class="mx-auto max-w-7xl px-6 lg:px-8 mt-24 sm:mt-32 lg:mt-40 {{ render.contentWidth({width: contentWidth}) }} {{ render.getAlignment([contentAlignment]) }}">
-                    <div class="mx-auto max-w-2xl lg:max-w-none">
-                        <div class="max-w-3xl" {{ contentAnimation|raw }}>
-                        {{ render.basicContents({
-                            eyebrow: block.eyebrow,
-                            heading: block.heading,
-                            text: block.text,
-                            buttons: buttons,
-                            subHeading: block.subHeading,
-                            headingTag: headingTag,
-                            fontWeight: fontWeight,
-                            contentAlignment: contentAlignment,
-                            backgroundColorLabel: backgroundColorLabel,
-                            animation: block.animation,
-                            contentAnimationStyle: block.contentAnimationStyle.value|default('fade-left'),
-                            contentAnimationDuration: block.contentAnimationDuration.value|default(1500),
-                            contentAnimationOffset: block.contentAnimationOffset.value|default(200),
-                            contentAnimationEasing: block.contentAnimationEasing.value|default(null)
-                        }) }}
-                        </div>
-                    </div>
+{% if basicContentsExist or cards|length %}
+    <section class="{{ backgroundColor }} {{ bgOpacity }}">
+        <div class="mx-auto container mt-24 sm:mt-32">
+            {% if basicContentsExist %}
+            <div class="mx-auto max-w-2xl lg:max-w-none {{ backgroundColorLabel != 'white' ? 'pt-10' }}">
+                <div class="opacity-100 transform-none {{ render.contentWidth({width: contentWidth}) }}">
+                {{ render.basicContents({
+                    eyebrow: block.eyebrow,
+                    heading: block.heading,
+                    subHeading: block.subHeading,
+                    text: block.text,
+                    buttons: buttons,
+                    headingTag: headingTag,
+                    fontWeight: fontWeight,
+                    contentAlignment: contentAlignment,
+                    overrideParagraphFontSize: 'text-base',
+                    backgroundColorLabel: backgroundColorLabel,
+                    animation: block.animation,
+                    contentAnimationStyle: block.contentAnimationStyle.value|default('fade-up'),
+                    contentAnimationDuration: block.contentAnimationDuration.value|default(1500),
+                    contentAnimationOffset: block.contentAnimationOffset.value|default(200),
+                    contentAnimationEasing: block.contentAnimationEasing.value|default(null)
+                }) }}
                 </div>
-
-                {% if block.cards.all()|length %}
-                    <div class="mx-auto max-w-7xl px-6 lg:px-8 mt-16 {{ render.contentWidth({width: contentWidth}) }}" {{ contentAnimation|raw }}>
-                        <div class="mx-auto max-w-2xl lg:max-w-none">
-                            <div>
-                                <dl class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:auto-cols-fr lg:grid-flow-col lg:grid-cols-none">
-                                {% for item in block.cards.all() %}
-                                    <div class="flex flex-col-reverse pl-8 relative before:absolute after:absolute before:bg-green-500 after:bg-neutral-950/10 before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px" >
-                                        <dt class="mt-2 text-base text-neutral-600">
-                                            {{ item.text }}
-                                        </dt>
-                                        <dd class="font-display text-3xl font-semibold text-cyprus-500 sm:text-4xl">
-                                            {{ item.heading }}
-                                        </dd>
-                                    </div>
-                                {% endfor %}
-                                </dl>
-                            </div>
-                        </div>
-                    </div>
-                {% endif %}
             </div>
+            {% endif %}
+
+            {% if cards|length %}
+            <div class="mt-16 {{ backgroundColorLabel != 'white' ? 'pb-10' }}">
+                <div class="mx-auto max-w-2xl lg:max-w-none"{{ contentAnimation|raw }}>
+                    <dl class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:auto-cols-fr lg:grid-flow-col lg:grid-cols-none">
+                        {% for card in cards %}
+                        {% if card.text|length or card.heading|length %}
+                        <div class="flex flex-col-reverse pl-8 relative before:absolute after:absolute {{ backgroundColorLabel == 'green' ? 'before:bg-cyprus-300' : 'before:bg-green-500' }} after:bg-neutral-950/10 before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px opacity-100 transform-none">
+                            {% if card.text|length %}
+                            <dt class="mt-2 text-base text-neutral-600">
+                                {{ render.replaceElements(card.text, {
+                                    background: backgroundColorLabel,
+                                    paragraphFontSize: 'text-base',
+                                }) }}
+                            </dt>
+                            {% endif %}
+
+                            {% if card.heading|length %}
+                            <dd class="font-display text-3xl font-semibold sm:text-4xl {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
+                                {{ card.heading|nl2br }}
+                            </dd>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </dl>
+                </div>
+            </div>
+            {% endif %}
         </div>
-        {% endif %}
-    </div>
-</section>
+    </section>
+{% endif %}
