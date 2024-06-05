@@ -68,7 +68,7 @@
                     <div class="mx-auto max-w-2xl lg:max-w-none">
                         <div class="flex items-center justify-between">
                             {% if altLogo|length %}
-                            <a aria-label="Home" href="/html/home">
+                            <a href="{{ siteUrl }}" aria-label="{{ siteName }}">
                                 {{ render.setImage({
                                     image: altLogo,
                                     alt: altLogo.title,
@@ -127,11 +127,11 @@
                 <div class="mx-auto max-w-7xl px-6 lg:px-8">
                     <div class="mx-auto max-w-2xl lg:max-w-none">
                         <div class="grid grid-cols-1 gap-y-10 pb-16 pt-10 sm:grid-cols-2 sm:pt-16">
-                            {% if header.heading3|length or header.text|length or (not header.telephone.isEmpty) %}
+                            {% if header.heading|length or header.text|length or (not header.telephone.isEmpty) %}
                             <div>
-                                {% if header.heading3|length %}
+                                {% if header.heading|length %}
                                 <h2 class="font-display text-base font-semibold text-white">
-                                    {{ header.heading3|nl2br }}
+                                    {{ header.heading|nl2br }}
                                 </h2>
                                 {% endif %}
 
@@ -141,7 +141,7 @@
                                     <li>
                                         {{ render.replaceElements(header.text, {
                                             background: 'green',
-                                            paragraphFontSize: 'text-sm not-italic'
+                                            paragraphFontSize: 'text-sm'
                                         }) }}
                                     </li>
                                     {% endif %}
@@ -165,7 +165,7 @@
                             <div class="sm:border-l sm:border-transparent sm:pl-16">
                                 {% if header.heading2|length %}
                                 <h2 class="font-display text-base font-semibold text-white">
-                                    {{ header.heading2 }}
+                                    {{ header.heading2|nl2br }}
                                 </h2>
                                 {% endif %}
 
