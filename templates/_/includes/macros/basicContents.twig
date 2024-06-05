@@ -10,7 +10,7 @@
 {% set delay = 0 %}
 
 {% if eyebrow|length %}
-<h6 class="block font-display text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }} {{ render.getAlignment({alignment: contentAlignment, type: ['text']}) }}" {{ contentAnimation|raw }}>
+<h6 class="block font-display text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }} {{ render.getAlignment({alignment: contentAlignment, type: 'text'}) }}" {{ contentAnimation|raw }}>
     {{ render.replaceUnderscores({
         text: eyebrow,
     }) }}
@@ -27,17 +27,22 @@
     animationEasing: contentAnimationEasing,
     animationDelay: delay
 }) | raw %}
-<{{ headingTag }} class="font-display {{ headingSpacing|length ? headingSpacing : (eyebrow|length ? 'mt-6') }} {{ headingExtraClasses|length ? headingExtraClasses : 'tracking-tight [text-wrap:balance]' }} {{ render.getAlignment({alignment: contentAlignment, type: ['text']}) }} {{ render.getHeadingSize({headingTag: applyHeadingSize ?? headingTag}) }} {{ render.getFontWeight({font: fontWeight}) }} {{ render.foregroundColors({
-    background: backgroundColorLabel,
-    type: 'heading'
-}) }}
-" {{ contentAnimation|raw }}>
+<{{ headingTag }} class="block font-display tracking-tight [text-wrap:balance] {{ headingSpacing|length ? headingSpacing : (eyebrow|length ? 'mt-6') }} {{ render.getAlignment({alignment: contentAlignment, type: 'text'}) }} {{ render.getHeadingSize({headingTag: headingTag}) }} {{ render.getFontWeight({font: fontWeight}) }} {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}" {{ contentAnimation|raw }}>
     {{ heading|nl2br }}
 </{{ headingTag }}>
 {% endif %}
 
 {% if subHeading|length %}
-<p class="block text-xl {{ heading|length or eyebrow|length ? 'mt-6' }} {{ render.foregroundColors({background: backgroundColorLabel, type: 'subHeading'}) }} {{ render.getAlignment({alignment: contentAlignment, type: ['text']}) }}" {{ contentAnimation|raw }}>
+{% set delay = delay + 200 %}
+{% set contentAnimation = render.setAnimation({
+    animation: animation,
+    animationStyle: contentAnimationStyle,
+    animationDuration: contentAnimationDuration,
+    animationOffset: contentAnimationOffset,
+    animationEasing: contentAnimationEasing,
+    animationDelay: delay
+}) | raw %}
+<p class="block text-xl {{ eyebrow|length or heading|length ? 'mt-6' }} {{ render.foregroundColors({background: backgroundColorLabel, type: 'subHeading'}) }} {{ render.getAlignment({alignment: contentAlignment, type: 'text'}) }}" {{ contentAnimation|raw }}>
     {{ subHeading }}
 </p>
 {% endif %}
@@ -52,8 +57,7 @@
     animationEasing: contentAnimationEasing,
     animationDelay: delay
 }) | raw %}
-
-<div class="{{ textParentDivClass|length ? textParentDivClass : 'space-y-6' }} {{ textSpacing|length ? textSpacing : (heading|length or eyebrow|length or subHeading|length ? 'mt-10') }} {{ render.getAlignment({alignment: contentAlignment, type: ['text']}) }}" {{ contentAnimation|raw }}>
+<div class="space-y-6 {{ textSpacing|length ? textSpacing : (eyebrow|length or heading|length or subHeading|length ? 'mt-6') }} {{ render.getAlignment({alignment: contentAlignment, type: 'text'}) }}" {{ contentAnimation|raw }}>
     {{ render.replaceElements(text, {
         background: backgroundColorLabel,
         contentAlignment: contentAlignment,
@@ -73,14 +77,14 @@
     animationDelay: delay
 }) | raw %}
 {% if loop.first %}
-<div class="flex flex-wrap items-center gap-5 {{ (eyebrow|length or heading|length or text|length or subHeading|length) ? 'mt-5' }} {{ render.getAlignment({
+<div class="flex flex-wrap items-center gap-5 {{ eyebrow|length or heading|length or subHeading|length or text|length ? 'mt-5' }} {{ render.getAlignment({
     alignment: contentAlignment,
     type: 'justify'
 }) }}" {{ contentAnimation|raw }}>
 {% endif %}
     {{ render.createButton({
         button: button.button,
-        buttonType: button.buttonType.getValue()|default(defaultButtonType|length ? defaultButtonType : "button"),
+        buttonType: button.buttonType.getValue()|default("button"),
         buttonColor: button.buttonColor.label|default('cyprus'),
         icon: button.icon,
         iconPosition: button.iconPosition.getValue()|default('right'),

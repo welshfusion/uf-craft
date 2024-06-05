@@ -1,7 +1,7 @@
 {% set backgroundColors = {
     'none'       : 'text-neutral-600',
     'white'      : 'text-neutral-600',
-    'black'      : 'text-neutral-100',
+    'black'      : 'text-neutral-300',
     'green'      : 'text-white',
     'cyprus'     : 'text-neutral-300',
 } %}
@@ -9,29 +9,36 @@
 {% set blockquoteColors = {
     'none'       : 'border-cyprus-500 bg-cyprus-100/20',
     'white'      : 'border-cyprus-500 bg-cyprus-100/20',
-    'gray-100'   : 'border-cyprus-500 bg-cyprus-100/20',
-    'black'      : 'border-cyprus-500 bg-cyprus-100/20',
-    'green'     : 'border-green-500 bg-green-100/20',
-    'cyprus'     : 'border-cyprus-500 bg-cyprus-200/30',
+    'black'      : 'border-white bg-neutral-600/20',
+    'green'      : 'border-white bg-green-100/30',
+    'cyprus'     : 'border-white bg-cyprus-200/30',
+} %}
+
+{% set strongtextColor = {
+    'none'       : 'text-cyprus-500',
+    'white'      : 'text-cyprus-500',
+    'black'      : 'text-white',
+    'green'      : 'text-white',
+    'cyprus'     : 'text-white',
 } %}
 
 {% set classes = extraClasses|length ? extraClasses ~ ' ' : '' %}
 {% set color = forceTextColor|default(backgroundColors[background]) %}
 {% set quoteColors = forceTextColor|default(blockquoteColors[background]) %}
-{% set paragraphFontSize = paragraphFontSize|default('text-xl') %}
+{% set strongTextColor = forceTextColor|default(strongtextColor[background]) %}
+{% set paragraphFontSize = paragraphFontSize|default('text-base') %}
 {% set spacingClass = spacingClass|length ? spacingClass %}
 {% set tableBorder = background == 'white' ? 'border-netural-600' : 'border-white' %}
-{% set strongColorText = background == 'white' ? 'text-cyprus-500' %}
 
-{% set h1 = h1|default('text-3xl md:text-4.5xl font-normal') %}
-{% set h2 = h2|default('text-4xl font-normal') %}
-{% set h3 = h3|default('text-3xl font-normal') %}
-{% set h4 = h4|default('text-2xl font-normal') %}
-{% set h5 = h5|default('text-xl font-normal') %}
-{% set h6 = h6|default('text-lg font-normal') %}
+{% set h1 = h1|default('text-5xl sm:text-7xl font-medium') %}
+{% set h2 = h2|default('text-5xl sm:text-6xl font-medium') %}
+{% set h3 = h3|default('text-4xl sm:text-5xl font-medium') %}
+{% set h4 = h4|default('text-3xl sm:text-4xl font-medium') %}
+{% set h5 = h5|default('text-3xl font-medium') %}
+{% set h6 = h6|default('text-2xl font-medium') %}
 {% set a = a|default('underline underline-offset-2') %}
 {% set p = p|default("#{spacingClass} #{paragraphFontSize}") %}
-{% set strong = strong|default("#{strongColorText}") %}
+{% set strong = strong|default("#{strongTextColor}") %}
 {% set ul = ul|default("ml-8 list-disc list-outside #{paragraphFontSize}") %}
 {% set ol = ol|default("ml-8 list-decimal list-outside #{paragraphFontSize}") %}
 {% set li = li|default("mb-1") %}

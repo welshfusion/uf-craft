@@ -16,7 +16,7 @@ return [
                 'default' => false,
                 'color' => [
                     [
-                        'color' => '#000000'
+                        'color' => '#0a0a0a'
                     ]
                 ]
             ],
