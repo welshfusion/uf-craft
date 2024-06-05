@@ -11,7 +11,9 @@
 
 {% if eyebrow|length %}
 <h6 class="block font-display text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }} {{ render.getAlignment({alignment: contentAlignment, type: ['text']}) }}" {{ contentAnimation|raw }}>
-    {{ eyebrow }}
+    {{ render.replaceUnderscores({
+        text: eyebrow,
+    }) }}
 </h6>
 {% endif %}
 
@@ -25,7 +27,7 @@
     animationEasing: contentAnimationEasing,
     animationDelay: delay
 }) | raw %}
-<{{ headingTag }} class="font-display {{ headingSpacing|length ? headingSpacing : (eyebrow|length ? 'mt-6') }} {{ headingExtraClasses|length ? headingExtraClasses : 'font-sans tracking-[1px]' }} {{ render.getAlignment({alignment: contentAlignment, type: ['text']}) }} {{ render.getHeadingSize({headingTag: applyHeadingSize ?? headingTag}) }} {{ render.getFontWeight({font: fontWeight}) }} {{ render.foregroundColors({
+<{{ headingTag }} class="font-display {{ headingSpacing|length ? headingSpacing : (eyebrow|length ? 'mt-6') }} {{ headingExtraClasses|length ? headingExtraClasses : 'tracking-tight [text-wrap:balance]' }} {{ render.getAlignment({alignment: contentAlignment, type: ['text']}) }} {{ render.getHeadingSize({headingTag: applyHeadingSize ?? headingTag}) }} {{ render.getFontWeight({font: fontWeight}) }} {{ render.foregroundColors({
     background: backgroundColorLabel,
     type: 'heading'
 }) }}
@@ -35,7 +37,7 @@
 {% endif %}
 
 {% if subHeading|length %}
-<p class="block font-display text-xl mt-6 {{ render.foregroundColors({background: backgroundColorLabel, type: 'subHeading'}) }} {{ render.getAlignment({alignment: contentAlignment, type: ['text']}) }}" {{ contentAnimation|raw }}>
+<p class="block text-xl {{ heading|length or eyebrow|length ? 'mt-6' }} {{ render.foregroundColors({background: backgroundColorLabel, type: 'subHeading'}) }} {{ render.getAlignment({alignment: contentAlignment, type: ['text']}) }}" {{ contentAnimation|raw }}>
     {{ subHeading }}
 </p>
 {% endif %}
@@ -51,7 +53,7 @@
     animationDelay: delay
 }) | raw %}
 
-<div class="{{ textParentDivClass|length ? textParentDivClass : 'space-y-3' }} {{ heading|length or eyebrow|length ? 'mt-6' }} {{ render.getAlignment({alignment: contentAlignment, type: ['text']}) }}" {{ contentAnimation|raw }}>
+<div class="{{ textParentDivClass|length ? textParentDivClass : 'space-y-6' }} {{ textSpacing|length ? textSpacing : (heading|length or eyebrow|length or subHeading|length ? 'mt-10') }} {{ render.getAlignment({alignment: contentAlignment, type: ['text']}) }}" {{ contentAnimation|raw }}>
     {{ render.replaceElements(text, {
         background: backgroundColorLabel,
         contentAlignment: contentAlignment,
@@ -71,7 +73,7 @@
     animationDelay: delay
 }) | raw %}
 {% if loop.first %}
-<div class="flex flex-wrap items-center gap-5 {{ (eyebrow|length or heading|length or text|length) ? '!mt-6' }} {{ render.getAlignment({
+<div class="flex flex-wrap items-center gap-5 {{ (eyebrow|length or heading|length or text|length or subHeading|length) ? 'mt-5' }} {{ render.getAlignment({
     alignment: contentAlignment,
     type: 'justify'
 }) }}" {{ contentAnimation|raw }}>

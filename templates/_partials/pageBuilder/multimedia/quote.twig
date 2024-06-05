@@ -5,18 +5,18 @@
     <div class="pl-8 mt-12 relative before:absolute after:absolute {{ backgroundColorLabel == 'green' ? 'before:bg-neutral-300' : 'before:bg-green-500' }} {{ backgroundColorLabel == 'black' ? 'after:bg-neutral-400' : 'after:bg-neutral-950/10' }} before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px">
         <figure class="text-sm">
             {% if block.quote|length %}
-                <blockquote class="text-neutral-600 [&amp;>*]:relative [&amp;>:first-child]:before:absolute [&amp;>:first-child]:before:right-full [&amp;>:first-child]:before:content-['“'] [&amp;>:last-child]:after:content-['”']">
-                    <p class="{{ backgroundColorLabel == 'white' ? 'text-neutral-600' : 'text-white' }}">
-                        {{ '“' ~ block.quote|nl2br ~ '”' }}
-                    </p>
-                </blockquote>
+            <blockquote class="text-neutral-600 [&amp;>*]:relative [&amp;>:first-child]:before:absolute [&amp;>:first-child]:before:right-full [&amp;>:first-child]:before:content-['“'] [&amp;>:last-child]:after:content-['”']">
+                <p class="{{ backgroundColorLabel == 'white' ? 'text-neutral-600' : 'text-white' }}">
+                    {{ '“' ~ block.quote|nl2br ~ '”' }}
+                </p>
+            </blockquote>
             {% endif %}
 
             {% if block.authorName|length or block.designation|length %}
-                <figcaption class="mt-6 font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
-                    {{ block.authorName }},
-                    {{ block.designation }}
-                </figcaption>
+            <figcaption class="mt-6 font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
+                {{ block.authorName|nl2br }},
+                {{ block.designation|nl2br }}
+            </figcaption>
             {% endif %}
         </figure>
     </div>

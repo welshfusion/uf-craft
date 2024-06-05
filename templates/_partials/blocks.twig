@@ -2,8 +2,7 @@
 {% import '_/includes/macros' as render %}
 
 {% set parent = parent ?? null %}
-{% set hero = entry.hero.one() ?? null %}
-{% set heroExist = entry is defined and hero|length ? hero %}
+{% set heroExist = entry is defined and entry.hero|length ? entry.hero.one() %}
 
 {% for i, block in pageBuilder %}
     {% set defaults = {
@@ -50,16 +49,14 @@
         {% set defaultPaddingBottom = lastBlockSpacing.defaultPaddingBottom|default(defaultPaddingBottom) %}
     {% endif %}
 
-    {% if first and (not heroExist|length) and (parent not in ['twoColumn', 'container']) %}
-        {% if currentBgColor %}
-            {% set defaultPaddingTop = "large" %}
-        {% else %}
-            {% set defaultMarginTop = "large" %}
-        {% endif %}
+    {% if first and not heroExist|length and currentBgColor and not current == 'children' %}
+        {% set defaultPaddingTop = firstBlockSpacing.defaultPaddingTop|default("extraLarge") %}
+    {% elseif first and not heroExist|length %}
+        {% set defaultMarginTop = firstBlockSpacing.defaultMarginTop|default("large") %}
     {% endif %}
 
     {% set spacing = collect({}) %}
-    {% for item in ['marginTop', 'marginBottom', 'paddingTop', 'paddingBottom', 'marginPadding'] %}
+    {% for item in ['marginPadding'] %}
         {% set _space %}
             {{ render.spacing({
                 type: item,

@@ -7,8 +7,6 @@
 
     Fields:
         Content:
-            - Background Image (image)
-            - Video (backgroundVideo)
             - Eyebrow (eyebrow)
             - Heading (heading)
             - Sub Heading (heading2)
@@ -40,7 +38,6 @@
 
 {% set headingTag = block.headingSize.getValue()|default('h1') %}
 {% set fontWeight = block.fontWeight.getValue()|default('medium') %}
-{% set bannerHeight = block.bannerHeight.getValue()|default('medium') %}
 {% set contentAlignment = block.contentAlignment.value|default('left') %}
 {% set overlayOpacity = block.overlayOpacity.getValue|default('60') %}
 {% set contentWidth = block.contentWidth|default('0;12') %}
@@ -61,12 +58,6 @@
 
 {% set buttons = block.buttons.all() %}
 {% set cards = block.cards.all() %}
-
-{% set height = {
-    'small'     : 'md:min-h-[500px]',
-    'medium'    : 'md:min-h-[796px]',
-    'full'      : 'md:min-h-screen'
-} %}
 
 {% set contentAnimation = render.setAnimation({
     animation: block.animation,

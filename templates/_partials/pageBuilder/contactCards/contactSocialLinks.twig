@@ -4,23 +4,24 @@
 <div class="mt-10 relative" {{ contentAnimation|raw }}>
     {% if block.heading %}
         <h2 class="font-display text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
-            {{ block.heading }}
+            {{ block.heading|nl2br }}
         </h2>
     {% endif %}
+
     <ul role="list" class="flex gap-x-10">
         {% set socialLinks = block.socialLinks.all() %}
         {% for socialLink in socialLinks %}
-            <li>
-                <a href="{{ socialLink.socialLink.url }}" class="transition hover:text-neutral-700 {{ socialLink.socialLink.classes }}" aria-label="{{ socialLink.socialLink.text }}"
-                    {% if socialLink.socialLink.linkTitle %} title="{{ socialLink.socialLink.linkTitle }}"{% endif %} {% if socialLink.socialLink.target %} target="{{ socialLink.socialLink.target }}" rel="noopener"{% endif %} {% for attribute in socialLink.socialLink.customAttributes %} {{ attribute.attribute }}="{{ attribute.value }}" {% endfor %}
-                >
+        <li>
+            <a href="{{ socialLink.socialLink.url() }}" class="transition hover:text-neutral-700 {{ socialLink.socialLink.classes }}" aria-label="{{ socialLink.socialLink.text }}"
+            {% if socialLink.socialLink.linkTitle %} title="{{ socialLink.socialLink.linkTitle }}"{% endif %} {% if socialLink.socialLink.target %} target="{{ socialLink.socialLink.target }}" rel="noopener"{% endif %} {% for attribute in socialLink.socialLink.customAttributes %} {{ attribute.attribute }}="{{ attribute.value }}" {% endfor %}
+            >
                 {% set color =  backgroundColorLabel == 'white' ? 'text-cyprus-500' : 'text-neutral-50' %}
-                    {{ svg(socialLink.icon.path)|attr({
-                        class: 'w-6 h-6 mt-6 ' ~ color,
-                        fill: 'currentColor'
-                    }) }}
-                </a>
-            </li>
+                {{ svg(socialLink.icon.path)|attr({
+                    class: 'w-6 h-6 mt-6 ' ~ color,
+                    fill: 'currentColor'
+                }) }}
+            </a>
+        </li>
         {% endfor %}
     </ul>
 </div>

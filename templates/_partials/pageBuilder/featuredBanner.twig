@@ -44,10 +44,10 @@
 {# Parent Block Fields End #}
 
 {% set containerSize = block.containerSize.getValue()|default('container') %}
-{% set headingTag = block.headingSize.getValue()|default('h2') %}
-{% set fontWeight = block.fontWeight.getValue()|default('bold') %}
+{% set headingTag = block.headingSize.getValue()|default('h3') %}
+{% set fontWeight = block.fontWeight.getValue()|default('medium') %}
 {% set contentAlignment = block.contentAlignment.value|default('left') %}
-{% set contentWidth = block.contentWidth|default('2;10') %}
+{% set contentWidth = block.contentWidth|default('0;12') %}
 {% set roundedCorners = block.roundedCorners ?? false %}
 
 {% set conbackgroundColor = conbackgroundColor ?? null %}
@@ -75,62 +75,60 @@
 {% set basicContentsExist = block.eyebrow|length or block.heading|length or block.text|length or buttons|length %}
 
 <{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}">
-    <div class="{{ containerSize == 'container' ? 'container' }} {% if roundedCorners %} rounded-3xl {% endif %} {{ spacing }} {{ backgroundColor }}">
-        <div class="{{ containerSize == 'container' ? 'mx-auto max-w-4xl' : 'container' }} {{ render.contentWidth({width: contentWidth}) }}">
-            {% if image|length or videos|length  %}
-                {{ render.renderVideo({
-                    image: image,
-                    alt: image.title,
-                    width: image.width,
-                    height: image.height,
-                    class: "-z-10 w-full h-full object-cover rounded-xl",
-                    lazy: false,
-                    videos: videos,
-                    videoClass: "-z-10 w-full h-full object-cover rounded-xl",
-                    videoType: 'background',
-                    videoPoster: image,
-                    videoAttrs: {
-                        preload: "none",
-                    }
-                }) }}
-            {% endif %}
-            {% if basicContentsExist|length %}
-                <div class="max-w-xl">
-                {{ render.basicContents({
-                    eyebrow: block.eyebrow,
-                    heading: block.heading,
-                    text: block.text,
-                    subHeading: block.subHeading,
-                    button: buttons,
-                    overrideParagraphFontSize: 'text-xl',
-                    headingTag: headingTag,
-                    fontWeight: fontWeight,
-                    backgroundColorLabel: backgroundColorLabel,
-                    animation: block.animation,
-                    contentAnimationStyle: block.animationStyle.getValue()|default('fade-up'),
-                    contentAnimationDuration: block.animationDuration.getValue()|default(1500),
-                    contentAnimationOffset: block.animationOffset.getValue()|default(200),
-                    contentAnimationEasing: block.animationEasing.getValue()|default(null)
-                }) }}
-                </div>
-            {% endif %}
+    <div class="mx-auto mt-24 sm:mt-32 lg:mt-40 {{ containerSize == 'container' ? 'container' }} {{ roundedCorners ? 'rounded-4xl' }} {{ backgroundColor }} {{ spacing }}">
+        <div class="mx-auto max-w-2xl lg:max-w-none">
+            <div class="opacity-100 transform-none {{ render.contentWidth({width: contentWidth}) }}">
+                <div class="{{ containerSize == 'container' ? 'mx-auto max-w-4xl' : 'container' }}">
+                    {% if basicContentsExist %}
+                    {{ render.basicContents({
+                        eyebrow: block.eyebrow,
+                        heading: block.heading,
+                        text: block.text,
+                        headingTag: headingTag,
+                        fontWeight: fontWeight,
+                        backgroundColorLabel: backgroundColorLabel,
+                        contentAlignment: contentAlignment,
+                        textSpacing: 'mt-6',
+                        animation: block.animation,
+                        contentAnimationStyle: block.animationStyle.getValue()|default('fade-up'),
+                        contentAnimationDuration: block.animationDuration.getValue()|default(1500),
+                        contentAnimationOffset: block.animationOffset.getValue()|default(200),
+                        contentAnimationEasing: block.animationEasing.getValue()|default(null)
+                    }) }}
+                    {% endif %}
 
-            {% if contactInfo|length %}
-                <div class="mt-10">
-                    {% for item in contactInfo %}
-                        {% if item.heading|length %}
-                            <h3 class="mt-10 font-display text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}" {{ contentAnimation|raw }}>
-                                {{ item.heading }}
-                            </h3>
-                        {% endif %}
-
-                        {% for block in item.contactCards.all() %}
-                            {% include '_partials/pageBuilder/contactCards/' ~ block.type.handle ignore missing %}
+                    {% if buttons|length %}
+                    <div class="mt-6 flex {{ render.getAlignment({alignment: contentAlignment, type: ['justify']}) }}">
+                        {% for button in buttons %}
+                        {{ render.createButton({
+                            button: button.button,
+                            buttonType: button.buttonType.getValue()|default("button"),
+                            buttonColor: button.buttonColor.label|default('white'),
+                            icon: button.icon,
+                            iconPosition: button.iconPosition.getValue()|default('right'),
+                            extraClasses: 'inline-flex rounded-full px-4 py-1.5 text-sm font-semibold transition'
+                        }) }}
                         {% endfor %}
-                    {% endfor %}
+                    </div>
+                    {% endif %}
+
+                    {% if contactInfo|length %}
+                        <div class="mt-10 border-t pt-10 {{ backgroundColorLabel == 'green' ? 'border-netural-700' : 'border-green-500' }}">
+                            {% for item in contactInfo %}
+                                {% if item.heading|length %}
+                                <h3 class="font-display text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
+                                    {{ item.heading|nl2br }}
+                                </h3>
+                                {% endif %}
+
+                                {% for block in item.contactCards.all() %}
+                                    {% include '_partials/pageBuilder/contactCards/' ~ block.type.handle ignore missing %}
+                                {% endfor %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
                 </div>
-            {% endif %}
+            </div>
         </div>
     </div>
-</div>
 </{{ sectionTag }}>

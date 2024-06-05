@@ -8,32 +8,32 @@
                 <g clip-path="url(#:S2:-clip)" class="group">
                     <g class="origin-center scale-100 transition duration-500 motion-safe:group-hover:scale-105">
                         {% if image|length or videos|length %}
-                            <foreignObject width="719" height="680">
-                                {% set videoImage = videos.media.image ?? null %}
-                                {% set finalImage = image|length ? image : videoImage %}
-                                {% set videoId = 'image-video-'|t ~ block.getId() %}
+                        <foreignObject width="719" height="680">
+                            {% set videoImage = videos.media.image ?? null %}
+                            {% set finalImage = image|length ? image : videoImage %}
+                            {% set videoId = 'image-video-'|t ~ block.getId() %}
 
-                                {{ render.renderVideo({
-                                    image: finalImage|length ? finalImage,
-                                    alt: image|length ? image.title : videoId,
-                                    width: '2400',
-                                    height: '1600',
-                                    class: "w-full bg-neutral-100 object-cover text-transparent aspect-[719/680]",
-                                    lazy: false,
-                                    decoding: 'async',
-                                    plainImage: image|length ? false : true,
-                                    videos: videos,
-                                    videoClass: "w-full object-cover",
-                                    videoType: 'popup',
-                                    videoPoster: image,
-                                    videoId: videoId,
-                                    class: "w-full bg-neutral-100 object-cover text-transparent aspect-[719/680]",
-                                    sizes: "(min-width: 1024px) 41rem, 31rem",
-                                    videoAttrs: {
-                                        preload: "none",
-                                    }
-                                }) }}
-                            </foreignObject>
+                            {{ render.renderVideo({
+                                image: finalImage|length ? finalImage,
+                                alt: image|length ? image.title : videoId,
+                                width: '2400',
+                                height: '1600',
+                                class: "w-full bg-neutral-100 object-cover text-transparent aspect-[719/680]",
+                                lazy: false,
+                                decoding: 'async',
+                                plainImage: image|length ? false : true,
+                                videos: videos,
+                                videoClass: "w-full object-cover",
+                                videoType: 'popup',
+                                videoPoster: image,
+                                videoId: videoId,
+                                class: "w-full bg-neutral-100 object-cover text-transparent aspect-[719/680]",
+                                sizes: "(min-width: 1024px) 41rem, 31rem",
+                                videoAttrs: {
+                                    preload: "none",
+                                }
+                            }) }}
+                        </foreignObject>
                         {% endif %}
                     </g>
                     <use href="#:S2:-shape" stroke-width="2" class="stroke-neutral-950/10"></use>

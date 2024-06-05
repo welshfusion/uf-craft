@@ -128,6 +128,7 @@
         textParentDivClass: null,
         overrideParagraphFontSize: null,
         applyHeadingSize: null,
+        textSpacing: null,
         headingExtraClasses: null,
         defaultButtonType: null,
         contentAnimationStyle: null,
@@ -268,9 +269,9 @@
     {% set textMd = options.text | markdown(inlineOnly = true) %}
 
     {{ textMd | replace({
-        '<em>': '<' ~ options.tag ~ ' class="' ~ options.class ~ '">' ~ options.svg,
+        '<em>': '<' ~ options.tag ~ ' class="text-neutral-300 ' ~ options.class ~ '">' ~ options.svg,
         '</em>': '</' ~ options.tag ~ '>',
-        '<strong>': '<' ~ options.tag ~ ' class="' ~ options.class ~ '">' ~ options.svg,
+        '<strong>': '<' ~ options.tag ~ ' class="text-neutral-300 ' ~ options.class ~ '">' ~ options.svg,
         '</strong>': '</' ~ options.tag ~ '>',
     }) | raw }}
 {% endmacro %}

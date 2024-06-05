@@ -36,13 +36,14 @@
 {% set sectionTag = childContainer or containerWrapper ? 'div' : 'section' %}
 {# Parent Block Fields End #}
 
-{% set headingTag = block.headingSize.getValue()|default('h1') %}
+{% set headingTag = block.headingSize.getValue()|default('h2') %}
 {% set fontWeight = block.fontWeight.getValue()|default('medium') %}
 {% set contentAlignment = block.contentAlignment.value|default('left') %}
 {% set contentWidth = block.contentWidth|default('0;12') %}
+{% set roundedCorners = block.roundedCorners ?? false %}
 
 {% set conbackgroundColor = conbackgroundColor ?? null %}
-{% set backgroundColorLabel = block.backgroundColor.label|default(conbackgroundColor ?? 'white') %}
+{% set backgroundColorLabel = block.backgroundColor.label|default(conbackgroundColor ?? 'none') %}
 {% set containerBgExist = conbackgroundColor != backgroundColorLabel %}
 {% set backgroundColor = render.color({
     handle: backgroundColorLabel,
@@ -50,28 +51,28 @@
 }) %}
 
 {% set buttons = block.buttons.all() %}
-{% set basicContentsExist = block.eyebrow|length or block.heading|length or block.text or buttons|length %}
+{% set basicContentsExist = block.eyebrow|length or block.heading|length or block.text|length or buttons|length %}
 
-<{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ spacing }} {{ backgroundColor }} {{ containerImage ? render.contentWidth({width: contentWidth}) }}">
+<{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ roundedCorners ? 'rounded-4xl' }} {{ spacing }} {{ backgroundColor }} {{ backgroundColor ? 'mt-10' }} {{ containerImage ? render.contentWidth({width: contentWidth}) }}">
     {% if basicContentsExist %}
-        <div class="{{ not childContainer ? 'container' }} {{ containerBgExist or (containerImage and backgroundColorLabel == 'white') ? 'px-4 md:px-6' }}">
-            <div class="transform-none {{ render.contentWidth({width: contentWidth}) }}">
-                {{ render.basicContents({
-                    eyebrow: block.eyebrow,
-                    heading: block.heading,
-                    text: block.text,
-                    buttons: buttons,
-                    headingTag: headingTag,
-                    fontWeight: fontWeight,
-                    backgroundColorLabel: backgroundColorLabel,
-                    contentAlignment: contentAlignment,
-                    animation: block.animation,
-                    contentAnimationStyle: block.animationStyle.getValue()|default('fade-up'),
-                    contentAnimationDuration: block.animationDuration.getValue()|default(700),
-                    contentAnimationOffset: block.animationOffset.getValue()|default(100),
-                    contentAnimationEasing: block.animationEasing.getValue()|default(null)
-                }) }}
-            </div>
+    <div class="{{ not childContainer ? 'container' }} {{ containerBgExist or (containerImage and backgroundColorLabel == 'white') ? 'px-4 md:px-6' }}">
+        <div class="transform-none {{ render.contentWidth({width: contentWidth}) }}">
+            {{ render.basicContents({
+                eyebrow: block.eyebrow,
+                heading: block.heading,
+                text: block.text,
+                buttons: buttons,
+                headingTag: headingTag,
+                fontWeight: fontWeight,
+                backgroundColorLabel: backgroundColorLabel,
+                contentAlignment: contentAlignment,
+                animation: block.animation,
+                contentAnimationStyle: block.animationStyle.getValue()|default('fade-up'),
+                contentAnimationDuration: block.animationDuration.getValue()|default(1500),
+                contentAnimationOffset: block.animationOffset.getValue()|default(200),
+                contentAnimationEasing: block.animationEasing.getValue()|default(null)
+            }) }}
         </div>
+    </div>
     {% endif %}
 </{{ sectionTag }}>

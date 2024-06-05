@@ -5,15 +5,18 @@
     <li>
         <address class="text-sm not-italic text-neutral-300">
             {% if block.heading %}
-                <strong class="{{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
-                    {{ block.heading }}
-                </strong>
+            <strong class="{{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
+                {{ block.heading|nl2br }}
+            </strong>
             {% endif %}
+
             <br>
             {% for item in block.telephone %}
-                <a href="{{ item.getUrl }}" class="{{ render.foregroundColors({background: backgroundColorLabel, type: 'subHeading'}) }}">
-                    {{ item.getText }}
-                </a>
+            <a href="{{ item.getUrl() }}" class="{{ render.foregroundColors({background: backgroundColorLabel, type: 'subHeading'}) }} {{ block.telephone.classes }}"
+                {% if block.telephone.linkTitle %} title="{{ block.telephone.linkTitle }}"{% endif %} {% if block.telephone.target %} target="{{ block.telephone.target }}" rel="noopener"{% endif %} {% for attribute in block.telephone.customAttributes %} {{ attribute.attribute }}="{{ attribute.value }}" {% endfor %}
+            >
+                {{ item.getText() }}
+            </a>
             {% endfor %}
         </address>
     </li>

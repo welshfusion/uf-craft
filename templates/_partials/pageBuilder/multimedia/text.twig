@@ -8,14 +8,14 @@
         {% for item in textCards %}
         <li class="group mt-10 first:mt-0">
             {% if item.simpleText|length %}
-                <div class="opacity-100 transform-none">
-                    <div class="pt-10 group-first:pt-0 group-first:before:hidden group-first:after:hidden relative before:absolute after:absolute {{ backgroundColorLabel == 'green' ? 'before:bg-cyprus-500' : 'before:bg-green-500' }} {{ backgroundColorLabel == 'black' or 'cyprus' ? 'after:bg-neutral-300' : 'after:bg-neutral-950/10' }} before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px">
+            <div class="opacity-100 transform-none">
+                <div class="pt-10 group-first:pt-0 group-first:before:hidden group-first:after:hidden relative before:absolute after:absolute {{ backgroundColorLabel == 'green' ? 'before:bg-cyprus-500' : 'before:bg-green-500' }} {{ backgroundColorLabel == 'black' or 'cyprus' ? 'after:bg-neutral-300' : 'after:bg-neutral-950/10' }} before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px">
                     {{ render.replaceElements(item.simpleText, {
                         background: backgroundColorLabel == 'white' ? 'white' : 'green',
                         paragraphFontSize: 'text-base'
                     }) }}
-                    </div>
                 </div>
+            </div>
             {% endif %}
         </li>
         {% endfor %}

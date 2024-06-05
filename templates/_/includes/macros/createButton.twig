@@ -72,13 +72,9 @@
 
 {% if not button.isEmpty() %}
     <a {{ attr(attributes.toArray()) }}>
-        {# {% if icon|length %} #}
         <span class="{% if icon|length %} flex-1 {{ iconPosition == 'left' ? 'pl-2' : 'pr-2' }} {% else %} relative top-px {% endif %}">
-        {# {% endif %} #}
             {{ button.getText() }}
-        {# {% if icon|length %} #}
         </span>
-        {# {% endif %} #}
 
         {% if icon|length %}
             {{ svg(icon.path)|attr({
