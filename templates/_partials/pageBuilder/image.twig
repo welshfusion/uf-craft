@@ -43,14 +43,13 @@
 {% set sectionTag = childContainer or containerWrapper ? 'div' : 'section' %}
 {# Parent Block Fields End #}
 
-{% set headingColor = block.headingColor.label|default('white') %}
-{% set headingTag = block.headingSize.getValue()|default('h2') %}
-{% set fontWeight = block.fontWeight.getValue()|default('bold') %}
-
-{% set contentAlignment = block.contentAlignment.value|default('center') %}
 {% set contentWidth = block.contentWidth|default('0;12') %}
 {% set containerSize = block.containerSize.getValue()|default('container') %}
 {% set imageRatio = block.imageRatio.getValue()|default('16_9') %}
+
+{% set headingTag = block.headingSize.getValue()|default('h2') %}
+{% set fontWeight = block.fontWeight.getValue()|default('medium') %}
+{% set contentAlignment = block.contentAlignment.value|default('center') %}
 
 {% set conbackgroundColor = conbackgroundColor ?? null %}
 {% set backgroundColorLabel = block.backgroundColor.label|default(conbackgroundColor ?? 'white') %}
@@ -62,16 +61,16 @@
 
 {% set ratio = {
     'auto'    : 'aspect-auto',
-    '1_1'     : 'lg:aspect-w-1 lg:aspect-h-1',
-    '16_9'    : 'md:aspect-w-16 md:aspect-h-9',
-    '4_3'     : 'lg:aspect-w-4 lg:aspect-h-3',
-    '3_4'     : 'lg:aspect-w-3 lg:aspect-h-4',
-    '7_2'     : 'lg:aspect-w-7 lg:aspect-h-2'
+    '1_1'     : 'aspect-w-1 aspect-h-1',
+    '16_9'    : 'aspect-w-16 aspect-h-9',
+    '4_3'     : 'aspect-w-4 aspect-h-3',
+    '3_4'     : 'aspect-w-3 aspect-h-4',
+    '7_2'     : 'aspect-w-7 aspect-h-2'
 } %}
 
 {% set buttons = block.buttons.all() %}
 {% set image = block.image.one() %}
-{% set videos = block.video ?? null %}
+{% set videos = block.backgroundVideo ?? null %}
 
 {% set contentAnimation = render.setAnimation({
     animation: block.animation,
@@ -89,81 +88,77 @@
     animationEasing: block.animationEasing.value|default(null)
 }) | raw %}
 
-{% set basicContentsExist = block.eyebrow|length or block.heading|length or block.text|length %}
-
 <{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ backgroundColor }} {{ spacing }}">
-    <div class="{{ (not childContainer) and (containerSize == 'container') ? 'container' }} {{ (childContainer and containerBgExist) or containerImage ? 'px-4 md:px-6' }} {{ (containerBgExist and backgroundColorLabel == 'white') or containerImage ? 'py-4 md:py-6' }}">
+    <div class="{{ containerSize == 'container' ? 'container' }}">
         <div class="{{ render.contentWidth({width: contentWidth}) }}">
-            {% if basicContentsExist %}
-                <div class="{{ containerSize == 'container' ? 'container' }}" {{ contentAnimation|raw }}>
-                    {{ render.basicContents({
-                        eyebrow: block.eyebrow,
-                        heading: block.heading,
-                        text: block.text,
-                        headingTag: headingTag,
-                        fontWeight: fontWeight,
-                        backgroundColorLabel: backgroundColorLabel,
-                        contentAlignment: contentAlignment,
-                        animation: block.animation,
-                        contentAnimationStyle: block.animationStyle2.getValue()|default('fade-up'),
-                        contentAnimationDuration: block.animationDuration2.getValue()|default(1500),
-                        contentAnimationOffset: block.animationOffset2.getValue()|default(200),
-                        contentAnimationEasing: block.animationEasing2.getValue()|default(null)
-                    }) }}
-                </div>
+            {% if block.eyebrow|length or block.heading|length or block.text|length %}
+                {{ render.basicContents({
+                    eyebrow: block.eyebrow,
+                    heading: block.heading,
+                    text: block.text,
+                    headingTag: headingTag,
+                    fontWeight: fontWeight,
+                    backgroundColorLabel: backgroundColorLabel,
+                    contentAlignment: contentAlignment,
+                    animation: block.animation,
+                    contentAnimationStyle: block.animationStyle2.getValue()|default('fade-up'),
+                    contentAnimationDuration: block.animationDuration2.getValue()|default(1500),
+                    contentAnimationOffset: block.animationOffset2.getValue()|default(200),
+                    contentAnimationEasing: block.animationEasing2.getValue()|default(null)
+                }) }}
             {% endif %}
 
-            {% if image|length or videos|length or buttons|length %}
-            <div class="{{ block.heading|length or block.text|length ? 'mt-8 md:mt-10' }}">
+            {% if image|length or videos|length %}
+            <div class="{{ block.eyebrow|length or block.heading|length or block.text|length ? 'mt-8 md:mt-10' }}">
                 {% set videoImage = videos.media.image ?? null %}
                 {% set finalImage = image|length ? image : videoImage %}
-                {% set videoId = 'image-video-'|t ~ block.getId() %}
+                {% set videoId = 'image-video-' ~ block.getId() %}
 
-                {% if image|length or videos.media|length %}
+                {% if image|length or videos|length %}
                 <div class="relative {{ ratio[imageRatio] }}" {{ imageAnimation|raw }}>
-                    <div class="pt-5">
-                        {{ render.renderVideo({
-                            image: finalImage|length ? finalImage,
-                            alt: image|length ? image.title : videoId,
-                            width: image|length ? image.width,
-                            height: image|length ? image.height,
-                            class: "object-cover w-full h-full",
-                            lazy: false,
-                            plainImage: image|length ? false : true,
-                            videos: videos,
-                            videoClass: "object-cover w-full h-full",
-                            videoType: 'popup',
-                            videoPoster: image,
-                            videoId: videoId,
-                            videoAttrs: {
-                                preload: "none",
-                            }
-                        }) }}
+                    <div>
+                    {{ render.renderVideo({
+                        image: finalImage|length ? finalImage,
+                        alt: image|length ? image.title : videoId,
+                        width: image|length ? image.width,
+                        height: image|length ? image.height,
+                        class: "object-cover w-full h-full",
+                        lazy: false,
+                        plainImage: image|length ? false : true,
+                        videos: videos,
+                        videoClass: "object-cover w-full h-full",
+                        videoType: 'popup',
+                        videoPoster: image,
+                        videoId: videoId,
+                        videoAttrs: {
+                            preload: "none",
+                        }
+                    }) }}
                     </div>
                 </div>
                 {% endif %}
-
-                {% for button in buttons %}
-                {% if loop.first %}
-                <div class="flex flex-wrap items-center gap-5 mt-10 {{ containerSize == 'full' ? 'container' }} {{ render.getAlignment({
-                    alignment: contentAlignment,
-                    type: 'justify'
-                }) }}" {{ contentAnimation|raw }}>
-                {% endif %}
-                    {{ render.createButton({
-                        button: button.button,
-                        buttonType: button.buttonType.getValue()|default("button"),
-                        buttonColor: button.buttonColor.label|default('cyprus'),
-                        icon: button.icon,
-                        iconPosition: button.iconPosition.getValue()|default('right'),
-                        background: backgroundColorLabel,
-                    }) }}
-                {% if loop.last %}
-                </div>
-                {% endif %}
-                {% endfor %}
             </div>
             {% endif %}
+
+            {% for button in buttons %}
+            {% if loop.first %}
+            <div class="flex flex-wrap items-center gap-5 mt-8 md:mt-10 {{ containerSize == 'full' ? 'container' }} {{ render.getAlignment({
+                alignment: contentAlignment,
+                type: 'justify'
+            }) }}" {{ contentAnimation|raw }}>
+            {% endif %}
+                {{ render.createButton({
+                    button: button.button,
+                    buttonType: button.buttonType.getValue()|default("button"),
+                    buttonColor: button.buttonColor.label|default('cyprus'),
+                    icon: button.icon,
+                    iconPosition: button.iconPosition.getValue()|default('right'),
+                    background: backgroundColorLabel,
+                }) }}
+            {% if loop.last %}
+            </div>
+            {% endif %}
+            {% endfor %}
         </div>
     </div>
 </{{ sectionTag }}>

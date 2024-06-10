@@ -36,7 +36,7 @@
             {% set videoId = videoId ?? 'glight-video'|t %}
 
             <a href="{{ videos }}" id="{{ videoId }}" class="glightbox group transition-all duration-300 absolute rounded-full flex items-center justify-center left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 {{ extraWrapperClasses }} {{ videoWrapperSize }}" aria-label="{{ videoId }}">
-                <span class=" bg-crimson-500 rounded-full flex items-center justify-center text-white group-hover:bg-gold-500 transition-all duration-300 {{ popupClass }} {{ videoSize }}">
+                <span class=" bg-cyprus-500 rounded-full flex items-center justify-center text-white group-hover:bg-cyprus-600 transition-all duration-300 {{ popupClass }} {{ videoSize }}">
                     {{ svg(videoSvgUrl) | attr({ class: "duration-300 #{svgSize} #{svgColorClass}" }) }}
                 </span>
             </a>
