@@ -1,38 +1,47 @@
 {{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
 {% import "_/includes/macros" as render %}
 
-{% set swiperPrev = "swiper-prev-#{block.getId()}" %}
-{% set swiperNext = "swiper-next-#{block.getId()}" %}
 {% set swiperPagination = "swiper-pagination-#{block.getId()}" %}
-
 {% set paginationBulletClass = backgroundColorLabel in ['cyprus'] ? '!bg-white' : '!bg-cyprus-500' %}
-
 {% set settings = {
     "slidesPerView": 1,
-    "autoHeight": perRowLimit == 1 ? true : false,
-    "breakpoints": { "768": { "slidesPerView": "2" }, "1024": { "slidesPerView": "#{perRowLimit}" }, "1376": { "slidesPerView": "#{perRowLimit}" } },
-    "navigation":{"nextEl":".#{swiperNext}","prevEl":".#{swiperPrev}", "disabledClass": "opacity-60"},
-    "pagination": {"el": ".#{swiperPagination}", "clickable": "true", "bulletClass": "!h-2.5 !w-2.5 !mx-1 opacity-50 swiper-pagination-bullet #{paginationBulletClass}", "bulletActiveClass": "!opacity-100"}
+    "spaceBetween": 24,
+    "pagination": {
+        "el": ".#{swiperPagination}",
+        "clickable": "true",
+        "bulletClass": "!h-2 !w-2 !mx-1 opacity-50 swiper-pagination-bullet #{paginationBulletClass}",
+        "bulletActiveClass": "!opacity-100"
+    },
+    "breakpoints": {
+        "768": {
+            "slidesPerView": "2"
+        },
+        "1024": {
+            "slidesPerView": "#{perRowLimit}"
+        }
+    }
 } %}
 
-{% if images|length %}
-<div class="relative mt-10">
+<div class="relative {{ block.eyebrow|length or block.heading|length or block.text|length ? 'mt-10' }}">
     <div class="swiper swiper-slider" data-modulenav="1" data-modulepagination="1" data-moduleautoplay="" data-settings='{{ settings|json_encode|raw }}'>
         <div class="swiper-wrapper">
             {% for image in images %}
-            <a href="{{ image.getUrl() }}" id="{{ 'gallery-video-' ~ block.getId() }}" class="glightbox glightbox-video swiper-slide {{ ratio[imageRatio] }}" data-title="{{ image.title }}" {{ galleryAnimation|raw }}>
-                {{ render.setImage({
-                    image: image,
-                    alt: image.title,
-                    width: image.width,
-                    height: image.height,
-                    pictureClass: block.showBorder ? 'border border-neutral-100 p-2',
-                    class: 'w-full h-full object-cover rounded-xl'
-                }) }}
-            </a>
+                <a href="{{ image.getUrl() }}" class="glightbox swiper-slide" {{ galleryAnimation|raw }}>
+                    <div class="{{ ratio[imageRatio] }}">
+                        {{ render.setImage({
+                            image: image,
+                            alt: image.title,
+                            width: image.width,
+                            height: image.height,
+                            class: 'w-full h-full object-cover rounded-xl'
+                        }) }}
+                    </div>
+                </a>
             {% endfor %}
         </div>
     </div>
     <div class="swiper-pagination swiper-pagination-list !-bottom-14 {{ swiperPagination }}"></div>
 </div>
-{% endif %}
+
+
+{{ craft.vite.register("src/js/swiper.js", false) }}

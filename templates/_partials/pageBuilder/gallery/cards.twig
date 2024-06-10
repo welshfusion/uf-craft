@@ -1,9 +1,8 @@
 {{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
 {% import "_/includes/macros" as render %}
 
-{% if images|length %}
-    <div class="mt-10 grid gap-2.5 md:gap-5 {{ imageGridLayout[imageLayout] }}">
-        {% for image in images %}
+<div class="grid gap-2.5 md:gap-5 {{ imageGridLayout[imageLayout] }} {{ block.eyebrow|length or block.heading|length or block.text|length ? 'mt-10' }}">
+    {% for image in images %}
         {% set optionsOneClass = loop.first ? 'md:col-span-2' %}
         {% set optionsTwoClass = loop.index % 3 == 1 ? 'md:col-span-2' %}
         {% set optionsThreeClass = loop.index0 % 4 in [1, 2] ? 'col-span-4' : 'col-span-8' %}
@@ -17,7 +16,7 @@
             'option4' : optionsFourClass
         } %}
 
-        <a href="{{ image.getUrl() }}" class="{{ spanCondOptions[imageLayout] }} {{ imageLayout == 'single' ? ratio[imageRatio] : (imageLayout == 'option3' or imageLayout == 'option4' ? 'aspect-w-6 aspect-h-5' : 'aspect-w-8 aspect-h-5') }}" data-title="{{ image.title }}" {{ galleryAnimation|raw }}>
+        <a href="{{ image.getUrl() }}" class="glightbox {{ spanCondOptions[imageLayout] }} {{ imageLayout == 'single' ? ratio[imageRatio] : (imageLayout == 'option3' or imageLayout == 'option4' ? 'aspect-w-6 aspect-h-5' : 'aspect-w-8 aspect-h-5') }}" {{ galleryAnimation|raw }}>
             {{ render.setImage({
                 image: image,
                 alt: image.title,
@@ -27,6 +26,5 @@
                 class: 'w-full h-full object-cover rounded-xl'
             }) }}
         </a>
-        {% endfor %}
-    </div>
-{% endif %}
+    {% endfor %}
+</div>

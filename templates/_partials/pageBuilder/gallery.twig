@@ -44,18 +44,14 @@
 {% set sectionTag = childContainer or containerWrapper ? 'div' : 'section' %}
 {# Parent Block Fields End #}
 
-{% set headingColor = block.headingColor.label|default('white') %}
 {% set headingTag = block.headingSize.getValue()|default('h2') %}
-{% set fontWeight = block.fontWeight.getValue()|default('bold') %}
-{% set overlayOpacity = block.overlayOpacity.getValue()|default('none') %}
-
+{% set fontWeight = block.fontWeight.getValue()|default('medium') %}
 {% set contentAlignment = block.contentAlignment.value|default('center') %}
 {% set contentWidth = block.contentWidth|default('0;12') %}
-{% set containerSize = block.containerSize.getValue()|default('container') %}
 {% set imageLayout = block.galleryLayout.value|default('option4') %}
 {% set imageRatio = block.imageRatio.getValue()|default('16_9') %}
-{% set listingStyle = block.listingStyle.value|default('cards') %}
 {% set perRowLimit = block.perRowLimit.getValue()|default('1') %}
+{% set listingStyle = block.listingStyle.value|default('cards') %}
 
 {% set conbackgroundColor = conbackgroundColor ?? null %}
 {% set backgroundColorLabel = block.backgroundColor.label|default(conbackgroundColor ?? 'white') %}
@@ -69,7 +65,8 @@
     '1'       : 'grid-cols-1',
     '2'       : 'grid-cols-1 md:grid-cols-2',
     '3'       : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3',
-    '4'       : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4'
+    '4'       : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4',
+    '5'       : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-5'
 } %}
 
 {% set imageGridLayout = {
@@ -82,11 +79,11 @@
 
 {% set ratio = {
     'auto'    : 'aspect-auto',
-    '1_1'     : 'lg:aspect-w-1 lg:aspect-h-1',
-    '16_9'    : 'md:aspect-w-16 md:aspect-h-9',
-    '4_3'     : 'lg:aspect-w-4 lg:aspect-h-3',
-    '3_4'     : 'lg:aspect-w-3 lg:aspect-h-4',
-    '7_2'     : 'lg:aspect-w-7 lg:aspect-h-2'
+    '1_1'     : 'aspect-w-1 aspect-h-1',
+    '16_9'    : 'aspect-w-16 aspect-h-9',
+    '4_3'     : 'aspect-w-4 aspect-h-3',
+    '3_4'     : 'aspect-w-3 aspect-h-4',
+    '7_2'     : 'aspect-w-7 aspect-h-2'
 } %}
 
 {% set buttons = block.buttons.all() %}
@@ -108,20 +105,16 @@
     animationEasing: block.animationEasing.value|default(null)
 }) | raw %}
 
-{% set basicContentsExist = block.eyebrow|length or block.heading|length or block.text|length %}
-
 <{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ backgroundColor }} {{ spacing }}">
-    <div class="{{ (not childContainer) and (containerSize == 'container') ? 'container' }} {{ (childContainer and containerBgExist) or containerImage ? 'px-4 md:px-6' }} {{ (containerBgExist and backgroundColorLabel == 'white') or containerImage ? 'py-4 md:py-6' }}">
+    <div class="container">
         <div class="{{ render.contentWidth({width: contentWidth}) }}">
-            {% if basicContentsExist %}
-            <div class="{{ containerSize == 'full' ? 'container' }}" {{ contentAnimation|raw }}>
+            {% if block.eyebrow|length or block.heading|length or block.text|length %}
             {{ render.basicContents({
                 eyebrow: block.eyebrow,
                 heading: block.heading,
                 text: block.text,
                 headingTag: headingTag,
                 fontWeight: fontWeight,
-                bgOpacity: overlayOpacity,
                 backgroundColorLabel: backgroundColorLabel,
                 contentAlignment: contentAlignment,
                 animation: block.animation,
@@ -130,14 +123,15 @@
                 contentAnimationOffset: block.animationOffset2.getValue()|default(200),
                 contentAnimationEasing: block.animationEasing2.getValue()|default(null)
             }) }}
-            </div>
             {% endif %}
 
-            {% include "_partials/pageBuilder/gallery/#{listingStyle}" %}
+            {% if images|length %}
+                {% include "_partials/pageBuilder/gallery/#{listingStyle}" %}
+            {% endif %}
 
             {% for button in buttons %}
                 {% if loop.first %}
-                    <div class="flex flex-wrap items-center gap-5 mt-10 {{ containerSize == 'full' ? 'container' }} {{ render.getAlignment({
+                    <div class="flex flex-wrap items-center gap-5 mt-8 md:mt-10 {{ render.getAlignment({
                         alignment: contentAlignment,
                         type: 'justify'
                     }) }}" {{ contentAnimation|raw }}>
@@ -154,7 +148,8 @@
                     </div>
                 {% endif %}
             {% endfor %}
-            </div>
         </div>
     </div>
 </{{ sectionTag }}>
+
+{{ craft.vite.script("src/js/glightbox.js", false) }}
