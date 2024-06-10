@@ -1,40 +1,44 @@
 {{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
 {% import "_/includes/macros" as render %}
 
-{% set swiperPrev = "swiper-prev-#{block.getId()}" %}
-{% set swiperNext = "swiper-next-#{block.getId()}" %}
 {% set swiperPagination = "swiper-pagination-#{block.getId()}" %}
-
 {% set paginationBulletClass = backgroundColorLabel in ['cyprus'] ? '!bg-white' : '!bg-cyprus-500' %}
-
 {% set settings = {
     "slidesPerView": 1,
     "spaceBetween": 24,
-    "breakpoints": { "768": { "slidesPerView": "2" }, "1024": { "slidesPerView": "#{perRowLimit}" }, "1376": { "slidesPerView": "#{perRowLimit}" } },
-    "navigation":{"nextEl":".#{swiperNext}","prevEl":".#{swiperPrev}", "disabledClass": "opacity-60"},
-    "pagination": {"el": ".#{swiperPagination}", "clickable": "true", "bulletClass": "!h-2 !w-2 !mx-1 opacity-50 swiper-pagination-bullet #{paginationBulletClass}", "bulletActiveClass": "!opacity-100"}
+    "pagination": {
+        "el": ".#{swiperPagination}",
+        "clickable": "true",
+        "bulletClass": "!h-2 !w-2 !mx-1 opacity-50 swiper-pagination-bullet #{paginationBulletClass}",
+        "bulletActiveClass": "!opacity-100"
+    },
+    "breakpoints": {
+        "768": {
+            "slidesPerView": "2"
+        },
+        "1024": {
+            "slidesPerView": "#{perRowLimit}"
+        }
+    }
 } %}
 
-<div class="mx-auto max-w-7xl px-6 lg:px-8 mt-16">
-    <div {{ cardAnimation|raw }}>
-        <div class="swiper swiper-slider" data-modulenav="1" data-modulepagination="1" data-moduleautoplay="" data-settings='{{ settings|json_encode|raw }}'>
-            <div class="swiper-wrapper opacity-100 transform-none">
-                {% for card in textCards %}
-                    <div class="swiper-slide before:bg-white after:bg-white/10">
-                        {% if card.simpleText|length %}
-                            <div class="pl-8 relative before:absolute after:absolute {{ backgroundColorLabel == 'green' ? 'before:bg-cyprus-300' : 'before:bg-green-500' }} {{ backgroundColorLabel == 'white' ? 'after:bg-neutral-300' : 'after:bg-white/10' }} before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px">
-                            {{ render.replaceElements(card.simpleText, {
-                                background: backgroundColorLabel == 'white' ? 'white' : 'green',
-                                paragraphFontSize: 'text-base'
-                            }) }}
-                            </div>
-                        {% endif %}
+<div class="relative {{ block.eyebrow|length or block.heading|length or block.text|length ? 'mt-10' }}">
+    <div class="swiper swiper-slider !pb-14" data-modulenav="1" data-modulepagination="1" data-moduleautoplay="" data-settings='{{ settings|json_encode|raw }}'>
+        <div class="swiper-wrapper opacity-100 transform-none">
+            {% for card in textCards %}
+                {% if card.simpleText|length %}
+                <div class="swiper-slide before:bg-white after:bg-white/10" {{ cardAnimation|raw }}>
+                    <div class="pl-8 relative before:absolute after:absolute before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px {{ backgroundColorLabel == 'green' ? 'before:bg-cyprus-300' : 'before:bg-green-500' }} {{ backgroundColorLabel == 'white' ? 'after:bg-neutral-300' : 'after:bg-white/10' }}">
+                        {{ render.replaceElements(card.simpleText, {
+                            background: backgroundColorLabel,
+                        }) }}
                     </div>
-                {% endfor %}
-            </div>
+                </div>
+                {% endif %}
+            {% endfor %}
         </div>
-        <div class="swiper-pagination swiper-pagination-list !-bottom-14 {{ swiperPagination }}"></div>
     </div>
+    <div class="swiper-pagination swiper-pagination-list !bottom-1 {{ swiperPagination }}"></div>
 </div>
 
-{{ craft.vite.script("src/js/swiper.js") }}
+{{ craft.vite.register("src/js/swiper.js", false) }}

@@ -40,16 +40,15 @@
 {% set sectionTag = childContainer ? 'div' : 'section' %}
 {# Parent Block Fields End #}
 
-{% set headingColor = block.headingColor.label|default('white') %}
 {% set headingTag = block.headingSize.getValue()|default('h2') %}
-{% set fontWeight = block.fontWeight.getValue()|default('semibold') %}
+{% set fontWeight = block.fontWeight.getValue()|default('medium') %}
 {% set contentAlignment = block.contentAlignment.value|default('left') %}
 {% set contentWidth = block.contentWidth|default('0;12') %}
-{% set perRowLimit = block.perRowLimit.getValue()|default(parent == 'twoColumns' ? '2' : '3') %}
+{% set perRowLimit = block.perRowLimit.getValue()|default('3') %}
 {% set listingStyle = block.listingStyle.value|default('cards') %}
 
 {% set conbackgroundColor = conbackgroundColor ?? null %}
-{% set backgroundColorLabel = block.backgroundColor.label|default(conbackgroundColor ?? 'cyprus') %}
+{% set backgroundColorLabel = block.backgroundColor.label|default(conbackgroundColor ?? 'white') %}
 {% set containerBgExist = conbackgroundColor != backgroundColorLabel %}
 {% set backgroundColor = render.color({
     handle: backgroundColorLabel,
@@ -57,6 +56,7 @@
 }) %}
 
 {% set buttons = block.buttons.all() %}
+{% set textCards = block.textCard.all() %}
 
 {% set rowLimit = {
     '2' : 'grid-cols-1 sm:grid-cols-2',
@@ -64,6 +64,14 @@
     '4' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4',
     '5' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-5'
 } %}
+
+{% set contentAnimation = render.setAnimation({
+    animation: block.animation,
+    animationStyle: block.animationStyle.value|default('fade-up'),
+    animationDuration: block.animationDuration.value|default(1500),
+    animationOffset: block.animationOffset.value|default(200),
+    animationEasing: block.animationEasing.value|default(null)
+}) | raw %}
 
 {% set cardAnimation = render.setAnimation({
     animation: block.animation,
@@ -73,38 +81,52 @@
     animationEasing: block.animationEasing2.value|default(null)
 }) | raw %}
 
-{% set basicContentsExist = block.eyebrow|length or block.heading|length or block.text|length or buttons|length %}
-
-{% set textCards = block.textCard.all() %}
-
-<{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="rounded-4xl {{ backgroundColor }} {{ spacing }} {{ containerImage ? render.contentWidth({width: contentWidth}) }}">
-    {% if basicContentsExist %}
-    <div class="{{ not childContainer ? 'container' }} {{ containerBgExist or (containerImage and backgroundColorLabel == 'white') ? 'px-4 md:px-6' }}">
-        <div class="mx-auto max-w-2xl lg:max-w-none">
-            <div class="opacity-100 transform-none {{ render.contentWidth({width: contentWidth}) }}">
-                {{ render.basicContents({
-                    eyebrow: block.eyebrow,
-                    heading: block.heading,
-                    subHeading: block.subHeading,
-                    text: block.text,
-                    buttons: buttons,
-                    headingTag: headingTag,
-                    fontWeight: fontWeight,
-                    backgroundColorLabel: backgroundColorLabel,
-                    contentAlignment: contentAlignment,
-                    animation: block.animation,
-                    contentAnimationStyle: block.animationStyle.getValue()|default('fade-up'),
-                    contentAnimationDuration: block.animationDuration.getValue()|default(700),
-                    contentAnimationOffset: block.animationOffset.getValue()|default(100),
-                    contentAnimationEasing: block.animationEasing.getValue()|default(null)
-                }) }}
-            </div>
+<{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="rounded-4xl {{ backgroundColor }} {{ spacing }}">
+    {% if block.eyebrow|length or block.heading|length or block.text|length or buttons|length %}
+    <div class="container">
+        <div class="{{ render.contentWidth({width: contentWidth}) }}">
+            {{ render.basicContents({
+                eyebrow: block.eyebrow,
+                heading: block.heading,
+                subHeading: block.subHeading,
+                text: block.text,
+                headingTag: headingTag,
+                fontWeight: fontWeight,
+                backgroundColorLabel: backgroundColorLabel,
+                contentAlignment: contentAlignment,
+                animation: block.animation,
+                contentAnimationStyle: block.animationStyle.getValue()|default('fade-up'),
+                contentAnimationDuration: block.animationDuration.getValue()|default(700),
+                contentAnimationOffset: block.animationOffset.getValue()|default(100),
+                contentAnimationEasing: block.animationEasing.getValue()|default(null)
+            }) }}
         </div>
+
+        {% if textCards|length %}
+            {% include "_partials/pageBuilder/textCards/#{listingStyle}" %}
+        {% endif %}
+
+        {% for button in buttons %}
+        {% if loop.first %}
+        <div class="flex flex-wrap items-center gap-5 mt-8 md:mt-10 {{ render.getAlignment({
+            alignment: contentAlignment,
+            type: 'justify'
+        }) }}" {{ contentAnimation|raw }}>
+        {% endif %}
+            {{ render.createButton({
+                button: button.button,
+                buttonType: button.buttonType.getValue()|default("button"),
+                buttonColor: button.buttonColor.label|default('cyprus'),
+                icon: button.icon,
+                iconPosition: button.iconPosition.getValue()|default('right'),
+                background: backgroundColorLabel,
+            }) }}
+        {% if loop.last %}
+        </div>
+        {% endif %}
+        {% endfor %}
     </div>
     {% endif %}
 
-    {% if textCards|length %}
-        {% include "_partials/pageBuilder/textCards/#{listingStyle}" %}
-    {% endif %}
 
 </{{ sectionTag }}>
