@@ -51,10 +51,34 @@
 }) %}
 
 {% set buttons = block.buttons.all() %}
-{% set basicContentsExist = block.eyebrow|length or block.heading|length or block.text|length or buttons|length %}
 
+{% if block.eyebrow|length or block.heading|length or block.text|length or buttons|length %}
+<{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ spacing }} {{ backgroundColor }}">
+    <div class="container">
+        <div class="transform-none {{ render.contentWidth({width: contentWidth}) }}">
+            {{ render.basicContents({
+                eyebrow: block.eyebrow,
+                heading: block.heading,
+                subHeading: block.subHeading,
+                text: block.text,
+                buttons: buttons,
+                headingTag: headingTag,
+                fontWeight: fontWeight,
+                backgroundColorLabel: backgroundColorLabel,
+                contentAlignment: contentAlignment,
+                animation: block.animation,
+                contentAnimationStyle: block.animationStyle.getValue()|default('fade-up'),
+                contentAnimationDuration: block.animationDuration.getValue()|default(1500),
+                contentAnimationOffset: block.animationOffset.getValue()|default(200),
+                contentAnimationEasing: block.animationEasing.getValue()|default(null)
+            }) }}
+        </div>
+    </div>
+</{{ sectionTag }}>
+{% endif %}
+
+{# {% if block.eyebrow|length or block.heading|length or block.text|length or buttons|length %}
 <{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ roundedCorners ? 'rounded-4xl' }} {{ spacing }} {{ backgroundColor }} {{ backgroundColor ? 'mt-10' }} {{ containerImage ? render.contentWidth({width: contentWidth}) }}">
-    {% if basicContentsExist %}
     <div class="{{ not childContainer ? 'container' }} {{ containerBgExist or (containerImage and backgroundColorLabel == 'white') ? 'px-4 md:px-6' }}">
         <div class="transform-none {{ render.contentWidth({width: contentWidth}) }}">
             {{ render.basicContents({
@@ -75,5 +99,6 @@
             }) }}
         </div>
     </div>
-    {% endif %}
 </{{ sectionTag }}>
+{% endif %} #}
+
