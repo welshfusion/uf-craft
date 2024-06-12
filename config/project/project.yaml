@@ -1,4 +1,4 @@
-dateModified: 1717582451
+dateModified: 1718170860
 elementSources:
   craft\elements\Entry:
     -
@@ -97,6 +97,7 @@ meta:
     5bdbc0ac-c142-4128-a741-e438819f43c5: Userfusion # Userfusion
     5c2557f5-9953-495f-98c5-6e03acb0161b: Images # Images
     5f91fed7-8dbd-476c-8ff5-a06bc3edde90: 'Social Links' # Social Links
+    6a8e61d4-4a3a-473c-a31e-5bba2449b534: Contact # Contact
     06c080b4-85ef-4bf1-b169-562706f7d127: 'Pattern Background Color' # Pattern Background Color
     6ca324c3-1bd9-482d-a2c7-8a9050d33a32: Quote # Quote
     7c1471a7-a014-4b8f-8e10-1d6064ca6ebd: Team # Team

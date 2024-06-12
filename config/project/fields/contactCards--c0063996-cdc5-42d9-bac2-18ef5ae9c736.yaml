@@ -6,7 +6,7 @@ searchable: false
 settings:
   createButtonLabel: Card
   entryTypes:
-    - 72d439b0-45ce-4aaa-94ac-cdda734b4b5a # Text
+    - 9d433c43-3b96-46c7-9217-9495827131e2 # Text Card
     - 12eaafb7-f335-4296-9610-453f6f68c8bb # Contact Url
     - d5375257-05b7-4c6e-b808-81ca62e56f9f # Contact Social Links
   includeTableView: false
