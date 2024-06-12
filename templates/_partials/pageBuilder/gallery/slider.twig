@@ -23,7 +23,7 @@
 } %}
 
 <div class="relative {{ block.eyebrow|length or block.heading|length or block.text|length ? 'mt-10' }}">
-    <div class="swiper swiper-slider" data-modulenav="1" data-modulepagination="1" data-moduleautoplay="" data-settings='{{ settings|json_encode|raw }}'>
+    <div class="swiper swiper-slider !pb-10" data-modulenav="1" data-modulepagination="1" data-moduleautoplay="" data-settings='{{ settings|json_encode|raw }}'>
         <div class="swiper-wrapper">
             {% for image in images %}
                 <a href="{{ image.getUrl() }}" class="glightbox swiper-slide" {{ galleryAnimation|raw }}>
@@ -40,7 +40,7 @@
             {% endfor %}
         </div>
     </div>
-    <div class="swiper-pagination swiper-pagination-list !-bottom-14 {{ swiperPagination }}"></div>
+    <div class="swiper-pagination swiper-pagination-list !-bottom-1 {{ swiperPagination }}"></div>
 </div>
 
 

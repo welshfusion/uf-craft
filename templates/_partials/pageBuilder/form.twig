@@ -80,39 +80,45 @@
     <div class="mx-auto max-w-2xl lg:max-w-none">
         <div class="grid grid-cols-1 gap-x-8 gap-y-24 lg:grid-cols-2">
             <div class="lg:order-last" >
+                {% if block.formHeading|length %}
                     <h2 class="font-display text-base font-semibold text-cyprus-500">
                         {{ block.formHeading }}
                     </h2>
+                {% endif %}
 
-                    {% if form|length %}
-            <div {{ formAnimation|raw }}>
-                {{ craft.formie.renderForm(form) }}
+                {% if form|length %}
+                <div {{ formAnimation|raw }}>
+                    {{ craft.formie.renderForm(form) }}
 
-                {% js %}
-                    document.addEventListener('onFormieInit', (event) => {
-                        let Formie = event.detail.formie;
-                        Formie.refreshForCache('{{ form.formId }}');
-                    });
-                {% endjs %}
+                    {% js %}
+                        document.addEventListener('onFormieInit', (event) => {
+                            let Formie = event.detail.formie;
+                            Formie.refreshForCache('{{ form.formId }}');
+                        });
+                    {% endjs %}
+                </div>
+                {% endif %}
             </div>
-            {% endif %}
 
-            </div>
-            <div>
-                <h2 class="font-display text-base font-semibold text-cyprus-500">
-                    {{ block.sidebarHeading }}
-                </h2>
+            <div {{ contentAnimation|raw }}>
+                {% if block.sidebarHeading|length %}
+                    <h2 class="font-display text-base font-semibold text-cyprus-500">
+                        {{ block.sidebarHeading }}
+                    </h2>
+                {% endif %}
+
+                {% if block.text2 %}
+                    {{ render.replaceElements(block.text2, {
+                        background: backgroundColorLabel,
+                        paragraphFontSize: 'mt-6 text-base text-neutral-600'
+                    }) }}
+                {% endif %}
 
                 {% if contactInfo|length %}
-                    <div class="mt-10 border-t">
+                    <div class="mt-10">
                         {% for item in contactInfo %}
-                            {% if item.heading|length %}
-                                <h3 class="mt-10 font-display text-base font-semibold" {{ contentAnimation|raw }}>
-                                    {{ item.heading }}
-                                </h3>
-                            {% endif %}
-
-                            {% for block in item.contactCards.all() %}
+                            {% set contactCards = item.contactCards.all() %}
+                            {% for block in contactCards %}
                                 {% include '_partials/pageBuilder/contactCards/' ~ block.type.handle ignore missing %}
                             {% endfor %}
                         {% endfor %}

@@ -37,25 +37,14 @@
 {{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
 {% import "_/includes/macros" as render %}
 
-{# Parent Block Fields Start #}
-{% set parent = parent ?? null %}
-{% set childContainer = childContainer ?? false %}
-{% set containerWrapper = containerWrapper ?? false %}
-{% set containerImage = containerImage ?? false %}
-{% set sectionTag = childContainer or containerWrapper ? 'div' : 'section' %}
-{# Parent Block Fields End #}
-
 {% set containerSize = block.containerSize.getValue()|default('container') %}
 {% set headingTag = block.headingSize.getValue()|default('h2') %}
-{% set fontWeight = block.fontWeight.getValue()|default('bold') %}
+{% set fontWeight = block.fontWeight.getValue()|default('medium') %}
 {% set contentAlignment = block.contentAlignment.value|default('left') %}
 {% set contentWidth = block.contentWidth|default('2;10') %}
-{% set roundedCorners = block.roundedCorners ?? false %}
 {% set overlayOpacity = block.overlayOpacity.getValue|default('60') %}
 
-{% set conbackgroundColor = conbackgroundColor ?? null %}
-{% set backgroundColorLabel = block.backgroundColor.label|default(conbackgroundColor ?? 'cyprus') %}
-{% set containerBgExist = conbackgroundColor != backgroundColorLabel %}
+{% set backgroundColorLabel = block.backgroundColor.label|default('white') %}
 {% set backgroundColor = render.color({
     handle: backgroundColorLabel,
     swatch: 'background'
@@ -71,50 +60,43 @@
 {% set bgImage = block.image.one() %}
 {% set videos = block.backgroundVideo ?? null %}
 
-{% set basicContentsExist = block.eyebrow|length or block.heading|length or block.text|length or buttons|length %}
+<section id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="relative {{ backgroundColor }} {{ bgOpacity }} {{ containerSize == 'container' ? 'container' }} {{ block.roundedCorners ? 'rounded-4xl' }} {{ spacing }}">
+    {% if bgImage|length or videos|length  %}
+    {{ render.renderVideo({
+        image: bgImage,
+        alt: bgImage.title,
+        width: bgImage.width,
+        height: bgImage.height,
+        class: "absolute inset-0 -z-10 h-full w-full object-cover rounded-4xl",
+        lazy: false,
+        videos: videos,
+        videoClass: "absolute inset-0 -z-10 h-full w-full object-cover rounded-4xl",
+        videoType: 'background',
+        videoPoster: bgImage,
+        videoAttrs: {
+            preload: "none",
+        }
+    }) }}
+    {% endif %}
 
-<section class="relative {{ spacing }} {{ backgroundColor }} {{ bgOpacity }} {% if roundedCorners %} rounded-3xl {% endif %} {{ containerSize == 'container' ? 'container' }}">
-        {% if bgImage|length or videos|length  %}
-            {{ render.renderVideo({
-                image: bgImage,
-                alt: bgImage.title,
-                width: bgImage.width,
-                height: bgImage.height,
-                class: "absolute inset-0 -z-10 h-full w-full object-cover rounded-3xl",
-                lazy: false,
-                videos: videos,
-                videoClass: "absolute inset-0 -z-10 h-full w-full object-cover rounded-3xl",
-                videoType: 'background',
-                videoPoster: bgImage,
-                videoAttrs: {
-                    preload: "none",
-                }
-            }) }}
-        {% endif %}
-
-        <div class="container relative z-10 {{ render.contentWidth({width: contentWidth}) }}">
-            {% if basicContentsExist %}
-            <div class="mb-14">
+    <div class="{{ containerSize == 'container' ? 'mx-auto max-w-4xl' : 'container' }}">
+        <div class="{{ render.contentWidth({width: contentWidth}) }}">
+            {% if block.eyebrow|length or block.heading|length or block.text|length %}
                 {{ render.basicContents({
                     eyebrow: block.eyebrow,
                     heading: block.heading,
                     text: block.text,
-                    button: buttons,
-                    overrideParagraphFontSize: 'text-xl',
                     headingTag: headingTag,
                     fontWeight: fontWeight,
                     backgroundColorLabel: backgroundColorLabel,
                 }) }}
-            </div>
             {% endif %}
 
             {% include "_partials/blocks" with {
                 pageBuilder: containers,
                 parent: block.type.handle,
-                conbackgroundColor: bgImage|length ? 'none' : backgroundColorLabel,
-                conOverlayOpacity: overlayOpacity,
-                containerImage: bgImage|length,
-                containerWrapper: true,
+                conBackgroundImage: bgImage|length,
+                childContainer: true,
                 firstBlockSpacing: {
                     'defaultMarginTop' : 'none',
                 },
@@ -122,6 +104,27 @@
                     'defaultMarginBottom' : 'none',
                 },
             } %}
+
+            {% for button in buttons %}
+                {% if loop.first %}
+                <div class="flex flex-wrap items-center gap-5 mt-8 md:mt-10 {{ render.getAlignment({
+                    alignment: contentAlignment,
+                    type: 'justify'
+                }) }}"
+                >
+                {% endif %}
+                    {{ render.createButton({
+                        button: button.button,
+                        buttonType: button.buttonType.getValue()|default("button"),
+                        buttonColor: button.buttonColor.label|default('cyprus'),
+                        icon: button.icon,
+                        iconPosition: button.iconPosition.getValue()|default('right'),
+                        background: backgroundColorLabel,
+                    }) }}
+                {% if loop.last %}
+                </div>
+                {% endif %}
+            {% endfor %}
         </div>
     </div>
 </section>

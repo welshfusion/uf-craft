@@ -1,0 +1,13 @@
+{{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
+{% import "_/includes/macros" as render %}
+
+{% if block.simpleText|length %}
+    <ul role="list" class="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2">
+        <li>
+            {{ render.replaceElements(block.simpleText, {
+                background: backgroundColorLabel,
+                paragraphFontSize: 'text-sm not-italic'
+            }) }}
+        </li>
+    </ul>
+{% endif %}

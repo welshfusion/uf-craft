@@ -1,23 +1,30 @@
 {{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
 {% import "_/includes/macros" as render %}
 
-<ul role="list" class="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2" {{ contentAnimation|raw }}>
-    <li>
-        <address class="text-sm not-italic text-neutral-300">
-            {% if block.heading %}
-            <strong class="{{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
-                {{ block.heading|nl2br }}
-            </strong>
+<div class="mt-16 pt-16 relative before:absolute after:absolute {{ backgroundColorLabel == 'green' ? 'before:bg-neutral-300' : 'before:bg-green-500' }} {{ backgroundColorLabel == 'black' ? 'after:bg-neutral-200' : 'after:bg-neutral-950/10' }} before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px">
+    {% if item.heading|length %}
+        <h2 class="font-display text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}" {{ contentAnimation|raw }}>
+            {{ item.heading|nl2br }}
+        </h2>
+    {% endif %}
+
+    <dl class="mt-6 grid grid-cols-1 gap-8 text-sm sm:grid-cols-2">
+        <div>
+            {% if block.heading|length %}
+                <dt class="font-semibold text-cyprus-500">
+                    {{ block.heading|nl2br }}
+                </dt>
             {% endif %}
 
-            <br>
-            {% for item in block.telephone %}
-            <a href="{{ item.getUrl() }}" class="{{ render.foregroundColors({background: backgroundColorLabel, type: 'subHeading'}) }} {{ block.telephone.classes }}"
-                {% if block.telephone.linkTitle %} title="{{ block.telephone.linkTitle }}"{% endif %} {% if block.telephone.target %} target="{{ block.telephone.target }}" rel="noopener"{% endif %} {% for attribute in block.telephone.customAttributes %} {{ attribute.attribute }}="{{ attribute.value }}" {% endfor %}
+            {% for item in block.contact %}
+            <dd>
+            <a href="{{ item.getUrl() }}" class="{{ render.foregroundColors({background: backgroundColorLabel, type: 'subHeading'}) }} {{ block.contact.classes }}"
+                {% if block.contact.linkTitle %} title="{{ block.contact.linkTitle }}"{% endif %} {% if block.contact.target %} target="{{ block.contact.target }}" rel="noopener"{% endif %} {% for attribute in block.contact.customAttributes %} {{ attribute.attribute }}="{{ attribute.value }}" {% endfor %}
             >
                 {{ item.getText() }}
             </a>
+            </dd>
             {% endfor %}
-        </address>
-    </li>
-</ul>
+        </div>
+    </dl>
+</div>

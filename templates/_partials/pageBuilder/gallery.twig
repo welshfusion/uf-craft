@@ -131,21 +131,21 @@
 
             {% for button in buttons %}
                 {% if loop.first %}
-                    <div class="flex flex-wrap items-center gap-5 mt-8 md:mt-10 {{ render.getAlignment({
-                        alignment: contentAlignment,
-                        type: 'justify'
-                    }) }}" {{ contentAnimation|raw }}>
+                <div class="flex flex-wrap items-center gap-5 mt-8 md:mt-10 {{ render.getAlignment({
+                    alignment: contentAlignment,
+                    type: 'justify'
+                }) }}" {{ contentAnimation|raw }}>
                 {% endif %}
-                {{ render.createButton({
-                    button: button.button,
-                    buttonType: button.buttonType.getValue()|default("button"),
-                    buttonColor: button.buttonColor.label|default('cyprus'),
-                    icon: button.icon,
-                    iconPosition: button.iconPosition.getValue()|default('right'),
-                    background: backgroundColorLabel,
-                }) }}
+                    {{ render.createButton({
+                        button: button.button,
+                        buttonType: button.buttonType.getValue()|default("button"),
+                        buttonColor: button.buttonColor.label|default('cyprus'),
+                        icon: button.icon,
+                        iconPosition: button.iconPosition.getValue()|default('right'),
+                        background: backgroundColorLabel,
+                    }) }}
                 {% if loop.last %}
-                    </div>
+                </div>
                 {% endif %}
             {% endfor %}
         </div>
