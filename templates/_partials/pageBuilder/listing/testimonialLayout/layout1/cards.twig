@@ -1,0 +1,39 @@
+{{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
+{% import "_/includes/macros" as render %}
+
+{% set limit = block.limit|default('12') %}
+
+{% set relatedTestimonials = block.relatedTestimonials.limit(limit) %}
+{% if not relatedTestimonials|length %}
+    {% set relatedTestimonials = craft.entries.section("testimonial").limit(limit) %}
+{% endif %}
+
+<div class="relative isolate">
+    {% for testimonial in relatedTestimonials %}
+        {% set relatedClients = testimonial.relatedClient.all() %}
+        <div {{ listingAnimation|raw }}>
+            <div class="mx-auto max-w-4xl mt-24">
+                {% if testimonial.quote|length %}
+                    <blockquote class="relative font-display text-3xl font-medium tracking-tight sm:text-4xl {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
+                        {{ '“' ~ testimonial.quote|nl2br ~ '”' }}
+                    </blockquote>
+                {% endif %}
+
+                {% for relatedClient in relatedClients %}
+                    {% set image = relatedClient.image2.one() %}
+                    {% if image|length %}
+                        <div class="mt-10">
+                            {{ render.setImage({
+                                image: image,
+                                alt: image.title,
+                                width: 184,
+                                height: 36,
+                                class: 'text-transparent'
+                            }) }}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+</div>

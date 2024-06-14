@@ -1,0 +1,52 @@
+columnSuffix: null
+handle: testimonialLayout
+instructions: null
+name: 'Testimonial Layout'
+searchable: false
+settings:
+  displayAsGraphic: true
+  displayFullwidth: null
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - 'Layout 1'
+        -
+          - showLabel
+          - ''
+        -
+          - value
+          - layout1
+        -
+          - imageUrl
+          - /images/buttonBox/testimonialLayout/layout1.png
+        -
+          - imageAlign
+          - left
+        -
+          - default
+          - '1'
+    -
+      __assoc__:
+        -
+          - label
+          - 'Layout 2'
+        -
+          - showLabel
+          - ''
+        -
+          - value
+          - layout2
+        -
+          - imageUrl
+          - /images/buttonBox/testimonialLayout/layout2.png
+        -
+          - imageAlign
+          - left
+        -
+          - default
+          - ''
+translationKeyFormat: null
+translationMethod: none
+type: verbb\buttonbox\fields\Buttons

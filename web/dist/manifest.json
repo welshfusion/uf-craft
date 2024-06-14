@@ -6,7 +6,7 @@
     "file": "assets/_commonjsHelpers-legacy-16634a03.js"
   },
   "src/js/app-legacy.js": {
-    "file": "assets/app-legacy-550c0836.js",
+    "file": "assets/app-legacy-7758d6bc.js",
     "imports": [
       "__commonjsHelpers-legacy-16634a03.js"
     ],
@@ -14,14 +14,14 @@
     "src": "src/js/app-legacy.js"
   },
   "src/js/app.css": {
-    "file": "assets/app-f0948be3.css",
+    "file": "assets/app-992ad420.css",
     "src": "src/js/app.css"
   },
   "src/js/app.js": {
     "css": [
-      "assets/app-f0948be3.css"
+      "assets/app-992ad420.css"
     ],
-    "file": "assets/app-4454d20f.js",
+    "file": "assets/app-69fcfb99.js",
     "imports": [
       "__commonjsHelpers-725317a4.js"
     ],
@@ -69,7 +69,7 @@
     "src": "src/js/swiper.js"
   },
   "vite/legacy-polyfills-legacy": {
-    "file": "assets/polyfills-legacy-87563d10.js",
+    "file": "assets/polyfills-legacy-fb75ae8a.js",
     "isEntry": true,
     "src": "vite/legacy-polyfills-legacy"
   }

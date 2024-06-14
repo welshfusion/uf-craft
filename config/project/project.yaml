@@ -1,4 +1,4 @@
-dateModified: 1718286988
+dateModified: 1718347001
 elementSources:
   craft\elements\Entry:
     -
@@ -74,6 +74,7 @@ meta:
     1ac41e27-14a7-47d4-a7a3-ab64f8959ead: Solid # Solid
     1c43e81f-f344-4898-bf18-5aff190f9af3: 'Contact Info' # Contact Info
     1cb58e0a-7886-40d7-87eb-ec4149cbc280: 'Related Testimonials' # Related Testimonials
+    1cc32b3f-8297-426d-a395-8306d849c1f5: 'Testimonial Layout' # Testimonial Layout
     1d563f74-0673-4d93-9848-cfbf74332e88: 'Animation Style' # Animation Style
     1eaebe24-9727-4d24-969d-6c0a6012f7c5: Listing # Listing
     1fa0a156-5d07-4afa-a05a-7f48cebc4c97: Client # Client

@@ -1,0 +1,43 @@
+{{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
+{% import "_/includes/macros" as render %}
+
+{% set limit = block.limit|default('12') %}
+
+{% set relatedTestimonials = block.relatedTestimonials.limit(limit) %}
+{% if not relatedTestimonials|length %}
+    {% set relatedTestimonials = craft.entries.section("testimonial").limit(limit) %}
+{% endif %}
+
+<div class="[&amp;>*]:mx-auto [&amp;>*]:max-w-3xl [&amp;>:first-child]:!mt-0 [&amp;>:last-child]:!mb-0">
+    <div class="typography"></div>
+    {% for testimonial in relatedTestimonials %}
+        {% set image = testimonial.image.one() %}
+        <div class="grid grid-cols-[auto,1fr] items-center gap-x-4 gap-y-8 sm:grid-cols-12 sm:grid-rows-[1fr,auto,auto,1fr] sm:gap-x-10 lg:gap-x-16 my-32" {{ listingAnimation|raw }}>
+            {% if testimonial.quote|length %}
+                <blockquote class="col-span-2 text-xl/7 sm:col-span-7 sm:col-start-6 sm:row-start-2 {{ render.foregroundColors({background: backgroundColorLabel, type: 'subHeading'}) }}">
+                    {{ testimonial.quote|nl2br }}
+                </blockquote>
+            {% endif %}
+
+            {% if image|length %}
+                <div class="col-start-1 row-start-2 overflow-hidden rounded-xl bg-neutral-100 sm:col-span-5 sm:row-span-full sm:rounded-3xl">
+                    {{ render.setImage({
+                        image: image,
+                        alt: image.title,
+                        width: 184,
+                        height: 36,
+                        class: 'h-12 w-12 object-cover grayscale sm:aspect-[7/9] sm:h-auto sm:w-full text-transparent'
+                    }) }}
+                </div>
+            {% endif %}
+
+            {% if testimonial.clientName|length or testimonial.designation|length %}
+                <div class="text-sm sm:col-span-7 sm:row-start-3 sm:text-base {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
+                    <span class="font-semibold">{{ testimonial.clientName }}</span>
+                    <span class="hidden font-semibold sm:inline">, </span><br class="sm:hidden">
+                    <span class="sm:font-semibold">{{ testimonial.designation }}</span>
+                </div>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>
