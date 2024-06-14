@@ -1,0 +1,118 @@
+x-data='{
+    url: "{{ url }}",
+    contentId: "{{ contentId }}",
+    loader: "{{ loader }}",
+    clickEvent: "{{ clickEvent }}",
+    isLoading: false,
+    noResultsText: "{{ noResultsText }}",
+    samePageLoadData: "{{ samePageLoadData }}",
+    matchHeightClass: "{{ matchHeightClass }}",
+    paginationBtnClass: "{{ paginationBtnClass }}",
+    filters:{
+        {% for key, item in filters %}
+            {{ key }}: "{{ item }}",
+        {% endfor %}
+    },
+
+    loadTableData(refresh = false, url = "") {
+        let _this = this;
+        {# console.log(url); #}
+        if(_this.isLoading) {
+            return false;
+        }
+
+        if(_this.loader) {
+            _this.isLoading = true;
+        }
+
+        if(url == "") {
+            url = _this.createFreshURL();
+        }
+
+        let params = url.split("?");
+        if(typeof(params[1]) !== "undefined") {
+            if(!refresh) {
+                window.history.pushState({}, "", url);
+            }
+        }
+
+        {# console.log(target.innerText); #}
+        fetch(url, {
+            method: "GET",
+            cache: "no-cache",
+            redirect: "follow",
+            credentials: "same-origin",
+            headers: {
+                "X-Requested-With": "XMLHttpRequest"
+            }
+        })
+        .then((response) => response.text())
+        .then((data) => {
+            let selector = document.querySelector("#" + _this.contentId);
+            if (selector) {
+                if(_this.samePageLoadData) {
+                    let button = document.querySelector("." + _this.paginationBtnClass);
+                    if(button && refresh) {
+                        button.remove();
+                        selector.innerHTML += data;
+                    } else {
+                        selector.innerHTML = data;
+                    }
+                }
+                else {
+                    selector.innerHTML = data;
+                    window.scroll({
+                        behavior: "smooth",
+                        top: selector.offsetTop - 125
+                    });
+                }
+
+                this.isLoading = false;
+
+                if(_this.matchHeightClass) {
+                    let cnt = 0;
+                    let interval = setInterval(function () {
+                        cnt = cnt+10;
+                        new window.MatchHeight(_this.matchHeightClass);
+
+                        if(cnt >= 50) {
+                            clearInterval(interval);
+                        }
+                    }, 1);
+                }
+            }
+            _this.isLoading = false;
+        });
+    },
+
+    removeParams(currentValue) {
+        let _this = this;
+
+        (Object.keys(this.filters)).forEach(function(value, key){
+            currentValue.forEach(function(cValue){
+                if(_this.filters[value] == cValue) {
+                    _this.filters[value] = "";
+                }
+            });
+        });
+
+        this.loadTableData();
+    },
+
+    removeParameter(key) {
+        this.filters[key] = "";
+        this.loadTableData();
+    },
+
+    createFreshURL() {
+        let _this = this;
+        let url = this.url + "?";
+        (Object.keys(this.filters)).forEach(function(value, key) {
+            if(_this.filters[value] != "") {
+                url += "&" + value + "=" + _this.filters[value];
+            }
+        });
+
+        return url;
+    }
+}'

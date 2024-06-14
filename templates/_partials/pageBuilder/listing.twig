@@ -51,7 +51,8 @@
 {% set roundedCorners = block.roundedCorners ?? false %}
 {% set contentAlignment = block.contentAlignment.value|default('left') %}
 {% set headingTag = block.headingSize.getValue()|default('h2') %}
-{% set fontWeight = block.fontWeight.getValue()|default('bold') %}
+{% set fontWeight = block.fontWeight.getValue()|default('medium') %}
+{% set overlayOpacity = block.overlayOpacity.getValue()|default('none') %}
 
 {% set conbackgroundColor = conbackgroundColor ?? null %}
 {% set backgroundColorLabel = block.backgroundColor.label|default(conbackgroundColor ?? 'white') %}
@@ -61,7 +62,15 @@
     swatch: 'background'
 }) %}
 
+{% set bgOpacity = render.setOpacity({
+    opacity: overlayOpacity,
+    opacityType: 'bg'
+}) %}
+
 {% set buttons = block.buttons.all() %}
+
+{% set children = block.listing.one() %}
+{% set childHandle = children.type.handle %}
 
 {% set contentAnimation = render.setAnimation({
     animation: block.animation,
@@ -79,17 +88,54 @@
     animationEasing: block.animationEasing2.value|default(null)
 }) | raw %}
 
-<{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}">
-    <div class="{{ containerSize == 'container' ? 'container' }} {% if roundedCorners %} rounded-3xl {% endif %} {{ spacing }} {{ backgroundColor }}">
-        <div class="{{ containerSize == 'container' ? 'mx-auto max-w-4xl' : 'container' }} {{ render.contentWidth({width: contentWidth}) }}">
-
-            {% set children = block.listing.one() %}
-            {% set childHandle = children.type.handle %}
+{% if not isAjax %}
+<{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ backgroundColor }} {{ spacing }} {{ bgOpacity }}">
+    <div class="container">
+        <div class="{{ render.contentWidth({width: contentWidth}) }}">
+            {% if block.eyebrow|length or block.heading|length or block.text|length %}
+                {{ render.basicContents({
+                    eyebrow: block.eyebrow,
+                    heading: block.heading,
+                    text: block.text,
+                    headingTag: headingTag,
+                    fontWeight: fontWeight,
+                    backgroundColorLabel: backgroundColorLabel,
+                    contentAlignment: contentAlignment,
+                    animation: block.animation,
+                    contentAnimationStyle: block.animationStyle.getValue()|default('fade-up'),
+                    contentAnimationDuration: block.animationDuration.getValue()|default(1500),
+                    contentAnimationOffset: block.animationOffset.getValue()|default(200),
+                    contentAnimationEasing: block.animationEasing.getValue()|default(null)
+                }) }}
+            {% endif %}
+{% endif %}
 
             {% include "_partials/pageBuilder/listing/#{childHandle}" with {
                 parent: block,
                 block: children,
             } %}
+
+{% if not isAjax %}
+            {% for button in buttons %}
+                {% if loop.first %}
+                <div class="flex flex-wrap items-center gap-5 mt-8 md:mt-10 {{ render.getAlignment({
+                    alignment: contentAlignment,
+                    type: 'justify'
+                }) }}" {{ contentAnimation|raw }}>
+                {% endif %}
+                    {{ render.createButton({
+                        button: button.button,
+                        buttonType: button.buttonType.getValue()|default("button"),
+                        buttonColor: button.buttonColor.label|default('cyprus'),
+                        icon: button.icon,
+                        iconPosition: button.iconPosition.getValue()|default('right'),
+                        background: backgroundColorLabel,
+                    }) }}
+                {% if loop.last %}
+                </div>
+                {% endif %}
+            {% endfor %}
         </div>
     </div>
 </{{ sectionTag }}>
+{% endif %}

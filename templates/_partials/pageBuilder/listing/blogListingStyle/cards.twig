@@ -1,0 +1,118 @@
+{{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
+{% import "_/includes/macros" as render %}
+
+{% set perRowLimit = block.perRowLimit.getValue()|default('2') %}
+{% set rowLimit = {
+    '2' : 'grid-cols-1 sm:grid-cols-2',
+    '3' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3',
+    '4' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4',
+    '5' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-5'
+} %}
+
+{% set paramBlockId = craft.app.request.getParam("blockId") %}
+{% set blockId = paramBlockId|default(parent.getId()) %}
+
+{% set pagination = block.pagination %}
+{% set limit = block.limit|default('12') %}
+
+{% set relatedBlog = block.relatedBlog.limit(limit) %}
+{% if not relatedBlog|length %}
+    {% set relatedBlog = craft.entries.section("blog").limit(limit) %}
+{% endif %}
+
+{% if pagination %}
+    {% paginate relatedBlog as pageInfo, entries %}
+{% else %}
+    {% set entries = relatedBlog.all() %}
+{% endif %}
+
+{% set contentId = 'blog' ~ parent.getId() %}
+{% set paginationBtnClass = 'load-more-btn-' ~ parent.getId() %}
+
+{% if not isAjax %}
+<div class="{{ parent.eyebrow|length or parent.heading|length or parent.text|length ? 'mt-16' }}"
+    {% if pagination %}
+    {{ render.xModalContentListingFilter({
+        url: url(craft.app.request.fullPath),
+        contentId: contentId,
+        loader: true,
+        samePageLoadData: true,
+        noResultsText: "Sorry. No data found for your search term.",
+        paginationBtnClass: paginationBtnClass,
+        filters: {
+            blockId: blockId
+        },
+    }) }}
+    {% endif %}
+>
+    <div {% if pagination %}:id="contentId"{% endif %} class="grid gap-x-8 gap-y-16 {{ rowLimit[perRowLimit] }}">
+{% endif %}
+        {% for blog in entries %}
+            <div {{ listingAnimation|raw }}>
+                <a href="{{ blog.getUrl() }}" class="relative group flex flex-col items-start pl-8 relative before:absolute after:absolute before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px {{ backgroundColorLabel == 'green' ? 'before:bg-neutral-300' : 'before:bg-green-500' }} {{ backgroundColorLabel == 'black' or backgroundColorLabel == 'cyprus' ? 'after:bg-white/10' : 'after:bg-neutral-950/10' }}">
+                    <h3 class="mt-6 text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
+                        {{ blog.title }}
+                    </h3>
+
+                    <time class="order-first text-sm {{ backgroundColorLabel == 'black' or backgroundColorLabel == 'cyprus' ? 'text-white' : 'text-neutral-600' }}">
+                        {{ block.postDate|date('F Y') }}
+                    </time>
+
+                    {% if blog.text|length %}
+                        {{ render.replaceElements(blog.text, {
+                            background: backgroundColorLabel,
+                            paragraphFontSize: 'mt-2.5'
+                        }) }}
+                    {% endif %}
+
+                    <div class="mt-6 flex gap-x-3 text-base font-semibold {{ backgroundColorLabel == 'cyprus' ? 'text-white' : 'text-cyprus-500' }} transition group-hover:text-neutral-700" aria-label="Read more: The Future of Web Development: Our Predictions for 2023">
+                        Read more
+                        <svg viewBox="0 0 24 6" aria-hidden="true" class="w-6 flex-none fill-current">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M24 3 18 .5v2H0v1h18v2L24 3Z"></path>
+                        </svg>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+
+        {% if pagination %}
+        <div class="fixed top-0 bottom-0 left-0 right-0 backdrop-opacity-10 backdrop-invert bg-black/40 z-50" x-show="isLoading">
+            <div class="h-full w-full flex justify-center items-center">
+                <div class="inline-block relative">
+                    {% set headerLogo = header.logo.one() %}
+                    {% if headerLogo|length %}
+                    {{ render.setImage({
+                        image: headerLogo,
+                        alt: headerLogo.title,
+                        class: 'block max-w-full text-white w-80 mb-3'
+                    }) }}
+                    {% endif %}
+
+                    <div class="relative w-full block left-28">
+                        <span class="bg-white block w-4 h-4 rounded-full absolute left-0 animate-reveal"></span>
+                        <span class="bg-white block w-4 h-4 rounded-full absolute left-0 animate-slide"></span>
+                        <span class="bg-white block w-4 h-4 rounded-full absolute left-[30px] animate-slide"></span>
+                        <span class="bg-white block w-4 h-4 rounded-full absolute left-[60px] animate-reveal-reverse"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if pagination and pageInfo.nextUrl and pageInfo.totalPages > 1 %}
+        {% set nextPageUrl = pageInfo.currentPage == 1 and (not paramBlockId|length) ? pageInfo.nextUrl ~ '?blockId=' ~ blockId : pageInfo.nextUrl %}
+        {#
+        ============================================
+            Include Pagination
+        ============================================
+        #}
+        {% include "_/includes/pagination" with {
+            nextPageUrl: nextPageUrl,
+            paginationBtnClass: paginationBtnClass,
+            blockId: blockId
+        } %}
+        {% endif %}
+{% if not isAjax %}
+    </div>
+</div>
+{% endif %}

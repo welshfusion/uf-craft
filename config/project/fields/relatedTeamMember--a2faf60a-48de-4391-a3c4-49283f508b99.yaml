@@ -8,11 +8,11 @@ settings:
   branchLimit: null
   localizeRelations: false
   maintainHierarchy: false
-  maxRelations: null
+  maxRelations: 1
   minRelations: null
   selectionLabel: null
   showCardsInGrid: false
-  showSiteMenu: false
+  showSiteMenu: true
   sources:
     - 'section:7c1471a7-a014-4b8f-8e10-1d6064ca6ebd' # Team
   targetSiteId: null

@@ -270,3 +270,24 @@
         '</strong>': '</' ~ options.tag ~ '>',
     }) | raw }}
 {% endmacro %}
+
+{# Alpine Filter #}
+{% macro xModalContentListingFilter(params) %}
+    {% set defaultsParams = {
+        url: null,
+        contentId: null,
+        filters: {},
+        noResultsText: null,
+        paginationAttr: false,
+        removeBlockIdParam: false,
+        loader: false,
+        clickEvent: false,
+        samePageLoadData: false,
+        paginationBtnClass: 'load-more-btn',
+        matchHeightClass: null
+    } %}
+
+    {# Override (overwrite) defaults with passed parameters #}
+    {% set options = defaultsParams|merge(params) %}
+    {% include "_/includes/macros/xModalContentListingFilter" with options %}
+{% endmacro %}
