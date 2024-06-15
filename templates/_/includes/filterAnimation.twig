@@ -1,0 +1,23 @@
+{% import "_/includes/macros" as render %}
+
+<div class="h-full w-full flex justify-center items-center">
+    <div class="inline-block relative">
+        {% set altLogo = header.logo.one() %}
+        {% if altLogo|length %}
+            {{ render.setImage({
+                image: altLogo,
+                alt: altLogo.title,
+                width: altLogo.width,
+                height: altLogo.height,
+                class: 'block max-w-full text-white w-64 mb-3'
+            }) }}
+        {% endif %}
+
+        <div class="relative w-full block left-28">
+            <span class="bg-white block w-4 h-4 rounded-full absolute left-0 animate-reveal"></span>
+            <span class="bg-white block w-4 h-4 rounded-full absolute left-0 animate-slide"></span>
+            <span class="bg-white block w-4 h-4 rounded-full absolute left-[30px] animate-slide"></span>
+            <span class="bg-white block w-4 h-4 rounded-full absolute left-[60px] animate-reveal-reverse"></span>
+        </div>
+    </div>
+</div>

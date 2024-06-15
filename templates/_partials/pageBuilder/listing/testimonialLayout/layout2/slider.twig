@@ -8,6 +8,8 @@
     {% set relatedTestimonials = craft.entries.section("testimonial").limit(limit) %}
 {% endif %}
 
+{% set relatedTestimonials = relatedTestimonials.with(['image']).cache().all() %}
+
 {% set swiperPagination = "swiper-pagination-#{block.getId()}" %}
 {% set paginationBulletClass = backgroundColorLabel in ['cyprus', 'black'] ? '!bg-white' : '!bg-cyprus-500' %}
 
@@ -23,19 +25,21 @@
 } %}
 
 <div class="relative">
-    <div class="swiper swiper-slider" data-modulenav="1" data-modulepagination="1" data-moduleautoplay="" data-settings='{{ settings|json_encode|raw }}'>
+    <div class="swiper swiper-slider !pb-12" data-modulenav="1" data-modulepagination="1" data-moduleautoplay="" data-settings='{{ settings|json_encode|raw }}'>
         <div class="swiper-wrapper">
             {% for testimonial in relatedTestimonials %}
                 {% set image = testimonial.image.one() %}
+
                 <div class="swiper-slide" {{ listingAnimation|raw }}>
-                    <div class="grid grid-cols-[auto,1fr] items-center gap-x-4 gap-y-8 sm:grid-cols-12 sm:grid-rows-[1fr,auto,auto,1fr] sm:gap-x-10 lg:gap-x-16 my-16">
-                        {% if testimonial.quote|length %}
+                    <div class="mx-auto max-w-3xl">
+                        <div class="grid grid-cols-[auto,1fr] items-center gap-x-4 gap-y-8 sm:grid-cols-12 sm:grid-rows-[1fr,auto,auto,1fr] sm:gap-x-10 lg:gap-x-16">
+                            {% if testimonial.quote|length %}
                             <blockquote class="col-span-2 text-xl/7 sm:col-span-7 sm:col-start-6 sm:row-start-2 {{ render.foregroundColors({background: backgroundColorLabel, type: 'subHeading'}) }}">
                                 {{ testimonial.quote|nl2br }}
                             </blockquote>
-                        {% endif %}
+                            {% endif %}
 
-                        {% if image|length %}
+                            {% if image|length %}
                             <div class="col-start-1 row-start-2 overflow-hidden rounded-xl bg-neutral-100 sm:col-span-5 sm:row-span-full sm:rounded-3xl">
                                 {{ render.setImage({
                                     image: image,
@@ -45,25 +49,28 @@
                                     class: 'h-12 w-12 object-cover grayscale sm:aspect-[7/9] sm:h-auto sm:w-full text-transparent'
                                 }) }}
                             </div>
-                        {% endif %}
+                            {% endif %}
 
-                        {% if testimonial.clientName|length or testimonial.designation|length %}
+                            {% if testimonial.clientName|length or testimonial.designation|length %}
                             <div class="text-sm sm:col-span-7 sm:row-start-3 sm:text-base {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
-                                <span class="font-semibold">
-                                    {{ testimonial.clientName }}
-                                </span>
-                                <span class="hidden font-semibold sm:inline">, </span><br class="sm:hidden">
-                                <span class="sm:font-semibold">
-                                    {{ testimonial.designation }}
-                                </span>
+                                {% if testimonial.clientName|length %}
+                                    <span class="font-semibold">{{ testimonial.clientName }}</span>
+                                    <span class="hidden font-semibold sm:inline">, </span><br class="sm:hidden">
+                                {% endif %}
+
+                                {% if testimonial.designation|length %}
+                                    <span class="sm:font-semibold">{{ testimonial.designation }}</span>
+                                {% endif %}
                             </div>
-                        {% endif %}
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
             {% endfor %}
         </div>
+        <div class="swiper-pagination swiper-pagination-list {{ swiperPagination }}"></div>
     </div>
-    <div class="swiper-pagination swiper-pagination-list !-bottom-1 {{ swiperPagination }}"></div>
 </div>
 
+{# Register Swiper JS #}
 {{ craft.vite.register("src/js/swiper.js", false) }}

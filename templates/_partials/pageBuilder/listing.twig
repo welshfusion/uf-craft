@@ -89,7 +89,7 @@
 }) | raw %}
 
 {% if not isAjax %}
-<{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ backgroundColor }} {{ spacing }} {{ bgOpacity }}">
+<{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ backgroundColor }} {{ bgOpacity }} {{ spacing }}">
     <div class="container">
         <div class="{{ render.contentWidth({width: contentWidth}) }}">
             {% if childHandle != 'listingClient' %}

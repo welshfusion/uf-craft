@@ -1,16 +1,13 @@
 {{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
 {% import "_/includes/macros" as render %}
 
-{% set paramBlockId = craft.app.request.getParam("blockId") %}
-{% set blockId = paramBlockId|default(parent.getId()) %}
-
 {% set perRowLimit = block.perRowLimit.getValue()|default('4') %}
 {% set showBorder = block.showBorder ?? null %}
 {% set limit = block.limit|default('12') %}
 
-{% set relatedClient = block.relatedClient.limit(limit) %}
+{% set relatedClient = block.relatedClient.limit(limit).all() %}
 {% if not relatedClient|length %}
-    {% set relatedClient = craft.entries.section("client").limit(limit) %}
+    {% set relatedClient = craft.entries.section("client").limit(limit).all() %}
 {% endif %}
 
 {% set swiperPagination = "swiper-pagination-#{block.getId()}" %}
@@ -36,7 +33,7 @@
 } %}
 
 <div class="relative mt-10">
-    <div class="swiper swiper-slider !pb-10" data-modulenav="1" data-modulepagination="1" data-moduleautoplay="" data-settings='{{ settings|json_encode|raw }}'>
+    <div class="swiper swiper-slider !pb-16" data-modulenav="1" data-modulepagination="1" data-moduleautoplay="" data-settings='{{ settings|json_encode|raw }}'>
         <div class="swiper-wrapper">
             {% for item in relatedClient %}
                 {% set image = item.image2.one() %}
@@ -44,22 +41,23 @@
                     {% if showBorder %}
                         <div class="pt-12 relative before:absolute after:absolute before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px {{ render.foregroundColors({background: backgroundColorLabel, type: 'borders'}) }}"></div>
                     {% endif %}
+
                     {% if image|length %}
-                        <div>
-                            {{ render.setImage({
-                                image: image,
-                                alt: image.title,
-                                width: 184,
-                                height: 36,
-                                class: 'text-transparent'
-                            }) }}
-                        </div>
+                    <div>
+                        {{ render.setImage({
+                            image: image,
+                            alt: image.title,
+                            width: 184,
+                            height: 36,
+                            class: 'text-transparent'
+                        }) }}
+                    </div>
                     {% endif %}
                 </div>
             {% endfor %}
         </div>
+        <div class="swiper-pagination swiper-pagination-list {{ swiperPagination }}"></div>
     </div>
-    <div class="swiper-pagination swiper-pagination-list !-bottom-1 {{ swiperPagination }}"></div>
 </div>
 
 {{ craft.vite.register("src/js/swiper.js", false) }}

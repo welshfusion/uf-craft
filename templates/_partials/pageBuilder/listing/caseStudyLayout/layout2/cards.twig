@@ -3,10 +3,10 @@
 
 {% set perRowLimit = block.perRowLimit.getValue()|default('3') %}
 {% set rowLimit = {
-    '2' : 'grid-cols-1 sm:grid-cols-2',
-    '3' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3',
-    '4' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4',
-    '5' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-5'
+    '2' : 'grid-cols-1 md:grid-cols-2',
+    '3' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3',
+    '4' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4',
+    '5' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-5'
 } %}
 
 {% set paramBlockId = craft.app.request.getParam("blockId") %}
@@ -49,54 +49,49 @@
 {% endif %}
 
     {% for caseStudy in entries %}
-        {% set relatedClients = caseStudy.relatedClient.all() %}
+        {% set relatedClient = caseStudy.relatedClient.one() %}
+        {% set image = relatedClient.image.one() %}
+
         <div class="flex" {{ listingAnimation|raw }}>
-            <div class="relative flex w-full flex-col rounded-3xl p-6 ring-1 transition sm:p-8 {{ render.foregroundColors({background: backgroundColorLabel, type: 'cardHover'}) }}">
-                {% for relatedClient in relatedClients %}
-                    {% set image = relatedClient.image.one() %}
-                    {% if image|length %}
-                    <h3>
-                        <a href="{{ caseStudy.getUrl() }}">
-                        <span class="absolute inset-0 rounded-3xl"></span>
-                            {{ render.setImage({
-                                image: image,
-                                alt: image.title,
-                                width: 36,
-                                height: 36,
-                                class: 'h-16 w-16 flex-none text-transparent'
-                            }) }}
-                        </a>
-                    </h3>
+            <a href="{{ caseStudy.getUrl() }}" class="relative flex w-full flex-col rounded-3xl p-6 ring-1 transition sm:p-8 {{ render.foregroundColors({background: backgroundColorLabel, type: 'cardHover'}) }}">
+                {% if image|length %}
+                {{ render.setImage({
+                    image: image,
+                    alt: image.title,
+                    width: 36,
+                    height: 36,
+                    class: 'h-16 w-16 flex-none text-transparent'
+                }) }}
+                {% endif %}
+
+                <p class="mt-6 flex gap-x-2 text-sm {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
+                    {% if relatedClient.joiningDate|length %}
+                        <div class="font-semibold">
+                            {{ relatedClient.joiningDate|date("Y") }}
+                        </div>
                     {% endif %}
 
-                    <p class="mt-6 flex gap-x-2 text-sm {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
-                        {% if relatedClient.joiningDate|length %}
-                            <div class="font-semibold">
-                                {{ relatedClient.joiningDate|date("Y") }}
-                            </div>
-                        {% endif %}
-
-                        <span class="text-neutral-300" aria-hidden="true">/</span>
-                        <span>
-                            {{ relatedClient.title }}
-                        </span>
-                    </p>
-                {% endfor %}
+                    <span class="text-neutral-300" aria-hidden="true">/</span>
+                    <span>
+                        {{ relatedClient.title }}
+                    </span>
+                </p>
 
                 <p class="mt-6 font-display text-2xl font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
                     {{ caseStudy.title }}
                 </p>
 
                 {% if caseStudy.text|length %}
-                    <p class="mt-4">
-                        {{ render.replaceElements(caseStudy.text, {
-                            background: backgroundColorLabel,
-                        }) }}
-                    </p>
+                <p class="mt-4">
+                    {{ render.replaceElements(caseStudy.text, {
+                        background: backgroundColorLabel,
+                    }) }}
+                </p>
                 {% endif %}
-            </div>
+            </a>
         </div>
     {% endfor %}
+
     {% if pagination %}
     <div class="fixed top-0 bottom-0 left-0 right-0 backdrop-opacity-10 backdrop-invert bg-black/40 z-50" x-show="isLoading">
         <div class="h-full w-full flex justify-center items-center">

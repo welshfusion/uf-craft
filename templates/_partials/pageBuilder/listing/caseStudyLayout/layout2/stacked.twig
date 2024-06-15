@@ -1,4 +1,4 @@
- {{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
+{{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
 {% import "_/includes/macros" as render %}
 
 {% set paramBlockId = craft.app.request.getParam("blockId") %}
@@ -12,16 +12,17 @@
     {% set relatedCaseStudy = craft.entries.section("caseStudies").limit(limit) %}
 {% endif %}
 
-{% set testimonial = craft.entries.section("testimonial").limit(limit) %}
-
 {% if pagination %}
     {% paginate relatedCaseStudy as pageInfo, entries %}
 {% else %}
     {% set entries = relatedCaseStudy.all() %}
 {% endif %}
 
+{% set testimonial = craft.entries.section("testimonial").limit(limit) %}
+
 {% set contentId = 'caseStudies' ~ parent.getId() %}
 {% set paginationBtnClass = 'load-more-btn-' ~ parent.getId() %}
+{% set spacingClass = 'mt-14' %}
 
 {% if not isAjax %}
 <div class="{{ parent.eyebrow|length or parent.heading|length or parent.text|length ? 'mt-16' }}"
@@ -43,14 +44,15 @@
 {% endif %}
     {% for caseStudy in entries %}
         {% set relatedClient = caseStudy.relatedClient.one() %}
-        {% set relatedTestimonial = craft.entries().section('testimonial').relatedTo(relatedClient).one() %}
 
         <div {{ listingAnimation|raw }}>
             <div class="grid grid-cols-3 mt-32 gap-x-8 gap-y-8 pt-16 relative before:absolute after:absolute before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px {{ render.foregroundColors({background: backgroundColorLabel, type: 'borders'}) }}">
-                {% set image = relatedClient.image.one() %}
-                <div class="col-span-full sm:flex sm:items-center sm:justify-between sm:gap-x-8 lg:col-span-1 lg:block">
-                    <div class="sm:flex sm:items-center sm:gap-x-6 lg:block">
-                        {% if image|length %}
+                {% if relatedClient|length %}
+                    {% set image = relatedClient.image.one() %}
+
+                    <div class="col-span-full sm:flex sm:items-center sm:justify-between sm:gap-x-8 lg:col-span-1 lg:block">
+                        <div class="sm:flex sm:items-center sm:gap-x-6 lg:block">
+                            {% if image|length %}
                             {{ render.setImage({
                                 image: image,
                                 alt: image.title,
@@ -58,100 +60,97 @@
                                 height: 36,
                                 class: 'h-16 w-16 flex-none text-transparent'
                             }) }}
-                        {% endif %}
+                            {% endif %}
 
-                        <h3 class="mt-6 text-sm font-semibold sm:mt-0 lg:mt-8 {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
-                            {{ relatedClient.title }}
-                        </h3>
-                    </div>
+                            <h3 class="mt-6 text-sm font-semibold sm:mt-0 lg:mt-8 {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
+                                {{ relatedClient.title }}
+                            </h3>
+                        </div>
 
-                    {% if relatedClient.projectType|length or relatedClient.joiningDate|length %}
+                        {% if relatedClient.projectType|length or relatedClient.joiningDate|length %}
                         <div class="mt-1 flex gap-x-4 sm:mt-0 lg:block">
+                            {% if relatedClient.projectType|length %}
                             <p class="text-sm tracking-tight after:ml-4 after:font-semibold after:text-neutral-300 after:content-['/'] lg:mt-2 lg:after:hidden {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
-                                {{ relatedClient.projectType|nl2br }}
+                                {{ relatedClient.projectType }}
                             </p>
+                            {% endif %}
 
+                            {% if relatedClient.joiningDate|length %}
                             <p class="text-sm lg:mt-2 {{ render.foregroundColors({background: backgroundColorLabel, type: 'subHeading'}) }}">
-                                <time>
-                                    {{ relatedClient.joiningDate|date("F Y") }}
-                                </time>
+                                {{ relatedClient.joiningDate|date("F Y") }}
                             </p>
+                            {% endif %}
                         </div>
-                    {% endif %}
-                </div>
-
-                {% if caseStudy.title|length or caseStudy.text|length  %}
-                    <div class="col-span-full lg:col-span-2 lg:max-w-2xl">
-                        <p class="font-display text-4xl font-medium {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
-                            <a href="{{ caseStudy.getUrl }}">
-                                {{ caseStudy.title }}
-                            </a>
-                        </p>
-
-                        {% if caseStudy.text|length %}
-                            <div class="mt-6 space-y-6">
-                                {{ render.replaceElements(caseStudy.text, {
-                                    background: backgroundColorLabel,
-                                }) }}
-                            </div>
-                        {% endif %}
-
-                        <div class="mt-8 flex">
-                            <a href="{{ caseStudy.getUrl }}" class="inline-flex rounded-full px-4 py-1.5 text-sm font-semibold transition {{ render.foregroundColors({background: backgroundColorLabel, type: 'button'}) }}">
-                                <span class="relative top-px">
-                                    Read case study
-                                </span>
-                            </a>
-                        </div>
-
-                        {% if relatedTestimonial|length %}
-                            <div class="pl-8 mt-12 relative before:absolute after:absolute before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px {{ render.foregroundColors({background: backgroundColorLabel, type: 'borders'}) }}">
-                                <div class="text-sm">
-                                    {% if relatedTestimonial.quote|length %}
-                                        <blockquote class="[&amp;>*]:relative [&amp;>:first-child]:before:absolute [&amp;>:first-child]:before:right-full [&amp;>:first-child]:before:content-['“'] [&amp;>:last-child]:after:content-['”'] {{ render.foregroundColors({background: backgroundColorLabel, type: 'subHeading'}) }}">
-                                            <p>
-                                                {{ relatedTestimonial.quote }}
-                                            </p>
-                                        </blockquote>
-                                    {% endif %}
-
-                                    {% if relatedTestimonial.clientName|length or relatedTestimonial.designation|length %}
-                                        <div class="mt-6 font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
-                                            {{ relatedTestimonial.clientName }}
-                                            <!-- -->, <!-- -->
-                                            {{ relatedTestimonial.designation }}
-                                        </div>
-                                    {% endif %}
-                                </div>
-                            </div>
                         {% endif %}
                     </div>
                 {% endif %}
+
+                <div class="col-span-full {{ relatedClient|length ? 'lg:col-span-2 lg:max-w-2xl' }}">
+                    <p class="font-display text-4xl font-medium {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
+                        <a href="{{ caseStudy.getUrl }}">
+                            {{ caseStudy.title }}
+                        </a>
+                    </p>
+
+                    {% if caseStudy.text|length %}
+                    <div class="mt-6 space-y-6">
+                        {{ render.replaceElements(caseStudy.text, {
+                            background: backgroundColorLabel,
+                        }) }}
+                    </div>
+                    {% endif %}
+
+                    <div class="mt-8 flex">
+                        <a href="{{ caseStudy.getUrl }}" class="inline-flex rounded-full px-4 py-1.5 text-sm font-semibold transition {{ render.foregroundColors({background: backgroundColorLabel, type: 'button'}) }}">
+                            <span class="relative top-px">
+                                Read case study
+                            </span>
+                        </a>
+                    </div>
+
+                    {% if relatedClient|length %}
+                        {% set relatedTestimonial = craft.entries().section('testimonial').relatedTo(relatedClient).one() %}
+
+                        {% if relatedTestimonial|length %}
+                        <div class="pl-8 mt-12 relative before:absolute after:absolute before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px {{ render.foregroundColors({background: backgroundColorLabel, type: 'borders'}) }}">
+                            <div class="text-sm">
+                                {% if relatedTestimonial.quote|length %}
+                                    <blockquote class="[&amp;>*]:relative [&amp;>:first-child]:before:absolute [&amp;>:first-child]:before:right-full [&amp;>:first-child]:before:content-['“'] [&amp;>:last-child]:after:content-['”'] {{ render.foregroundColors({background: backgroundColorLabel, type: 'subHeading'}) }}">
+                                        <p>
+                                            {{ relatedTestimonial.quote }}
+                                        </p>
+                                    </blockquote>
+                                {% endif %}
+
+                                {% if relatedTestimonial.clientName|length or relatedTestimonial.designation|length %}
+                                    <div class="mt-6 font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
+                                        {% if relatedTestimonial.clientName|length %}
+                                            {{ relatedTestimonial.clientName }}
+                                            <span>, </span>
+                                        {% endif %}
+
+                                        {% if relatedTestimonial.designation|length %}
+                                            {{ relatedTestimonial.designation }}
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endif %}
+                    {% endif %}
+                </div>
             </div>
         </div>
     {% endfor %}
 
     {% if pagination %}
-    <div class="fixed top-0 bottom-0 left-0 right-0 backdrop-opacity-10 backdrop-invert bg-black/40 z-50" x-show="isLoading">
-        <div class="h-full w-full flex justify-center items-center">
-            <div class="inline-block relative">
-                {% set headerLogo = header.logo.one() %}
-                {% if headerLogo|length %}
-                {{ render.setImage({
-                    image: headerLogo,
-                    alt: headerLogo.title,
-                    class: 'block max-w-full text-white w-80 mb-3'
-                }) }}
-                {% endif %}
-
-                <div class="relative w-full block left-28">
-                    <span class="bg-white block w-4 h-4 rounded-full absolute left-0 animate-reveal"></span>
-                    <span class="bg-white block w-4 h-4 rounded-full absolute left-0 animate-slide"></span>
-                    <span class="bg-white block w-4 h-4 rounded-full absolute left-[30px] animate-slide"></span>
-                    <span class="bg-white block w-4 h-4 rounded-full absolute left-[60px] animate-reveal-reverse"></span>
-                </div>
-            </div>
-        </div>
+    <div class="fixed top-0 bottom-0 left-0 right-0 backdrop-opacity-10 backdrop-invert bg-black/40 z-50"
+        x-show="isLoading"
+        style="display: none;"
+    >
+        {% include "_/includes/filterAnimation" with {
+            blockId: blockId
+        } %}
     </div>
     {% endif %}
 
@@ -165,6 +164,7 @@
     {% include "_/includes/pagination" with {
         nextPageUrl: nextPageUrl,
         paginationBtnClass: paginationBtnClass,
+        spacingClass: spacingClass,
         blockId: blockId
     } %}
     {% endif %}

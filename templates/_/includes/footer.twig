@@ -65,9 +65,14 @@
                         {% endif %}
 
                         {% if form|length %}
-                        <div class="relative mt-6">
+                        <div class="mt-6">
                             {{ craft.formie.renderForm(form, {
                                 themeConfig: {
+                                    form: {
+                                        attributes: {
+                                            class: 'w-full !relative'
+                                        }
+                                    },
                                     fieldInput: {
                                         resetClass: true,
                                         attributes: {

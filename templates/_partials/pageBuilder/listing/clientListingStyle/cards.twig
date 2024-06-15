@@ -9,15 +9,12 @@
     '5' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-5'
 } %}
 
-{% set paramBlockId = craft.app.request.getParam("blockId") %}
-{% set blockId = paramBlockId|default(parent.getId()) %}
-
 {% set showBorder = block.showBorder ?? null %}
 {% set limit = block.limit|default('12') %}
 
-{% set relatedClient = block.relatedClient.limit(limit) %}
+{% set relatedClient = block.relatedClient.limit(limit).all() %}
 {% if not relatedClient|length %}
-    {% set relatedClient = craft.entries.section("client").limit(limit) %}
+    {% set relatedClient = craft.entries.section("client").limit(limit).all() %}
 {% endif %}
 
 <div class="mt-10">
@@ -28,25 +25,24 @@
     <ul role="list" class="grid gap-x-8 gap-y-12 {{ rowLimit[perRowLimit] }}">
         {% for item in relatedClient %}
             {% set image = item.image2.one() %}
+
             <li class="group" {{ listingAnimation|raw }}>
                 <div class="overflow-hidden">
                     {% if showBorder and loop.index > perRowLimit %}
-                        <div class="pt-12 relative before:absolute after:absolute before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px {{ render.foregroundColors({background: backgroundColorLabel, type: 'borders'}) }}">
-                    {% else %}
-                        <div>
+                        <div class="pt-12 relative before:absolute after:absolute before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px {{ render.foregroundColors({background: backgroundColorLabel, type: 'borders'}) }}"></div>
                     {% endif %}
-                        {% if image|length %}
-                            <div>
-                                {{ render.setImage({
-                                    image: image,
-                                    alt: image.title,
-                                    width: 184,
-                                    height: 36,
-                                    class: 'text-transparent'
-                                }) }}
-                            </div>
-                        {% endif %}
+
+                    {% if image|length %}
+                    <div>
+                        {{ render.setImage({
+                            image: image,
+                            alt: image.title,
+                            width: 184,
+                            height: 36,
+                            class: 'text-transparent'
+                        }) }}
                     </div>
+                    {% endif %}
                 </div>
             </li>
         {% endfor %}
