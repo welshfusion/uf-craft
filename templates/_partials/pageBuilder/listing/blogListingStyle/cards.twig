@@ -65,7 +65,7 @@
                         }) }}
                     {% endif %}
 
-                    <div class="mt-6 flex gap-x-3 text-base font-semibold transition {{ backgroundColorLabel == 'cyprus' or 'black' ? 'text-white' : 'text-cyprus-500' }}">
+                    <div class="mt-6 flex gap-x-3 text-base font-semibold transition {{ backgroundColorLabel in ['cyprus', 'black'] ? 'text-white' : 'text-cyprus-500' }}">
                         Read more
                         <svg viewBox="0 0 24 6" aria-hidden="true" class="w-6 flex-none fill-current">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M24 3 18 .5v2H0v1h18v2L24 3Z"></path>

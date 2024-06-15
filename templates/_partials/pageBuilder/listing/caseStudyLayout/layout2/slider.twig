@@ -72,14 +72,10 @@
 
                         <p class="mt-6 flex gap-x-2 text-sm {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
                             {% if relatedClient.joiningDate|length %}
-                                <div class="font-semibold">
-                                    {{ relatedClient.joiningDate|date("Y") }}
-                                </div>
-                            {% endif %}
+                            <time datetime="2023" class="font-semibold">{{ relatedClient.joiningDate|date("Y") }}</time>
                             <span class="text-neutral-300" aria-hidden="true">/</span>
-                            <span>
-                                {{ relatedClient.title }}
-                            </span>
+                            {% endif %}
+                            <span>{{ relatedClient.title }}</span>
                         </p>
 
                         <p class="mt-6 font-display text-2xl font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
@@ -87,7 +83,7 @@
                         </p>
 
                         {% if caseStudy.text|length %}
-                        <p class="mt-4">
+                        <p class="space-y-4 mt-4">
                             {{ render.replaceElements(caseStudy.text, {
                                 background: backgroundColorLabel,
                             }) }}
@@ -101,4 +97,5 @@
     </div>
 </div>
 
+{# Register Swiper JS #}
 {{ craft.vite.register("src/js/swiper.js", false) }}

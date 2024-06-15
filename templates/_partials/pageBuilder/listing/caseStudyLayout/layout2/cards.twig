@@ -66,15 +66,10 @@
 
                 <p class="mt-6 flex gap-x-2 text-sm {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
                     {% if relatedClient.joiningDate|length %}
-                        <div class="font-semibold">
-                            {{ relatedClient.joiningDate|date("Y") }}
-                        </div>
-                    {% endif %}
-
+                    <time datetime="2023" class="font-semibold">{{ relatedClient.joiningDate|date("Y") }}</time>
                     <span class="text-neutral-300" aria-hidden="true">/</span>
-                    <span>
-                        {{ relatedClient.title }}
-                    </span>
+                    {% endif %}
+                    <span>{{ relatedClient.title }}</span>
                 </p>
 
                 <p class="mt-6 font-display text-2xl font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
@@ -82,7 +77,7 @@
                 </p>
 
                 {% if caseStudy.text|length %}
-                <p class="mt-4">
+                <p class="space-y-4 mt-4">
                     {{ render.replaceElements(caseStudy.text, {
                         background: backgroundColorLabel,
                     }) }}
@@ -93,27 +88,14 @@
     {% endfor %}
 
     {% if pagination %}
-    <div class="fixed top-0 bottom-0 left-0 right-0 backdrop-opacity-10 backdrop-invert bg-black/40 z-50" x-show="isLoading">
-        <div class="h-full w-full flex justify-center items-center">
-            <div class="inline-block relative">
-                {% set headerLogo = header.logo.one() %}
-                {% if headerLogo|length %}
-                {{ render.setImage({
-                    image: headerLogo,
-                    alt: headerLogo.title,
-                    class: 'block max-w-full text-white w-80 mb-3'
-                }) }}
-                {% endif %}
-
-                <div class="relative w-full block left-28">
-                    <span class="bg-white block w-4 h-4 rounded-full absolute left-0 animate-reveal"></span>
-                    <span class="bg-white block w-4 h-4 rounded-full absolute left-0 animate-slide"></span>
-                    <span class="bg-white block w-4 h-4 rounded-full absolute left-[30px] animate-slide"></span>
-                    <span class="bg-white block w-4 h-4 rounded-full absolute left-[60px] animate-reveal-reverse"></span>
-                </div>
-            </div>
+    <div class="fixed top-0 bottom-0 left-0 right-0 backdrop-opacity-10 backdrop-invert bg-black/40 z-50"
+            x-show="isLoading"
+            style="display: none;"
+        >
+            {% include "_/includes/filterAnimation" with {
+                blockId: blockId
+            } %}
         </div>
-    </div>
     {% endif %}
 
     {% if pagination and pageInfo.nextUrl and pageInfo.totalPages > 1 %}

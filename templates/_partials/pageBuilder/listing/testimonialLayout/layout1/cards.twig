@@ -8,13 +8,13 @@
     {% set relatedTestimonials = craft.entries.section("testimonial").limit(limit) %}
 {% endif %}
 
-<div class="relative isolate">
+<div class="relative isolate {{ parent.eyebrow|length or parent.heading|length or parent.text|length ? 'mt-16' }}">
     <div class="mx-auto max-w-4xl space-y-14">
         {% for testimonial in relatedTestimonials %}
             {% set relatedClient = testimonial.relatedClient.one() %}
             {% set image = relatedClient.image2.one() %}
 
-            <div {{ listingAnimation|raw }}>
+            <div class="pt-16 relative before:absolute after:absolute before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px {{ render.foregroundColors({background: backgroundColorLabel, type: 'borders'}) }}" {{ listingAnimation|raw }}>
                 {% if testimonial.quote|length %}
                 <blockquote class="relative font-display text-3xl font-medium tracking-tight sm:text-4xl {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
                     {{ '“' ~ testimonial.quote|nl2br ~ '”' }}
