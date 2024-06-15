@@ -56,6 +56,51 @@ fieldLayouts:
         elementCondition: null
         elements:
           -
+            elementCondition: null
+            fieldUid: c23691fd-0f4a-4576-805e-31effcb2e66b # Case Study Layout
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 54bdff6a-8b9d-4b2e-95b1-7c9de5408343
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 8404f8a0-0657-4072-9900-4f9c783fed32 # Listing Style 2
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: 'Listing Style'
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 6a2bd411-031e-4306-b667-1a798be5c0b7
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            elementCondition: null
+            fieldUid: cc5e2abd-42a9-498e-a6f6-d6596c99d2c5 # Limit
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e94c14e3-faf0-4ae2-aea8-61fb3f3d9053
+            userCondition: null
+            warning: null
+            width: 50
+          -
             elementCondition:
               class: craft\elements\conditions\entries\EntryCondition
               conditionRules:
@@ -83,52 +128,19 @@ fieldLayouts:
             warning: null
             width: 50
           -
-            elementCondition: null
-            fieldUid: cc5e2abd-42a9-498e-a6f6-d6596c99d2c5 # Limit
-            handle: null
-            includeInCards: false
-            instructions: null
-            label: null
-            providesThumbs: false
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: e94c14e3-faf0-4ae2-aea8-61fb3f3d9053
-            userCondition: null
-            warning: null
-            width: 50
-          -
-            elementCondition: null
-            fieldUid: 8404f8a0-0657-4072-9900-4f9c783fed32 # Listing Style 2
-            handle: null
-            includeInCards: false
-            instructions: null
-            label: 'Listing Style'
-            providesThumbs: false
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: 6a2bd411-031e-4306-b667-1a798be5c0b7
-            userCondition: null
-            warning: null
-            width: 50
-          -
-            elementCondition: null
-            fieldUid: 07f716e2-b6e5-4aaa-aa76-1a49c9929017 # Light switch
-            handle: filter
-            includeInCards: false
-            instructions: null
-            label: 'Filter?'
-            providesThumbs: false
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: 73e98265-abcf-40a8-b2c6-b47d3a09c9a1
-            userCondition: null
-            warning: null
-            width: 25
-          -
-            elementCondition: null
+            elementCondition:
+              class: craft\elements\conditions\entries\EntryCondition
+              conditionRules:
+                -
+                  class: craft\fields\conditions\OptionsFieldConditionRule
+                  fieldUid: 8404f8a0-0657-4072-9900-4f9c783fed32 # Listing Style 2
+                  layoutElementUid: 6a2bd411-031e-4306-b667-1a798be5c0b7
+                  operator: ni
+                  uid: 60723907-f7c1-4277-ba20-3ebc61e62c86
+                  values:
+                    - slider
+              elementType: craft\elements\Entry
+              fieldContext: global
             fieldUid: 07f716e2-b6e5-4aaa-aa76-1a49c9929017 # Light switch
             handle: pagination
             includeInCards: false
@@ -141,7 +153,7 @@ fieldLayouts:
             uid: 421554b6-5781-4df2-8ef5-3356caacd2bf
             userCondition: null
             warning: null
-            width: 25
+            width: 50
         name: Settings
         uid: edcebbe3-25a1-447d-83e2-b388048aee64
         userCondition: null

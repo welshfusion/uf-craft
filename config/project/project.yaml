@@ -1,4 +1,4 @@
-dateModified: 1718347001
+dateModified: 1718368752
 elementSources:
   craft\elements\Entry:
     -
@@ -182,6 +182,7 @@ meta:
     c8e64d8d-7d4e-4182-8bed-ec9013e8aad4: Tag # Tag
     c729cee4-a2ec-48ef-8053-907b01d1a630: Cards # Cards
     c16118bb-d24d-489d-8c5a-2deabdcd6e16: 'Padding Top' # Padding Top
+    c23691fd-0f4a-4576-805e-31effcb2e66b: 'Case Study Layout' # Case Study Layout
     cafc15ff-e95d-499e-ab60-3cc42608bc25: New # New
     cb57046f-f051-4150-917b-97450a183417: 'Call To Action' # Call To Action
     cc5e2abd-42a9-498e-a6f6-d6596c99d2c5: Limit # Limit

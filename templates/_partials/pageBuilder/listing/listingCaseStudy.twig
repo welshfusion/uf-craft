@@ -1,17 +1,18 @@
 {#
 =====================================================================
-    Blog (blog)
+    Case Study (caseStudy)
 
     Variables
         - Block (block)
 
     Fields:
         Content:
-            - Related Blog (relatedBlog)
+            - Related Case Study (relatedCaseStudy)
 
         Settings:
+            - Case Study Layout (caseStudyLayout)
             - Limit (limit)
-            - Listing Style (listingStyle)
+            - Listing Style (listingStyle2)
             - Per Row Limit (perRowLimit)
             - Pagination? (pagination)
 =====================================================================
@@ -19,6 +20,7 @@
 {{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
 {% import "_/includes/macros" as render %}
 
-{% set blogListingStyle = block.listingStyle2.value|default('cards') %}
+{% set caseStudyLayout = block.caseStudyLayout.value|default('layout1') %}
+{% set listingStyle = block.listingStyle2.value|default('cards') %}
 
-{% include "_partials/pageBuilder/listing/blogListingStyle/#{blogListingStyle}" %}
+{% include "_partials/pageBuilder/listing/caseStudyLayout/#{caseStudyLayout}/#{listingStyle}" %}

@@ -66,6 +66,21 @@ fieldLayouts:
             width: 50
           -
             elementCondition: null
+            fieldUid: ec70c780-286c-4027-8904-ecdb25e3e1c1 # Heading
+            handle: projectType
+            includeInCards: false
+            instructions: null
+            label: 'Project Type'
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 34087433-5f07-4d64-80ea-9ec319622a07
+            userCondition: null
+            warning: null
+            width: 75
+          -
+            elementCondition: null
             fieldUid: b1245063-e2a0-4567-8d38-0324ca0eba13 # Joining Date
             handle: null
             includeInCards: false
@@ -78,7 +93,7 @@ fieldLayouts:
             uid: 99f93f40-5dc8-4b56-b0e6-0c651d57146c
             userCondition: null
             warning: null
-            width: 100
+            width: 25
         name: Content
         uid: 8ff6c752-ee95-48f7-a28a-fdc3b5700bae
         userCondition: null

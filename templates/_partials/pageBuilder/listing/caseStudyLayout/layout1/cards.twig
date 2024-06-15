@@ -15,18 +15,18 @@
 {% set pagination = block.pagination %}
 {% set limit = block.limit|default('12') %}
 
-{% set relatedBlog = block.relatedBlog.limit(limit) %}
-{% if not relatedBlog|length %}
-    {% set relatedBlog = craft.entries.section("blog").limit(limit) %}
+{% set relatedCaseStudy = block.relatedCaseStudy.limit(limit) %}
+{% if not relatedCaseStudy|length %}
+    {% set relatedCaseStudy = craft.entries.section("caseStudies").limit(limit) %}
 {% endif %}
 
 {% if pagination %}
-    {% paginate relatedBlog as pageInfo, entries %}
+    {% paginate relatedCaseStudy as pageInfo, entries %}
 {% else %}
-    {% set entries = relatedBlog.all() %}
+    {% set entries = relatedCaseStudy.all() %}
 {% endif %}
 
-{% set contentId = 'blog' ~ parent.getId() %}
+{% set contentId = 'caseStudies' ~ parent.getId() %}
 {% set paginationBtnClass = 'load-more-btn-' ~ parent.getId() %}
 
 {% if not isAjax %}
@@ -47,19 +47,19 @@
 >
     <div {% if pagination %}:id="contentId"{% endif %} class="grid gap-x-8 gap-y-16 {{ rowLimit[perRowLimit] }}">
 {% endif %}
-        {% for blog in entries %}
+        {% for caseStudy in entries %}
             <div {{ listingAnimation|raw }}>
-                <a href="{{ blog.getUrl() }}" class="relative group flex flex-col items-start pl-8 relative before:absolute after:absolute before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px {{ render.foregroundColors({background: backgroundColorLabel, type: 'borders'}) }}">
+                <a href="{{ caseStudy.getUrl() }}" class="relative group flex flex-col items-start pl-8 relative before:absolute after:absolute before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px {{ render.foregroundColors({background: backgroundColorLabel, type: 'borders'}) }}">
                     <h3 class="mt-6 text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
-                        {{ blog.title }}
+                        {{ caseStudy.title }}
                     </h3>
 
-                    <time class="order-first text-sm {{ backgroundColorLabel == 'black' or backgroundColorLabel == 'cyprus' ? 'text-white' : 'text-neutral-600' }}">
-                        {{ block.postDate|date('F Y') }}
-                    </time>
+                    <div class="order-first text-sm {{ backgroundColorLabel == 'black' or backgroundColorLabel == 'cyprus' ? 'text-white' : 'text-neutral-600' }}">
+                        {{ caseStudy.postDate|date('F Y') }}
+                    </div>
 
-                    {% if blog.text|length %}
-                        {{ render.replaceElements(blog.text, {
+                    {% if caseStudy.text|length %}
+                        {{ render.replaceElements(caseStudy.text, {
                             background: backgroundColorLabel,
                             paragraphFontSize: 'mt-2.5'
                         }) }}

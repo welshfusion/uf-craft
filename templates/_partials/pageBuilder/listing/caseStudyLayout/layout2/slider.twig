@@ -1,0 +1,110 @@
+{{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
+{% import "_/includes/macros" as render %}
+
+{% set perRowLimit = block.perRowLimit.getValue()|default('3') %}
+{% set rowLimit = {
+    '2' : 'grid-cols-1 sm:grid-cols-2',
+    '3' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3',
+    '4' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4',
+    '5' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-5'
+} %}
+
+{% set paramBlockId = craft.app.request.getParam("blockId") %}
+{% set blockId = paramBlockId|default(parent.getId()) %}
+
+{% set pagination = block.pagination %}
+{% set limit = block.limit|default('12') %}
+
+{% set relatedCaseStudy = block.relatedCaseStudy.limit(limit) %}
+{% if not relatedCaseStudy|length %}
+    {% set relatedCaseStudy = craft.entries.section("caseStudies").limit(limit) %}
+{% endif %}
+
+{% if pagination %}
+    {% paginate relatedCaseStudy as pageInfo, entries %}
+{% else %}
+    {% set entries = relatedCaseStudy.all() %}
+{% endif %}
+
+{% set contentId = 'caseStudies' ~ parent.getId() %}
+{% set paginationBtnClass = 'load-more-btn-' ~ parent.getId() %}
+
+{% set swiperPagination = "swiper-pagination-#{block.getId()}" %}
+{% set paginationBulletClass = backgroundColorLabel in ['cyprus', 'black'] ? '!bg-white' : '!bg-cyprus-500' %}
+
+{% set settings = {
+    "slidesPerView": 1,
+    "spaceBetween": 24,
+    "pagination": {
+        "el": ".#{swiperPagination}",
+        "clickable": "true",
+        "bulletClass": "!h-2 !w-2 !mx-1 opacity-50 swiper-pagination-bullet #{paginationBulletClass}",
+        "bulletActiveClass": "!opacity-100"
+    },
+    "breakpoints": {
+        "768": {
+            "slidesPerView": "2"
+        },
+        "1024": {
+            "slidesPerView": "#{perRowLimit}"
+        }
+    }
+} %}
+
+<div class="relative {{ parent.eyebrow|length or parent.heading|length or parent.text|length ? 'mt-16' }}">
+    <div class="swiper swiper-slider !pb-10" data-modulenav="1" data-modulepagination="1" data-moduleautoplay="" data-settings='{{ settings|json_encode|raw }}'>
+        <div class="swiper-wrapper">
+            {% for caseStudy in entries %}
+                {% set relatedClients = caseStudy.relatedClient.all() %}
+                <div class="swiper-slide flex" {{ listingAnimation|raw }}>
+                    <div class="relative flex w-full flex-col rounded-3xl p-6 ring-1 transition sm:p-8 {{ render.foregroundColors({background: backgroundColorLabel, type: 'cardHover'}) }}">
+                        {% for relatedClient in relatedClients %}
+                            {% set image = relatedClient.image.one() %}
+                            {% if image|length %}
+                            <h3>
+                                <a href="{{ caseStudy.getUrl() }}">
+                                    <span class="absolute inset-0 rounded-3xl"></span>
+                                    {{ render.setImage({
+                                        image: image,
+                                        alt: image.title,
+                                        width: 36,
+                                        height: 36,
+                                        class: 'h-16 w-16 flex-none text-transparent'
+                                    }) }}
+                                </a>
+                            </h3>
+                            {% endif %}
+
+                            <p class="mt-6 flex gap-x-2 text-sm {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
+                                {% if relatedClient.joiningDate|length %}
+                                    <div class="font-semibold">
+                                        {{ relatedClient.joiningDate|date("Y") }}
+                                    </div>
+                                {% endif %}
+                                <span class="text-neutral-300" aria-hidden="true">/</span>
+                                <span>
+                                    {{ relatedClient.title }}
+                                </span>
+                            </p>
+                        {% endfor %}
+
+                        <p class="mt-6 font-display text-2xl font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
+                            {{ caseStudy.title }}
+                        </p>
+
+                        {% if caseStudy.text|length %}
+                            <p class="mt-4">
+                                {{ render.replaceElements(caseStudy.text, {
+                                    background: backgroundColorLabel,
+                                }) }}
+                            </p>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="swiper-pagination swiper-pagination-list !-bottom-1 {{ swiperPagination }}"></div>
+</div>
+
+{{ craft.vite.register("src/js/swiper.js", false) }}

@@ -7,7 +7,7 @@
             {% if card.simpleText|length %}
             <li {{ cardAnimation|raw }}>
                 <div class="opacity-100 transform-none">
-                    <div class="pl-8 relative before:absolute after:absolute before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px {{ backgroundColorLabel == 'green' ? 'before:bg-cyprus-300' : 'before:bg-green-500' }} {{ backgroundColorLabel == 'white' ? 'after:bg-neutral-300' : 'after:bg-white/10' }}">
+                    <div class="pl-8 relative before:absolute after:absolute before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px {{ render.foregroundColors({background: backgroundColorLabel, type: 'borders'}) }}">
                         {{ render.replaceElements(card.simpleText, {
                             background: backgroundColorLabel,
                         }) }}

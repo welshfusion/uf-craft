@@ -43,7 +43,7 @@
             {% set relatedTeamMember = blog.relatedTeamMember.all() %}
 
             <div {{ listingAnimation|raw }}>
-                <div class="pt-16 mt-32 relative before:absolute after:absolute before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px {{ backgroundColorLabel == 'green' ? 'before:bg-neutral-300' : 'before:bg-green-500' }} {{ backgroundColorLabel == 'black' or backgroundColorLabel == 'cyprus' ? 'after:bg-white/10' : 'after:bg-neutral-950/10' }}">
+                <div class="pt-16 mt-32 relative before:absolute after:absolute before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px {{ render.foregroundColors({background: backgroundColorLabel, type: 'borders'}) }}">
                     <div class="relative lg:-mx-4 lg:flex lg:justify-end">
                         <div class="pt-10 lg:w-2/3 lg:flex-none lg:px-4 lg:pt-0">
                             <h2 class="font-display text-2xl font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
@@ -102,7 +102,7 @@
                                 }) }}
                             {% endif %}
 
-                            <a href="{{ blog.getUrl }}" class="mt-8 inline-flex rounded-full px-4 py-1.5 text-sm font-semibold transition {{ backgroundColorLabel == 'cyprus' ? 'bg-white text-cyprus-500' : 'bg-cyprus-500 text-white' }} {{ backgroundColorLabel == 'green' ? 'hover:bg-gray-500' : 'hover:bg-green-500' }}">
+                            <a href="{{ blog.getUrl }}" class="mt-8 inline-flex rounded-full px-4 py-1.5 text-sm font-semibold transition {{ render.foregroundColors({background: backgroundColorLabel, type: 'button'}) }}">
                                 <span class="relative top-px">
                                     Read more
                                 </span>

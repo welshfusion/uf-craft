@@ -1,0 +1,139 @@
+{{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
+{% import "_/includes/macros" as render %}
+
+{% set perRowLimit = block.perRowLimit.getValue()|default('3') %}
+{% set rowLimit = {
+    '2' : 'grid-cols-1 sm:grid-cols-2',
+    '3' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3',
+    '4' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4',
+    '5' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-5'
+} %}
+
+{% set paramBlockId = craft.app.request.getParam("blockId") %}
+{% set blockId = paramBlockId|default(parent.getId()) %}
+
+{% set pagination = block.pagination %}
+{% set limit = block.limit|default('12') %}
+
+{% set relatedCaseStudy = block.relatedCaseStudy.limit(limit) %}
+{% if not relatedCaseStudy|length %}
+    {% set relatedCaseStudy = craft.entries.section("caseStudies").limit(limit) %}
+{% endif %}
+
+{% if pagination %}
+    {% paginate relatedCaseStudy as pageInfo, entries %}
+{% else %}
+    {% set entries = relatedCaseStudy.all() %}
+{% endif %}
+
+{% set contentId = 'caseStudies' ~ parent.getId() %}
+{% set paginationBtnClass = 'load-more-btn-' ~ parent.getId() %}
+
+{% if not isAjax %}
+<div class="{{ parent.eyebrow|length or parent.heading|length or parent.text|length ? 'mt-16' }}"
+    {% if pagination %}
+    {{ render.xModalContentListingFilter({
+        url: url(craft.app.request.fullPath),
+        contentId: contentId,
+        loader: true,
+        samePageLoadData: true,
+        noResultsText: "Sorry. No data found for your search term.",
+        paginationBtnClass: paginationBtnClass,
+        filters: {
+            blockId: blockId
+        },
+    }) }}
+    {% endif %}
+>
+    <div {% if pagination %}:id="contentId"{% endif %} class="grid gap-8 {{ rowLimit[perRowLimit] }}">
+{% endif %}
+
+    {% for caseStudy in entries %}
+        {% set relatedClients = caseStudy.relatedClient.all() %}
+        <div class="flex" {{ listingAnimation|raw }}>
+            <div class="relative flex w-full flex-col rounded-3xl p-6 ring-1 transition sm:p-8 {{ render.foregroundColors({background: backgroundColorLabel, type: 'cardHover'}) }}">
+                {% for relatedClient in relatedClients %}
+                    {% set image = relatedClient.image.one() %}
+                    {% if image|length %}
+                    <h3>
+                        <a href="{{ caseStudy.getUrl() }}">
+                        <span class="absolute inset-0 rounded-3xl"></span>
+                            {{ render.setImage({
+                                image: image,
+                                alt: image.title,
+                                width: 36,
+                                height: 36,
+                                class: 'h-16 w-16 flex-none text-transparent'
+                            }) }}
+                        </a>
+                    </h3>
+                    {% endif %}
+
+                    <p class="mt-6 flex gap-x-2 text-sm {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
+                        {% if relatedClient.joiningDate|length %}
+                            <div class="font-semibold">
+                                {{ relatedClient.joiningDate|date("Y") }}
+                            </div>
+                        {% endif %}
+
+                        <span class="text-neutral-300" aria-hidden="true">/</span>
+                        <span>
+                            {{ relatedClient.title }}
+                        </span>
+                    </p>
+                {% endfor %}
+
+                <p class="mt-6 font-display text-2xl font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
+                    {{ caseStudy.title }}
+                </p>
+
+                {% if caseStudy.text|length %}
+                    <p class="mt-4">
+                        {{ render.replaceElements(caseStudy.text, {
+                            background: backgroundColorLabel,
+                        }) }}
+                    </p>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+    {% if pagination %}
+    <div class="fixed top-0 bottom-0 left-0 right-0 backdrop-opacity-10 backdrop-invert bg-black/40 z-50" x-show="isLoading">
+        <div class="h-full w-full flex justify-center items-center">
+            <div class="inline-block relative">
+                {% set headerLogo = header.logo.one() %}
+                {% if headerLogo|length %}
+                {{ render.setImage({
+                    image: headerLogo,
+                    alt: headerLogo.title,
+                    class: 'block max-w-full text-white w-80 mb-3'
+                }) }}
+                {% endif %}
+
+                <div class="relative w-full block left-28">
+                    <span class="bg-white block w-4 h-4 rounded-full absolute left-0 animate-reveal"></span>
+                    <span class="bg-white block w-4 h-4 rounded-full absolute left-0 animate-slide"></span>
+                    <span class="bg-white block w-4 h-4 rounded-full absolute left-[30px] animate-slide"></span>
+                    <span class="bg-white block w-4 h-4 rounded-full absolute left-[60px] animate-reveal-reverse"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if pagination and pageInfo.nextUrl and pageInfo.totalPages > 1 %}
+    {% set nextPageUrl = pageInfo.currentPage == 1 and (not paramBlockId|length) ? pageInfo.nextUrl ~ '?blockId=' ~ blockId : pageInfo.nextUrl %}
+    {#
+    ============================================
+        Include Pagination
+    ============================================
+    #}
+    {% include "_/includes/pagination" with {
+        nextPageUrl: nextPageUrl,
+        paginationBtnClass: paginationBtnClass,
+        blockId: blockId
+    } %}
+    {% endif %}
+{% if not isAjax %}
+</div>
+{% endif %}
