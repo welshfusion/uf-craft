@@ -1,0 +1,54 @@
+{{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
+{% import "_/includes/macros" as render %}
+
+{% set perRowLimit = block.perRowLimit.getValue()|default('4') %}
+{% set rowLimit = {
+    '2' : 'grid-cols-1 sm:grid-cols-2',
+    '3' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3',
+    '4' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4',
+    '5' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-5'
+} %}
+
+{% set paramBlockId = craft.app.request.getParam("blockId") %}
+{% set blockId = paramBlockId|default(parent.getId()) %}
+
+{% set showBorder = block.showBorder ?? null %}
+{% set limit = block.limit|default('12') %}
+
+{% set relatedClient = block.relatedClient.limit(limit) %}
+{% if not relatedClient|length %}
+    {% set relatedClient = craft.entries.section("client").limit(limit) %}
+{% endif %}
+
+<div class="mt-10">
+    {% if showBorder %}
+        <div class="pt-16 relative before:absolute after:absolute before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px {{ render.foregroundColors({background: backgroundColorLabel, type: 'borders'}) }}"></div>
+    {% endif %}
+
+    <ul role="list" class="grid gap-x-8 gap-y-12 {{ rowLimit[perRowLimit] }}">
+        {% for item in relatedClient %}
+            {% set image = item.image2.one() %}
+            <li class="group" {{ listingAnimation|raw }}>
+                <div class="overflow-hidden">
+                    {% if showBorder and loop.index > perRowLimit %}
+                        <div class="pt-12 relative before:absolute after:absolute before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px {{ render.foregroundColors({background: backgroundColorLabel, type: 'borders'}) }}">
+                    {% else %}
+                        <div>
+                    {% endif %}
+                        {% if image|length %}
+                            <div>
+                                {{ render.setImage({
+                                    image: image,
+                                    alt: image.title,
+                                    width: 184,
+                                    height: 36,
+                                    class: 'text-transparent'
+                                }) }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

@@ -92,21 +92,23 @@
 <{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ backgroundColor }} {{ spacing }} {{ bgOpacity }}">
     <div class="container">
         <div class="{{ render.contentWidth({width: contentWidth}) }}">
-            {% if block.eyebrow|length or block.heading|length or block.text|length %}
-                {{ render.basicContents({
-                    eyebrow: block.eyebrow,
-                    heading: block.heading,
-                    text: block.text,
-                    headingTag: headingTag,
-                    fontWeight: fontWeight,
-                    backgroundColorLabel: backgroundColorLabel,
-                    contentAlignment: contentAlignment,
-                    animation: block.animation,
-                    contentAnimationStyle: block.animationStyle.getValue()|default('fade-up'),
-                    contentAnimationDuration: block.animationDuration.getValue()|default(1500),
-                    contentAnimationOffset: block.animationOffset.getValue()|default(200),
-                    contentAnimationEasing: block.animationEasing.getValue()|default(null)
-                }) }}
+            {% if childHandle != 'listingClient' %}
+                {% if block.eyebrow|length or block.heading|length or block.text|length %}
+                    {{ render.basicContents({
+                        eyebrow: block.eyebrow,
+                        heading: block.heading,
+                        text: block.text,
+                        headingTag: headingTag,
+                        fontWeight: fontWeight,
+                        backgroundColorLabel: backgroundColorLabel,
+                        contentAlignment: contentAlignment,
+                        animation: block.animation,
+                        contentAnimationStyle: block.animationStyle.getValue()|default('fade-up'),
+                        contentAnimationDuration: block.animationDuration.getValue()|default(1500),
+                        contentAnimationOffset: block.animationOffset.getValue()|default(200),
+                        contentAnimationEasing: block.animationEasing.getValue()|default(null)
+                    }) }}
+                {% endif %}
             {% endif %}
 {% endif %}
 

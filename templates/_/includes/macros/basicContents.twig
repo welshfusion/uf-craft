@@ -10,11 +10,32 @@
 {% set delay = 0 %}
 
 {% if eyebrow|length %}
-<h6 class="block font-display text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }} {{ render.getAlignment({alignment: contentAlignment, type: 'text'}) }}" {{ contentAnimation|raw }}>
-    {{ render.replaceUnderscores({
-        text: eyebrow,
-    }) }}
-</h6>
+    {% set alignmentClass = contentAlignment == 'right' ? 'text-right' : (contentAlignment == 'center' ? 'text-center' : 'text-left') %}
+    {% set borderColorClass = backgroundColorLabel == 'green' ? 'bg-white/50' : 'bg-green-500' %}
+    {% if addBorder %}
+        <div class="flex items-center gap-x-8">
+            {% if contentAlignment == 'right' or contentAlignment == 'center' %}
+                <div class="h-px flex-auto {{ borderColorClass }}"></div>
+            {% endif %}
+
+            <h6 class="block font-display text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }} {{ alignmentClass }}" {{ contentAnimation|raw }}>
+                {{ render.replaceUnderscores({
+                    text: eyebrow,
+                }) }}
+            </h6>
+
+            {% if contentAlignment == 'left' or contentAlignment == 'center' %}
+                <div class="h-px flex-auto {{ borderColorClass }}"></div>
+            {% endif %}
+        </div>
+    {% else %}
+
+        <h6 class="block font-display text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }} {{ alignmentClass }}" {{ contentAnimation|raw }}>
+            {{ render.replaceUnderscores({
+                text: eyebrow,
+            }) }}
+        </h6>
+    {% endif %}
 {% endif %}
 
 {% if heading|length %}
