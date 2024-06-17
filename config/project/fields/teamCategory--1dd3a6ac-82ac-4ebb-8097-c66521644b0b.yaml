@@ -1,0 +1,22 @@
+columnSuffix: null
+handle: teamCategory
+instructions: null
+name: 'Team Category'
+searchable: false
+settings:
+  allowSelfRelations: false
+  branchLimit: null
+  localizeRelations: false
+  maintainHierarchy: false
+  maxRelations: 1
+  minRelations: null
+  selectionLabel: null
+  showCardsInGrid: false
+  showSiteMenu: false
+  source: 'group:0dd85eed-a40f-4f26-8409-edb22d72cdd8' # Team Category
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: list
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Categories

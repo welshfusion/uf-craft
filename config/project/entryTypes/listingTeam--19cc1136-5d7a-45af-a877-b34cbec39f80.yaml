@@ -85,36 +85,6 @@ fieldLayouts:
             userCondition: null
             warning: null
             width: 50
-          -
-            elementCondition: null
-            fieldUid: 07f716e2-b6e5-4aaa-aa76-1a49c9929017 # Light switch
-            handle: filter
-            includeInCards: false
-            instructions: null
-            label: 'Filter?'
-            providesThumbs: false
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: f0a10f46-5ecd-43a0-b860-ebc94298d436
-            userCondition: null
-            warning: null
-            width: 50
-          -
-            elementCondition: null
-            fieldUid: 07f716e2-b6e5-4aaa-aa76-1a49c9929017 # Light switch
-            handle: pagination
-            includeInCards: false
-            instructions: null
-            label: 'Pagination?'
-            providesThumbs: false
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: 0164ff63-46a5-461e-84d4-f2d0c45d95f1
-            userCondition: null
-            warning: null
-            width: 50
         name: Settings
         uid: 3628e78b-37a1-44d4-8835-e358e6c5c2b3
         userCondition: null

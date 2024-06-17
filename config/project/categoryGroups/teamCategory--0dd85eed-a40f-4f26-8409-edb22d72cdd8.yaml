@@ -1,0 +1,49 @@
+defaultPlacement: end
+fieldLayouts:
+  cbdd6544-1273-41ea-ac3c-8dca1363cd7d:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\TitleField
+            uid: c0d5a12c-76b3-476c-bc55-711ca1ac3cc4
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: bfb1f0c2-2124-4b7a-8f87-4b8bbf5f5b34
+        userCondition: null
+handle: teamCategory
+name: 'Team Category'
+siteSettings:
+  5bdbc0ac-c142-4128-a741-e438819f43c5: # Userfusion
+    hasUrls: false
+    template: null
+    uriFormat: null
+structure:
+  maxLevels: 1
+  uid: 9cb55a8f-d583-4f83-8e6c-ffdb166c32db

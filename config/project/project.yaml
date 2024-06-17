@@ -1,4 +1,4 @@
-dateModified: 1718368752
+dateModified: 1718600987
 elementSources:
   craft\elements\Entry:
     -
@@ -67,6 +67,7 @@ fs:
     url: '@web/uploads/videos'
 meta:
   __names__:
+    0dd85eed-a40f-4f26-8409-edb22d72cdd8: 'Team Category' # Team Category
     00ddb959-14e4-4e9c-a8dd-38d2fd228e7a: 'Text Card' # Text Card
     0e6d4e36-9f7c-4320-bfad-dcc290f8e135: 'Font Weight' # Font Weight
     0f5da106-4758-4a32-806f-a95ba43b826b: 'Sub Heading' # Sub Heading
@@ -76,6 +77,7 @@ meta:
     1cb58e0a-7886-40d7-87eb-ec4149cbc280: 'Related Testimonials' # Related Testimonials
     1cc32b3f-8297-426d-a395-8306d849c1f5: 'Testimonial Layout' # Testimonial Layout
     1d563f74-0673-4d93-9848-cfbf74332e88: 'Animation Style' # Animation Style
+    1dd3a6ac-82ac-4ebb-8097-c66521644b0b: 'Team Category' # Team Category
     1eaebe24-9727-4d24-969d-6c0a6012f7c5: Listing # Listing
     1fa0a156-5d07-4afa-a05a-7f48cebc4c97: Client # Client
     2ba320e0-e879-4969-b03c-211b60735a5a: 'Section ID' # Section ID

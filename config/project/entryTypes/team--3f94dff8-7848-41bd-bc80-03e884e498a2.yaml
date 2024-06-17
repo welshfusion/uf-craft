@@ -48,7 +48,22 @@ fieldLayouts:
             uid: c4c345f2-cec8-4371-ba6a-98869aded4b9
             userCondition: null
             warning: null
-            width: 100
+            width: 50
+          -
+            elementCondition: null
+            fieldUid: 1dd3a6ac-82ac-4ebb-8097-c66521644b0b # Team Category
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 0607f89f-fe73-48da-a7a6-87de994e47ab
+            userCondition: null
+            warning: null
+            width: 50
           -
             elementCondition: null
             fieldUid: f7a03cc1-a16d-4c45-9dfd-c869032b4453 # Eyebrow
