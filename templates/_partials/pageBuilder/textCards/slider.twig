@@ -2,7 +2,7 @@
 {% import "_/includes/macros" as render %}
 
 {% set swiperPagination = "swiper-pagination-#{block.getId()}" %}
-{% set paginationBulletClass = backgroundColorLabel in ['cyprus'] ? '!bg-white' : '!bg-cyprus-500' %}
+{% set paginationBulletClass = backgroundColorLabel == 'cyprus' ? '!bg-white' : '!bg-cyprus-500' %}
 {% set settings = {
     "slidesPerView": 1,
     "spaceBetween": 24,
@@ -23,12 +23,15 @@
 } %}
 
 <div class="relative {{ block.eyebrow|length or block.heading|length or block.text|length ? 'mt-10' }}">
-    <div class="swiper swiper-slider !pb-14" data-modulenav="1" data-modulepagination="1" data-moduleautoplay="" data-settings='{{ settings|json_encode|raw }}'>
-        <div class="swiper-wrapper opacity-100 transform-none">
+    <div class="swiper swiper-slider !pb-12" data-modulenav="1" data-modulepagination="1" data-moduleautoplay="" data-settings='{{ settings|json_encode|raw }}'>
+        <div class="swiper-wrapper">
             {% for card in textCards %}
                 {% if card.simpleText|length %}
                 <div class="swiper-slide before:bg-white after:bg-white/10" {{ cardAnimation|raw }}>
-                    <div class="pl-8 relative before:absolute after:absolute before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px {{ render.foregroundColors({background: backgroundColorLabel, type: 'borders'}) }}">
+                    <div class="pl-8 space-y-3 relative before:absolute after:absolute before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px {{ render.foregroundColors({
+                        background: backgroundColorLabel,
+                        type: 'border'
+                    }) }}">
                         {{ render.replaceElements(card.simpleText, {
                             background: backgroundColorLabel,
                         }) }}
@@ -37,8 +40,9 @@
                 {% endif %}
             {% endfor %}
         </div>
+        <div class="swiper-pagination swiper-pagination-list {{ swiperPagination }}"></div>
     </div>
-    <div class="swiper-pagination swiper-pagination-list !bottom-1 {{ swiperPagination }}"></div>
 </div>
 
+{# Register Swiper JS #}
 {{ craft.vite.register("src/js/swiper.js", false) }}

@@ -62,11 +62,11 @@
 }) %}
 
 {% set rowLimit = {
-    '1'       : 'grid-cols-1',
-    '2'       : 'grid-cols-1 md:grid-cols-2',
-    '3'       : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3',
-    '4'       : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4',
-    '5'       : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-5'
+    '1' : 'grid-cols-1',
+    '2' : 'grid-cols-1 md:grid-cols-2',
+    '3' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3',
+    '4' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4',
+    '5' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-5'
 } %}
 
 {% set imageGridLayout = {
@@ -78,31 +78,31 @@
 } %}
 
 {% set ratio = {
-    'auto'    : 'aspect-auto',
-    '1_1'     : 'aspect-w-1 aspect-h-1',
-    '16_9'    : 'aspect-w-16 aspect-h-9',
-    '4_3'     : 'aspect-w-4 aspect-h-3',
-    '3_4'     : 'aspect-w-3 aspect-h-4',
-    '7_2'     : 'aspect-w-7 aspect-h-2'
+    'auto' : 'aspect-auto',
+    '1_1'  : 'aspect-w-1 aspect-h-1',
+    '16_9' : 'aspect-w-16 aspect-h-9',
+    '4_3'  : 'aspect-w-4 aspect-h-3',
+    '3_4'  : 'aspect-w-3 aspect-h-4',
+    '7_2'  : 'aspect-w-7 aspect-h-2'
 } %}
 
-{% set buttons = block.buttons.all() %}
 {% set images = block.images.all() %}
+{% set buttons = block.buttons.all() %}
 
 {% set contentAnimation = render.setAnimation({
-    animation: block.animation,
-    animationStyle: block.animationStyle2.value|default('fade-up'),
-    animationDuration: block.animationDuration2.value|default(1500),
-    animationOffset: block.animationOffset2.value|default(200),
-    animationEasing: block.animationEasing2.value|default(null)
-}) | raw %}
-
-{% set galleryAnimation = render.setAnimation({
     animation: block.animation,
     animationStyle: block.animationStyle.value|default('fade-up'),
     animationDuration: block.animationDuration.value|default(1500),
     animationOffset: block.animationOffset.value|default(200),
     animationEasing: block.animationEasing.value|default(null)
+}) | raw %}
+
+{% set galleryAnimation = render.setAnimation({
+    animation: block.animation,
+    animationStyle: block.animationStyle2.value|default('fade-up'),
+    animationDuration: block.animationDuration2.value|default(1500),
+    animationOffset: block.animationOffset2.value|default(200),
+    animationEasing: block.animationEasing2.value|default(null)
 }) | raw %}
 
 <{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ backgroundColor }} {{ spacing }}">
@@ -152,4 +152,5 @@
     </div>
 </{{ sectionTag }}>
 
+{# Register JS and CSS for glightbox #}
 {{ craft.vite.script("src/js/glightbox.js", false) }}

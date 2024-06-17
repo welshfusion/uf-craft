@@ -43,13 +43,12 @@
 {% set sectionTag = childContainer or containerWrapper ? 'div' : 'section' %}
 {# Parent Block Fields End #}
 
-{% set contentWidth = block.contentWidth|default('0;12') %}
-{% set containerSize = block.containerSize.getValue()|default('container') %}
-{% set imageRatio = block.imageRatio.getValue()|default('16_9') %}
 
 {% set headingTag = block.headingSize.getValue()|default('h2') %}
 {% set fontWeight = block.fontWeight.getValue()|default('medium') %}
 {% set contentAlignment = block.contentAlignment.value|default('center') %}
+{% set containerSize = block.containerSize.getValue()|default('container') %}
+{% set contentWidth = block.contentWidth|default('0;12') %}
 
 {% set conbackgroundColor = conbackgroundColor ?? null %}
 {% set backgroundColorLabel = block.backgroundColor.label|default(conbackgroundColor ?? 'white') %}
@@ -59,6 +58,7 @@
     swatch: 'background'
 }) %}
 
+{% set imageRatio = block.imageRatio.getValue()|default('16_9') %}
 {% set ratio = {
     'auto'    : 'aspect-auto',
     '1_1'     : 'aspect-w-1 aspect-h-1',
@@ -68,19 +68,7 @@
     '7_2'     : 'aspect-w-7 aspect-h-2'
 } %}
 
-{% set buttons = block.buttons.all() %}
-{% set image = block.image.one() %}
-{% set videos = block.backgroundVideo ?? null %}
-
 {% set contentAnimation = render.setAnimation({
-    animation: block.animation,
-    animationStyle: block.animationStyle2.value|default('fade-up'),
-    animationDuration: block.animationDuration2.value|default(1500),
-    animationOffset: block.animationOffset2.value|default(200),
-    animationEasing: block.animationEasing2.value|default(null)
-}) | raw %}
-
-{% set imageAnimation = render.setAnimation({
     animation: block.animation,
     animationStyle: block.animationStyle.value|default('fade-up'),
     animationDuration: block.animationDuration.value|default(1500),
@@ -88,55 +76,52 @@
     animationEasing: block.animationEasing.value|default(null)
 }) | raw %}
 
+{% set image = block.image.one() %}
+{% set videos = block.video ?? null %}
+{% set videoImage = videos.media.image ?? null %}
+{% set finalImage = image|length ? image : videoImage %}
+{% set videoId = 'image-video-'|t ~ block.getId() %}
+{% set buttons = block.buttons.all() %}
+
 <{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ backgroundColor }} {{ spacing }}">
     <div class="{{ containerSize == 'container' ? 'container' }}">
         <div class="{{ render.contentWidth({width: contentWidth}) }}">
             {% if block.eyebrow|length or block.heading|length or block.text|length %}
-                {{ render.basicContents({
-                    eyebrow: block.eyebrow,
-                    heading: block.heading,
-                    text: block.text,
-                    headingTag: headingTag,
-                    fontWeight: fontWeight,
-                    backgroundColorLabel: backgroundColorLabel,
-                    contentAlignment: contentAlignment,
-                    animation: block.animation,
-                    contentAnimationStyle: block.animationStyle2.getValue()|default('fade-up'),
-                    contentAnimationDuration: block.animationDuration2.getValue()|default(1500),
-                    contentAnimationOffset: block.animationOffset2.getValue()|default(200),
-                    contentAnimationEasing: block.animationEasing2.getValue()|default(null)
-                }) }}
+            {{ render.basicContents({
+                eyebrow: block.eyebrow,
+                heading: block.heading,
+                text: block.text,
+                headingTag: headingTag,
+                fontWeight: fontWeight,
+                backgroundColorLabel: backgroundColorLabel,
+                contentAlignment: contentAlignment,
+                animation: block.animation,
+                contentAnimationStyle: block.animationStyle.getValue()|default('fade-up'),
+                contentAnimationDuration: block.animationDuration.getValue()|default(1500),
+                contentAnimationOffset: block.animationOffset.getValue()|default(200),
+                contentAnimationEasing: block.animationEasing.getValue()|default(null)
+            }) }}
             {% endif %}
 
-            {% if image|length or videos|length %}
-            <div class="{{ block.eyebrow|length or block.heading|length or block.text|length ? 'mt-8 md:mt-10' }}">
-                {% set videoImage = videos.media.image ?? null %}
-                {% set finalImage = image|length ? image : videoImage %}
-                {% set videoId = 'image-video-' ~ block.getId() %}
-
-                {% if image|length or videos|length %}
-                <div class="relative {{ ratio[imageRatio] }}" {{ imageAnimation|raw }}>
+            {% if image|length or videos.media|length %}
+            <div class="{{ block.eyebrow|length or block.heading|length or block.text|length ? 'mt-10' }}">
+                <div class="relative {{ ratio[imageRatio] }}" {{ contentAnimation|raw }}>
                     <div>
-                    {{ render.renderVideo({
-                        image: finalImage|length ? finalImage,
-                        alt: image|length ? image.title : videoId,
-                        width: image|length ? image.width,
-                        height: image|length ? image.height,
-                        class: "object-cover w-full h-full",
-                        lazy: false,
-                        plainImage: image|length ? false : true,
-                        videos: videos,
-                        videoClass: "object-cover w-full h-full",
-                        videoType: 'popup',
-                        videoPoster: image,
-                        videoId: videoId,
-                        videoAttrs: {
-                            preload: "none",
-                        }
-                    }) }}
+                        {{ render.renderVideo({
+                            image: finalImage|length ? finalImage,
+                            alt: image|length ? image.title : videoId,
+                            width: image|length ? image.width,
+                            height: image|length ? image.height,
+                            class: 'object-cover w-full h-full',
+                            lazy: false,
+                            plainImage: image|length ? false : true,
+                            videos: videos,
+                            videoClass: 'object-cover w-full h-full z-10',
+                            videoType: 'popup',
+                            videoId: videoId
+                        }) }}
                     </div>
                 </div>
-                {% endif %}
             </div>
             {% endif %}
 

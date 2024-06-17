@@ -41,9 +41,10 @@
         class,
         colors[buttonType][buttonColor] ?? null,
         extraClasses|length ? extraClasses : buttonType == 'link'
-            ? "flex text-xl font-semibold border-b-2 border-transparent items-center inline-block leading-6 transition duration-300 #{button.classes}"
-            : "inline-flex items-center text-xl rounded-full px-4 py-1.5 font-semibold transition duration-300 #{button.classes} " ~ (buttonType == 'outline' ? 'border'),
-        icon|length and iconPosition == 'left' ? 'flex-row-reverse' : null
+            ? "flex font-semibold border-b-2 border-transparent items-center inline-block leading-6 transition duration-300 #{button.classes}"
+            : "inline-flex items-center rounded-full px-4 py-1.5 font-semibold transition duration-300 #{button.classes} " ~ (buttonType == 'outline' ? 'border'),
+        icon|length and iconPosition == 'left' ? 'flex-row-reverse' : null,
+        textSize|length ? textSize : 'text-xl',
     ]
 }) %}
 

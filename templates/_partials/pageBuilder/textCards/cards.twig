@@ -1,20 +1,21 @@
 {{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
 {% import "_/includes/macros" as render %}
 
-<div class="{{ block.eyebrow|length or block.heading|length or block.text|length ? 'mt-10' }}">
-    <ul role="list" class="gap-10 grid {{ rowLimit[perRowLimit] }}">
-        {% for card in textCards %}
-            {% if card.simpleText|length %}
-            <li {{ cardAnimation|raw }}>
-                <div class="opacity-100 transform-none">
-                    <div class="pl-8 relative before:absolute after:absolute before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px {{ render.foregroundColors({background: backgroundColorLabel, type: 'borders'}) }}">
-                        {{ render.replaceElements(card.simpleText, {
-                            background: backgroundColorLabel,
-                        }) }}
-                    </div>
+<ul role="list" class="gap-10 grid {{ rowLimit[perRowLimit] }} {{ block.eyebrow|length or block.heading|length or block.text|length ? 'mt-10' }}">
+    {% for card in textCards %}
+        {% if card.simpleText|length %}
+        <li {{ cardAnimation|raw }}>
+            <div class="opacity-100 transform-none">
+                <div class="pl-8 space-y-3 relative before:absolute after:absolute before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px {{ render.foregroundColors({
+                    background: backgroundColorLabel,
+                    type: 'border'
+                }) }}">
+                    {{ render.replaceElements(card.simpleText, {
+                        background: backgroundColorLabel,
+                    }) }}
                 </div>
-            </li>
-            {% endif %}
-        {% endfor %}
-    </ul>
-</div>
+            </div>
+        </li>
+        {% endif %}
+    {% endfor %}
+</ul>

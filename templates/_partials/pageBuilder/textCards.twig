@@ -44,7 +44,6 @@
 {% set fontWeight = block.fontWeight.getValue()|default('medium') %}
 {% set contentAlignment = block.contentAlignment.value|default('left') %}
 {% set contentWidth = block.contentWidth|default('0;12') %}
-{% set perRowLimit = block.perRowLimit.getValue()|default('3') %}
 {% set listingStyle = block.listingStyle.value|default('cards') %}
 
 {% set conbackgroundColor = conbackgroundColor ?? null %}
@@ -55,9 +54,7 @@
     swatch: 'background'
 }) %}
 
-{% set buttons = block.buttons.all() %}
-{% set textCards = block.textCard.all() %}
-
+{% set perRowLimit = block.perRowLimit.getValue()|default('3') %}
 {% set rowLimit = {
     '2' : 'grid-cols-1 sm:grid-cols-2',
     '3' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3',
@@ -81,10 +78,13 @@
     animationEasing: block.animationEasing2.value|default(null)
 }) | raw %}
 
+{% set textCards = block.textCard.all() %}
+{% set buttons = block.buttons.all() %}
+
 <{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="rounded-4xl {{ backgroundColor }} {{ spacing }}">
-    {% if block.eyebrow|length or block.heading|length or block.text|length or buttons|length %}
     <div class="container">
         <div class="{{ render.contentWidth({width: contentWidth}) }}">
+            {% if block.eyebrow|length or block.heading|length or block.text|length or buttons|length %}
             {{ render.basicContents({
                 eyebrow: block.eyebrow,
                 heading: block.heading,
@@ -100,31 +100,31 @@
                 contentAnimationOffset: block.animationOffset.getValue()|default(100),
                 contentAnimationEasing: block.animationEasing.getValue()|default(null)
             }) }}
-        </div>
+            {% endif %}
 
-        {% if textCards|length %}
-            {% include "_partials/pageBuilder/textCards/#{listingStyle}" %}
-        {% endif %}
+            {% if textCards|length %}
+                {% include "_partials/pageBuilder/textCards/#{listingStyle}" %}
+            {% endif %}
 
-        {% for button in buttons %}
-        {% if loop.first %}
-        <div class="flex flex-wrap items-center gap-5 mt-8 md:mt-10 {{ render.getAlignment({
-            alignment: contentAlignment,
-            type: 'justify'
-        }) }}" {{ contentAnimation|raw }}>
-        {% endif %}
-            {{ render.createButton({
-                button: button.button,
-                buttonType: button.buttonType.getValue()|default("button"),
-                buttonColor: button.buttonColor.label|default('cyprus'),
-                icon: button.icon,
-                iconPosition: button.iconPosition.getValue()|default('right'),
-                background: backgroundColorLabel,
-            }) }}
-        {% if loop.last %}
+            {% for button in buttons %}
+            {% if loop.first %}
+            <div class="flex flex-wrap items-center gap-5 mt-8 md:mt-10 {{ render.getAlignment({
+                alignment: contentAlignment,
+                type: 'justify'
+            }) }}" {{ contentAnimation|raw }}>
+            {% endif %}
+                {{ render.createButton({
+                    button: button.button,
+                    buttonType: button.buttonType.getValue()|default("button"),
+                    buttonColor: button.buttonColor.label|default('cyprus'),
+                    icon: button.icon,
+                    iconPosition: button.iconPosition.getValue()|default('right'),
+                    background: backgroundColorLabel,
+                }) }}
+            {% if loop.last %}
+            </div>
+            {% endif %}
+            {% endfor %}
         </div>
-        {% endif %}
-        {% endfor %}
     </div>
-    {% endif %}
 </{{ sectionTag }}>

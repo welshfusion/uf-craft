@@ -2,7 +2,7 @@
 {% import "_/includes/macros" as render %}
 
 {% set swiperPagination = "swiper-pagination-#{block.getId()}" %}
-{% set paginationBulletClass = backgroundColorLabel in ['cyprus'] ? '!bg-white' : '!bg-cyprus-500' %}
+{% set paginationBulletClass = backgroundColorLabel == 'cyprus' ? '!bg-white' : '!bg-cyprus-500' %}
 {% set settings = {
     "slidesPerView": 1,
     "spaceBetween": 24,
@@ -23,7 +23,7 @@
 } %}
 
 <div class="relative {{ block.eyebrow|length or block.heading|length or block.text|length ? 'mt-10' }}">
-    <div class="swiper swiper-slider !pb-10" data-modulenav="1" data-modulepagination="1" data-moduleautoplay="" data-settings='{{ settings|json_encode|raw }}'>
+    <div class="swiper swiper-slider !pb-12" data-modulenav="1" data-modulepagination="1" data-moduleautoplay="" data-settings='{{ settings|json_encode|raw }}'>
         <div class="swiper-wrapper">
             {% for image in images %}
                 <a href="{{ image.getUrl() }}" class="glightbox swiper-slide" {{ galleryAnimation|raw }}>
@@ -39,9 +39,9 @@
                 </a>
             {% endfor %}
         </div>
+        <div class="swiper-pagination swiper-pagination-list {{ swiperPagination }}"></div>
     </div>
-    <div class="swiper-pagination swiper-pagination-list !-bottom-1 {{ swiperPagination }}"></div>
 </div>
 
-
+{# Register Swiper JS #}
 {{ craft.vite.register("src/js/swiper.js", false) }}
