@@ -1,72 +1,103 @@
-{# {{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
+{{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
 {% import "_/includes/macros" as render %}
 
-{% set limit = block.limit|default(12) %}
-{% set teamListingStyle = block.listingStyle.value|default('slider') %}
-{% set filter = block.filter ?? null %}
-{% set pagination = block.pagination %}
+{% set limit = block.limit|default('15') %}
 
-{% set relatedTeamMember = block.relatedTeamMember.one() %}
-{% set relatedteam = block.relatedTeamMember.limit(limit).with(['image']).cache() %}
-{% if not relatedteam|length %}
-    {% set relatedteam = craft.entries.section("team").limit(limit).with(['image']).cache() %}
+{% set relatedTeam = block.relatedTeamMember.limit(limit).all() %}
+{% if not relatedTeam|length %}
+    {% set relatedTeam = craft.entries.section("team").limit(limit).all() %}
 {% endif %}
 
-{% if relatedTeamMember|length %}
-    {% set relatedteam = relatedteam.parentFund(relatedTeamMember.id) %}
-{% endif %}
+{% set teamCategories = craft.categories.group("teamCategory").all() %}
 
-{% do relatedteam.all() %}
-
-{% set swiperPrev = "swiper-prev-#{parent.getId()}" %}
-{% set swiperNext = "swiper-next-#{parent.getId()}" %}
+{% set swiperPagination = "swiper-pagination-#{block.getId()}" %}
+{% set paginationBulletClass = backgroundColorLabel in ['cyprus', 'black'] ? '!bg-white' : '!bg-cyprus-500' %}
 
 {% set settings = {
-    "loop":false,
     "slidesPerView": 1,
     "spaceBetween": 24,
-    "autoHeight": true,
-    "breakpoints": {"768": { "slidesPerView": "2.2" }, "1024": { "slidesPerView": "4.2" }},
-    "navigation":{"nextEl":".#{swiperNext}","prevEl":".#{swiperPrev}"}
+    "pagination": {
+        "el": ".#{swiperPagination}",
+        "clickable": "true",
+        "bulletClass": "!h-2 !w-2 !mx-1 opacity-50 swiper-pagination-bullet #{paginationBulletClass}",
+        "bulletActiveClass": "!opacity-100"
+    },
+    "breakpoints": {
+        "768": {
+            "slidesPerView": "2"
+        },
+        "1024": {
+            "slidesPerView": "3"
+        }
+    }
 } %}
 
-{% if relatedteam|length > 3 %}
-<div class="lg:col-span-3">
-    <div role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-8">
-        <div class="swiper swiper-slider !pl-4 sm:!pl-[calc(50vw-252px)] md:!pl-[calc(50vw-366px)] lg:!pl-[calc(50vw-478px)] xl:!pl-[calc(50vw-610px)]"
-            data-modulenav="1"
-            data-modulepagination="1"
-            data-moduleautoplay=""
-            data-settings='{{ settings|json_encode|raw }}'
-        >
-        <div class="swiper-wrapper" {{ listingAnimation|raw }}>
-        {% for item in relatedteam %}
-        {% set image = item.image.one() %}
-            <div class="swiper-slide" >
-                <div class="group relative overflow-hidden rounded-3xl bg-neutral-100">
-                    {{ render.setImage({
-                        image: image,
-                        alt: image.title,
-                        width: 600,
-                        height: null,
-                        class: 'h-96 w-full object-cover grayscale transition duration-500 motion-safe:group-hover:scale-105'
-                    }) }}
+<div class="space-y-24">
+    <div {{ listingAnimation|raw }}>
+        {% for category in teamCategories %}
+            {% set categoryRelatedEntries = [] %}
+            {% for item in relatedTeam %}
+                {% set itemCategories = item.teamCategory.ids() %}
+                {% if category.id in itemCategories %}
+                    {% set categoryRelatedEntries = categoryRelatedEntries|merge([item]) %}
+                {% endif %}
+            {% endfor %}
 
-                    {% if item.title|length or item.designation|length %}
-                        <div class="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black to-black/0 to-40% p-6">
-                            <p class="font-display text-base/6 font-semibold tracking-wide text-white">
-                                {{ item.title }}
-                            </p>
-                            <p class="mt-2 text-sm text-white">
-                                {{ item.designation }}
-                            </p>
+            {% if categoryRelatedEntries|length %}
+                <div class="mt-16 relative before:absolute after:absolute before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px opacity-100 transform-none {{ render.foregroundColors({background: backgroundColorLabel, type: 'borders'}) }}"></div>
+                <div class="grid grid-cols-1 gap-6 pt-12 sm:pt-16 lg:grid-cols-4 xl:gap-8" {{ listingAnimation|raw }}>
+                    <div class="opacity-100 transform-none">
+                        <h2 class="font-display text-2xl font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
+                            {{ category.title }}
+                        </h2>
+                    </div>
+
+                    <div class="lg:col-span-3">
+                        <div class="swiper swiper-slider !pb-10" data-modulenav="1" data-modulepagination="1" data-moduleautoplay="" data-settings='{{ settings|json_encode|raw }}'>
+                            <div class="swiper-wrapper">
+                                {% for item in categoryRelatedEntries %}
+                                    {% set image = item.image.one() %}
+                                    <div class="swiper-slide">
+                                        <div class="opacity-100 transform-none">
+                                            <div class="group relative overflow-hidden rounded-3xl bg-neutral-100">
+                                                {% if image %}
+                                                    {{ render.setImage({
+                                                        image: image,
+                                                        alt: image.title,
+                                                        width: 1800,
+                                                        height: 1800,
+                                                        class: 'h-96 w-full object-cover grayscale transition duration-500 motion-safe:group-hover:scale-105 text-transparent'
+                                                    }) }}
+                                                {% endif %}
+
+                                                {% if item.title or item.designation %}
+                                                    <div class="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black to-black/0 to-40% p-6">
+                                                        {% if item.title %}
+                                                            <p class="font-display text-base/6 font-semibold tracking-wide text-white">
+                                                                {{ item.title }}
+                                                            </p>
+                                                        {% endif %}
+
+                                                        {% if item.designation %}
+                                                            <p class="mt-2 text-sm text-white">
+                                                                {{ item.designation }}
+                                                            </p>
+                                                        {% endif %}
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        <div class="swiper-pagination swiper-pagination-list !-bottom-1 {{ swiperPagination }}"></div>
                         </div>
-                    {% endif %}
+                    </div>
                 </div>
-            </div>
+            {% endif %}
         {% endfor %}
     </div>
 </div>
-{% endif %}
 
-{{ craft.vite.script("src/js/swiper.js") }} #}
+{# Register Swiper JS #}
+{{ craft.vite.register("src/js/swiper.js", false) }}
