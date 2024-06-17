@@ -37,31 +37,27 @@
     }) }}
     {% endif %}
 >
-    <div {% if pagination %}:id="contentId"{% endif %} class="mx-auto max-w-2xl lg:max-w-none">
+    <div {% if pagination %}:id="contentId"{% endif %} class="mx-auto max-w-2xl lg:max-w-none space-y-32">
 {% endif %}
         {% for blog in entries %}
-            {% set relatedTeamMember = blog.relatedTeamMember.all() %}
+            {% set relatedTeamMember = blog.relatedTeamMember.one() %}
 
             <div {{ listingAnimation|raw }}>
-                <div class="pt-16 mt-32 relative before:absolute after:absolute before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px {{ render.foregroundColors({background: backgroundColorLabel, type: 'borders'}) }}">
-                    <div class="relative lg:-mx-4 lg:flex lg:justify-end">
+                <div class="pt-16 relative before:absolute after:absolute before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px {{ render.foregroundColors({background: backgroundColorLabel, type: 'border'}) }}">
+                    <div class="relative lg:-mx-4 {{ relatedTeamMember|length ? 'lg:flex lg:justify-end' }}">
                         <div class="pt-10 lg:w-2/3 lg:flex-none lg:px-4 lg:pt-0">
-                            <h2 class="font-display text-2xl font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
-                                <a href="{{ blog.getUrl }}">
-                                    {{ blog.title }}
-                                </a>
-                            </h2>
+                            <a href="{{ blog.getUrl }}" class="font-display text-2xl font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
+                                {{ blog.title }}
+                            </a>
 
-                            {% for item in relatedTeamMember %}
-                                {% set image = item.image.one() %}
+                            {% if relatedTeamMember|length %}
+                                {% set image = relatedTeamMember.image.one() %}
+
                                 <div class="lg:absolute lg:left-0 lg:top-0 lg:w-1/3 lg:px-4">
                                     <div class="absolute left-0 top-0 text-sm lg:static {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
-                                        <time>
-                                            {{ item.postDate|date('F Y') }}
-                                        </time>
+                                        {{ relatedTeamMember.postDate|date('F Y') }}
                                     </div>
 
-                                    {% if image|length or item.title|length or item.designation|length %}
                                     <div class="mt-6 flex gap-x-4">
                                         {% if image|length %}
                                         <div class="flex-none overflow-hidden rounded-xl bg-neutral-100">
@@ -75,31 +71,31 @@
                                         </div>
                                         {% endif %}
 
-                                        {% if item.title|length or item.designation|length %}
+                                        {% if relatedTeamMember.title|length or relatedTeamMember.designation|length %}
                                         <div class="text-sm {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
-                                            {% if item.title|length %}
+                                            {% if relatedTeamMember.title|length %}
                                             <div class="font-semibold">
-                                                {{ item.title }}
+                                                {{ relatedTeamMember.title }}
                                             </div>
                                             {% endif %}
 
-                                            {% if item.designation|length %}
+                                            {% if relatedTeamMember.designation|length %}
                                             <div>
-                                                {{ item.designation }}
+                                                {{ relatedTeamMember.designation }}
                                             </div>
                                             {% endif %}
                                         </div>
                                         {% endif %}
                                     </div>
-                                    {% endif %}
                                 </div>
-                            {% endfor %}
+                            {% endif %}
 
                             {% if blog.text %}
+                            <div class="mt-6 space-y-6 max-w-2xl">
                                 {{ render.replaceElements(blog.text, {
                                     background: backgroundColorLabel,
-                                    paragraphFontSize: 'mt-6 max-w-2xl text-base'
                                 }) }}
+                            </div>
                             {% endif %}
 
                             <a href="{{ blog.getUrl }}" class="mt-8 inline-flex rounded-full px-4 py-1.5 text-sm font-semibold transition {{ render.foregroundColors({background: backgroundColorLabel, type: 'button'}) }}">
@@ -112,30 +108,6 @@
                 </div>
             </div>
         {% endfor %}
-
-        {% if pagination %}
-        <div class="fixed top-0 bottom-0 left-0 right-0 backdrop-opacity-10 backdrop-invert bg-black/40 z-50" x-show="isLoading">
-            <div class="h-full w-full flex justify-center items-center">
-                <div class="inline-block relative">
-                    {% set headerLogo = header.logo.one() %}
-                    {% if headerLogo|length %}
-                    {{ render.setImage({
-                        image: headerLogo,
-                        alt: headerLogo.title,
-                        class: 'block max-w-full text-white w-80 mb-3'
-                    }) }}
-                    {% endif %}
-
-                    <div class="relative w-full block left-28">
-                        <span class="bg-white block w-4 h-4 rounded-full absolute left-0 animate-reveal"></span>
-                        <span class="bg-white block w-4 h-4 rounded-full absolute left-0 animate-slide"></span>
-                        <span class="bg-white block w-4 h-4 rounded-full absolute left-[30px] animate-slide"></span>
-                        <span class="bg-white block w-4 h-4 rounded-full absolute left-[60px] animate-reveal-reverse"></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {% endif %}
 
         {% if pagination and pageInfo.nextUrl and pageInfo.totalPages > 1 %}
         {% set nextPageUrl = pageInfo.currentPage == 1 and (not paramBlockId|length) ? pageInfo.nextUrl ~ '?blockId=' ~ blockId : pageInfo.nextUrl %}
@@ -152,5 +124,16 @@
         {% endif %}
 {% if not isAjax %}
     </div>
+
+    {% if pagination %}
+    <div class="fixed top-0 bottom-0 left-0 right-0 backdrop-opacity-10 backdrop-invert bg-black/40 z-50"
+        x-show="isLoading"
+        style="display: none;"
+    >
+        {% include "_/includes/filterAnimation" with {
+            blockId: blockId
+        } %}
+    </div>
+    {% endif %}
 </div>
 {% endif %}

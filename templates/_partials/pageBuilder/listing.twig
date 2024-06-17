@@ -46,13 +46,10 @@
 {% set sectionTag = childContainer or containerWrapper ? 'div' : 'section' %}
 {# Parent Block Fields End #}
 
-{% set contentWidth = block.contentWidth|default('2;10') %}
-{% set containerSize = block.containerSize.getValue()|default('full') %}
-{% set roundedCorners = block.roundedCorners ?? false %}
-{% set contentAlignment = block.contentAlignment.value|default('left') %}
 {% set headingTag = block.headingSize.getValue()|default('h2') %}
 {% set fontWeight = block.fontWeight.getValue()|default('medium') %}
-{% set overlayOpacity = block.overlayOpacity.getValue()|default('none') %}
+{% set contentAlignment = block.contentAlignment.value|default('left') %}
+{% set contentWidth = block.contentWidth|default('0;12') %}
 
 {% set conbackgroundColor = conbackgroundColor ?? null %}
 {% set backgroundColorLabel = block.backgroundColor.label|default(conbackgroundColor ?? 'white') %}
@@ -62,15 +59,11 @@
     swatch: 'background'
 }) %}
 
+{% set overlayOpacity = block.overlayOpacity.getValue()|default('none') %}
 {% set bgOpacity = render.setOpacity({
     opacity: overlayOpacity,
     opacityType: 'bg'
 }) %}
-
-{% set buttons = block.buttons.all() %}
-
-{% set children = block.listing.one() %}
-{% set childHandle = children.type.handle %}
 
 {% set contentAnimation = render.setAnimation({
     animation: block.animation,
@@ -88,36 +81,39 @@
     animationEasing: block.animationEasing2.value|default(null)
 }) | raw %}
 
+{% set children = block.listing.one() %}
+
 {% if not isAjax %}
 <{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ backgroundColor }} {{ bgOpacity }} {{ spacing }}">
     <div class="container">
         <div class="{{ render.contentWidth({width: contentWidth}) }}">
-            {% if childHandle != 'listingClient' %}
-                {% if block.eyebrow|length or block.heading|length or block.text|length %}
-                    {{ render.basicContents({
-                        eyebrow: block.eyebrow,
-                        heading: block.heading,
-                        text: block.text,
-                        headingTag: headingTag,
-                        fontWeight: fontWeight,
-                        backgroundColorLabel: backgroundColorLabel,
-                        contentAlignment: contentAlignment,
-                        animation: block.animation,
-                        contentAnimationStyle: block.animationStyle.getValue()|default('fade-up'),
-                        contentAnimationDuration: block.animationDuration.getValue()|default(1500),
-                        contentAnimationOffset: block.animationOffset.getValue()|default(200),
-                        contentAnimationEasing: block.animationEasing.getValue()|default(null)
-                    }) }}
-                {% endif %}
+            {% if (children|length and children.type.handle != 'listingClient') and block.eyebrow|length or block.heading|length or block.text|length %}
+            {{ render.basicContents({
+                eyebrow: block.eyebrow,
+                heading: block.heading,
+                text: block.text,
+                headingTag: headingTag,
+                fontWeight: fontWeight,
+                backgroundColorLabel: backgroundColorLabel,
+                contentAlignment: contentAlignment,
+                animation: block.animation,
+                contentAnimationStyle: block.animationStyle.getValue()|default('fade-up'),
+                contentAnimationDuration: block.animationDuration.getValue()|default(1500),
+                contentAnimationOffset: block.animationOffset.getValue()|default(200),
+                contentAnimationEasing: block.animationEasing.getValue()|default(null)
+            }) }}
             {% endif %}
 {% endif %}
 
-            {% include "_partials/pageBuilder/listing/#{childHandle}" with {
+            {% if children|length %}
+            {% include "_partials/pageBuilder/listing/#{children.type.handle}" with {
                 parent: block,
                 block: children,
             } %}
+            {% endif %}
 
 {% if not isAjax %}
+            {% set buttons = block.buttons.all() %}
             {% for button in buttons %}
                 {% if loop.first %}
                 <div class="flex flex-wrap items-center gap-5 mt-8 md:mt-10 {{ render.getAlignment({

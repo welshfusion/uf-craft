@@ -49,23 +49,27 @@
 {% endif %}
         {% for blog in entries %}
             <div {{ listingAnimation|raw }}>
-                <a href="{{ blog.getUrl() }}" class="relative group flex flex-col items-start pl-8 relative before:absolute after:absolute before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px {{ render.foregroundColors({background: backgroundColorLabel, type: 'borders'}) }}">
+                <a href="{{ blog.getUrl() }}" class="relative group flex flex-col items-start pl-8 relative before:absolute after:absolute before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px {{ render.foregroundColors({
+                    background: backgroundColorLabel,
+                    type: 'border'
+                }) }}">
                     <h3 class="mt-6 text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
                         {{ blog.title }}
                     </h3>
 
-                    <time class="order-first text-sm {{ backgroundColorLabel == 'black' or backgroundColorLabel == 'cyprus' ? 'text-white' : 'text-neutral-600' }}">
+                    <div class="order-first text-sm {{ render.foregroundColors({background: backgroundColorLabel, type: 'subHeading'}) }}">
                         {{ block.postDate|date('F Y') }}
-                    </time>
+                    </div>
 
                     {% if blog.text|length %}
+                    <div class="mt-2.5 space-y-2.5">
                         {{ render.replaceElements(blog.text, {
                             background: backgroundColorLabel,
-                            paragraphFontSize: 'mt-2.5'
                         }) }}
+                    </div>
                     {% endif %}
 
-                    <div class="mt-6 flex gap-x-3 text-base font-semibold transition {{ backgroundColorLabel in ['cyprus', 'black'] ? 'text-white' : 'text-cyprus-500' }}">
+                    <div class="mt-6 flex gap-x-3 text-base font-semibold transition {{ render.foregroundColors({background: backgroundColorLabel, type: 'detailPageButton'}) }}">
                         Read more
                         <svg viewBox="0 0 24 6" aria-hidden="true" class="w-6 flex-none fill-current">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M24 3 18 .5v2H0v1h18v2L24 3Z"></path>
@@ -76,26 +80,13 @@
         {% endfor %}
 
         {% if pagination %}
-        <div class="fixed top-0 bottom-0 left-0 right-0 backdrop-opacity-10 backdrop-invert bg-black/40 z-50" x-show="isLoading">
-            <div class="h-full w-full flex justify-center items-center">
-                <div class="inline-block relative">
-                    {% set headerLogo = header.logo.one() %}
-                    {% if headerLogo|length %}
-                    {{ render.setImage({
-                        image: headerLogo,
-                        alt: headerLogo.title,
-                        class: 'block max-w-full text-white w-80 mb-3'
-                    }) }}
-                    {% endif %}
-
-                    <div class="relative w-full block left-28">
-                        <span class="bg-white block w-4 h-4 rounded-full absolute left-0 animate-reveal"></span>
-                        <span class="bg-white block w-4 h-4 rounded-full absolute left-0 animate-slide"></span>
-                        <span class="bg-white block w-4 h-4 rounded-full absolute left-[30px] animate-slide"></span>
-                        <span class="bg-white block w-4 h-4 rounded-full absolute left-[60px] animate-reveal-reverse"></span>
-                    </div>
-                </div>
-            </div>
+        <div class="fixed top-0 bottom-0 left-0 right-0 backdrop-opacity-10 backdrop-invert bg-black/40 z-50"
+            x-show="isLoading"
+            style="display: none;"
+        >
+            {% include "_/includes/filterAnimation" with {
+                blockId: blockId
+            } %}
         </div>
         {% endif %}
 
