@@ -10,66 +10,50 @@
 
 {% set teamCategories = craft.categories.group("teamCategory").all() %}
 
-<div class="space-y-24">
-    <div {{ listingAnimation|raw }}>
-        {% for category in teamCategories %}
-            {% set categoryRelatedEntries = [] %}
-            {% for item in relatedTeam %}
-                {% set itemCategories = item.teamCategory.ids() %}
-                {% if category.id in itemCategories %}
-                    {% set categoryRelatedEntries = categoryRelatedEntries|merge([item]) %}
-                {% endif %}
-            {% endfor %}
+<div class="space-y-24 {{ parent.eyebrow|length or parent.heading|length or parent.text|length ? 'mt-16' }}">
+    {% for category in teamCategories %}
+        <div>
+            <div class="relative before:absolute after:absolute before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px opacity-100 transform-none {{ render.foregroundColors({background: backgroundColorLabel, type: 'border'}) }}"></div>
+            <div class="grid grid-cols-1 gap-6 pt-12 sm:pt-16 lg:grid-cols-4 xl:gap-8">
+                <h2 class="font-display text-2xl font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
+                    {{ category.title }}
+                </h2>
 
-            {% if categoryRelatedEntries %}
-                <div class="mt-16 relative before:absolute after:absolute before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px opacity-100 transform-none {{ render.foregroundColors({background: backgroundColorLabel, type: 'borders'}) }}"></div>
-                <div class="grid grid-cols-1 gap-6 pt-12 sm:pt-16 lg:grid-cols-4 xl:gap-8">
-                    <div class="opacity-100 transform-none">
-                        <h2 class="font-display text-2xl font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
-                            {{ category.title }}
-                        </h2>
-                    </div>
+                <div class="lg:col-span-3">
+                    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-8">
+                        {% for team in relatedTeam %}
+                            {% set teamCategory = team.teamCategory.one() %}
 
-                    <div class="lg:col-span-3">
-                        <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-8">
-                            {% for item in categoryRelatedEntries %}
-                                {% set image = item.image.one() %}
-                                <li>
-                                    <div class="opacity-100 transform-none">
-                                        <div class="group relative overflow-hidden rounded-3xl bg-neutral-100">
-                                            {% if image %}
-                                                {{ render.setImage({
-                                                    image: image,
-                                                    alt: image.title,
-                                                    width: 1800,
-                                                    height: 1800,
-                                                    class: 'h-96 w-full object-cover grayscale transition duration-500 motion-safe:group-hover:scale-105 text-transparent'
-                                                }) }}
-                                            {% endif %}
+                            {% if category.title == teamCategory %}
+                                {% set image = team.image.one() %}
+                                <div class="group relative overflow-hidden rounded-3xl bg-neutral-100">
+                                    {% if image|length %}
+                                    {{ render.setImage({
+                                        image: image,
+                                        alt: image.title,
+                                        width: image.width,
+                                        height: image.height,
+                                        class: 'h-96 w-full object-cover grayscale transition duration-500 motion-safe:group-hover:scale-105 text-transparent'
+                                    }) }}
+                                    {% endif %}
 
-                                            {% if item.title or item.designation %}
-                                                <div class="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black to-black/0 to-40% p-6">
-                                                    {% if item.title %}
-                                                        <p class="font-display text-base/6 font-semibold tracking-wide text-white">
-                                                            {{ item.title }}
-                                                        </p>
-                                                    {% endif %}
+                                    <div class="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black to-black/0 to-40% p-6">
+                                        <p class="font-display text-base/6 font-semibold tracking-wide text-white">
+                                            {{ team.title }}
+                                        </p>
 
-                                                    {% if item.designation %}
-                                                        <p class="mt-2 text-sm text-white">
-                                                            {{ item.designation }}
-                                                        </p>
-                                                    {% endif %}
-                                                </div>
-                                            {% endif %}
-                                        </div>
+                                        {% if team.designation %}
+                                        <p class="mt-2 text-sm text-white">
+                                            {{ team.designation }}
+                                        </p>
+                                        {% endif %}
                                     </div>
-                                </li>
-                            {% endfor %}
-                        </ul>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
                     </div>
                 </div>
-            {% endif %}
-        {% endfor %}
-    </div>
+            </div>
+        </div>
+    {% endfor %}
 </div>
