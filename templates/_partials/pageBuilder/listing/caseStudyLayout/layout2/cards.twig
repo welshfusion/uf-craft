@@ -50,38 +50,46 @@
 
     {% for caseStudy in entries %}
         {% set relatedClient = caseStudy.relatedClient.one() %}
-        {% set image = relatedClient.image.one() %}
 
         <div class="flex" {{ listingAnimation|raw }}>
             <a href="{{ caseStudy.getUrl() }}" class="relative flex w-full flex-col rounded-3xl p-6 ring-1 transition sm:p-8 {{ render.foregroundColors({background: backgroundColorLabel, type: 'cardHover'}) }}">
-                {% if image|length %}
-                {{ render.setImage({
-                    image: image,
-                    alt: image.title,
-                    width: 36,
-                    height: 36,
-                    class: 'h-16 w-16 flex-none text-transparent'
-                }) }}
+                {% if relatedClient|length %}
+                    {% set image = relatedClient.image.one() %}
+
+                    {% if image|length %}
+                    {{ render.setImage({
+                        image: image,
+                        alt: image.title,
+                        width: 36,
+                        height: 36,
+                        class: 'h-16 w-16 flex-none text-transparent'
+                    }) }}
+                    {% endif %}
+
+                    <p class="flex gap-x-2 text-sm {{ image|length ? 'mt-6' }} {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
+                        {% if relatedClient.joiningDate|length %}
+                        <time class="font-semibold">
+                            {{ relatedClient.joiningDate|date("Y") }}
+                        </time>
+                        <span class="text-neutral-300" aria-hidden="true">/</span>
+                        {% endif %}
+
+                        <span>
+                            {{ relatedClient.title }}
+                        </span>
+                    </p>
                 {% endif %}
 
-                <p class="mt-6 flex gap-x-2 text-sm {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
-                    {% if relatedClient.joiningDate|length %}
-                    <time datetime="2023" class="font-semibold">{{ relatedClient.joiningDate|date("Y") }}</time>
-                    <span class="text-neutral-300" aria-hidden="true">/</span>
-                    {% endif %}
-                    <span>{{ relatedClient.title }}</span>
-                </p>
-
-                <p class="mt-6 font-display text-2xl font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
+                <p class="font-display text-2xl font-semibold {{ relatedClient|length ? 'mt-6' }} {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
                     {{ caseStudy.title }}
                 </p>
 
                 {% if caseStudy.text|length %}
-                <p class="space-y-4 mt-4">
+                <div class="space-y-4 mt-4">
                     {{ render.replaceElements(caseStudy.text, {
                         background: backgroundColorLabel,
                     }) }}
-                </p>
+                </div>
                 {% endif %}
             </a>
         </div>

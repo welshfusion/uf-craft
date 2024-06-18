@@ -12,7 +12,6 @@
 
 {% set swiperPagination = "swiper-pagination-#{block.getId()}" %}
 {% set paginationBulletClass = backgroundColorLabel in ['cyprus', 'black'] ? '!bg-white' : '!bg-cyprus-500' %}
-
 {% set settings = {
     "slidesPerView": 1,
     "spaceBetween": 24,
@@ -24,7 +23,7 @@
     },
 } %}
 
-<div class="relative">
+<div class="relative {{ parent.eyebrow|length or parent.heading|length or parent.text|length ? 'mt-16' }}">
     <div class="swiper swiper-slider !pb-12" data-modulenav="1" data-modulepagination="1" data-moduleautoplay="" data-settings='{{ settings|json_encode|raw }}'>
         <div class="swiper-wrapper">
             {% for testimonial in relatedTestimonials %}

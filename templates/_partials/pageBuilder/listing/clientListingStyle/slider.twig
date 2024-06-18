@@ -12,7 +12,6 @@
 
 {% set swiperPagination = "swiper-pagination-#{block.getId()}" %}
 {% set paginationBulletClass = backgroundColorLabel in ['cyprus', 'black'] ? '!bg-white' : '!bg-cyprus-500' %}
-
 {% set settings = {
     "slidesPerView": 1,
     "spaceBetween": 24,
@@ -39,7 +38,7 @@
                 {% set image = item.image2.one() %}
                 <div class="swiper-slide" {{ listingAnimation|raw }}>
                     {% if showBorder %}
-                        <div class="pt-12 relative before:absolute after:absolute before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px {{ render.foregroundColors({background: backgroundColorLabel, type: 'borders'}) }}"></div>
+                        <div class="pt-12 relative before:absolute after:absolute before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px {{ render.foregroundColors({background: backgroundColorLabel, type: 'border'}) }}"></div>
                     {% endif %}
 
                     {% if image|length %}

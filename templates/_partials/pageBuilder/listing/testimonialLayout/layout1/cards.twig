@@ -3,34 +3,36 @@
 
 {% set limit = block.limit|default('12') %}
 
-{% set relatedTestimonials = block.relatedTestimonials.limit(limit) %}
+{% set relatedTestimonials = block.relatedTestimonials.limit(limit).all() %}
 {% if not relatedTestimonials|length %}
-    {% set relatedTestimonials = craft.entries.section("testimonial").limit(limit) %}
+    {% set relatedTestimonials = craft.entries.section("testimonial").limit(limit).all() %}
 {% endif %}
 
 <div class="relative isolate {{ parent.eyebrow|length or parent.heading|length or parent.text|length ? 'mt-16' }}">
-    <div class="mx-auto max-w-4xl space-y-14">
+    <div class="mx-auto max-w-4xl space-y-24">
         {% for testimonial in relatedTestimonials %}
             {% set relatedClient = testimonial.relatedClient.one() %}
-            {% set image = relatedClient.image2.one() %}
 
-            <div class="pt-16 relative before:absolute after:absolute before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px {{ render.foregroundColors({background: backgroundColorLabel, type: 'borders'}) }}" {{ listingAnimation|raw }}>
+            <div {% if relatedTestimonials|length > 1 %}class="pt-16 relative before:absolute after:absolute before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px {{ render.foregroundColors({background: backgroundColorLabel, type: 'border'}) }}"{% endif %} {{ listingAnimation|raw }}>
                 {% if testimonial.quote|length %}
                 <blockquote class="relative font-display text-3xl font-medium tracking-tight sm:text-4xl {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
                     {{ '“' ~ testimonial.quote|nl2br ~ '”' }}
                 </blockquote>
                 {% endif %}
 
-                {% if image|length %}
-                <div class="mt-10">
-                    {{ render.setImage({
-                        image: image,
-                        alt: image.title,
-                        width: 184,
-                        height: 36,
-                        class: 'text-transparent'
-                    }) }}
-                </div>
+                {% if relatedClient|length %}
+                    {% set image = relatedClient.image2.one() %}
+                    {% if image|length %}
+                    <div class="mt-10">
+                        {{ render.setImage({
+                            image: image,
+                            alt: image.title,
+                            width: 184,
+                            height: 36,
+                            class: 'text-transparent'
+                        }) }}
+                    </div>
+                    {% endif %}
                 {% endif %}
             </div>
         {% endfor %}

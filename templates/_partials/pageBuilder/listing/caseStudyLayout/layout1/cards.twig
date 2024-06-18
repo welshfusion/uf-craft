@@ -49,9 +49,12 @@
 {% endif %}
         {% for caseStudy in entries %}
             <div {{ listingAnimation|raw }}>
-                <a href="{{ caseStudy.getUrl() }}" class="relative group flex flex-col justify-between h-full items-start pl-8 relative before:absolute after:absolute before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px {{ render.foregroundColors({background: backgroundColorLabel, type: 'borders'}) }}">
+                <a href="{{ caseStudy.getUrl() }}" class="relative group flex flex-col justify-between h-full items-start pl-8 relative before:absolute after:absolute before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px {{ render.foregroundColors({
+                    background: backgroundColorLabel,
+                    type: 'border'
+                }) }}">
                     <div>
-                        <div class="text-sm {{ backgroundColorLabel == 'black' or backgroundColorLabel == 'cyprus' ? 'text-white' : 'text-neutral-600' }}">
+                        <div class="text-sm {{ render.foregroundColors({background: backgroundColorLabel, type: 'subHeading'}) }}">
                             {{ caseStudy.postDate|date('F Y') }}
                         </div>
 
@@ -60,14 +63,15 @@
                         </h3>
 
                         {% if caseStudy.text|length %}
+                        <div class="mt-2.5 space-y-2.5">
                             {{ render.replaceElements(caseStudy.text, {
                                 background: backgroundColorLabel,
-                                paragraphFontSize: 'mt-2.5'
                             }) }}
+                        </div>
                         {% endif %}
                     </div>
 
-                    <div class="mt-6 flex gap-x-3 text-base font-semibold transition {{ backgroundColorLabel in ['cyprus', 'black'] ? 'text-white' : 'text-cyprus-500' }}">
+                    <div class="mt-6 flex gap-x-3 text-base font-semibold transition {{ render.foregroundColors({background: backgroundColorLabel, type: 'detailPagelink'}) }}">
                         Read more
                         <svg viewBox="0 0 24 6" aria-hidden="true" class="w-6 flex-none fill-current">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M24 3 18 .5v2H0v1h18v2L24 3Z"></path>

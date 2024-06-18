@@ -87,7 +87,7 @@
 <{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ backgroundColor }} {{ bgOpacity }} {{ spacing }}">
     <div class="container">
         <div class="{{ render.contentWidth({width: contentWidth}) }}">
-            {% if (children|length and children.type.handle != 'listingClient') and block.eyebrow|length or block.heading|length or block.text|length %}
+            {% if (children|length and children.type.handle != 'listingClient') and (block.eyebrow|length or block.heading|length or block.text|length) %}
             {{ render.basicContents({
                 eyebrow: block.eyebrow,
                 heading: block.heading,
