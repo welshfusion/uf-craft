@@ -2,12 +2,8 @@
 {% import "_/includes/macros" as render %}
 
 {% if block.simpleText|length %}
-    <ul role="list" class="mt-10">
-        <li>
-            {{ render.replaceElements(block.simpleText, {
-                background: backgroundColorLabel,
-                paragraphFontSize: 'text-sm not-italic'
-            }) }}
-        </li>
-    </ul>
+    {{ render.replaceElements(block.simpleText, {
+        background: backgroundColorLabel,
+        paragraphFontSize: 'text-sm'
+    }) }}
 {% endif %}

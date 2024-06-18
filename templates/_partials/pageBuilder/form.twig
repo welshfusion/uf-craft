@@ -25,12 +25,12 @@
 {% import "_/includes/macros" as render %}
 
 {% set form = block.form.one() %}
-{% set contactInfo = block.contactInfo.type(null).all() %}
+{% set contactInfo = block.contactInfo.all() %}
 
-{% set contentWidth = block.contentWidth|default('2;10') %}
 {% set headingTag = block.headingSize.getValue()|default('h2') %}
 {% set fontWeight = block.fontWeight.getValue()|default('bold') %}
 {% set contentAlignment = block.contentAlignment.value|default('left') %}
+{% set contentWidth = block.contentWidth|default('2;10') %}
 
 {% set conbackgroundColor = conbackgroundColor ?? null %}
 {% set backgroundColorLabel = block.backgroundColor.label|default(conbackgroundColor ?? 'white') %}
@@ -58,7 +58,6 @@
 
 <section id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ backgroundColor }} {{ spacing }}">
     <div class="container">
-        <div class="mx-auto max-w-2xl lg:max-w-none">
         {% if block.eyebrow|length or block.heading|length or block.text|length %}
         {{ render.basicContents({
             eyebrow: block.eyebrow,
@@ -75,16 +74,16 @@
         }) }}
         {% endif %}
 
-        <div class="grid grid-cols-1 gap-x-8 gap-y-24 lg:grid-cols-2">
+        <div class="grid grid-cols-1 gap-x-8 gap-y-24 lg:grid-cols-2 {{ block.eyebrow|length or block.heading|length or block.text|length ? 'mt-10' }}">
             <div class="lg:order-last" >
                 {% if block.formHeading|length %}
-                <h2 class="font-display text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
+                <h2 class="font-display text-base font-semibold mb-6 {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
                     {{ block.formHeading }}
                 </h2>
                 {% endif %}
 
-                <div class="isolate mt-6 -space-y-px rounded-2xl bg-white/50">
-                    {% if form|length %}
+                {% if form|length %}
+                <div class="isolate -space-y-px rounded-2xl bg-white/50">
                     <div {{ formAnimation|raw }}>
                         {{ craft.formie.renderForm(form) }}
 
@@ -95,8 +94,8 @@
                             });
                         {% endjs %}
                     </div>
-                    {% endif %}
                 </div>
+                {% endif %}
             </div>
 
             {% if block.sidebarHeading|length or block.text2|length or contactInfo|length %}
@@ -115,25 +114,21 @@
                 </div>
                 {% endif %}
 
-                {% if contactInfo|length %}
-                <div class="{{ block.text2|length or block.sidebarHeading|length ? 'mt-10' }}">
-                    {% for item in contactInfo %}
-                    <div class="mt-16 pt-16 relative before:absolute after:absolute {{ backgroundColorLabel == 'green' ? 'before:bg-neutral-300' : 'before:bg-green-500' }} {{ backgroundColorLabel == 'black' ? 'after:bg-neutral-200' : 'after:bg-neutral-950/10' }} before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px">
-                        {% if item.heading|length %}
-                            <h2 class="font-display text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}" {{ contentAnimation|raw }}>
-                                {{ item.heading|nl2br }}
-                            </h2>
-                        {% endif %}
+                {% for item in contactInfo %}
+                <div class="{{ loop.first ? 'mt-10' : 'mt-16 pt-16 relative before:absolute after:absolute before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px ' ~ render.foregroundColors({background: backgroundColorLabel, type: 'border'}) }}">
+                    {% if item.heading|length %}
+                    <h2 class="font-display text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
+                        {{ item.heading|nl2br }}
+                    </h2>
+                    {% endif %}
 
-                        <div class='grid grid-cols-1 gap-8 text-sm sm:grid-cols-2'>
-                            {% for block in item.contactCards.all() %}
-                                {% include '_partials/pageBuilder/contactCards/' ~ block.type.handle ignore missing %}
-                            {% endfor %}
-                        </div>
+                    <div class="grid grid-cols-1 gap-8 text-sm {{ item.contactCards|length > 1 ? 'sm:grid-cols-2' }} {{ item.heading|length ? 'mt-6' }}">
+                        {% for block in item.contactCards.all() %}
+                            {% include "_partials/pageBuilder/contactCards/#{block.type.handle}" %}
+                        {% endfor %}
                     </div>
-                    {% endfor %}
                 </div>
-                {% endif %}
+                {% endfor %}
             </div>
             {% endif %}
         </div>

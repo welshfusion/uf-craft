@@ -15,7 +15,7 @@
         <div>
             <div class="relative before:absolute after:absolute before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px opacity-100 transform-none {{ render.foregroundColors({background: backgroundColorLabel, type: 'border'}) }}"></div>
             <div class="grid grid-cols-1 gap-6 pt-12 sm:pt-16 lg:grid-cols-4 xl:gap-8">
-                <h2 class="font-display text-2xl font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
+                <h2 class="font-display text-2xl font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}" {{ listingAnimation|raw }}>
                     {{ category.title }}
                 </h2>
 
@@ -26,7 +26,7 @@
 
                             {% if category.title == teamCategory %}
                                 {% set image = team.image.one() %}
-                                <div class="group relative overflow-hidden rounded-3xl bg-neutral-100">
+                                <div class="group relative overflow-hidden rounded-3xl bg-neutral-100" {{ listingAnimation|raw }}>
                                     {% if image|length %}
                                     {{ render.setImage({
                                         image: image,

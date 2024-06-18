@@ -1,22 +1,22 @@
 {{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
 {% import "_/includes/macros" as render %}
 
-<div class="{{ item.heading|length ? 'mt-6' }}">
-    <div>
-        {% if block.heading|length %}
-            <div class="font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
-                {{ block.heading|nl2br }}
-            </div>
-        {% endif %}
-
-        {% for item in block.contact %}
-        <div>
-        <a href="{{ item.getUrl() }}" class="text-sm {{ render.foregroundColors({background: backgroundColorLabel, type: 'subHeading'}) }} {{ block.contact.classes }}"
-            {% if block.contact.linkTitle %} title="{{ block.contact.linkTitle }}"{% endif %} {% if block.contact.target %} target="{{ block.contact.target }}" rel="noopener"{% endif %} {% for attribute in block.contact.customAttributes %} {{ attribute.attribute }}="{{ attribute.value }}" {% endfor %}
-        >
-            {{ item.getText() }}
-        </a>
-        </div>
-        {% endfor %}
+<div>
+    {% if block.heading|length %}
+    <div class="font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
+        {{ block.heading|nl2br }}
     </div>
+    {% endif %}
+
+    {% if not block.contact.isEmpty() %}
+    <a href="{{ block.contact.getUrl() }}"
+        class="text-sm {{ render.foregroundColors({background: backgroundColorLabel, type: 'subHeading'}) }} {{ block.contact.classes }}"
+        {% if block.contact.linkTitle %} title="{{ block.contact.linkTitle }}"{% endif %} {% if block.contact.target %} target="{{ block.contact.target }}" rel="noopener"{% endif %} {% for attribute in block.contact.customAttributes %} {{ attribute.attribute }}="{{ attribute.value }}" {% endfor %}
+    >
+        {{ block.contact.getText() }}
+        {% if block.contact.getText()|lower in ["read more", "see more", "learn more", "click here"] %}
+            <span class="sr-only"> {{ "about this"|t }}</span>
+        {% endif %}
+    </a>
+    {% endif %}
 </div>
