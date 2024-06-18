@@ -1,0 +1,53 @@
+{% set isAjax = craft.app.request.isAjax and not craft.app.request.isLivePreview %}
+{% extends "_/layouts/main" %}
+{% import "_/includes/macros" as render %}
+
+{% set blogBuilder = entry.pageBuilder.type(null).all() %}
+{% set relatedTeams = entry.relatedTeamMember.one() %}
+
+{% block content %}
+    <div class="mx-auto max-w-7xl px-6 lg:px-8 mt-20">
+        <div class="mx-auto max-w-2xl lg:max-w-none">
+            <div>
+                <div class="mx-auto flex max-w-5xl flex-col text-center">
+                    <div class="text-sm text-cyprus-500">
+                        {{ entry.postDate|date('F d, Y') }}
+                    </div>
+
+                    <h1 class="mt-6 font-display text-5xl font-medium tracking-tight text-cyprus-500 [text-wrap:balance] sm:text-6xl">
+                        {{ entry.title }}
+                    </h1>
+
+                    {% if relatedTeams|length %}
+                    <p class="mt-6 text-sm font-semibold text-cyprus-500">
+                        by
+                        {{ relatedTeams.title }}<span>, </span>
+                        {{ relatedTeams.designation }}
+                    </p>
+                    {% endif %}
+                </div>
+            </div>
+
+
+            {% if blogBuilder|length %}
+            {#
+            =============================================
+                Include Blog Builder
+            =============================================
+            #}
+            {% include "_partials/blocks" with {
+                pageBuilder: blogBuilder,
+                parent: entry.section.handle,
+                conbackgroundColor: 'white',
+                blogBuilder: true,
+                firstBlockSpacing: {
+                    'defaultMarginTop' : 'none',
+                },
+                lastBlockSpacing: {
+                    'defaultMarginBottom' : 'none',
+                },
+            } %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
