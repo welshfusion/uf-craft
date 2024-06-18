@@ -56,14 +56,14 @@
     animationEasing: block.animationEasing.getValue()|default(null)
 }) | raw %}
 
-<div class="mx-auto max-w-7xl px-6 lg:px-8 mt-24 sm:mt-32 lg:mt-40">
-    <div class="mx-auto max-w-2xl lg:max-w-none">
-        <div>
+<section id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ backgroundColor }} {{ spacing }}">
+    <div class="container">
+        <div class="mx-auto max-w-2xl lg:max-w-none">
+        {% if block.eyebrow|length or block.heading|length or block.text|length %}
         {{ render.basicContents({
             eyebrow: block.eyebrow,
             heading: block.heading,
             text: block.text,
-            overrideParagraphFontSize: 'text-xl',
             headingTag: headingTag,
             fontWeight: fontWeight,
             backgroundColorLabel: backgroundColorLabel,
@@ -73,58 +73,69 @@
             contentAnimationOffset: block.animationOffset2.getValue()|default(200),
             contentAnimationEasing: block.animationEasing2.getValue()|default(null)
         }) }}
-        </div>
-    </div>
-</div>
-<div class="mx-auto max-w-7xl px-6 lg:px-8 mt-24 sm:mt-32 lg:mt-40">
-    <div class="mx-auto max-w-2xl lg:max-w-none">
+        {% endif %}
+
         <div class="grid grid-cols-1 gap-x-8 gap-y-24 lg:grid-cols-2">
             <div class="lg:order-last" >
                 {% if block.formHeading|length %}
-                    <h2 class="font-display text-base font-semibold text-cyprus-500">
-                        {{ block.formHeading }}
-                    </h2>
+                <h2 class="font-display text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
+                    {{ block.formHeading }}
+                </h2>
                 {% endif %}
 
-                {% if form|length %}
-                <div {{ formAnimation|raw }}>
-                    {{ craft.formie.renderForm(form) }}
+                <div class="isolate mt-6 -space-y-px rounded-2xl bg-white/50">
+                    {% if form|length %}
+                    <div {{ formAnimation|raw }}>
+                        {{ craft.formie.renderForm(form) }}
 
-                    {% js %}
-                        document.addEventListener('onFormieInit', (event) => {
-                            let Formie = event.detail.formie;
-                            Formie.refreshForCache('{{ form.formId }}');
-                        });
-                    {% endjs %}
+                        {% js %}
+                            document.addEventListener('onFormieInit', (event) => {
+                                let Formie = event.detail.formie;
+                                Formie.refreshForCache('{{ form.formId }}');
+                            });
+                        {% endjs %}
+                    </div>
+                    {% endif %}
                 </div>
-                {% endif %}
             </div>
 
+            {% if block.sidebarHeading|length or block.text2|length or contactInfo|length %}
             <div {{ contentAnimation|raw }}>
                 {% if block.sidebarHeading|length %}
-                    <h2 class="font-display text-base font-semibold text-cyprus-500">
-                        {{ block.sidebarHeading }}
-                    </h2>
+                <h2 class="font-display text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
+                    {{ block.sidebarHeading }}
+                </h2>
                 {% endif %}
 
-                {% if block.text2 %}
+                {% if block.text2|length %}
+                <div class="mt-6 space-y-2.5">
                     {{ render.replaceElements(block.text2, {
                         background: backgroundColorLabel,
-                        paragraphFontSize: 'mt-6 text-base text-neutral-600'
                     }) }}
+                </div>
                 {% endif %}
 
                 {% if contactInfo|length %}
-                    <div class="mt-10">
-                        {% for item in contactInfo %}
-                            {% set contactCards = item.contactCards.all() %}
-                            {% for block in contactCards %}
+                <div class="{{ block.text2|length or block.sidebarHeading|length ? 'mt-10' }}">
+                    {% for item in contactInfo %}
+                    <div class="mt-16 pt-16 relative before:absolute after:absolute {{ backgroundColorLabel == 'green' ? 'before:bg-neutral-300' : 'before:bg-green-500' }} {{ backgroundColorLabel == 'black' ? 'after:bg-neutral-200' : 'after:bg-neutral-950/10' }} before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px">
+                        {% if item.heading|length %}
+                            <h2 class="font-display text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}" {{ contentAnimation|raw }}>
+                                {{ item.heading|nl2br }}
+                            </h2>
+                        {% endif %}
+
+                        <div class='grid grid-cols-1 gap-8 text-sm sm:grid-cols-2'>
+                            {% for block in item.contactCards.all() %}
                                 {% include '_partials/pageBuilder/contactCards/' ~ block.type.handle ignore missing %}
                             {% endfor %}
-                        {% endfor %}
+                        </div>
                     </div>
+                    {% endfor %}
+                </div>
                 {% endif %}
             </div>
+            {% endif %}
         </div>
     </div>
-</div>
+</section>

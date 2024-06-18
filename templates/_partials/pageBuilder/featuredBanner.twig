@@ -62,7 +62,7 @@
 {% set videos = block.backgroundVideo ?? null %}
 {% set buttons = block.buttons.all() %}
 
-{% set contactInfo = block.contactInfo.type(null).all() %}
+{% set contactInfo = block.contactInfo.all() %}
 
 {% set contentAnimation = render.setAnimation({
     animation: block.animation,
@@ -109,7 +109,8 @@
                     <div class="flex flex-wrap items-center gap-5 mt-5 {{ render.getAlignment({
                         alignment: contentAlignment,
                         type: 'justify'
-                    }) }}" {{ contentAnimation|raw }}>
+                        }) }}" {{ contentAnimation|raw }}
+                    >
                     {% endif %}
                         {{ render.createButton({
                             button: button.button,
@@ -126,18 +127,39 @@
                 {% endfor %}
 
                 {% if contactInfo|length %}
-                <div class="mt-10 border-t pt-10 {{ backgroundColorLabel == 'green' ? 'border-white' : 'border-green-500' }}">
-                    {% for item in contactInfo %}
-                        {% if item.heading|length %}
-                        <h3 class="font-display text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
-                            {{ item.heading|nl2br }}
-                        </h3>
-                        {% endif %}
+                <div class="{{ block.text2|length or block.sidebarHeading|length ? 'mt-10' }}">
+                    <div class="mt-10 border-t pt-10 {{ backgroundColorLabel == 'green' ? 'border-white' : 'border-green-500' }}">
+                        {% for item in contactInfo %}
+                            {% set hasTextCard = false %}
+                            {% for block in item.contactCards.all() %}
+                                {% if block.type.handle == 'textCard' %}
+                                    {% set hasTextCard = true %}
+                                    {% break %}
+                                {% endif %}
+                            {% endfor %}
 
-                        {% for block in item.contactCards.all() %}
-                            {% include '_partials/pageBuilder/contactCards/' ~ block.type.handle ignore missing %}
+                            {% if not hasTextCard %}
+                            <div class="mt-16 pt-16 relative before:absolute after:absolute {{ backgroundColorLabel == 'green' ? 'before:bg-neutral-300' : 'before:bg-green-500' }} {{ backgroundColorLabel == 'black' ? 'after:bg-neutral-200' : 'after:bg-neutral-950/10' }} before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px">
+                            {% endif %}
+
+                                {% if item.heading|length %}
+                                    <h2 class="font-display text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}" {{ contentAnimation|raw }}>
+                                        {{ item.heading|nl2br }}
+                                    </h2>
+                                {% endif %}
+
+                                <div class='grid grid-cols-1 gap-8 text-sm sm:grid-cols-2'>
+                                    {% for block in item.contactCards.all() %}
+                                        {% include '_partials/pageBuilder/contactCards/' ~ block.type.handle ignore missing %}
+                                    {% endfor %}
+                                </div>
+
+                            {% if not hasTextCard %}
+                            </div>
+                            {% endif %}
+
                         {% endfor %}
-                    {% endfor %}
+                    </div>
                 </div>
                 {% endif %}
             </div>
