@@ -8,7 +8,7 @@
     {% set relatedTestimonials = craft.entries.section("testimonial").limit(limit).all() %}
 {% endif %}
 
-<div class="relative isolate {{ parent.eyebrow|length or parent.heading|length or parent.text|length ? 'mt-16' }}">
+<div class="relative isolate {{ parent.eyebrow|length or parent.heading|length or parent.subHeading|length or parent.text|length ? 'mt-16' }}">
     <div class="mx-auto max-w-4xl space-y-24">
         {% for testimonial in relatedTestimonials %}
             {% set relatedClient = testimonial.relatedClient.one() %}

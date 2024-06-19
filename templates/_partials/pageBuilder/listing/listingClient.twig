@@ -21,10 +21,11 @@
 
 {% set clientListingStyle = block.listingStyle.value|default('cards') %}
 
-{% if parent.eyebrow|length or parent.heading|length or parent.text|length %}
+{% if parent.eyebrow|length or parent.heading|length or parent.subHeading|length or parent.text|length %}
     {{ render.basicContents({
         eyebrow: parent.eyebrow,
         heading: parent.heading,
+        subHeading: parent.subHeading,
         text: parent.text,
         headingTag: headingTag,
         fontWeight: fontWeight,

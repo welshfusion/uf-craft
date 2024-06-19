@@ -1,4 +1,4 @@
-dateModified: 1718714161
+dateModified: 1718795224
 elementSources:
   craft\elements\Entry:
     -
@@ -112,6 +112,7 @@ meta:
     07f716e2-b6e5-4aaa-aa76-1a49c9929017: 'Light switch' # Light switch
     8bdd6695-676c-438d-8cd2-caa3a8940ccb: Full # Full
     8c84eddd-0a33-4f51-a9f8-8c5ff353066d: 'Banner Height' # Banner Height
+    8e3c2782-28f2-47a9-8b70-cd972393e4d3: 'Two Columns' # Two Columns
     9d433c43-3b96-46c7-9217-9495827131e2: 'Text Card' # Text Card
     009ed4ac-c86b-4fc7-9918-9bd7b4f8157d: Header # Header
     12eaafb7-f335-4296-9610-453f6f68c8bb: 'Contact Url' # Contact Url
@@ -134,6 +135,7 @@ meta:
     93edb1b2-0669-4ae4-a9e7-0e5f4826507a: Regular # Regular
     134a2c99-8e12-4d05-b077-5957f5e835ce: 'Social Links' # Social Links
     248e89b5-415a-4d5e-aaab-083bc912f7d5: Container # Container
+    320dab2f-d842-4692-82a7-62c995e023e8: 'Two Columns' # Two Columns
     0423d9a0-74e7-4a3d-afc5-a78d494caab4: Navigation # Navigation
     0450d0a1-9b95-4d31-a113-0563703b35e1: Tags # Tags
     458e4536-0755-47d0-9628-999ff6b7c7c6: 'Listing Testimonials' # Listing Testimonials
@@ -158,12 +160,10 @@ meta:
     86035a0d-51de-4bb2-b452-4bfc32cfc03e: 'Margin Top' # Margin Top
     292523b0-bad0-4ce1-9542-3fe9faffcd40: Blog # Blog
     317197b4-2d52-48b0-bceb-75bb7bd5d1aa: 'Image pattern Layout ' # Image pattern Layout 
-    681105e2-a5de-4cd8-85e1-68ee5b0f70fa: Column # Column
     873433f0-3878-4512-b80a-84e11ace7831: Images # Images
     1278138f-e268-4a57-b50e-ad8d14eacb53: 'Image Ratio' # Image Ratio
     07973944-8eb1-4911-962e-d81e1787b026: Form # Form
     a083fcfb-b4ce-402b-a0bb-e03d70ddf2ec: 'HTML Code' # HTML Code
-    a1d7dda3-53ff-421c-9f47-007d49c62b5a: 'Two Columns' # Two Columns
     a2faf60a-48de-4391-a3c4-49283f508b99: 'Related Team Member' # Related Team Member
     a7eded6e-c5d3-4099-bb5b-7545b0332f49: Listing # Listing
     a48ed5c6-f7f8-47e4-a829-4b6e65fa980c: 'Listing Client' # Listing Client
@@ -178,9 +178,11 @@ meta:
     b1245063-e2a0-4567-8d38-0324ca0eba13: 'Joining Date' # Joining Date
     b7524683-0af1-4bdf-b6f5-e4e80993fbbe: 'Banner Card' # Banner Card
     bdba9605-68a0-44bf-8c48-4e37979c5560: 'Text Cards' # Text Cards
+    bfeb71ce-4205-4ca9-aa95-34bd8179b338: Column # Column
     bff0694b-0a96-4afa-ba0e-b4e834e9a153: 'Padding Bottom' # Padding Bottom
     c0063996-cdc5-42d9-bac2-18ef5ae9c736: 'Contact Cards' # Contact Cards
     c6a95503-819b-4c0f-8d9d-6099c2cdccd5: 'Footer Navigation' # Footer Navigation
+    c8a67f3a-f81d-4fc4-a335-3817d4c32eff: 'Two Column' # Two Column
     c8e64d8d-7d4e-4182-8bed-ec9013e8aad4: Tag # Tag
     c729cee4-a2ec-48ef-8053-907b01d1a630: Cards # Cards
     c16118bb-d24d-489d-8c5a-2deabdcd6e16: 'Padding Top' # Padding Top

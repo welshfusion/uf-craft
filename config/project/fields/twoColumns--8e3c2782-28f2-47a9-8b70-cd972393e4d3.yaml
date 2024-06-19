@@ -1,15 +1,12 @@
 columnSuffix: null
-handle: column
+handle: twoColumns
 instructions: null
-name: Column
+name: 'Two Columns'
 searchable: false
 settings:
-  createButtonLabel: Column
+  createButtonLabel: Columns
   entryTypes:
-    - b7524683-0af1-4bdf-b6f5-e4e80993fbbe # Banner Card
-    - ad85443f-75fc-45e3-9a29-4592254d416f # Image
-    - effa59c4-035a-4910-bf8c-30996bff8047 # Gallery
-    - 4d8649f4-2cd8-4a36-9eaf-2251ec44112c # Form
+    - c8a67f3a-f81d-4fc4-a335-3817d4c32eff # Two Column
   includeTableView: false
   maxEntries: 2
   minEntries: null

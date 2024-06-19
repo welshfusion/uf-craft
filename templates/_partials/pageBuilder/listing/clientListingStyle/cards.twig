@@ -16,7 +16,7 @@
     {% set relatedClient = craft.entries.section("client").limit(limit).all() %}
 {% endif %}
 
-<div class="{{ parent.eyebrow|length or parent.heading|length or parent.text|length ? 'mt-10' }}">
+<div class="{{ parent.eyebrow|length or parent.heading|length or parent.subHeading|length or parent.text|length ? 'mt-10' }}">
     {% if block.showBorder %}
         <div class="pt-12 relative before:absolute after:absolute before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px {{ render.foregroundColors({background: backgroundColorLabel, type: 'border'}) }}"></div>
     {% endif %}

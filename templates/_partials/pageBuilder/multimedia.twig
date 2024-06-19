@@ -29,6 +29,7 @@
         Auxiliary:
             - Eyebrow (eyebrow)
             - Heading (heading)
+            - Sub Heading (subHeading)
             - Text (text)
             - Buttons (buttons) [Matrix]
                 - Button Type (buttonType)
@@ -91,11 +92,12 @@
 
 <{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ backgroundColor }} {{ spacing }} {{ containerImage ? render.contentWidth({width: contentWidth}) }}">
     <div class="{{ not childContainer ? 'container' }} {{ containerBgExist ? 'px-4 md:px-6' }}">
-        {% if block.eyebrow2|length or block.heading3|length or block.text2|length or buttons|length %}
+        {% if block.eyebrow2|length or block.heading3|length or block.subHeading2|length or block.text2|length or buttons|length %}
             <div class="{{ render.contentWidth({width: contentWidth}) }}">
                 {{ render.basicContents({
                     eyebrow: block.eyebrow2,
                     heading: block.heading3,
+                    subHeading: block.subHeading2,
                     text: block.text2,
                     buttons: buttons,
                     headingTag: headingTag,

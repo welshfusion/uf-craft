@@ -27,17 +27,24 @@
 {{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
 {% import "_/includes/macros" as render %}
 
-{% set contentWidth = block.contentWidth|default('2;10') %}
+{% set columnsWidth = block.twoColumnLayout.getValue()|default('6-6') %}
+{% set columnAlignment = block.columnAlignment.getValue()|default('start') %}
+{% set overlayOpacity = block.overlayOpacity.getValue()|default('') %}
+
 {% set headingTag = block.headingSize.getValue()|default('h2') %}
 {% set fontWeight = block.fontWeight.getValue()|default('medium') %}
 {% set contentAlignment = block.contentAlignment.value|default('left') %}
-{% set columnAlignment = block.columnAlignment.getValue|default('start') %}
-{% set columnsWidth = block.twoColumnLayout.getValue|default('6-6') %}
+{% set contentWidth = block.contentWidth|default('0;12') %}
 
 {% set backgroundColorLabel = block.backgroundColor.label|default('white') %}
 {% set backgroundColor = render.color({
     handle: backgroundColorLabel,
     swatch: 'background'
+}) %}
+
+{% set bgOpacity = render.setOpacity({
+    opacity: overlayOpacity,
+    opacityType: 'bg'
 }) %}
 
 {% set firstDiv = {
@@ -59,17 +66,16 @@
     '8-4' : 'md:col-start-9 md:col-end-13',
     '9-3' : 'md:col-start-10 md:col-end-13'
 } %}
-
-{% set columns = block.column.all() %}
+{% set columns = block.twoColumns.all() %}
 {% set buttons = block.buttons.all() %}
-
 <section id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ backgroundColor }} {{ spacing }}">
     <div class="container">
-        {% if block.eyebrow|length or block.heading|length or block.text|length %}
+        {% if block.eyebrow|length or block.heading|length or block.subHeading|length or block.text|length %}
             <div class="{{ render.contentWidth({width: contentWidth}) }}">
                 {{ render.basicContents({
                     eyebrow: block.eyebrow,
                     heading: block.heading,
+                    subHeading: block.subHeading,
                     text: block.text,
                     headingTag: headingTag,
                     fontWeight: fontWeight,
@@ -80,13 +86,14 @@
         {% endif %}
 
         {% if columns|length %}
-            <div class="grid grid-cols-1 md:grid-cols-12 mt-10 {{ render.getAlignment({alignment: columnAlignment, type: 'items'}) }}">
+            <div class="grid grid-cols-1 md:grid-cols-12 mt-10 gap-5 {{ render.getAlignment({alignment: columnAlignment, type: 'items'}) }}">
                 {% for child in columns %}
                     <div class="{{ loop.first ? firstDiv[columnsWidth] : lastDiv[columnsWidth] }}">
                         {% include "_partials/blocks" with {
-                            pageBuilder: [child],
-                            parent: block.type.handle,
+                            pageBuilder: child.column.all(),
+                            parent: child.type.handle,
                             conbackgroundColor: backgroundColorLabel,
+                            conOverlayOpacity: overlayOpacity,
                             childContainer: true,
                             firstBlockSpacing: {
                                 'defaultMarginTop' : 'none',

@@ -12,6 +12,7 @@
         Auxiliary:
             - Eyebrow (eyebrow)
             - Heading (heading)
+            - Sub Heading (subHeading)
             - Text (text)
             - Buttons (buttons) [Matrix]
                 - Button Type (buttonType)
@@ -108,10 +109,11 @@
 <{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ backgroundColor }} {{ spacing }}">
     <div class="container">
         <div class="{{ render.contentWidth({width: contentWidth}) }}">
-            {% if block.eyebrow|length or block.heading|length or block.text|length %}
+            {% if block.eyebrow|length or block.heading|length or block.subHeading|length or block.text|length %}
             {{ render.basicContents({
                 eyebrow: block.eyebrow,
                 heading: block.heading,
+                subHeading: block.subHeading,
                 text: block.text,
                 headingTag: headingTag,
                 fontWeight: fontWeight,

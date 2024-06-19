@@ -1,0 +1,65 @@
+color: null
+fieldLayouts:
+  f1d01961-f70f-45ad-a40f-b211658c28e7:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: dd6599f6-fde0-454b-8295-2149280b9068
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: bfeb71ce-4205-4ca9-aa95-34bd8179b338 # Column
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: Blocks
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 10dc554b-7e11-4615-946a-a81537ef6299
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: e28a6098-b6d2-4eb9-9dff-5ae48e93754d
+        userCondition: null
+handle: twoColumn
+hasTitleField: false
+icon: ''
+name: 'Two Column'
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: ''
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

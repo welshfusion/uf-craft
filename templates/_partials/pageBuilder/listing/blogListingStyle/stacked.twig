@@ -22,7 +22,7 @@
 {% set paginationBtnClass = 'load-more-btn-' ~ parent.getId() %}
 
 {% if not isAjax %}
-<div class="{{ parent.eyebrow|length or parent.heading|length or parent.text|length ? 'mt-16' }}"
+<div class="{{ parent.eyebrow|length or parent.heading|length or parent.subHeading|length or parent.text|length ? 'mt-16' }}"
     {% if pagination %}
     {{ render.xModalContentListingFilter({
         url: url(craft.app.request.fullPath),

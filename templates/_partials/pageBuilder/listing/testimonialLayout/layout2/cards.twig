@@ -10,7 +10,7 @@
 
 {% set relatedTestimonials = relatedTestimonials.with(['image']).cache().all() %}
 
-<div class="mx-auto max-w-3xl space-y-14 {{ parent.eyebrow|length or parent.heading|length or parent.text|length ? 'mt-16' }}">
+<div class="mx-auto max-w-3xl space-y-14 {{ parent.eyebrow|length or parent.heading|length or parent.subHeading|length or parent.text|length ? 'mt-16' }}">
     {% for testimonial in relatedTestimonials %}
         {% set image = testimonial.image.one() %}
 
