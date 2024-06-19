@@ -18,7 +18,6 @@
 {{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
 {% import "_/includes/macros" as render %}
 
-{% set basicContentsExist = parent.eyebrow|length or parent.heading|length or parent.text|length or buttons|length %}
 {% set teamListingStyle = block.listingStyle.value|default('slider') %}
 
 {% include "_partials/pageBuilder/listing/teamListingStyle/#{teamListingStyle}" %}
