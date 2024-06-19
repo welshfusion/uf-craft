@@ -1,17 +1,15 @@
 {{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
 {% import "_/includes/macros" as render %}
 
-{% set textCards = block.textCard.all() %}
-
-{% if textCards|length %}
+{% if block.textCard.all()|length %}
     <ul role="list" class="mt-8">
-        {% for item in textCards %}
+        {% for item in block.textCard.all() %}
         <li class="group mt-10 first:mt-0">
             {% if item.simpleText|length %}
             <div class="opacity-100 transform-none">
-                <div class="pt-10 group-first:pt-0 group-first:before:hidden group-first:after:hidden relative before:absolute after:absolute before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px {{ render.foregroundColors({background: backgroundColorLabel, type: 'borders'}) }}">
+                <div class="pt-10 group-first:pt-0 group-first:before:hidden group-first:after:hidden relative before:absolute after:absolute before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px {{ render.foregroundColors({background: backgroundColorLabel, type: 'border'}) }}">
                     {{ render.replaceElements(item.simpleText, {
-                        background: backgroundColorLabel == 'white' ? 'white' : 'green',
+                        background: backgroundColorLabel,
                         paragraphFontSize: 'text-base'
                     }) }}
                 </div>

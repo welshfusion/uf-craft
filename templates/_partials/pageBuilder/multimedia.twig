@@ -87,81 +87,79 @@
     animationEasing: block.animationEasing2.value|default(null)
 }) | raw %}
 
-{% set basicContentsExist = block.eyebrow2|length or block.heading3|length or block.text2|length or buttons|length %}
-{% set multimediaCardExist = image|length or videos|length or basicContentsExist2|length or block.heading2|length or multimediaCard|length %}
 {% set basicContentsExist2 = block.eyebrow|length or block.heading|length or block.subHeading|length or block.text|length %}
 
 <{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ backgroundColor }} {{ spacing }} {{ containerImage ? render.contentWidth({width: contentWidth}) }}">
-    {% if basicContentsExist %}
     <div class="{{ not childContainer ? 'container' }} {{ containerBgExist ? 'px-4 md:px-6' }}">
-        <div class="{{ render.contentWidth({width: contentWidth}) }}">
-            {{ render.basicContents({
-                eyebrow: block.eyebrow2,
-                heading: block.heading3,
-                text: block.text2,
-                buttons: buttons,
-                headingTag: headingTag,
-                fontWeight: fontWeight,
-                backgroundColorLabel: backgroundColorLabel,
-                contentAlignment: contentAlignment,
-                animation: block.animation,
-                contentAnimationStyle: block.animationStyle.getValue()|default('fade-up'),
-                contentAnimationDuration: block.animationDuration.getValue()|default(1500),
-                contentAnimationOffset: block.animationOffset.getValue()|default(200),
-                contentAnimationEasing: block.animationEasing.getValue()|default(null)
-            }) }}
-        </div>
-    </div>
-    {% endif %}
+        {% if block.eyebrow2|length or block.heading3|length or block.text2|length or buttons|length %}
+            <div class="{{ render.contentWidth({width: contentWidth}) }}">
+                {{ render.basicContents({
+                    eyebrow: block.eyebrow2,
+                    heading: block.heading3,
+                    text: block.text2,
+                    buttons: buttons,
+                    headingTag: headingTag,
+                    fontWeight: fontWeight,
+                    backgroundColorLabel: backgroundColorLabel,
+                    contentAlignment: contentAlignment,
+                    animation: block.animation,
+                    contentAnimationStyle: block.animationStyle.getValue()|default('fade-up'),
+                    contentAnimationDuration: block.animationDuration.getValue()|default(1500),
+                    contentAnimationOffset: block.animationOffset.getValue()|default(200),
+                    contentAnimationEasing: block.animationEasing.getValue()|default(null)
+                }) }}
+            </div>
+        {% endif %}
 
-    {% if multimediaCardExist %}
-    <div class="mx-auto container mt-16">
-        <div class="mx-auto max-w-2xl lg:max-w-none">
-            <div class="lg:flex lg:items-center lg:justify-end lg:gap-x-8 lg:group-even/section:justify-start xl:gap-x-20 {{ imagePosition == 'left' ? 'md:flex-row' : 'md:flex-row-reverse' }}">
+        {% if image|length or videos|length or basicContentsExist2|length or block.heading2|length or multimediaCard|length %}
+            <div class="container mt-16">
+                <div class="mx-auto max-w-2xl lg:max-w-none">
+                    <div class="lg:flex lg:items-center lg:justify-end lg:gap-x-8 lg:group-even/section:justify-start xl:gap-x-20 {{ imagePosition == 'left' ? 'md:flex-row' : 'md:flex-row-reverse' }}">
 
-                {% if image|length or videos|length %}
-                    {% include "_partials/pageBuilder/multimedia/imagePatternLayout/#{imagePatternLayout}" %}
-                {% endif %}
-
-                {% if basicContentsExist2|length or block.heading2|length or multimediaCard|length %}
-                <div class="mt-12 lg:mt-0 lg:w-[37rem] lg:flex-none lg:group-even/section:order-first">
-                    {% if basicContentsExist2|length %}
-                    {{ render.basicContents({
-                        eyebrow: block.eyebrow,
-                        heading: block.heading,
-                        text: block.text,
-                        subHeading: block.subHeading,
-                        headingTag: headingTag,
-                        fontWeight: fontWeight,
-                        textSpacing: 'mt-6',
-                        headingSpacing: 'mt-2',
-                        overrideParagraphFontSize: 'text-base',
-                        backgroundColorLabel: backgroundColorLabel,
-                        animation: block.animation,
-                        contentAnimationStyle: block.animationStyle2.getValue()|default('fade-up'),
-                        contentAnimationDuration: block.animationDuration2.getValue()|default(1500),
-                        contentAnimationOffset: block.animationOffset2.getValue()|default(200),
-                        contentAnimationEasing: block.animationEasing2.getValue()|default(null)
-                    }) }}
-                    {% endif %}
-
-                    {% if block.heading2|length or multimediaCard|length %}
-                    <div {{ cardAnimation|raw }}>
-                        {% if block.heading2|length %}
-                        <h3 class="mt-12 font-display text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
-                            {{ block.heading2 }}
-                        </h3>
+                        {% if image|length or videos|length or imagePatternLayout|length %}
+                            {% include "_partials/pageBuilder/multimedia/imagePatternLayout/#{imagePatternLayout}" %}
                         {% endif %}
 
-                        {% for block in multimediaCard %}
-                            {% include '_partials/pageBuilder/multimedia/' ~ block.type.handle ignore missing %}
-                        {% endfor %}
+                        {% if basicContentsExist2|length or block.heading2|length or multimediaCard|length %}
+                        <div class="mt-12 lg:mt-0 lg:w-[37rem] lg:flex-none lg:group-even/section:order-first">
+                            {% if block.eyebrow|length or block.heading|length or block.subHeading|length or block.text|length|length %}
+                            {{ render.basicContents({
+                                eyebrow: block.eyebrow,
+                                heading: block.heading,
+                                text: block.text,
+                                subHeading: block.subHeading,
+                                headingTag: headingTag,
+                                fontWeight: fontWeight,
+                                textSpacing: 'mt-6',
+                                headingSpacing: 'mt-2',
+                                overrideParagraphFontSize: 'text-base',
+                                backgroundColorLabel: backgroundColorLabel,
+                                animation: block.animation,
+                                contentAnimationStyle: block.animationStyle2.getValue()|default('fade-up'),
+                                contentAnimationDuration: block.animationDuration2.getValue()|default(1500),
+                                contentAnimationOffset: block.animationOffset2.getValue()|default(200),
+                                contentAnimationEasing: block.animationEasing2.getValue()|default(null)
+                            }) }}
+                            {% endif %}
+
+                            {% if block.heading2|length or multimediaCard|length %}
+                            <div {{ cardAnimation|raw }}>
+                                {% if block.heading2|length %}
+                                <h3 class="mt-12 font-display text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
+                                    {{ block.heading2 }}
+                                </h3>
+                                {% endif %}
+
+                                {% for block in multimediaCard %}
+                                    {% include '_partials/pageBuilder/multimedia/' ~ block.type.handle ignore missing %}
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+                        {% endif %}
                     </div>
-                    {% endif %}
                 </div>
-                {% endif %}
             </div>
-        </div>
+        {% endif %}
     </div>
-    {% endif %}
 </{{ sectionTag }}>

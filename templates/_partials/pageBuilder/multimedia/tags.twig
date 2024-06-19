@@ -1,11 +1,9 @@
 {{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
 {% import "_/includes/macros" as render %}
 
-{% set tags = block.tag %}
-
-{% if tags|length %}
+{% if block.tag|length %}
     <ul role="list" class="mt-4 flex flex-wrap gap-4">
-        {% for tag in tags %}
+        {% for tag in block.tag %}
             <li class="rounded-full bg-neutral-100 px-4 py-1.5 text-base text-neutral-600">
                 {{ tag.title }}
             </li>

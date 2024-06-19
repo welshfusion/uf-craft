@@ -5,7 +5,7 @@
 {% set color =  backgroundColorLabel == 'white' ? 'text-cyprus-500' : 'text-neutral-50' %}
 
 {% if block.heading|length or socialLinks|length %}
-    <div class="mt-16 pt-16 relative before:absolute after:absolute before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px {{ render.foregroundColors({background: backgroundColorLabel, type: 'borders'}) }}">
+    <div class="mt-16 pt-16 relative before:absolute after:absolute before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px {{ render.foregroundColors({background: backgroundColorLabel, type: 'border'}) }}">
         {% if block.heading|length %}
         <h2 class="font-display text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
             {{ block.heading|nl2br }}

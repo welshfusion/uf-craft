@@ -2,8 +2,8 @@
 {% import "_/includes/macros" as render %}
 
 {% if block.quote|length or block.authorName|length or block.designation|length %}
-    <div class="pl-8 mt-12 relative before:absolute after:absolute before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px {{ render.foregroundColors({background: backgroundColorLabel, type: 'borders'}) }}">
-        <figure class="text-sm">
+    <div class="pl-8 mt-12 relative before:absolute after:absolute before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px {{ render.foregroundColors({background: backgroundColorLabel, type: 'border'}) }}">
+        <div class="text-sm">
             {% if block.quote|length %}
             <blockquote class="text-neutral-600 [&amp;>*]:relative [&amp;>:first-child]:before:absolute [&amp;>:first-child]:before:right-full [&amp;>:first-child]:before:content-['“'] [&amp;>:last-child]:after:content-['”']">
                 <p class="{{ backgroundColorLabel == 'white' ? 'text-neutral-600' : 'text-white' }}">
@@ -14,10 +14,11 @@
 
             {% if block.authorName|length or block.designation|length %}
             <figcaption class="mt-6 font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
-                {{ block.authorName|nl2br }},
+                {{ block.authorName|nl2br }}
+                <span>, </span>
                 {{ block.designation|nl2br }}
             </figcaption>
             {% endif %}
-        </figure>
+        </div>
     </div>
 {% endif %}
