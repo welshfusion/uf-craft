@@ -86,7 +86,7 @@
         {% endif %}
 
         {% if columns|length %}
-            <div class="grid grid-cols-1 md:grid-cols-12 mt-10 gap-5 {{ render.getAlignment({alignment: columnAlignment, type: 'items'}) }}">
+            <div class="grid grid-cols-1 md:grid-cols-12 {{ block.eyebrow|length or block.heading|length or block.subHeading|length or block.text|length ? 'mt-10' }} gap-5 {{ render.getAlignment({alignment: columnAlignment, type: 'items'}) }}">
                 {% for child in columns %}
                     <div class="{{ loop.first ? firstDiv[columnsWidth] : lastDiv[columnsWidth] }}">
                         {% include "_partials/blocks" with {

@@ -62,12 +62,12 @@
 {% set videos = block.backgroundVideo ?? null %}
 
 <section id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="relative {{ backgroundColor }} {{ bgOpacity }} {{ containerSize == 'container' ? 'container' }} {{ block.roundedCorners ? 'rounded-4xl' }} {{ spacing }}">
-    {% if bgImage|length or videos|length  %}
+    {% if bgImage is not empty or videos|length %}
     {{ render.renderVideo({
         image: bgImage,
-        alt: bgImage.title,
-        width: bgImage.width,
-        height: bgImage.height,
+        alt: bgImage is not empty ? bgImage.title : '',
+        width: bgImage is not empty ? bgImage.width : '',
+        height: bgImage is not empty ? bgImage.height : '',
         class: "absolute inset-0 -z-10 h-full w-full object-cover rounded-4xl",
         lazy: false,
         videos: videos,
@@ -83,15 +83,15 @@
     <div class="{{ containerSize == 'container' ? 'mx-auto max-w-4xl' : 'container' }}">
         <div class="{{ render.contentWidth({width: contentWidth}) }}">
             {% if block.eyebrow|length or block.heading|length or block.subHeading|length or block.text|length %}
-                {{ render.basicContents({
-                    eyebrow: block.eyebrow,
-                    heading: block.heading,
-                    subHeading: block.subHeading,
-                    text: block.text,
-                    headingTag: headingTag,
-                    fontWeight: fontWeight,
-                    backgroundColorLabel: backgroundColorLabel,
-                }) }}
+            {{ render.basicContents({
+                eyebrow: block.eyebrow,
+                heading: block.heading,
+                subHeading: block.subHeading,
+                text: block.text,
+                headingTag: headingTag,
+                fontWeight: fontWeight,
+                backgroundColorLabel: backgroundColorLabel,
+            }) }}
             {% endif %}
 
             {% include "_partials/blocks" with {
@@ -99,7 +99,8 @@
                 parent: block.type.handle,
                 conbackgroundColor: backgroundColorLabel,
                 conOverlayOpacity: overlayOpacity,
-                conBackgroundImage: bgImage|length,
+                containerImage: bgImage|length,
+                containerWrapper: true,
                 childContainer: true,
                 firstBlockSpacing: {
                     'defaultMarginTop' : 'none',
