@@ -1,0 +1,20 @@
+columnSuffix: null
+handle: caseStudyTag
+instructions: null
+name: 'Case Study Tag'
+searchable: false
+settings:
+  createButtonLabel: null
+  entryTypes:
+    - e57b30d6-65e9-4b9e-bec9-ec5f661fefcf # Tag
+  includeTableView: false
+  maxEntries: 1
+  minEntries: null
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

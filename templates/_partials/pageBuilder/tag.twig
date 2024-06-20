@@ -1,0 +1,87 @@
+{#
+===============================================================================
+    Tag (tag)
+
+    Variables
+        - Block (block)
+
+    Fields:
+        Content:
+            - Eyebrow (eyebrow)
+            - Heading (heading)
+            - Sub Heading (subHeading)
+            - Text (text)
+            - Buttons (buttons) [Matrix]
+                - Button Type (buttonType)
+                - Button Color (buttonColor)
+                - Icon (icon)
+                - Icon Position (iconPosition)
+                - Button (button)
+
+        Settings:
+            - Content Width (contentWidth)
+            - Background Color (backgroundColor)
+            - Content Alignment (contentAlignment)
+            - Heading Size (headingSize)
+            - Font Weight (fontWeight)
+===============================================================================
+#}
+{{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
+{% import "_/includes/macros" as render %}
+
+{% set headingTag = block.headingSize.getValue()|default('h2') %}
+{% set fontWeight = block.fontWeight.getValue()|default('medium') %}
+{% set contentAlignment = block.contentAlignment.value|default('left') %}
+{% set contentWidth = block.contentWidth|default('0;12') %}
+
+{% set conbackgroundColor = conbackgroundColor ?? null %}
+{% set backgroundColorLabel = block.backgroundColor.label|default(conbackgroundColor ?? 'white') %}
+{% set containerBgExist = conbackgroundColor != backgroundColorLabel %}
+{% set backgroundColor = render.color({
+    handle: backgroundColorLabel,
+    swatch: 'background'
+}) %}
+
+{% set buttons = block.buttons.all() %}
+{% set tags = block.tags.all() %}
+
+<section id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ backgroundColor }} {{ spacing }}">
+    <div class="container">
+        <div class="{{ render.contentWidth({width: contentWidth}) }}">
+            {% if block.eyebrow|length or block.heading|length or block.subHeading|length or block.text|length or buttons|length %}
+            {{ render.basicContents({
+                eyebrow: block.eyebrow,
+                heading: block.heading,
+                subHeading: block.subHeading,
+                text: block.text,
+                buttons: buttons,
+                headingTag: headingTag,
+                fontWeight: fontWeight,
+                backgroundColorLabel: backgroundColorLabel,
+                contentAlignment: contentAlignment,
+                animation: block.animation,
+                contentAnimationStyle: block.animationStyle.getValue()|default('fade-up'),
+                contentAnimationDuration: block.animationDuration.getValue()|default(1500),
+                contentAnimationOffset: block.animationOffset.getValue()|default(200),
+                contentAnimationEasing: block.animationEasing.getValue()|default(null)
+            }) }}
+            {% endif %}
+
+            {% if block.heading2|length %}
+            <div class="font-semibold font-display text-2xl {{ block.eyebrow|length or block.heading|length or block.subHeading|length or block.text|length or buttons|length ? 'mt-12' }} {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
+                {{ block.heading2|nl2br }}
+            </div>
+            {% endif %}
+
+            {% if tags|length %}
+            <ul role="list" class="my-6 flex flex-wrap gap-4">
+                {% for tag in tags %}
+                    <li class="rounded-full bg-neutral-100 px-4 py-1.5 text-base text-neutral-600">
+                        {{ tag.title }}
+                    </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+    </div>
+</section>

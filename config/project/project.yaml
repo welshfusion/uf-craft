@@ -1,4 +1,4 @@
-dateModified: 1718795224
+dateModified: 1718890054
 elementSources:
   craft\elements\Entry:
     -
@@ -134,6 +134,8 @@ meta:
     91c83f59-fe79-4767-b5d1-f236d7a4e02f: 'Social Link' # Social Link
     93edb1b2-0669-4ae4-a9e7-0e5f4826507a: Regular # Regular
     134a2c99-8e12-4d05-b077-5957f5e835ce: 'Social Links' # Social Links
+    225c0c08-9fa7-4e58-af8c-8136aef85ef8: Cards # Cards
+    242f956a-4552-4e50-9ca9-01def0764000: 'Banner Image' # Banner Image
     248e89b5-415a-4d5e-aaab-083bc912f7d5: Container # Container
     320dab2f-d842-4692-82a7-62c995e023e8: 'Two Columns' # Two Columns
     0423d9a0-74e7-4a3d-afc5-a78d494caab4: Navigation # Navigation
@@ -144,6 +146,7 @@ meta:
     832bf49f-111f-4aea-acea-c39597785d33: 'Call To Action' # Call To Action
     1015ffe6-b7bf-4676-a048-e34055507b5a: Image # Image
     1568efd7-9ad7-471e-ac94-2e679fc981b1: Pages # Pages
+    3084c074-4de2-4a73-b801-4a44fcb68e23: 'Banner Cards' # Banner Cards
     3103da10-e23c-4bc6-8d50-79ecfca1013e: CTA # CTA
     3745cb40-58d5-44cc-9ce5-9339f438f411: Icon # Icon
     4992b3d0-b6f9-447c-91fa-b2c94f97a938: 'Container Size' # Container Size
@@ -166,6 +169,7 @@ meta:
     a083fcfb-b4ce-402b-a0bb-e03d70ddf2ec: 'HTML Code' # HTML Code
     a2faf60a-48de-4391-a3c4-49283f508b99: 'Related Team Member' # Related Team Member
     a7eded6e-c5d3-4099-bb5b-7545b0332f49: Listing # Listing
+    a9f0aa86-5d39-4101-b912-7ef1011a477d: 'Case Study Tag' # Case Study Tag
     a48ed5c6-f7f8-47e4-a829-4b6e65fa980c: 'Listing Client' # Listing Client
     a7720afc-ed4d-4b75-bfdd-b504f6f7a9a4: Quote # Quote
     ad85443f-75fc-45e3-9a29-4592254d416f: Image # Image
@@ -178,10 +182,12 @@ meta:
     b1245063-e2a0-4567-8d38-0324ca0eba13: 'Joining Date' # Joining Date
     b7524683-0af1-4bdf-b6f5-e4e80993fbbe: 'Banner Card' # Banner Card
     bdba9605-68a0-44bf-8c48-4e37979c5560: 'Text Cards' # Text Cards
+    bef6acdb-59a9-4333-883a-3407e7fbe478: Card # Card
     bfeb71ce-4205-4ca9-aa95-34bd8179b338: Column # Column
     bff0694b-0a96-4afa-ba0e-b4e834e9a153: 'Padding Bottom' # Padding Bottom
     c0063996-cdc5-42d9-bac2-18ef5ae9c736: 'Contact Cards' # Contact Cards
     c6a95503-819b-4c0f-8d9d-6099c2cdccd5: 'Footer Navigation' # Footer Navigation
+    c6fb0ac5-d930-43ae-93b2-0a7be10eb31a: 'Text Cards' # Text Cards
     c8a67f3a-f81d-4fc4-a335-3817d4c32eff: 'Two Column' # Two Column
     c8e64d8d-7d4e-4182-8bed-ec9013e8aad4: Tag # Tag
     c729cee4-a2ec-48ef-8053-907b01d1a630: Cards # Cards
@@ -199,6 +205,7 @@ meta:
     dbcfc862-d508-4082-a32b-0a6ff36eb41a: 'Alt Logo' # Alt Logo
     e084ec80-7142-4f11-95cc-afaccaed2cf6: 'Column Alignment' # Column Alignment
     e38ac257-70df-4d50-9384-503f2133f772: 'Heading Size' # Heading Size
+    e57b30d6-65e9-4b9e-bec9-ec5f661fefcf: Tag # Tag
     e24737b0-c5aa-4f05-9fb5-fc42d7f31bb0: 'Icon Position' # Icon Position
     e3651006-9863-4745-9226-557c2608dee0: 'Script Files' # Script Files
     ec70c780-286c-4027-8904-ecdb25e3e1c1: Heading # Heading
@@ -209,6 +216,7 @@ meta:
     f5f3b40a-47d4-42d5-b50a-5e17eae1e600: 'Content Alignment' # Content Alignment
     f6df5443-44eb-4d91-9232-62ccf21b3e83: Hero # Hero
     f7a03cc1-a16d-4c45-9dfd-c869032b4453: Eyebrow # Eyebrow
+    feed6fe3-6e93-43c1-959b-d5c7af80a279: Tags # Tags
 plugins:
   blitz:
     edition: standard

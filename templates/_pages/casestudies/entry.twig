@@ -1,0 +1,109 @@
+{% set isAjax = craft.app.request.isAjax and not craft.app.request.isLivePreview %}
+{% extends "_/layouts/main" %}
+{% import "_/includes/macros" as render %}
+
+{% set blogBuilder = entry.pageBuilder.type(null).all() %}
+{% set relatedClient = entry.relatedClient.one() %}
+{% set image = relatedClient.bannerImage.one() %}
+
+{% block content %}
+    <div class="mx-auto max-w-7xl px-6 lg:px-8 mt-20">
+        <div class="mx-auto max-w-2xl lg:max-w-none text-center">
+            <div style="opacity: 1; transform: none;">
+                <h1>
+                    <span class="block font-display text-base font-semibold text-cyprus-500">
+                        Case Study
+                    </span>
+                    <span class="mt-6 block max-w-5xl font-display text-5xl font-medium tracking-tight text-cyprus-500 [text-wrap:balance] sm:text-6xl mx-auto">
+                        {{ entry.title }}
+                    </span>
+                </h1>
+                <div class="mt-6 max-w-3xl text-xl text-neutral-600 mx-auto">
+                    <p>
+                        {{ entry.text }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-24 border-t border-neutral-200 bg-white/50 sm:mt-32 lg:mt-40">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            <div class="mx-auto max-w-2xl lg:max-w-none">
+                <div class="mx-auto max-w-5xl">
+                    <div class="-mx-6 grid grid-cols-1 text-sm text-cyprus-500 sm:mx-0 sm:grid-cols-3">
+                        {% if relatedClient.title|length %}
+                        <div class="border-t border-neutral-200 px-6 py-4 first:border-t-0 sm:border-l sm:border-t-0">
+                            <div class="font-semibold">
+                                Client
+                            </div>
+                            <div>
+                                {{ relatedClient.title }}
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        {% if relatedClient.joiningDate|length %}
+                        <div class="border-t border-neutral-200 px-6 py-4 first:border-t-0 sm:border-l sm:border-t-0">
+                            <div class="font-semibold">
+                                Year
+                            </div>
+                            <div>
+                                {{ relatedClient.joiningDate|date('Y') }}
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        {% if relatedClient.projectType|length %}
+                        <div class="border-t border-neutral-200 px-6 py-4 first:border-t-0 sm:border-l sm:border-t-0">
+                            <div class="font-semibold">
+                                Service
+                            </div>
+                            <div>
+                                {{ relatedClient.projectType }}
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if image|length %}
+    <div class="border-y border-neutral-200 bg-neutral-100">
+        <div class="-my-px mx-auto max-w-[76rem] bg-neutral-200">
+            <div class="group relative">
+                <div class="image-container pointer-events-none left-0 top-0 w-full grayscale-[40%] hover:grayscale-[0%] transition duration-300">
+                    {{ render.setImage({
+                        image: image,
+                        alt: image.title,
+                        width: 3648,
+                        height: 3117,
+                    }) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if blogBuilder|length %}
+    {#
+    =============================================
+        Include Blog Builder
+    =============================================
+    #}
+    {% include "_partials/blocks" with {
+        pageBuilder: blogBuilder,
+        parent: entry.section.handle,
+        conbackgroundColor: 'white',
+        blogBuilder: true,
+        firstBlockSpacing: {
+            'defaultMarginTop' : 'none',
+        },
+        lastBlockSpacing: {
+            'defaultMarginBottom' : 'none',
+        },
+    } %}
+    {% endif %}
+{% endblock %}
