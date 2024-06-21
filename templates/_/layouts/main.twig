@@ -75,6 +75,25 @@
 
             {#
             ============================================
+                Include CTA
+            ============================================
+            #}
+            {% set overrideCta = entry|default(null)|length ? entry.overrideCta|default(null) %}
+            {% set entryOverrideCta = entry|default(null)|length ? entry.callToAction.one()|default(null) %}
+            {% set relatedCta = callToAction.callToAction.one() %}
+            {% set relatedCta = overrideCta and entryOverrideCta|length ? entryOverrideCta : relatedCta %}
+            {% if relatedCta|length %}
+                {% set ctaBuilder = relatedCta.pageBuilder.all() %}
+                {% if ctaBuilder|length %}
+                    {% include "_partials/blocks" with {
+                        pageBuilder: ctaBuilder,
+                        childContainer: false,
+                    } %}
+                {% endif %}
+            {% endif %}
+
+            {#
+            ============================================
                 Include Footer
             ============================================
             #}

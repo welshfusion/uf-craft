@@ -72,6 +72,52 @@ fieldLayouts:
         elements:
           -
             elementCondition: null
+            fieldUid: 07f716e2-b6e5-4aaa-aa76-1a49c9929017 # Light switch
+            handle: overrideCta
+            includeInCards: false
+            instructions: null
+            label: 'Override CTA'
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: d4b69fef-4d4f-40df-b861-3651a7f36ee1
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            elementCondition:
+              class: craft\elements\conditions\entries\EntryCondition
+              conditionRules:
+                -
+                  class: craft\fields\conditions\LightswitchFieldConditionRule
+                  fieldUid: 07f716e2-b6e5-4aaa-aa76-1a49c9929017 # Light switch
+                  layoutElementUid: d4b69fef-4d4f-40df-b861-3651a7f36ee1
+                  uid: 0964f473-a047-4653-9ff2-ae942dbbf0d5
+                  value: true
+              elementType: craft\elements\Entry
+              fieldContext: global
+            fieldUid: 3103da10-e23c-4bc6-8d50-79ecfca1013e # Call To Action
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e990415d-12e1-47b2-aa16-ba737e658069
+            userCondition: null
+            warning: null
+            width: 50
+        name: 'Override CTA'
+        uid: ca342092-0328-4286-8d8e-76c050935658
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
             fieldUid: b3c80522-1b2a-44ca-954e-be2e2544ebd9 # SEO
             handle: null
             includeInCards: false

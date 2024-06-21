@@ -1,7 +1,7 @@
 columnSuffix: null
-handle: cta
+handle: callToAction
 instructions: null
-name: CTA
+name: 'Call To Action'
 searchable: false
 settings:
   allowSelfRelations: false
@@ -12,7 +12,7 @@ settings:
   minRelations: null
   selectionLabel: 'Call To Action'
   showCardsInGrid: false
-  showSiteMenu: false
+  showSiteMenu: true
   sources:
     - 'section:cb57046f-f051-4150-917b-97450a183417' # Call To Action
   targetSiteId: null

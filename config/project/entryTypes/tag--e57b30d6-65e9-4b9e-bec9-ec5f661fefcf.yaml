@@ -36,21 +36,6 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: ec70c780-286c-4027-8904-ecdb25e3e1c1 # Heading
-            handle: heading2
-            includeInCards: false
-            instructions: null
-            label: null
-            providesThumbs: false
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: 3145f965-f3f8-4e4b-b7c0-5826aa67ed25
-            userCondition: null
-            warning: null
-            width: 100
-          -
-            elementCondition: null
             fieldUid: feed6fe3-6e93-43c1-959b-d5c7af80a279 # Tags
             handle: null
             includeInCards: false
@@ -333,10 +318,10 @@ fieldLayouts:
           -
             elementCondition: null
             fieldUid: 07f716e2-b6e5-4aaa-aa76-1a49c9929017 # Light switch
-            handle: animaiton
+            handle: animation
             includeInCards: false
             instructions: null
-            label: 'Animaiton?'
+            label: 'Animation?'
             providesThumbs: false
             required: false
             tip: null

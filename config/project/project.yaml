@@ -1,4 +1,4 @@
-dateModified: 1718890054
+dateModified: 1718967192
 elementSources:
   craft\elements\Entry:
     -
@@ -147,7 +147,7 @@ meta:
     1015ffe6-b7bf-4676-a048-e34055507b5a: Image # Image
     1568efd7-9ad7-471e-ac94-2e679fc981b1: Pages # Pages
     3084c074-4de2-4a73-b801-4a44fcb68e23: 'Banner Cards' # Banner Cards
-    3103da10-e23c-4bc6-8d50-79ecfca1013e: CTA # CTA
+    3103da10-e23c-4bc6-8d50-79ecfca1013e: 'Call To Action' # Call To Action
     3745cb40-58d5-44cc-9ce5-9339f438f411: Icon # Icon
     4992b3d0-b6f9-447c-91fa-b2c94f97a938: 'Container Size' # Container Size
     4998b347-a2ba-4814-8789-53adb5d61a41: Text # Text
@@ -180,6 +180,7 @@ meta:
     b725ddfa-71d5-44fd-b67b-d2291907d5fd: Buttons # Buttons
     b7656e3d-5aea-4dd8-b626-4559b083998b: 'Related Blog' # Related Blog
     b1245063-e2a0-4567-8d38-0324ca0eba13: 'Joining Date' # Joining Date
+    b1542972-b579-40df-8e82-983d14c4977b: 'Call To Action' # Call To Action
     b7524683-0af1-4bdf-b6f5-e4e80993fbbe: 'Banner Card' # Banner Card
     bdba9605-68a0-44bf-8c48-4e37979c5560: 'Text Cards' # Text Cards
     bef6acdb-59a9-4333-883a-3407e7fbe478: Card # Card

@@ -215,22 +215,7 @@ fieldLayouts:
             uid: 82f67e5c-98d2-40a6-bd11-4d0b1b9793bb
             userCondition: null
             warning: null
-            width: 25
-          -
-            elementCondition: null
-            fieldUid: 06c080b4-85ef-4bf1-b169-562706f7d127 # Pattern Background Color
-            handle: null
-            includeInCards: false
-            instructions: null
-            label: null
-            providesThumbs: false
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: 6b8d6ff3-6b49-4b24-9aba-77e86ab22773
-            userCondition: null
-            warning: null
-            width: 25
+            width: 50
           -
             elementCondition: null
             fieldUid: 5b639435-9f82-4cfa-9b34-0421722361c9 # Background Color

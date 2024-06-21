@@ -13,12 +13,18 @@
 {{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
 {% import "_/includes/macros" as render %}
 
-{% set cta = block.cta.one() %}
+{% set cta = block.callToAction.one() %}
 
 {% if cta|length %}
-    {% set pageBuilder = cta.pageBuilder.all() %}
+    {% set ctaBuilder = cta.pageBuilder.all() %}
+
+    {#
+    =============================================
+        Include CTA.
+    =============================================
+    #}
     {% include "_partials/blocks" with {
-        pageBuilder: pageBuilder,
+        pageBuilder: ctaBuilder,
         parent: block.type.handle
     } %}
 {% endif %}
