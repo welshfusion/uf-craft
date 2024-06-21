@@ -92,7 +92,7 @@ return [
                 'default' => false,
                 'color'   =>  [
                     [
-                        'color' => '#daeced',
+                        'color' => '#809fa2',
                     ]
                 ]
             ]

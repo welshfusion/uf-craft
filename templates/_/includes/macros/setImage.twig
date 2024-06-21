@@ -5,8 +5,25 @@
 {% set imgWidth = width ? "width = #{width|default(null)}" : null %}
 {% set imgHeight = height ? "height = #{height|default(null)}" : null %}
 
-{% if image.extension|default(null) in ["gif", "svg"] or (not image.extension|default(null)|length and image|split('.')|last  in ["gif", "svg"]) %}
+{% if image.extension|default(null) in ["gif"] or (not image.extension|default(null)|length and image|split('.')|last  in ["gif"]) %}
     <img src="{{ image.getUrl()|default(image) }}"{% if lazy %} loading='lazy'{% endif %}{% if id|length %} id="{{ id }}"{% endif %}{% if class|length %} class="{{ class }}"{% endif %}{% if alt|length %} alt="{{ alt }}"{% endif %} {{ imgWidth }} {{ imgHeight }}>
+{% elseif image.extension|default(null) in ["svg"] or (not image.extension|default(null)|length and image|split('.')|last  in ["svg"]) %}
+    {% if not image.extension|default(null)|length and image|split('.')|last in ["svg"] %}
+        {% set imagePath = '@webroot/' ~ image %}
+        {{ svg(imagePath) | attr({
+            fill: fill,
+            class: class,
+            width: width,
+            height: height,
+        }| merge(attrs is iterable ? attrs : {})) }}
+    {% else %}
+        {{ svg(image) | attr({
+            fill: fill,
+            class: class,
+            width: width,
+            height: height,
+        }| merge(attrs is iterable ? attrs : {})) }}
+    {% endif %}
 {% elseif plainImage %}
     {% set transform = 'jpg' %}
     {% set transformedImages = craft.imagerx.transformImage(image, transform) %}

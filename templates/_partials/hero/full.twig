@@ -25,7 +25,6 @@
             - Content Width (contentWidth)
             - Banner Height (bannerHeight)
             - Show Pattern? (showPattern)
-            - Pattern Background Color (patternBackgroundColor)
             - Background Color (backgroundColor)
             - Overlay Opacity (overlayOpacity)
             - Content Alignment (contentAlignment)
@@ -36,38 +35,69 @@
 {{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
 {% import "_/includes/macros" as render %}
 
+{% set image = block.image.one() %}
+{% set video = block.backgroundVideo.all() %}
+
 {% set headingTag = block.headingSize.getValue()|default('h1') %}
 {% set fontWeight = block.fontWeight.getValue()|default('medium') %}
 {% set contentAlignment = block.contentAlignment.value|default('left') %}
-{% set overlayOpacity = block.overlayOpacity.getValue|default(none) %}
 {% set contentWidth = block.contentWidth|default('0;12') %}
 
-{% set backgroundColorLabel = block.backgroundColor.label|default('none') %}
+{% set bannerHeight = block.bannerHeight.getValue()|default('full') %}
+{% set height = {
+    'small'  : 'lg:min-h-[530px]',
+    'medium' : 'lg:min-h-[650px]',
+    'full'   : 'lg:min-h-[940px]'
+} %}
+
+{% set backgroundColorLabel = block.backgroundColor.label|default('white') %}
 {% set backgroundColor = render.color({
     handle: backgroundColorLabel,
     swatch: 'background'
 }) %}
 
+{% set overlayOpacity = block.overlayOpacity.getValue|default(image|length or video|length ? 0 : null) %}
 {% set bgOpacity = render.setOpacity({
     opacity: overlayOpacity,
     opacityType: 'bg'
 }) %}
 
-{% set buttons = block.buttons.all() %}
-{% set cards = block.cards.all() %}
-
-{# {% set contentAnimation = render.setAnimation({
+{% set contentAnimation = render.setAnimation({
     animation: block.animation,
     animationStyle: block.animationStyle.value|default('fade-up'),
     animationDuration: block.animationDuration.value|default(1500),
     animationOffset: block.animationOffset.value|default(200),
     animationEasing: block.animationEasing.value|default(null)
 }) | raw %}
-#}
 
-<section class="{{ backgroundColor }} {{ bgOpacity }} my-24 sm:my-32 md:my-56">
-    {# {% if block.showPattern %}
-    <svg aria-hidden="true" class="absolute inset-x-0 -top-14 -z-10 h-[1000px] w-full fill-neutral-50 stroke-neutral-950/5 [mask-image:linear-gradient(to_bottom_left,white_40%,transparent_50%)]">
+{% set buttons = block.buttons.all() %}
+{% set cards = block.cards.all() %}
+
+<section class="flex items-center relative {{ height[bannerHeight] }}">
+    {% if image|length or video|length %}
+        {{ render.renderVideo({
+            image: image|length ? image,
+            alt: image|length ?  image.title,
+            width: image|length ?  image.width,
+            height: image|length ?  image.height,
+            class: 'absolute object-cover top-0 w-full h-full',
+            lazy: false,
+            videoLazy: false,
+            videos: video,
+            videoClass: 'absolute object-cover top-0 w-full h-full',
+            videoPoster: image,
+            videoAttrs: {
+                preload: "none",
+            }
+        }) }}
+    {% endif %}
+    <div class="absolute w-full h-full z-10 {{ backgroundColor }} {{ bgOpacity }}"></div>
+
+    {% if block.showPattern %}
+    <svg aria-hidden="true" class="absolute inset-x-0 z-10 h-full w-full [mask-image:linear-gradient(to_bottom_left,white_40%,transparent_50%)] {{ render.foregroundColors({
+        background: backgroundColorLabel,
+        type: 'pattern'
+    }) }}">
         <rect width="100%" height="100%" fill="url(#:R6lkq:)" stroke-width="0"></rect>
         <svg x="50%" y="-96" stroke-width="0" class="overflow-visible">
             <path transform="translate(64 160)" d="M45.119 4.5a11.5 11.5 0 0 0-11.277 9.245l-25.6 128C6.82 148.861 12.262 155.5 19.52 155.5h63.366a11.5 11.5 0 0 0 11.277-9.245l25.6-128c1.423-7.116-4.02-13.755-11.277-13.755H45.119Z"></path>
@@ -83,8 +113,63 @@
             </pattern>
         </defs>
     </svg>
-    {% endif %} #}
+    {% endif %}
 
+    <div class="relative container pt-40 pb-20 z-20">
+        {% if block.eyebrow|length or block.heading|length or block.subHeading|length or block.text|length or buttons|length %}
+        <div class="{{ render.contentWidth({width: contentWidth}) }}">
+            {{ render.basicContents({
+                eyebrow: block.eyebrow,
+                heading: block.heading,
+                subHeading: block.subHeading,
+                text: block.text,
+                buttons: buttons,
+                headingTag: headingTag,
+                fontWeight: fontWeight,
+                backgroundColorLabel: backgroundColorLabel,
+                contentAlignment: contentAlignment,
+                animation: block.animation,
+                contentAnimationStyle: block.animationStyle.getValue()|default('fade-up'),
+                contentAnimationDuration: block.animationDuration.getValue()|default(1500),
+                contentAnimationOffset: block.animationOffset.getValue()|default(200),
+                contentAnimationEasing: block.animationEasing.getValue()|default(null)
+            }) }}
+        </div>
+        {% endif %}
+
+        {% if cards|length %}
+        <div class="mt-16">
+            <dl class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:auto-cols-fr lg:grid-flow-col lg:grid-cols-none">
+                {% for card in cards %}
+                    <div class="flex flex-col-reverse justify-end pl-8 relative before:absolute after:absolute before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px opacity-100 transform-none {{ render.foregroundColors({
+                    background: backgroundColorLabel,
+                    type: 'border'
+                }) }}" {{ contentAnimation|raw }}>
+                        {% if card.text|length %}
+                        <dt class="mt-2">
+                            {{ render.replaceElements(card.text, {
+                                background: backgroundColorLabel,
+                            }) }}
+                        </dt>
+                        {% endif %}
+
+                        {% if card.heading|length %}
+                        <dd class="font-display text-3xl font-semibold text-cyprus-500 sm:text-4xl {{ render.foregroundColors({
+                            background: backgroundColorLabel,
+                            type: 'heading'
+                        }) }}">
+                            {{ card.heading }}
+                        </dd>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </dl>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+{# <section class="{{ backgroundColor }} {{ bgOpacity }} my-24 sm:my-32 md:my-56">
     <div class="container">
         <div class="transform-none {{ render.contentWidth({width: contentWidth}) }}">
             {{ render.basicContents({
@@ -129,62 +214,4 @@
         </div>
         {% endif %}
     </div>
-</section>
-
-{# {% if basicContentsExist or cards|length %}
-    <section class="{{ backgroundColor }} {{ bgOpacity }}">
-        <div class="mx-auto container mt-24 sm:mt-32">
-            {% if basicContentsExist %}
-            <div class="mx-auto max-w-2xl lg:max-w-none {{ backgroundColorLabel != 'white' ? 'pt-10' }}">
-                <div class="opacity-100 transform-none {{ render.contentWidth({width: contentWidth}) }}">
-                {{ render.basicContents({
-                    eyebrow: block.eyebrow,
-                    heading: block.heading,
-                    subHeading: block.subHeading,
-                    text: block.text,
-                    buttons: buttons,
-                    headingTag: headingTag,
-                    fontWeight: fontWeight,
-                    contentAlignment: contentAlignment,
-                    backgroundColorLabel: backgroundColorLabel,
-                    animation: block.animation,
-                    contentAnimationStyle: block.contentAnimationStyle.value|default('fade-up'),
-                    contentAnimationDuration: block.contentAnimationDuration.value|default(1500),
-                    contentAnimationOffset: block.contentAnimationOffset.value|default(200),
-                    contentAnimationEasing: block.contentAnimationEasing.value|default(null)
-                }) }}
-                </div>
-            </div>
-            {% endif %}
-
-            {% if cards|length %}
-            <div class="mt-16 {{ backgroundColorLabel != 'white' ? 'pb-10' }}">
-                <div class="mx-auto max-w-2xl lg:max-w-none"{{ contentAnimation|raw }}>
-                    <dl class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:auto-cols-fr lg:grid-flow-col lg:grid-cols-none">
-                        {% for card in cards %}
-                        {% if card.text|length or card.heading|length %}
-                        <div class="flex flex-col-reverse pl-8 relative before:absolute after:absolute {{ backgroundColorLabel == 'green' ? 'before:bg-cyprus-300' : 'before:bg-green-500' }} after:bg-neutral-950/10 before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px opacity-100 transform-none">
-                            {% if card.text|length %}
-                            <dt class="mt-2 text-base text-neutral-600">
-                                {{ render.replaceElements(card.text, {
-                                    background: backgroundColorLabel,
-                                    paragraphFontSize: 'text-base',
-                                }) }}
-                            </dt>
-                            {% endif %}
-
-                            {% if card.heading|length %}
-                            <dd class="font-display text-3xl font-semibold sm:text-4xl {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
-                                {{ card.heading|nl2br }}
-                            </dd>
-                            {% endif %}
-                        </div>
-                        {% endif %}
-                        {% endfor %}
-                    </dl>
-                </div>
-            </div>
-            {% endif %}
-        </div>
-    </section>
-{% endif %} #}
+</section> #}
