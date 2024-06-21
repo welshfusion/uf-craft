@@ -156,22 +156,7 @@ fieldLayouts:
             uid: ab410446-19e6-46cb-9cdc-0e5b11f69f72
             userCondition: null
             warning: null
-            width: 100
-          -
-            elementCondition: null
-            fieldUid: 4992b3d0-b6f9-447c-91fa-b2c94f97a938 # Container Size
-            handle: null
-            includeInCards: false
-            instructions: null
-            label: null
-            providesThumbs: false
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: 2aec00ff-c4a5-4e78-ab1f-fe7f1d1f4a40
-            userCondition: null
-            warning: null
-            width: 50
+            width: 75
           -
             elementCondition: null
             fieldUid: 07f716e2-b6e5-4aaa-aa76-1a49c9929017 # Light switch
@@ -186,7 +171,7 @@ fieldLayouts:
             uid: 3f49f2f4-b4ed-4653-8822-5131df1103e9
             userCondition: null
             warning: null
-            width: 50
+            width: 25
           -
             elementCondition: null
             fieldUid: 05af4b17-93ed-4027-a039-96c368e5b585 # Image

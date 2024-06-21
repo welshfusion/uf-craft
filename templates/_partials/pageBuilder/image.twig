@@ -39,10 +39,8 @@
 {# Parent Block Fields Start #}
 {% set parent = parent ?? null %}
 {% set childContainer = childContainer ?? false %}
-{% set containerImage = containerImage ?? false %}
 {% set sectionTag = childContainer ? 'div' : 'section' %}
 {# Parent Block Fields End #}
-
 
 {% set headingTag = block.headingSize.getValue()|default('h2') %}
 {% set fontWeight = block.fontWeight.getValue()|default('medium') %}
@@ -51,7 +49,7 @@
 {% set contentWidth = block.contentWidth|default('0;12') %}
 
 {% set conbackgroundColor = conbackgroundColor ?? null %}
-{% set backgroundColorLabel = block.backgroundColor.label|default(conbackgroundColor ?? 'white') %}
+{% set backgroundColorLabel = block.backgroundColor.label|default(conbackgroundColor ?? 'none') %}
 {% set containerBgExist = conbackgroundColor != backgroundColorLabel %}
 {% set backgroundColor = render.color({
     handle: backgroundColorLabel,
@@ -83,8 +81,8 @@
 {% set videoId = 'image-video-'|t ~ block.getId() %}
 {% set buttons = block.buttons.all() %}
 
-<{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ containerBgExist ? backgroundColor }} {{ spacing }}">
-    <div class="{{ not childContainer ? 'container' }} {{ containerBgExist or containerImage  ? 'px-4 md:px-6' }} {{ (containerImage and backgroundColorLabel == 'white') ? 'py-4 md:py-6' }}">
+<{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ containerBgExist ? backgroundColor }} {{ spacing }} {{ childContainer ? 'relative z-20' }}">
+    <div class="{{ not childContainer ? 'container' }} {{ childContainer and containerBgExist ? 'px-4 md:px-6' }}">
         <div class="{{ render.contentWidth({width: contentWidth}) }}">
             {% if block.eyebrow|length or block.heading|length or block.subHeading|length or block.text|length %}
             {{ render.basicContents({
