@@ -1,17 +1,7 @@
-/*
-.gslide iframe {
-    min-height: auto !important;
-}*/
-
 :root {
-    --fui-check-bg-color-checked: #E21833;
-    --fui-primary-color: #E21833 !important;
-    --fui-check-margin-bottom: 10px;
-    --fui-check-label-height: 20px;
-    --fui-check-label-width: 20px;
-    --fui-check-label-padding-left: 1.75rem;
-}
-
-.fui-type-multi-line-text textarea {
-    height: 6rem !important;
+    --fui-input-box-shadow-focus: none;
+    --fui-check-label-height: 1.5rem;
+    --fui-check-label-width: 1.5rem;
+    --fui-check-label-top: 1.25px;
+    --fui-check-label-padding-left: 2.25rem;
 }

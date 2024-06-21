@@ -15,7 +15,6 @@
     {% block seo %}{% hook 'seo' %}{% endblock %}
 
     {# {{ head() }} #}
-    {{ craft.vite.register("src/js/app.js") }}
 
     {# Include Tracking Scripts Head #}
     {% for script in trackingScripts|filter(script => script.scriptPosition.value == "head" and (not script.addOnlyInProduction or (script.addOnlyInProduction and craft.app.config.env == "production"))) %}
@@ -93,6 +92,8 @@
             {% endfor %}
         </div>
     </div>
+
+    {{ craft.vite.register("src/js/app.js", false) }}
 </body>
 </html>
 {% endminify %}
