@@ -4,6 +4,24 @@ return [
     'themeConfig' => [
         "fieldInputWrapper" => false,
 
+        "fieldErrors" => [
+            "attributes" => [
+                "class" => 'absolute bottom-0 left-6 z-20',
+            ],
+        ],
+
+        "fieldError" => [
+            "attributes" => [
+                "class" => 'text-sm',
+            ],
+        ],
+
+        "formWrapper" => [
+            "attributes" => [
+                "class" => 'font-display',
+            ],
+        ],
+
         "pageContainer" => [
             "attributes" => [
                 "class" => '-space-y-px',
@@ -36,7 +54,7 @@ return [
 
         "submitButton" => [
             "attributes" => [
-                "class" => '!mt-6 !rounded-full !px-4 !py-1.5 !bg-cyprus-500 hover:!bg-green-500 !border-cyprus-500 hover:!border-green-500 !transition !duration-300',
+                "class" => '!mt-6 rounded-full px-4 py-1.5 text-sm bg-cyprus-500 hover:bg-green-500 border-cyprus-500 hover:border-green-500 transition duration-300',
             ],
         ],
 
