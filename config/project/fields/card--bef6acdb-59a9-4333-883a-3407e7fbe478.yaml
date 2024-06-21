@@ -4,7 +4,7 @@ instructions: null
 name: Card
 searchable: false
 settings:
-  createButtonLabel: null
+  createButtonLabel: Card
   entryTypes:
     - b7524683-0af1-4bdf-b6f5-e4e80993fbbe # Banner Card
   includeTableView: false
