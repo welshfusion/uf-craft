@@ -146,7 +146,7 @@
                     type: 'border'
                 }) }}" {{ contentAnimation|raw }}>
                         {% if card.text|length %}
-                        <dt class="mt-2">
+                        <dt class="mt-2 space-y-2">
                             {{ render.replaceElements(card.text, {
                                 background: backgroundColorLabel,
                             }) }}
@@ -154,7 +154,7 @@
                         {% endif %}
 
                         {% if card.heading|length %}
-                        <dd class="font-display text-3xl font-semibold text-cyprus-500 sm:text-4xl {{ render.foregroundColors({
+                        <dd class="font-display text-3xl font-semibold sm:text-4xl {{ render.foregroundColors({
                             background: backgroundColorLabel,
                             type: 'heading'
                         }) }}">

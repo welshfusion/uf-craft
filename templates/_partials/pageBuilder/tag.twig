@@ -42,19 +42,26 @@
     swatch: 'background'
 }) %}
 
+{% set contentAnimation = render.setAnimation({
+    animation: block.animation,
+    animationStyle: block.animationStyle.value|default('fade-up'),
+    animationDuration: block.animationDuration.value|default(1500),
+    animationOffset: block.animationOffset.value|default(200),
+    animationEasing: block.animationEasing.value|default(null)
+}) | raw %}
+
 {% set buttons = block.buttons.all() %}
 {% set tags = block.tags.all() %}
 
 <section id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ backgroundColor }} {{ spacing }}">
     <div class="container">
         <div class="{{ render.contentWidth({width: contentWidth}) }}">
-            {% if block.eyebrow|length or block.heading|length or block.subHeading|length or block.text|length or buttons|length %}
+            {% if block.eyebrow|length or block.heading|length or block.subHeading|length or block.text|length %}
             {{ render.basicContents({
                 eyebrow: block.eyebrow,
                 heading: block.heading,
                 subHeading: block.subHeading,
                 text: block.text,
-                buttons: buttons,
                 headingTag: headingTag,
                 fontWeight: fontWeight,
                 backgroundColorLabel: backgroundColorLabel,
@@ -67,14 +74,8 @@
             }) }}
             {% endif %}
 
-            {% if block.heading2|length %}
-            <div class="font-semibold font-display text-2xl {{ block.eyebrow|length or block.heading|length or block.subHeading|length or block.text|length or buttons|length ? 'mt-12' }} {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
-                {{ block.heading2|nl2br }}
-            </div>
-            {% endif %}
-
             {% if tags|length %}
-            <ul role="list" class="my-6 flex flex-wrap gap-4">
+            <ul role="list" class="mt-10 flex flex-wrap gap-4" {{ contentAnimation|raw }}>
                 {% for tag in tags %}
                     <li class="rounded-full bg-neutral-100 px-4 py-1.5 text-base text-neutral-600">
                         {{ tag.title }}
@@ -82,6 +83,26 @@
                 {% endfor %}
             </ul>
             {% endif %}
+
+            {% for button in buttons %}
+            {% if loop.first %}
+            <div class="flex flex-wrap items-center gap-5 mt-8 md:mt-10 {{ render.getAlignment({
+                alignment: contentAlignment,
+                type: 'justify'
+            }) }}" {{ contentAnimation|raw }}>
+            {% endif %}
+                {{ render.createButton({
+                    button: button.button,
+                    buttonType: button.buttonType.getValue()|default("button"),
+                    buttonColor: button.buttonColor.label|default('cyprus'),
+                    icon: button.icon,
+                    iconPosition: button.iconPosition.getValue()|default('right'),
+                    background: backgroundColorLabel,
+                }) }}
+            {% if loop.last %}
+            </div>
+            {% endif %}
+            {% endfor %}
         </div>
     </div>
 </section>

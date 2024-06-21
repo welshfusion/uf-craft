@@ -42,19 +42,26 @@
     swatch: 'background'
 }) %}
 
+{% set contentAnimation = render.setAnimation({
+    animation: block.animation,
+    animationStyle: block.animationStyle.value|default('fade-up'),
+    animationDuration: block.animationDuration.value|default(1500),
+    animationOffset: block.animationOffset.value|default(200),
+    animationEasing: block.animationEasing.value|default(null)
+}) | raw %}
+
 {% set buttons = block.buttons.all() %}
 {% set textCards = block.card.all() %}
 
 <section id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ backgroundColor }} {{ spacing }}">
     <div class="container">
-        {% if block.eyebrow|length or block.heading2|length or block.subHeading|length or block.text|length or buttons|length %}
+        {% if block.eyebrow|length or block.heading2|length or block.subHeading|length or block.text|length %}
         <div class="{{ render.contentWidth({width: contentWidth}) }}">
             {{ render.basicContents({
                 eyebrow: block.eyebrow,
                 heading: block.heading2,
                 subHeading: block.subHeading,
                 text: block.text,
-                button: buttons,
                 headingTag: headingTag,
                 fontWeight: fontWeight,
                 backgroundColorLabel: backgroundColorLabel,
@@ -69,12 +76,12 @@
         {% endif %}
 
         {% if textCards|length %}
-        <div class="my-32 !max-w-none">
+        <div class="{{ block.eyebrow|length or block.heading2|length or block.subHeading|length or block.text|length ? 'mt-10' }}">
             <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:auto-cols-fr lg:grid-flow-col lg:grid-cols-none">
                 {% for card in textCards %}
-                <div class="flex flex-col-reverse pl-8 relative before:absolute after:absolute before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px {{ render.foregroundColors({background: backgroundColorLabel,type: 'border'}) }}">
+                <div class="flex flex-col-reverse justify-end pl-8 relative before:absolute after:absolute before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px {{ render.foregroundColors({background: backgroundColorLabel,type: 'border'}) }}">
                     {% if card.text|length %}
-                    <div class="mt-2 text-base text-neutral-600">
+                    <div class="mt-2 space-y-2">
                         {{ render.replaceElements(card.text, {
                             background: backgroundColorLabel,
                         }) }}
@@ -91,5 +98,25 @@
             </div>
         </div>
         {% endif %}
+
+        {% for button in buttons %}
+        {% if loop.first %}
+        <div class="flex flex-wrap items-center gap-5 mt-8 md:mt-10 {{ render.getAlignment({
+            alignment: contentAlignment,
+            type: 'justify'
+        }) }}" {{ contentAnimation|raw }}>
+        {% endif %}
+            {{ render.createButton({
+                button: button.button,
+                buttonType: button.buttonType.getValue()|default("button"),
+                buttonColor: button.buttonColor.label|default('cyprus'),
+                icon: button.icon,
+                iconPosition: button.iconPosition.getValue()|default('right'),
+                background: backgroundColorLabel,
+            }) }}
+        {% if loop.last %}
+        </div>
+        {% endif %}
+        {% endfor %}
     </div>
 </section>
