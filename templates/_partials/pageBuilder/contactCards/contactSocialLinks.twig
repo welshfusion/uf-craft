@@ -5,7 +5,7 @@
     {% set socialLinks = block.socialLinks.all() %}
     {% for socialLink in socialLinks %}
     <li>
-        {% set iconColor =  backgroundColorLabel == 'white' ? 'text-cyprus-500' : 'text-white' %}
+        {% set iconColor =  backgroundColorLabel in ['none', 'white'] ? 'text-cyprus-500' : 'text-white' %}
         <a href="{{ socialLink.socialLink.getUrl() }}"
             class="transition hover:text-neutral-700 {{ iconColor }} {{ socialLink.socialLink.classes }}"
             {% if socialLink.socialLink.linkTitle %} title="{{ socialLink.socialLink.linkTitle }}"{% endif %} {% if socialLink.socialLink.target %} target="{{ socialLink.socialLink.target }}" rel="noopener"{% endif %} {% for attribute in socialLink.socialLink.customAttributes %} {{ attribute.attribute }}="{{ attribute.value }}" {% endfor %}

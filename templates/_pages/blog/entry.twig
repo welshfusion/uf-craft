@@ -25,51 +25,48 @@
         </defs>
     </svg>
 
-    <div class="mx-auto max-w-7xl px-6 lg:px-8 pt-44 sm:pt-52 lg:pt-60">
-        <div class="mx-auto max-w-2xl lg:max-w-none">
-            <div>
-                <div class="mx-auto flex max-w-5xl flex-col text-center">
-                    <div class="text-sm text-cyprus-500">
-                        {{ entry.postDate|date('F d, Y') }}
-                    </div>
-
-                    <h1 class="mt-6 font-display text-5xl font-medium tracking-tight text-cyprus-500 [text-wrap:balance] sm:text-6xl">
-                        {{ entry.title }}
-                    </h1>
-
-                    {% if relatedTeams|length %}
-                    <p class="mt-6 text-sm font-semibold text-cyprus-500">
-                        by
-                        {{ relatedTeams.title }}<span>, </span>
-                        {{ relatedTeams.designation }}
-                    </p>
-                    {% endif %}
-                </div>
+    <div class="container pt-44 sm:pt-52 lg:pt-60">
+        <div class="mx-auto flex max-w-5xl flex-col text-center">
+            <div class="text-sm text-cyprus-500">
+                {{ entry.postDate|date('F d, Y') }}
             </div>
 
+            <h1 class="mt-6 font-display text-5xl font-medium tracking-tight text-cyprus-500 [text-wrap:balance] sm:text-6xl">
+                {{ entry.title }}
+            </h1>
 
-            {% if blogBuilder|length %}
-            <div class="mt-24 sm:mt-32 lg:mt-40">
-                {#
-                =============================================
-                    Include Blog Builder
-                =============================================
-                #}
-                {% include "_partials/blocks" with {
-                    pageBuilder: blogBuilder,
-                    parent: entry.section.handle,
-                    conbackgroundColor: 'white',
-                    blogBuilder: true,
-                    firstBlockSpacing: {
-                        'defaultMarginTop' : 'none',
-                    },
-                    lastBlockSpacing: {
-                        'defaultMarginBottom' : 'none',
-                    },
-                } %}
-            </div>
+            {% if relatedTeams|length %}
+            <p class="mt-6 text-sm font-semibold text-cyprus-500">
+                by
+                {{ relatedTeams.title }}<span>, </span>
+                {{ relatedTeams.designation }}
+            </p>
             {% endif %}
         </div>
+
+
+        {% if blogBuilder|length %}
+        <div class="mt-24 sm:mt-32 lg:mt-40">
+            {#
+            =============================================
+                Include Blog Builder
+            =============================================
+            #}
+            {% include "_partials/blocks" with {
+                pageBuilder: blogBuilder,
+                parent: entry.section.handle,
+                conbackgroundColor: 'white',
+                childContainer: true,
+                blogBuilder: true,
+                firstBlockSpacing: {
+                    'defaultMarginTop' : 'none',
+                },
+                lastBlockSpacing: {
+                    'defaultMarginBottom' : 'none',
+                },
+            } %}
+        </div>
+        {% endif %}
     </div>
 
     {% if recommendedblogs|length %}
@@ -93,46 +90,43 @@
             </svg>
         </div>
 
-        <div class="mx-auto max-w-7xl px-6 lg:px-8">
-            <div class="mx-auto max-w-2xl lg:max-w-none">
-                <div class="max-w-2xl" >
-                    <h2>
-                        <span class="block font-display tracking-tight [text-wrap:balance] text-2xl font-semibold text-cyprus-500">More articles</span>
-                    </h2>
-                </div>
+        <div class="container">
+            <div class="max-w-2xl" >
+                <h2>
+                    <span class="block font-display tracking-tight [text-wrap:balance] text-2xl font-semibold text-cyprus-500">More articles</span>
+                </h2>
             </div>
         </div>
 
-        <div class="mx-auto max-w-7xl px-6 lg:px-8 mt-16">
-            <div class="mx-auto max-w-2xl lg:max-w-none">
-                <div class="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-2">
-                    {% for blog in recommendedblogs %}
-                    <div>
-                        <a href="{{ blog.getUrl() }}" class="relative flex flex-col items-start pl-8 relative before:absolute after:absolute before:bg-green-500 after:bg-neutral-950/10 before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px">
-                            <div class="text-sm text-neutral-600">
-                                {{ blog.postDate|date('F Y') }}
-                            </div>
+        <div class="container mt-16">
+            <div class="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-2">
+                {% for blog in recommendedblogs %}
+                <div>
+                    <a href="{{ blog.getUrl() }}" class="relative flex flex-col items-start pl-8 relative before:absolute after:absolute before:bg-green-500 after:bg-neutral-950/10 before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px">
+                        <div class="text-sm text-neutral-600">
+                            {{ blog.postDate|date('F Y') }}
+                        </div>
 
-                            <h3 class="mt-6 text-base font-semibold text-cyprus-500">
-                                {{ blog.title }}
-                            </h3>
+                        <h3 class="mt-6 text-base font-semibold text-cyprus-500">
+                            {{ blog.title }}
+                        </h3>
 
-                            {% if blog.text|length %}
-                            <div class="mt-2.5 space-y-2.5">
-                                {{ render.replaceElements(blog.text, {
-                                    background: 'white',
-                                }) }}
-                            </div>
-                            {% endif %}
+                        {% if blog.text|length %}
+                        <div class="mt-2.5 space-y-2.5">
+                            {{ render.replaceElements(blog.text, {
+                                background: 'white',
+                            }) }}
+                        </div>
+                        {% endif %}
 
-                            <div class="mt-6 flex gap-x-3 text-base font-semibold transition text-cyprus-500">
-                                Read more
-                                <svg viewBox="0 0 24 6" aria-hidden="true" class="w-6 flex-none fill-current">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M24 3 18 .5v2H0v1h18v2L24 3Z"></path>
-                                </svg>
-                            </div>
-                        </a>
-                    </div>
+                        <div class="mt-6 flex gap-x-3 text-base font-semibold transition text-cyprus-500">
+                            Read more
+                            <svg viewBox="0 0 24 6" aria-hidden="true" class="w-6 flex-none fill-current">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M24 3 18 .5v2H0v1h18v2L24 3Z"></path>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
                 {% endfor %}
             </div>
         </div>

@@ -2,7 +2,7 @@
 {% import "_/includes/macros" as render %}
 
 {% set socialLinks = block.socialLinks.all() %}
-{% set color =  backgroundColorLabel == 'white' ? 'text-cyprus-500' : 'text-white' %}
+{% set color =  backgroundColorLabel in ['none', 'white'] ? 'text-cyprus-500' : 'text-white' %}
 
 {% if socialLinks|length %}
 <ul role="list" class="flex gap-x-10 {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">

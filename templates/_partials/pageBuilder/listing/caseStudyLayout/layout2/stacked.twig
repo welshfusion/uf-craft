@@ -37,7 +37,7 @@
     }) }}
     {% endif %}
 >
-    <div {% if pagination %}:id="contentId"{% endif %} class="mx-auto max-w-2xl lg:max-w-none space-y-32">
+    <div {% if pagination %}:id="contentId"{% endif %} class="space-y-32">
 {% endif %}
         {% for caseStudy in entries %}
             {% set relatedClient = caseStudy.relatedClient.one() %}

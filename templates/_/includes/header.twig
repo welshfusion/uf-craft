@@ -13,40 +13,38 @@
     }"
 >
     <div class="absolute left-0 right-0 top-2 z-40 pt-14">
-        <div class="mx-auto max-w-7xl px-6 lg:px-8">
-            <div class="mx-auto max-w-2xl lg:max-w-none">
-                <div class="flex items-center justify-between">
-                    {% if headerLogo|length %}
-                    <a href="{{ siteUrl }}" aria-label="{{ siteName }}">
-                        {{ render.setImage({
-                            image: headerLogo,
-                            alt: headerLogo.title,
-                            class: 'h-8'
+        <div class="lg:container px-6">
+            <div class="flex items-center justify-between">
+                {% if headerLogo|length %}
+                <a href="{{ siteUrl }}" aria-label="{{ siteName }}">
+                    {{ render.setImage({
+                        image: headerLogo,
+                        alt: headerLogo.title,
+                        class: 'h-8'
+                    }) }}
+                </a>
+                {% endif %}
+
+                <div class="flex items-center gap-x-8">
+                    {% for button in headerButtons %}
+                        {{ render.createButton({
+                            button: button.button,
+                            buttonType: button.buttonType.getValue()|default("button"),
+                            buttonColor: button.buttonColor.label|default('cyprus'),
+                            icon: button.icon,
+                            iconPosition: button.iconPosition.getValue()|default('right'),
+                            textSize: 'text-sm'
                         }) }}
-                    </a>
-                    {% endif %}
+                    {% endfor %}
 
-                    <div class="flex items-center gap-x-8">
-                        {% for button in headerButtons %}
-                            {{ render.createButton({
-                                button: button.button,
-                                buttonType: button.buttonType.getValue()|default("button"),
-                                buttonColor: button.buttonColor.label|default('cyprus'),
-                                icon: button.icon,
-                                iconPosition: button.iconPosition.getValue()|default('right'),
-                                textSize: 'text-sm'
-                            }) }}
-                        {% endfor %}
-
-                        <button type="button" class="group -m-2.5 rounded-full p-2.5 transition hover:bg-neutral-950/10" aria-label="Toggle navigation"
-                            @click="isOpen = !isOpen"
-                            :aria-expanded="isOpen"
-                        >
-                            <svg viewBox="0 0 24 24" aria-hidden="true" class="h-6 w-6 fill-neutral-950 group-hover:fill-neutral-700">
-                                <path d="M2 6h20v2H2zM2 16h20v2H2z"></path>
-                            </svg>
-                        </button>
-                    </div>
+                    <button type="button" class="group -m-2.5 rounded-full p-2.5 transition hover:bg-neutral-950/10" aria-label="Toggle navigation"
+                        @click="isOpen = !isOpen"
+                        :aria-expanded="isOpen"
+                    >
+                        <svg viewBox="0 0 24 24" aria-hidden="true" class="h-6 w-6 fill-neutral-950 group-hover:fill-neutral-700">
+                            <path d="M2 6h20v2H2zM2 16h20v2H2z"></path>
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>
@@ -64,38 +62,36 @@
             style="display: none;"
         >
             <div class="bg-cyprus-500 pb-16 pt-14">
-                <div class="mx-auto max-w-7xl px-6 lg:px-8">
-                    <div class="mx-auto max-w-2xl lg:max-w-none">
-                        <div class="flex items-center justify-between">
-                            {% if altLogo|length %}
-                            <a href="{{ siteUrl }}" aria-label="{{ siteName }}">
-                                {{ render.setImage({
-                                    image: altLogo,
-                                    alt: altLogo.title,
-                                    class: 'hidden h-8 sm:block'
+                <div class="lg:container px-6">
+                    <div class="flex items-center justify-between">
+                        {% if altLogo|length %}
+                        <a href="{{ siteUrl }}" aria-label="{{ siteName }}">
+                            {{ render.setImage({
+                                image: altLogo,
+                                alt: altLogo.title,
+                                class: 'hidden h-8 sm:block'
+                            }) }}
+                        </a>
+                        {% endif %}
+
+                        <div class="flex items-center gap-x-8">
+                            {% for button in headerButtons %}
+                                {{ render.createButton({
+                                    button: button.button,
+                                    buttonType: button.buttonType.getValue()|default("button"),
+                                    buttonColor: button.buttonColor.label|default('white'),
+                                    icon: button.icon,
+                                    iconPosition: button.iconPosition.getValue()|default('right'),
+                                    textSize: 'text-sm'
                                 }) }}
-                            </a>
-                            {% endif %}
+                            {% endfor %}
 
-                            <div class="flex items-center gap-x-8">
-                                {% for button in headerButtons %}
-                                    {{ render.createButton({
-                                        button: button.button,
-                                        buttonType: button.buttonType.getValue()|default("button"),
-                                        buttonColor: button.buttonColor.label|default('white'),
-                                        icon: button.icon,
-                                        iconPosition: button.iconPosition.getValue()|default('right'),
-                                        textSize: 'text-sm'
-                                    }) }}
-                                {% endfor %}
-
-                                <button type="button" @click="isOpen = !isOpen" aria-expanded="false" aria-controls=":Rkq:" class="group -m-2.5 rounded-full p-2.5 transition hover:bg-white/10" aria-label="Toggle navigation">
-                                    <svg viewBox="0 0 24 24" aria-hidden="true" class="h-6 w-6 fill-white group-hover:fill-neutral-200">
-                                        <path d="m5.636 4.223 14.142 14.142-1.414 1.414L4.222 5.637z"></path>
-                                        <path d="M4.222 18.363 18.364 4.22l1.414 1.414L5.636 19.777z"></path>
-                                    </svg>
-                                </button>
-                            </div>
+                            <button type="button" @click="isOpen = !isOpen" aria-expanded="false" aria-controls=":Rkq:" class="group -m-2.5 rounded-full p-2.5 transition hover:bg-white/10" aria-label="Toggle navigation">
+                                <svg viewBox="0 0 24 24" aria-hidden="true" class="h-6 w-6 fill-white group-hover:fill-neutral-200">
+                                    <path d="m5.636 4.223 14.142 14.142-1.414 1.414L4.222 5.637z"></path>
+                                    <path d="M4.222 18.363 18.364 4.22l1.414 1.414L5.636 19.777z"></path>
+                                </svg>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -105,17 +101,15 @@
             <nav class="mt-px font-display text-5xl font-medium tracking-tight text-white">
                 {% for nodes in headerNavigation|batch(2) %}
                 <div class="mt-px sm:bg-cyprus-500">
-                    <div class="mx-auto max-w-7xl px-6 lg:px-8">
-                        <div class="mx-auto max-w-2xl lg:max-w-none">
-                            <div class="grid grid-cols-1 sm:grid-cols-2">
-                                {% for node in nodes %}
-                                {% set passiveLink = node.url ? 'a' : 'div' %}
-                                <{{ passiveLink }} href="{{ node.url }}" class="cursor-pointer group relative isolate -mx-6 bg-cyprus-500 px-6 py-10 even:mt-px sm:mx-0 sm:px-0 sm:py-16 sm:odd:pr-16 sm:even:mt-0 sm:even:border-l sm:even:border-green-500 sm:even:pl-16 {{ node.classes }}" {% if node.newWindow %} target="_blank" rel="noopener" {% endif %}{% for attribute in node.customAttributes %} {{ attribute.attribute }}="{{ attribute.value }}" {% endfor %}>
-                                    {{ node.title }}
-                                    <span class="absolute inset-y-0 -z-10 w-screen bg-neutral-900 opacity-0 transition group-odd:right-0 group-even:left-0 group-hover:opacity-100"></span>
-                                </{{ passiveLink }}>
-                                {% endfor %}
-                            </div>
+                    <div class="lg:container px-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2">
+                            {% for node in nodes %}
+                            {% set passiveLink = node.url ? 'a' : 'div' %}
+                            <{{ passiveLink }} href="{{ node.url }}" class="cursor-pointer group relative isolate -mx-6 bg-cyprus-500 px-6 py-10 even:mt-px sm:mx-0 sm:px-0 sm:py-16 sm:odd:pr-16 sm:even:mt-0 sm:even:border-l sm:even:border-green-500 sm:even:pl-16 {{ node.classes }}" {% if node.newWindow %} target="_blank" rel="noopener" {% endif %}{% for attribute in node.customAttributes %} {{ attribute.attribute }}="{{ attribute.value }}" {% endfor %}>
+                                {{ node.title }}
+                                <span class="absolute inset-y-0 -z-10 w-screen bg-neutral-900 opacity-0 transition group-odd:right-0 group-even:left-0 group-hover:opacity-100"></span>
+                            </{{ passiveLink }}>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
@@ -124,69 +118,67 @@
             {% endif %}
 
             <div class="relative bg-cyprus-500 before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-green-500">
-                <div class="mx-auto max-w-7xl px-6 lg:px-8">
-                    <div class="mx-auto max-w-2xl lg:max-w-none">
-                        <div class="grid grid-cols-1 gap-y-10 pb-16 pt-10 sm:grid-cols-2 sm:pt-16">
-                            {% if header.heading|length or header.text|length or (not header.telephone.isEmpty) %}
-                            <div>
-                                {% if header.heading|length %}
-                                <h2 class="font-display text-base font-semibold text-white">
-                                    {{ header.heading|nl2br }}
-                                </h2>
-                                {% endif %}
-
-                                {% if header.text|length or (not header.telephone.isEmpty) %}
-                                <ul role="list" class="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2">
-                                    {% if header.text|length %}
-                                    <li>
-                                        {{ render.replaceElements(header.text, {
-                                            background: 'green',
-                                            paragraphFontSize: 'text-sm'
-                                        }) }}
-                                    </li>
-                                    {% endif %}
-
-                                    {% if not header.telephone.isEmpty %}
-                                    <li>
-                                        <address class="text-sm not-italic text-neutral-300">
-                                            <strong class="text-white">Telephone</strong><br>
-                                            <a href="{{ header.telephone.getUrl() }}">
-                                                {{ header.telephone.getText() }}
-                                            </a>
-                                        </address>
-                                    </li>
-                                    {% endif %}
-                                </ul>
-                                {% endif %}
-                            </div>
+                <div class="lg:container px-6">
+                    <div class="grid grid-cols-1 gap-y-10 pb-16 pt-10 sm:grid-cols-2 sm:pt-16">
+                        {% if header.heading|length or header.text|length or (not header.telephone.isEmpty) %}
+                        <div>
+                            {% if header.heading|length %}
+                            <h2 class="font-display text-base font-semibold text-white">
+                                {{ header.heading|nl2br }}
+                            </h2>
                             {% endif %}
 
-                            {% if header.heading2|length or socialLinks|length %}
-                            <div class="sm:border-l sm:border-transparent sm:pl-16">
-                                {% if header.heading2|length %}
-                                <h2 class="font-display text-base font-semibold text-white">
-                                    {{ header.heading2|nl2br }}
-                                </h2>
+                            {% if header.text|length or (not header.telephone.isEmpty) %}
+                            <ul role="list" class="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2">
+                                {% if header.text|length %}
+                                <li>
+                                    {{ render.replaceElements(header.text, {
+                                        background: 'green',
+                                        paragraphFontSize: 'text-sm'
+                                    }) }}
+                                </li>
                                 {% endif %}
 
-                                {% if socialLinks|length %}
-                                <ul role="list" class="flex gap-x-10 text-white mt-6">
-                                    {% for link in socialLinks %}
-                                    <li>
-                                        <a href="{{ link.socialLink.getUrl }}" aria-label="{{ link.socialLink.getText() }}" class="transition hover:text-neutral-200 {{ link.socialLink.classes }}" {% if link.socialLink.newWindow %} target="_blank" rel="noopener" {% endif %}{% for attribute in link.socialLink.customAttributes %} {{ attribute.attribute }}="{{ attribute.value }}" {% endfor %}>
-                                            {% if link.icon|length %}
-                                            {{ svg(link.icon.path)|attr({
-                                                class: 'h-6 w-6 fill-current',
-                                            }) }}
-                                            {% endif %}
+                                {% if not header.telephone.isEmpty %}
+                                <li>
+                                    <address class="text-sm not-italic text-neutral-300">
+                                        <strong class="text-white">Telephone</strong><br>
+                                        <a href="{{ header.telephone.getUrl() }}">
+                                            {{ header.telephone.getText() }}
                                         </a>
-                                    </li>
-                                    {% endfor %}
-                                </ul>
+                                    </address>
+                                </li>
                                 {% endif %}
-                            </div>
+                            </ul>
                             {% endif %}
                         </div>
+                        {% endif %}
+
+                        {% if header.heading2|length or socialLinks|length %}
+                        <div class="sm:border-l sm:border-transparent sm:pl-16">
+                            {% if header.heading2|length %}
+                            <h2 class="font-display text-base font-semibold text-white">
+                                {{ header.heading2|nl2br }}
+                            </h2>
+                            {% endif %}
+
+                            {% if socialLinks|length %}
+                            <ul role="list" class="flex gap-x-10 text-white mt-6">
+                                {% for link in socialLinks %}
+                                <li>
+                                    <a href="{{ link.socialLink.getUrl }}" aria-label="{{ link.socialLink.getText() }}" class="transition hover:text-neutral-200 {{ link.socialLink.classes }}" {% if link.socialLink.newWindow %} target="_blank" rel="noopener" {% endif %}{% for attribute in link.socialLink.customAttributes %} {{ attribute.attribute }}="{{ attribute.value }}" {% endfor %}>
+                                        {% if link.icon|length %}
+                                        {{ svg(link.icon.path)|attr({
+                                            class: 'h-6 w-6 fill-current',
+                                        }) }}
+                                        {% endif %}
+                                    </a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>

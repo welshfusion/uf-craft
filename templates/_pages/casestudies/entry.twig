@@ -25,67 +25,63 @@
         </defs>
     </svg>
 
-    <div class="mx-auto max-w-7xl px-6 lg:px-8 pt-44 sm:pt-52 lg:pt-60">
-        <div class="mx-auto max-w-2xl lg:max-w-none text-center">
-            <h1>
-                <span class="block font-display text-base font-semibold text-cyprus-500">
-                    Case Study
-                </span>
+    <div class="container pt-44 sm:pt-52 lg:pt-60">
+        <h1 class="text-center">
+            <span class="block font-display text-base font-semibold text-cyprus-500">
+                Case Study
+            </span>
 
-                <span class="mt-6 block max-w-5xl font-display text-5xl font-medium tracking-tight text-cyprus-500 [text-wrap:balance] sm:text-6xl mx-auto">
-                    {{ entry.title }}
-                </span>
-            </h1>
+            <span class="mt-6 block max-w-5xl font-display text-5xl font-medium tracking-tight text-cyprus-500 [text-wrap:balance] sm:text-6xl mx-auto">
+                {{ entry.title }}
+            </span>
+        </h1>
 
-            {% if entry.text|length %}
-            <div class="mt-6 space-y-6 max-w-3xl mx-auto">
-                {{ render.replaceElements(entry.text, {
-                    background: 'white',
-                    paragraphFontSize: 'text-xl'
-                }) }}
-            </div>
-            {% endif %}
+        {% if entry.text|length %}
+        <div class="mt-6 space-y-6 max-w-3xl mx-auto">
+            {{ render.replaceElements(entry.text, {
+                background: 'white',
+                paragraphFontSize: 'text-xl'
+            }) }}
         </div>
+        {% endif %}
     </div>
 
     {% if relatedClient|length %}
     {% set image = relatedClient.bannerImage.one() %}
     <div class="border-t border-neutral-200 bg-white/50 mt-24 sm:mt-32 lg:mt-40 {{ not image|length ? 'border-b' }}">
-        <div class="mx-auto max-w-7xl px-6 lg:px-8">
-            <div class="mx-auto max-w-2xl lg:max-w-none">
-                <div class="mx-auto max-w-5xl">
-                    <div class="-mx-6 grid grid-cols-1 text-sm text-cyprus-500 sm:mx-0 sm:grid-cols-3">
-                        <div class="border-t border-neutral-200 px-6 py-4 first:border-t-0 sm:border-l sm:border-t-0">
-                            <div class="font-semibold">
-                                Client
-                            </div>
-                            <div>
-                                {{ relatedClient.title }}
-                            </div>
+        <div class="container">
+            <div class="mx-auto max-w-5xl">
+                <div class="-mx-6 grid grid-cols-1 text-sm text-cyprus-500 sm:mx-0 sm:grid-cols-3">
+                    <div class="border-t border-neutral-200 px-6 py-4 first:border-t-0 sm:border-l sm:border-t-0">
+                        <div class="font-semibold">
+                            Client
                         </div>
-
-                        {% if relatedClient.joiningDate|length %}
-                        <div class="border-t border-neutral-200 px-6 py-4 first:border-t-0 sm:border-l sm:border-t-0">
-                            <div class="font-semibold">
-                                Year
-                            </div>
-                            <div>
-                                {{ relatedClient.joiningDate|date('Y') }}
-                            </div>
+                        <div>
+                            {{ relatedClient.title }}
                         </div>
-                        {% endif %}
-
-                        {% if relatedClient.projectType|length %}
-                        <div class="border-t border-neutral-200 px-6 py-4 first:border-t-0 sm:border-l sm:border-t-0">
-                            <div class="font-semibold">
-                                Service
-                            </div>
-                            <div>
-                                {{ relatedClient.projectType }}
-                            </div>
-                        </div>
-                        {% endif %}
                     </div>
+
+                    {% if relatedClient.joiningDate|length %}
+                    <div class="border-t border-neutral-200 px-6 py-4 first:border-t-0 sm:border-l sm:border-t-0">
+                        <div class="font-semibold">
+                            Year
+                        </div>
+                        <div>
+                            {{ relatedClient.joiningDate|date('Y') }}
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% if relatedClient.projectType|length %}
+                    <div class="border-t border-neutral-200 px-6 py-4 first:border-t-0 sm:border-l sm:border-t-0">
+                        <div class="font-semibold">
+                            Service
+                        </div>
+                        <div>
+                            {{ relatedClient.projectType }}
+                        </div>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -153,48 +149,44 @@
             </svg>
         </div>
 
-        <div class="mx-auto max-w-7xl px-6 lg:px-8">
-            <div class="mx-auto max-w-2xl lg:max-w-none">
-                <div class="max-w-2xl" >
-                    <h2>
-                        <span class="block font-display tracking-tight [text-wrap:balance] text-2xl font-semibold text-cyprus-500">More case studies</span>
-                    </h2>
-                </div>
+        <div class="container">
+            <div class="max-w-2xl">
+                <h2>
+                    <span class="block font-display tracking-tight [text-wrap:balance] text-2xl font-semibold text-cyprus-500">More case studies</span>
+                </h2>
             </div>
         </div>
 
-        <div class="mx-auto max-w-7xl px-6 lg:px-8 mt-16">
-            <div class="mx-auto max-w-2xl lg:max-w-none">
-                <div class="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-2">
-                    {% for caseStudy in recommendedCaseStudies %}
-                        <div>
-                            <a href="{{ caseStudy.getUrl() }}" class="relative flex flex-col items-start pl-8 relative before:absolute after:absolute before:bg-green-500 after:bg-neutral-950/10 before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px">
-                                <div class="text-sm text-neutral-600">
-                                    {{ caseStudy.postDate|date('F Y') }}
-                                </div>
+        <div class="container mt-16">
+            <div class="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-2">
+                {% for caseStudy in recommendedCaseStudies %}
+                    <div>
+                        <a href="{{ caseStudy.getUrl() }}" class="relative flex flex-col items-start pl-8 relative before:absolute after:absolute before:bg-green-500 after:bg-neutral-950/10 before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px">
+                            <div class="text-sm text-neutral-600">
+                                {{ caseStudy.postDate|date('F Y') }}
+                            </div>
 
-                                <h3 class="mt-6 text-base font-semibold text-cyprus-500">
-                                    {{ caseStudy.title }}
-                                </h3>
+                            <h3 class="mt-6 text-base font-semibold text-cyprus-500">
+                                {{ caseStudy.title }}
+                            </h3>
 
-                                {% if caseStudy.text|length %}
-                                <div class="mt-2.5 space-y-2.5">
-                                    {{ render.replaceElements(caseStudy.text, {
-                                        background: 'white',
-                                    }) }}
-                                </div>
-                                {% endif %}
+                            {% if caseStudy.text|length %}
+                            <div class="mt-2.5 space-y-2.5">
+                                {{ render.replaceElements(caseStudy.text, {
+                                    background: 'white',
+                                }) }}
+                            </div>
+                            {% endif %}
 
-                                <div class="mt-6 flex gap-x-3 text-base font-semibold transition text-cyprus-500">
-                                    Read more
-                                    <svg viewBox="0 0 24 6" aria-hidden="true" class="w-6 flex-none fill-current">
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M24 3 18 .5v2H0v1h18v2L24 3Z"></path>
-                                    </svg>
-                                </div>
-                            </a>
-                        </div>
-                    {% endfor %}
-                </div>
+                            <div class="mt-6 flex gap-x-3 text-base font-semibold transition text-cyprus-500">
+                                Read more
+                                <svg viewBox="0 0 24 6" aria-hidden="true" class="w-6 flex-none fill-current">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M24 3 18 .5v2H0v1h18v2L24 3Z"></path>
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </div>

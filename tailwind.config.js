@@ -14,14 +14,14 @@ module.exports = {
     theme: {
         container: {
             center: true,
-            padding: "1rem",
+            padding: "1.5rem",
         },
 
         screens: {
             sm: "540px",
             md: "768px",
             lg: "991px",
-            xl: "1248px",
+            xl: "1280px",
         },
         fontSize: {
             xs: ["0.75rem", { lineHeight: "1rem" }],
