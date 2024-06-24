@@ -49,11 +49,11 @@
         {% set defaultPaddingBottom = lastBlockSpacing.defaultPaddingBottom|default(defaultPaddingBottom) %}
     {% endif %}
 
-    {% if first and not heroExist|length and currentBgColor and not current == 'children' %}
+    {# {% if first and not heroExist|length and currentBgColor and not current == 'children' %}
         {% set defaultPaddingTop = firstBlockSpacing.defaultPaddingTop|default("extraLarge") %}
     {% elseif first and not heroExist|length %}
         {% set defaultMarginTop = firstBlockSpacing.defaultMarginTop|default("large") %}
-    {% endif %}
+    {% endif %} #}
 
     {% set spacing = collect({}) %}
     {% for item in ['marginPadding'] %}
