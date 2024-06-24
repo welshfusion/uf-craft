@@ -76,7 +76,7 @@
 {% set children = block.listing.one() %}
 
 {% if not isAjax %}
-<section id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ backgroundColor }} {{ bgOpacity }} {{ spacing }}">
+<section id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ backgroundColor }} {{ bgOpacity }} {{ spacing }} {{ block.roundedCorners ? 'rounded-4xl' }}">
     <div class="container">
         <div class="{{ render.contentWidth({width: contentWidth}) }}">
             {% if (children|length and children.type.handle != 'listingClient') and (block.eyebrow|length or block.heading|length or block.subHeading|length or block.text|length) %}

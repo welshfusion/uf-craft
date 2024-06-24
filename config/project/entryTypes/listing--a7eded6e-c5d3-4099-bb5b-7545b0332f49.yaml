@@ -159,16 +159,16 @@ fieldLayouts:
             width: 75
           -
             elementCondition: null
-            fieldUid: f5f3b40a-47d4-42d5-b50a-5e17eae1e600 # Content Alignment
-            handle: null
+            fieldUid: 07f716e2-b6e5-4aaa-aa76-1a49c9929017 # Light switch
+            handle: roundedCorners
             includeInCards: false
             instructions: null
-            label: null
+            label: 'Rounded Corners?'
             providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 2a7c9b7e-c07b-41f8-8949-5375459e86fa
+            uid: 9e24106e-9bae-4828-ae81-089216a69f49
             userCondition: null
             warning: null
             width: 25
@@ -199,6 +199,36 @@ fieldLayouts:
             tip: null
             type: craft\fieldlayoutelements\CustomField
             uid: 1855b5c1-1aa9-4ca3-bd07-a5e19e229c14
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            elementCondition: null
+            fieldUid: f5f3b40a-47d4-42d5-b50a-5e17eae1e600 # Content Alignment
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 2a7c9b7e-c07b-41f8-8949-5375459e86fa
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            elementCondition: null
+            fieldUid: 07f716e2-b6e5-4aaa-aa76-1a49c9929017 # Light switch
+            handle: showPattern
+            includeInCards: false
+            instructions: null
+            label: 'Show Pattern?'
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: d0f292c0-f038-4684-8ab2-8e07e98242ac
             userCondition: null
             warning: null
             width: 50
