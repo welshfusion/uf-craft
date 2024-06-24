@@ -9,7 +9,6 @@ settings:
     - aed4b3a7-3590-400d-beca-837fb987570a # Basic Content
     - ad85443f-75fc-45e3-9a29-4592254d416f # Image
     - effa59c4-035a-4910-bf8c-30996bff8047 # Gallery
-    - 7cfd4bf0-dad6-4968-9012-be339843d47a # Featured Banner
     - 2d5c34d8-b71f-4777-a3d6-50cb6a4a5402 # Multimedia
     - 4d8649f4-2cd8-4a36-9eaf-2251ec44112c # Form
   includeTableView: false

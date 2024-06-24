@@ -36,14 +36,6 @@
 {{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
 {% import "_/includes/macros" as render %}
 
-{# Parent Block Fields Start #}
-{% set parent = parent ?? null %}
-{% set childContainer = childContainer ?? false %}
-{% set containerWrapper = containerWrapper ?? false %}
-{% set containerImage = containerImage ?? false %}
-{% set sectionTag = childContainer or containerWrapper ? 'div' : 'section' %}
-{# Parent Block Fields End #}
-
 {% set headingTag = block.headingSize.getValue()|default('h3') %}
 {% set fontWeight = block.fontWeight.getValue()|default('medium') %}
 {% set contentAlignment = block.contentAlignment.value|default('left') %}
@@ -51,9 +43,7 @@
 {% set contentWidth = block.contentWidth|default('0;12') %}
 {% set roundedCorners = block.roundedCorners ?? false %}
 
-{% set conbackgroundColor = conbackgroundColor ?? null %}
-{% set backgroundColorLabel = block.backgroundColor.label|default(conbackgroundColor ?? 'white') %}
-{% set containerBgExist = conbackgroundColor != backgroundColorLabel %}
+{% set backgroundColorLabel = block.backgroundColor.label|default('white') %}
 {% set backgroundColor = render.color({
     handle: backgroundColorLabel,
     swatch: 'background'
@@ -76,15 +66,15 @@
 {% if containerSize == 'container' %}
     {% set spacing = render.spacing({
         type: 'marginPadding',
-        marginTop: block.marginTop.getValue()|default(childContainer and loop.first ? 'none' : (childContainer ? 'small' : 'medium')),
-        marginBottom: block.marginBottom.getValue()|default(childContainer and loop.last ? 'none' : (childContainer ? 'small' : 'medium')),
-        paddingTop: block.paddingTop.getValue()|default(containerBgExist ? 'small' : 'none'),
-        paddingBottom: block.paddingBottom.getValue()|default(containerBgExist ? 'small' : 'none'),
+        marginTop: block.marginTop.getValue()|default('medium'),
+        marginBottom: block.marginBottom.getValue()|default('medium'),
+        paddingTop: block.paddingTop.getValue()|default('none'),
+        paddingBottom: block.paddingBottom.getValue()|default('none'),
         currentBgColor: backgroundColorLabel
     }) %}
 {% endif %}
 
-<{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ containerSize == 'full' ? backgroundColor ~ spacing }} {{ containerSize == 'full' and roundedCorners ? 'rounded-4xl' }}">
+<section id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ containerSize == 'full' ? backgroundColor ~ spacing }} {{ containerSize == 'full' and roundedCorners ? 'rounded-4xl' }}">
     <div class="container">
         <div class="{{ containerSize == 'container' ? 'px-6 md:px-12 ' ~  backgroundColor ~ spacing }} {{ containerSize == 'container' and roundedCorners ? 'rounded-4xl' }}">
             <div class="{{ render.contentWidth({width: contentWidth}) }}">
@@ -150,4 +140,4 @@
             </div>
         </div>
     </div>
-</{{ sectionTag }}>
+</section>

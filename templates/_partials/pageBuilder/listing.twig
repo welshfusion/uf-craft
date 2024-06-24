@@ -40,22 +40,12 @@
 {{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
 {% import "_/includes/macros" as render %}
 
-{# Parent Block Fields Start #}
-{% set parent = parent ?? null %}
-{% set childContainer = childContainer ?? false %}
-{% set containerWrapper = containerWrapper ?? false %}
-{% set containerImage = containerImage ?? false %}
-{% set sectionTag = childContainer or containerWrapper ? 'div' : 'section' %}
-{# Parent Block Fields End #}
-
 {% set headingTag = block.headingSize.getValue()|default('h2') %}
 {% set fontWeight = block.fontWeight.getValue()|default('medium') %}
 {% set contentAlignment = block.contentAlignment.value|default('left') %}
 {% set contentWidth = block.contentWidth|default('0;12') %}
 
-{% set conbackgroundColor = conbackgroundColor ?? null %}
-{% set backgroundColorLabel = block.backgroundColor.label|default(conbackgroundColor ?? 'white') %}
-{% set containerBgExist = conbackgroundColor != backgroundColorLabel %}
+{% set backgroundColorLabel = block.backgroundColor.label|default('white') %}
 {% set backgroundColor = render.color({
     handle: backgroundColorLabel,
     swatch: 'background'
@@ -86,7 +76,7 @@
 {% set children = block.listing.one() %}
 
 {% if not isAjax %}
-<{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ backgroundColor }} {{ bgOpacity }} {{ spacing }}">
+<section id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ backgroundColor }} {{ bgOpacity }} {{ spacing }}">
     <div class="container">
         <div class="{{ render.contentWidth({width: contentWidth}) }}">
             {% if (children|length and children.type.handle != 'listingClient') and (block.eyebrow|length or block.heading|length or block.subHeading|length or block.text|length) %}
@@ -138,5 +128,5 @@
             {% endfor %}
         </div>
     </div>
-</{{ sectionTag }}>
+</section>
 {% endif %}

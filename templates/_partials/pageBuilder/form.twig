@@ -24,8 +24,11 @@
 {{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
 {% import "_/includes/macros" as render %}
 
-{% set form = block.form.one() %}
-{% set contactInfo = block.contactInfo.all() %}
+{# Parent Block Fields Start #}
+{% set parent = parent ?? null %}
+{% set childContainer = childContainer ?? false %}
+{% set sectionTag = childContainer ? 'div' : 'section' %}
+{# Parent Block Fields End #}
 
 {% set headingTag = block.headingSize.getValue()|default('h2') %}
 {% set fontWeight = block.fontWeight.getValue()|default('bold') %}
@@ -33,7 +36,7 @@
 {% set contentWidth = block.contentWidth|default('2;10') %}
 
 {% set conbackgroundColor = conbackgroundColor ?? null %}
-{% set backgroundColorLabel = block.backgroundColor.label|default(conbackgroundColor ?? 'white') %}
+{% set backgroundColorLabel = block.backgroundColor.label|default(conbackgroundColor ?? 'none') %}
 {% set containerBgExist = conbackgroundColor != backgroundColorLabel %}
 {% set backgroundColor = render.color({
     handle: backgroundColorLabel,
@@ -56,8 +59,11 @@
     animationEasing: block.animationEasing.getValue()|default(null)
 }) | raw %}
 
-<section id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ backgroundColor }} {{ spacing }}">
-    <div class="container">
+{% set form = block.form.one() %}
+{% set contactInfo = block.contactInfo.all() %}
+
+<{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ containerBgExist ? backgroundColor }} {{ spacing }} {{ childContainer ? 'relative z-20' }}">
+    <div class="{{ not childContainer ? 'container' }} {{ childContainer and containerBgExist ? 'px-4 md:px-6' }}">
         {% if block.eyebrow|length or block.heading|length or block.text|length %}
         {{ render.basicContents({
             eyebrow: block.eyebrow,
@@ -133,4 +139,4 @@
             {% endif %}
         </div>
     </div>
-</section>
+</{{ sectionTag }}>

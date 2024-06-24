@@ -35,9 +35,7 @@
 {% set contentWidth = block.contentWidth|default('0;12') %}
 {% set perRowLimit = block.perRowLimit.getValue()|default('4') %}
 
-{% set conbackgroundColor = conbackgroundColor ?? null %}
-{% set backgroundColorLabel = block.backgroundColor.label|default(conbackgroundColor ?? 'white') %}
-{% set containerBgExist = conbackgroundColor != backgroundColorLabel %}
+{% set backgroundColorLabel = block.backgroundColor.label|default('white') %}
 {% set backgroundColor = render.color({
     handle: backgroundColorLabel,
     swatch: 'background'
