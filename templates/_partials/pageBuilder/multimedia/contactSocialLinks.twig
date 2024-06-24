@@ -2,31 +2,23 @@
 {% import "_/includes/macros" as render %}
 
 {% set socialLinks = block.socialLinks.all() %}
-{% set color =  backgroundColorLabel == 'white' ? 'text-cyprus-500' : 'text-neutral-50' %}
+{% set color =  backgroundColorLabel == 'white' ? 'text-cyprus-500' : 'text-white' %}
 
-{% if block.heading|length or socialLinks|length %}
-    <div class="mt-16 pt-16 relative before:absolute after:absolute before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px {{ render.foregroundColors({background: backgroundColorLabel, type: 'border'}) }}">
-        {% if block.heading|length %}
-        <h2 class="font-display text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
-            {{ block.heading|nl2br }}
-        </h2>
-        {% endif %}
-
-        {% if socialLinks|length %}
-        <ul role="list" class="flex gap-x-10 mt-6 {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
-            {% for socialLink in socialLinks %}
-                <li>
-                    {% if socialLink.icon.path|length %}
-                    <a href="{{ socialLink.socialLink.getUrl() }}" aria-label="{{ socialLink.socialLink.getText() }}" class="transition hover:text-neutral-700">
-                        {{ svg(socialLink.icon.path)|attr({
-                            class: 'w-6 h-6' ~ color,
-                            fill: 'currentColor'
-                        }) }}
-                    </a>
-                    {% endif %}
-                </li>
-            {% endfor %}
-        </ul>
-        {% endif %}
-    </div>
+{% if socialLinks|length %}
+<ul role="list" class="flex gap-x-10 {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
+    {% for socialLink in socialLinks %}
+        <li>
+            <a href="{{ socialLink.socialLink.getUrl() }}"
+                class="transition hover:text-neutral-700"
+                {% if socialLink.socialLink.linkTitle %} title="{{ socialLink.socialLink.linkTitle }}"{% endif %} {% if socialLink.socialLink.target %} target="{{ socialLink.socialLink.target }}" rel="noopener"{% endif %} {% for attribute in socialLink.socialLink.customAttributes %} {{ attribute.attribute }}="{{ attribute.value }}" {% endfor %}
+            >
+                {{ svg(socialLink.icon.path)|attr({
+                    class: 'w-6 h-6' ~ color,
+                    fill: 'currentColor'
+                }) }}
+            </a>
+            <span class="sr-only">{{ "about this"|t }}</span>
+        </li>
+    {% endfor %}
+</ul>
 {% endif %}
