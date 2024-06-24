@@ -1,7 +1,7 @@
 {{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
 {% import "_/includes/macros" as render %}
 
-<div class="grid gap-2.5 md:gap-5 {{ imageGridLayout[imageLayout] }} {{ block.eyebrow|length or block.heading|length or block.text|length ? 'mt-10' }}">
+<div class="grid gap-2.5 md:gap-5 {{ imageGridLayout[imageLayout] }} {{ block.eyebrow|length or block.heading|length or block.subHeading|length or block.text|length ? 'mt-10' }}">
     {% for image in images %}
         {% set optionsOneClass = loop.first ? 'md:col-span-2' %}
         {% set optionsTwoClass = loop.index % 3 == 1 ? 'md:col-span-2' %}

@@ -73,7 +73,7 @@
             {% endif %}
 
             {% if tags|length %}
-            <ul role="list" class="mt-10 flex flex-wrap gap-4" {{ contentAnimation|raw }}>
+            <ul role="list" class="flex flex-wrap gap-4 {{ block.eyebrow|length or block.heading|length or block.subHeading|length or block.text|length ? 'mt-10' }}" {{ contentAnimation|raw }}>
                 {% for tag in tags %}
                     <li class="rounded-full bg-neutral-100 px-4 py-1.5 text-base text-neutral-600">
                         {{ tag.title }}

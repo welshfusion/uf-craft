@@ -75,7 +75,7 @@
 <section id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="rounded-4xl {{ backgroundColor }} {{ spacing }}">
     <div class="container">
         <div class="{{ render.contentWidth({width: contentWidth}) }}">
-            {% if block.eyebrow|length or block.heading|length or block.text|length or buttons|length %}
+            {% if block.eyebrow|length or block.heading|length or block.subHeading|length or block.text|length %}
             {{ render.basicContents({
                 eyebrow: block.eyebrow,
                 heading: block.heading,

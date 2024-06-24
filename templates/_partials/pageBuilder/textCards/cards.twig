@@ -1,7 +1,7 @@
 {{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
 {% import "_/includes/macros" as render %}
 
-<ul role="list" class="gap-10 grid {{ rowLimit[perRowLimit] }} {{ block.eyebrow|length or block.heading|length or block.text|length ? 'mt-10' }}">
+<ul role="list" class="gap-10 grid {{ rowLimit[perRowLimit] }} {{ block.eyebrow|length or block.heading|length or block.subHeading|length or block.text|length ? 'mt-10' }}">
     {% for card in textCards %}
         {% if card.simpleText|length %}
         <li {{ cardAnimation|raw }}>
