@@ -29,15 +29,29 @@
 {{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
 {% import "_/includes/macros" as render %}
 
+{# Parent Block Fields Start #}
+{% set parent = parent ?? null %}
+{% set childContainer = childContainer ?? false %}
+{% set sectionTag = childContainer ? 'div' : 'section' %}
+{# Parent Block Fields End #}
+
 {% set headingTag = block.headingSize.getValue()|default('h2') %}
 {% set fontWeight = block.fontWeight.getValue()|default('medium') %}
 {% set contentAlignment = block.contentAlignment.value|default('left') %}
 {% set contentWidth = block.contentWidth|default('0;12') %}
 
-{% set backgroundColorLabel = block.backgroundColor.label|default('white') %}
+{% set conbackgroundColor = conbackgroundColor ?? null %}
+{% set backgroundColorLabel = block.backgroundColor.label|default(conbackgroundColor ?? 'none') %}
+{% set containerBgExist = conbackgroundColor != backgroundColorLabel %}
 {% set backgroundColor = render.color({
     handle: backgroundColorLabel,
     swatch: 'background'
+}) %}
+
+{% set overlayOpacity = block.overlayOpacity.getValue()|default('none') %}
+{% set bgOpacity = render.setOpacity({
+    opacity: overlayOpacity,
+    opacityType: 'bg'
 }) %}
 
 {% set contentAnimation = render.setAnimation({
@@ -51,8 +65,8 @@
 {% set buttons = block.buttons.all() %}
 {% set tags = block.tags.all() %}
 
-<section id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ backgroundColor }} {{ spacing }}">
-    <div class="container">
+<{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ containerBgExist ? backgroundColor ~ bgOpacity }} {{ childContainer ? 'relative z-20' }} {{ spacing }}">
+    <div class="{{ not childContainer ? 'container' }} {{ childContainer and containerBgExist ? 'px-4 md:px-6' }}">
         <div class="{{ render.contentWidth({width: contentWidth}) }}">
             {% if block.eyebrow|length or block.heading|length or block.subHeading|length or block.text|length %}
             {{ render.basicContents({
@@ -103,4 +117,4 @@
             {% endfor %}
         </div>
     </div>
-</section>
+</{{ sectionTag }}>

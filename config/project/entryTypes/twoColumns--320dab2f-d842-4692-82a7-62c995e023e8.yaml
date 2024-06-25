@@ -179,6 +179,21 @@ fieldLayouts:
             width: 50
           -
             elementCondition: null
+            fieldUid: 54a3d4c9-582f-4754-8977-4c342ef8a96e # Overlay Opacity
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 46c066e7-9ba2-45e4-bc27-7336f5f8b218
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            elementCondition: null
             fieldUid: 67cd1597-672e-4ec8-a388-c982f3f2291f # Two Column Layout
             handle: null
             includeInCards: false
@@ -215,6 +230,21 @@ fieldLayouts:
             userCondition: null
           -
             elementCondition: null
+            fieldUid: f5f3b40a-47d4-42d5-b50a-5e17eae1e600 # Content Alignment
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 8f8044dd-c29c-493c-ad6c-4b88899e84f4
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            elementCondition: null
             fieldUid: e38ac257-70df-4d50-9384-503f2133f772 # Heading Size
             handle: null
             includeInCards: false
@@ -227,7 +257,7 @@ fieldLayouts:
             uid: a4d7e1e2-13bb-46ac-9451-c0c37c43dcc4
             userCondition: null
             warning: null
-            width: 50
+            width: 25
           -
             elementCondition: null
             fieldUid: 0e6d4e36-9f7c-4320-bfad-dcc290f8e135 # Font Weight
@@ -240,21 +270,6 @@ fieldLayouts:
             tip: null
             type: craft\fieldlayoutelements\CustomField
             uid: 38a14ba7-34b1-4bb0-a62f-ac94c323ad79
-            userCondition: null
-            warning: null
-            width: 25
-          -
-            elementCondition: null
-            fieldUid: f5f3b40a-47d4-42d5-b50a-5e17eae1e600 # Content Alignment
-            handle: null
-            includeInCards: false
-            instructions: null
-            label: null
-            providesThumbs: false
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: 8f8044dd-c29c-493c-ad6c-4b88899e84f4
             userCondition: null
             warning: null
             width: 25

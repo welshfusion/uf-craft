@@ -167,6 +167,12 @@ fieldLayouts:
         elements:
           -
             elementCondition: null
+            heading: 'Block Settings'
+            type: craft\fieldlayoutelements\Heading
+            uid: 4cd662dd-3e35-4ffd-bff5-8650ee56d66c
+            userCondition: null
+          -
+            elementCondition: null
             fieldUid: 4daa21a6-7d9e-4652-b72d-4b86d193b8cd # Content Width
             handle: null
             includeInCards: false
@@ -179,22 +185,7 @@ fieldLayouts:
             uid: 699143a0-9365-4856-983a-425802cf4ea1
             userCondition: null
             warning: null
-            width: 100
-          -
-            elementCondition: null
-            fieldUid: 4992b3d0-b6f9-447c-91fa-b2c94f97a938 # Container Size
-            handle: null
-            includeInCards: false
-            instructions: null
-            label: null
-            providesThumbs: false
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: 940ed32b-772b-43f1-8239-beb288eeb4e2
-            userCondition: null
-            warning: null
-            width: 50
+            width: 75
           -
             elementCondition: null
             fieldUid: 07f716e2-b6e5-4aaa-aa76-1a49c9929017 # Light switch
@@ -209,7 +200,7 @@ fieldLayouts:
             uid: 302d71a7-ae75-495a-a744-aa0a1c888f33
             userCondition: null
             warning: null
-            width: 50
+            width: 25
           -
             elementCondition: null
             fieldUid: 5b639435-9f82-4cfa-9b34-0421722361c9 # Background Color
@@ -225,6 +216,42 @@ fieldLayouts:
             userCondition: null
             warning: null
             width: 50
+          -
+            elementCondition: null
+            fieldUid: 54a3d4c9-582f-4754-8977-4c342ef8a96e # Overlay Opacity
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 42ff10dd-a6db-4f3e-ad5e-8e7dcf56dad4
+            userCondition: null
+            warning: null
+            width: 25
+          -
+            elementCondition: null
+            fieldUid: 4992b3d0-b6f9-447c-91fa-b2c94f97a938 # Container Size
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 940ed32b-772b-43f1-8239-beb288eeb4e2
+            userCondition: null
+            warning: null
+            width: 25
+          -
+            elementCondition: null
+            heading: 'Content Settings'
+            type: craft\fieldlayoutelements\Heading
+            uid: 3fbb3767-0752-4ae9-85b5-f6813aafcede
+            userCondition: null
           -
             elementCondition: null
             fieldUid: f5f3b40a-47d4-42d5-b50a-5e17eae1e600 # Content Alignment
@@ -254,7 +281,7 @@ fieldLayouts:
             uid: 87119f57-5309-431f-bd57-34a788651dd7
             userCondition: null
             warning: null
-            width: 50
+            width: 25
           -
             elementCondition: null
             fieldUid: 0e6d4e36-9f7c-4320-bfad-dcc290f8e135 # Font Weight
@@ -269,7 +296,7 @@ fieldLayouts:
             uid: 137aa2ce-43f4-4fac-bc06-813248fb9ece
             userCondition: null
             warning: null
-            width: 50
+            width: 25
           -
             elementCondition: null
             type: craft\fieldlayoutelements\HorizontalRule

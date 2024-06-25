@@ -189,6 +189,12 @@ fieldLayouts:
         elements:
           -
             elementCondition: null
+            heading: 'Block Settings'
+            type: craft\fieldlayoutelements\Heading
+            uid: 47314cb6-85dc-4167-9be2-6736126d920b
+            userCondition: null
+          -
+            elementCondition: null
             fieldUid: 4daa21a6-7d9e-4652-b72d-4b86d193b8cd # Content Width
             handle: null
             includeInCards: false
@@ -219,6 +225,27 @@ fieldLayouts:
             width: 50
           -
             elementCondition: null
+            fieldUid: 54a3d4c9-582f-4754-8977-4c342ef8a96e # Overlay Opacity
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 7733e076-5efa-4f76-9e8d-a0078f263ba8
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            elementCondition: null
+            heading: 'Content Settings'
+            type: craft\fieldlayoutelements\Heading
+            uid: 5b415824-8c71-47bd-a1f6-9d2d94913564
+            userCondition: null
+          -
+            elementCondition: null
             fieldUid: f5f3b40a-47d4-42d5-b50a-5e17eae1e600 # Content Alignment
             handle: null
             includeInCards: false
@@ -246,7 +273,7 @@ fieldLayouts:
             uid: 8eadda34-a530-4f39-8639-2d340c699ccd
             userCondition: null
             warning: null
-            width: 50
+            width: 25
           -
             elementCondition: null
             fieldUid: 0e6d4e36-9f7c-4320-bfad-dcc290f8e135 # Font Weight
@@ -261,7 +288,7 @@ fieldLayouts:
             uid: c6417d27-880f-433d-bd3c-b405d2d56765
             userCondition: null
             warning: null
-            width: 50
+            width: 25
         name: Settings
         uid: 01475a2f-730c-4e12-87ea-67a9e478785b
         userCondition: null

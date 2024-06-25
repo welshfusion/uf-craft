@@ -171,7 +171,22 @@ fieldLayouts:
             uid: 80549060-7b78-4b50-8632-9e3ef241148f
             userCondition: null
             warning: null
-            width: 100
+            width: 50
+          -
+            elementCondition: null
+            fieldUid: 54a3d4c9-582f-4754-8977-4c342ef8a96e # Overlay Opacity
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 6315fe8f-68c3-42be-9b8d-5373590448ab
+            userCondition: null
+            warning: null
+            width: 50
           -
             elementCondition: null
             heading: 'Content Settings'

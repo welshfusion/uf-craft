@@ -204,6 +204,21 @@ fieldLayouts:
             width: 50
           -
             elementCondition: null
+            fieldUid: 54a3d4c9-582f-4754-8977-4c342ef8a96e # Overlay Opacity
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 319cee6d-e58c-42a1-9f4e-92ad963679d8
+            userCondition: null
+            warning: null
+            width: 25
+          -
+            elementCondition: null
             fieldUid: 1278138f-e268-4a57-b50e-ad8d14eacb53 # Image Ratio
             handle: null
             includeInCards: false
@@ -216,7 +231,7 @@ fieldLayouts:
             uid: fe5ceedc-3696-4524-9f7e-52fb83e83d66
             userCondition: null
             warning: null
-            width: 50
+            width: 25
           -
             elementCondition: null
             heading: 'Content Settings'
