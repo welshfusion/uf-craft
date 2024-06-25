@@ -215,17 +215,29 @@ fieldLayouts:
             warning: null
             width: 50
           -
-            elementCondition: null
-            fieldUid: 54a3d4c9-582f-4754-8977-4c342ef8a96e # Overlay Opacity
+            elementCondition:
+              class: craft\elements\conditions\entries\EntryCondition
+              conditionRules:
+                -
+                  class: craft\fields\conditions\OptionsFieldConditionRule
+                  fieldUid: 7e835274-c615-428f-bb84-0acaedf10a47 # Gallery Layout
+                  layoutElementUid: cd947c9b-61b5-4559-8e71-9842abceeab7
+                  operator: in
+                  uid: a5c5dc65-d0a6-430e-b329-31cb48fcb0a1
+                  values:
+                    - single
+              elementType: craft\elements\Entry
+              fieldContext: global
+            fieldUid: 1278138f-e268-4a57-b50e-ad8d14eacb53 # Image Ratio
             handle: null
             includeInCards: false
-            instructions: null
+            instructions: 'Only works if single image gallery option is selected.'
             label: null
             providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 4d4b6bb5-debf-466a-8926-5dea403ebdc9
+            uid: 92194adc-1a5a-4bc8-90ea-2bffe292d1f1
             userCondition: null
             warning: null
             width: 25
@@ -257,32 +269,11 @@ fieldLayouts:
             warning: null
             width: 25
           -
-            elementCondition:
-              class: craft\elements\conditions\entries\EntryCondition
-              conditionRules:
-                -
-                  class: craft\fields\conditions\OptionsFieldConditionRule
-                  fieldUid: 7e835274-c615-428f-bb84-0acaedf10a47 # Gallery Layout
-                  layoutElementUid: cd947c9b-61b5-4559-8e71-9842abceeab7
-                  operator: in
-                  uid: a5c5dc65-d0a6-430e-b329-31cb48fcb0a1
-                  values:
-                    - single
-              elementType: craft\elements\Entry
-              fieldContext: global
-            fieldUid: 1278138f-e268-4a57-b50e-ad8d14eacb53 # Image Ratio
-            handle: null
-            includeInCards: false
-            instructions: 'Only works if single image gallery option is selected.'
-            label: null
-            providesThumbs: false
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: 92194adc-1a5a-4bc8-90ea-2bffe292d1f1
+            elementCondition: null
+            heading: 'Content Settings'
+            type: craft\fieldlayoutelements\Heading
+            uid: 9b46905f-f24e-46b6-8ad7-0ef3c2405d06
             userCondition: null
-            warning: null
-            width: 50
           -
             elementCondition: null
             fieldUid: f5f3b40a-47d4-42d5-b50a-5e17eae1e600 # Content Alignment
@@ -300,12 +291,6 @@ fieldLayouts:
             width: 50
           -
             elementCondition: null
-            heading: 'Content Settings'
-            type: craft\fieldlayoutelements\Heading
-            uid: 9b46905f-f24e-46b6-8ad7-0ef3c2405d06
-            userCondition: null
-          -
-            elementCondition: null
             fieldUid: e38ac257-70df-4d50-9384-503f2133f772 # Heading Size
             handle: null
             includeInCards: false
@@ -318,7 +303,7 @@ fieldLayouts:
             uid: 6949b284-6b30-4bd0-a93c-b5d760a83cae
             userCondition: null
             warning: null
-            width: 50
+            width: 25
           -
             elementCondition: null
             fieldUid: 0e6d4e36-9f7c-4320-bfad-dcc290f8e135 # Font Weight
@@ -333,7 +318,7 @@ fieldLayouts:
             uid: aeeb1ff2-7a2a-46d6-89ed-534f3e9272db
             userCondition: null
             warning: null
-            width: 50
+            width: 25
           -
             elementCondition: null
             type: craft\fieldlayoutelements\HorizontalRule

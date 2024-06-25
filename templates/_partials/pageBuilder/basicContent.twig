@@ -21,7 +21,6 @@
         Settings:
             - Content Width (contentWidth)
             - Background Color (backgroundColor)
-            - Overlay Opacity (overlayOpacity)
             - Content Alignment (contentAlignment)
             - Heading Size (headingSize)
             - Font Weight (fontWeight)
@@ -49,16 +48,10 @@
     swatch: 'background'
 }) %}
 
-{% set overlayOpacity = block.overlayOpacity.getValue()|default('none') %}
-{% set bgOpacity = render.setOpacity({
-    opacity: overlayOpacity,
-    opacityType: 'bg'
-}) %}
-
 {% set buttons = block.buttons.all() %}
 
 {% if block.eyebrow|length or block.heading|length or block.subHeading|length or block.text|length or buttons|length %}
-<{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ containerBgExist ? backgroundColor ~ bgOpacity }} {{ spacing }} {{ childContainer ? 'relative z-20' }}">
+<{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ containerBgExist ? backgroundColor }} {{ spacing }} {{ childContainer ? 'relative z-20' }}">
     <div class="{{ not childContainer ? 'container' }} {{ childContainer and containerBgExist ? 'px-4 md:px-6' }}">
         <div class="{{ render.contentWidth({width: contentWidth}) }}">
             {{ render.basicContents({

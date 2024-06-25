@@ -161,7 +161,22 @@ fieldLayouts:
             uid: 46951625-f8a3-4070-a5d8-c99a5ab59784
             userCondition: null
             warning: null
-            width: 100
+            width: 75
+          -
+            elementCondition: null
+            fieldUid: e084ec80-7142-4f11-95cc-afaccaed2cf6 # Column Alignment
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 9f9a5a38-6af9-42b0-9dc8-047a6606de2e
+            userCondition: null
+            warning: null
+            width: 25
           -
             elementCondition: null
             fieldUid: 5b639435-9f82-4cfa-9b34-0421722361c9 # Background Color
@@ -179,21 +194,6 @@ fieldLayouts:
             width: 50
           -
             elementCondition: null
-            fieldUid: 54a3d4c9-582f-4754-8977-4c342ef8a96e # Overlay Opacity
-            handle: null
-            includeInCards: false
-            instructions: null
-            label: null
-            providesThumbs: false
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: 46c066e7-9ba2-45e4-bc27-7336f5f8b218
-            userCondition: null
-            warning: null
-            width: 50
-          -
-            elementCondition: null
             fieldUid: 67cd1597-672e-4ec8-a388-c982f3f2291f # Two Column Layout
             handle: null
             includeInCards: false
@@ -204,21 +204,6 @@ fieldLayouts:
             tip: null
             type: craft\fieldlayoutelements\CustomField
             uid: f634912a-34b4-4879-b386-d719ba69f964
-            userCondition: null
-            warning: null
-            width: 50
-          -
-            elementCondition: null
-            fieldUid: e084ec80-7142-4f11-95cc-afaccaed2cf6 # Column Alignment
-            handle: null
-            includeInCards: false
-            instructions: null
-            label: null
-            providesThumbs: false
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: 9f9a5a38-6af9-42b0-9dc8-047a6606de2e
             userCondition: null
             warning: null
             width: 50

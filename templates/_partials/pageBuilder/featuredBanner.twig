@@ -51,12 +51,6 @@
     swatch: 'background'
 }) %}
 
-{% set overlayOpacity = block.overlayOpacity.getValue()|default('none') %}
-{% set bgOpacity = render.setOpacity({
-    opacity: overlayOpacity,
-    opacityType: 'bg'
-}) %}
-
 {% set image = block.image.one() %}
 {% set videos = block.backgroundVideo ?? null %}
 {% set buttons = block.buttons.all() %}
@@ -82,9 +76,9 @@
     }) %}
 {% endif %}
 
-<section id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ containerSize == 'full' ? backgroundColor ~ spacing ~ bgOpacity }} {{ containerSize == 'full' and roundedCorners ? 'rounded-4xl' }}">
+<section id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ containerSize == 'full' ? backgroundColor ~ spacing }} {{ containerSize == 'full' and roundedCorners ? 'rounded-4xl' }}">
     <div class="container">
-        <div class="{{ containerSize == 'container' ? 'px-6 md:px-12 ' ~  backgroundColor ~ spacing ~ bgOpacity }} {{ containerSize == 'container' and roundedCorners ? 'rounded-4xl' }}">
+        <div class="{{ containerSize == 'container' ? 'px-6 md:px-12 ' ~  backgroundColor ~ spacing }} {{ containerSize == 'container' and roundedCorners ? 'rounded-4xl' }}">
             <div class="{{ render.contentWidth({width: contentWidth}) }}">
                 {% if block.eyebrow|length or block.heading|length or block.subHeading|length or block.text|length %}
                 {{ render.basicContents({

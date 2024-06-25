@@ -26,7 +26,6 @@
             - Content Width (contentWidth)
             - Container Size (containerSize)
             - Background Color (backgroundColor)
-            - Overlay Opacity (overlayOpacity)
             - Image Ratio (imageRatio)
             - Content Alignment (contentAlignment)
             - Heading Size (headingSize)
@@ -57,12 +56,6 @@
     swatch: 'background'
 }) %}
 
-{% set overlayOpacity = block.overlayOpacity.getValue()|default('none') %}
-{% set bgOpacity = render.setOpacity({
-    opacity: overlayOpacity,
-    opacityType: 'bg'
-}) %}
-
 {% set imageRatio = block.imageRatio.getValue()|default('16_9') %}
 {% set ratio = {
     'auto'    : 'aspect-auto',
@@ -88,7 +81,7 @@
 {% set videoId = 'image-video-'|t ~ block.getId() %}
 {% set buttons = block.buttons.all() %}
 
-<{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ containerBgExist ? backgroundColor ~ bgOpacity }} {{ spacing }} {{ childContainer ? 'relative z-20' }}">
+<{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ containerBgExist ? backgroundColor }} {{ spacing }} {{ childContainer ? 'relative z-20' }}">
     <div class="{{ not childContainer ? 'container' }} {{ childContainer and containerBgExist ? 'px-4 md:px-6' }}">
         <div class="{{ render.contentWidth({width: contentWidth}) }}">
             {% if block.eyebrow|length or block.heading|length or block.subHeading|length or block.text|length %}

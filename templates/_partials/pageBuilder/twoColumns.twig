@@ -17,7 +17,6 @@
         Settings:
             - Content Width (contentWidth)
             - Background Color (backgroundColor)
-            - Overlay Opacity (overlayOpacity)
             - Column Alignment (columnAlignment)
             - Two Column Layout (twoColumnLayout)
             - Heading Size (headingSize)
@@ -41,12 +40,6 @@
     swatch: 'background'
 }) %}
 
-{% set overlayOpacity = block.overlayOpacity.getValue()|default('none') %}
-{% set bgOpacity = render.setOpacity({
-    opacity: overlayOpacity,
-    opacityType: 'bg'
-}) %}
-
 {% set firstDiv = {
     '3-9' : 'md:col-start-1 md:col-end-4',
     '4-8' : 'md:col-start-1 md:col-end-5',
@@ -68,7 +61,7 @@
 } %}
 {% set columns = block.twoColumns.all() %}
 {% set buttons = block.buttons.all() %}
-<section id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ backgroundColor }} {{ bgOpacity }} {{ spacing }}">
+<section id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ backgroundColor }} {{ spacing }}">
     <div class="container">
         {% if block.eyebrow|length or block.heading|length or block.subHeading|length or block.text|length %}
             <div class="{{ render.contentWidth({width: contentWidth}) }}">
@@ -93,7 +86,6 @@
                         pageBuilder: child.column.all(),
                         parent: child.type.handle,
                         conbackgroundColor: backgroundColorLabel,
-                        conOverlayOpacity: overlayOpacity,
                         childContainer: true,
                         firstBlockSpacing: {
                             'defaultMarginTop' : 'none',
