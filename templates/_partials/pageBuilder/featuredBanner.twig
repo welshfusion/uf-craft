@@ -43,9 +43,7 @@
 {% set contentWidth = block.contentWidth|default('0;12') %}
 {% set roundedCorners = block.roundedCorners ?? false %}
 
-{% set conbackgroundColor = conbackgroundColor ?? null %}
-{% set backgroundColorLabel = block.backgroundColor.label|default(conbackgroundColor ?? 'none') %}
-{% set containerBgExist = conbackgroundColor != backgroundColorLabel %}
+{% set backgroundColorLabel = block.backgroundColor.label|default('white') %}
 {% set backgroundColor = render.color({
     handle: backgroundColorLabel,
     swatch: 'background'
@@ -65,20 +63,20 @@
     animationEasing: block.contentAnimationEasing.value|default(null)
 }) | raw %}
 
-{% if containerSize == 'container' %}
+{% if containerSize == 'container' and backgroundColorLabel != 'white' %}
     {% set spacing = render.spacing({
         type: 'marginPadding',
         marginTop: block.marginTop.getValue()|default('medium'),
         marginBottom: block.marginBottom.getValue()|default('medium'),
-        paddingTop: block.paddingTop.getValue()|default('none'),
-        paddingBottom: block.paddingBottom.getValue()|default('none'),
+        paddingTop: block.paddingTop.getValue()|default(null),
+        paddingBottom: block.paddingBottom.getValue()|default(null),
         currentBgColor: backgroundColorLabel
     }) %}
 {% endif %}
 
 <section id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ containerSize == 'full' ? backgroundColor ~ spacing }} {{ containerSize == 'full' and roundedCorners ? 'rounded-4xl' }}">
     <div class="container">
-        <div class="{{ containerSize == 'container' ? 'px-6 md:px-12 ' ~  backgroundColor ~ spacing }} {{ containerSize == 'container' and roundedCorners ? 'rounded-4xl' }}">
+        <div class="{{ containerSize == 'container' and backgroundColorLabel != 'white' ? 'px-6 md:px-12' }} {{ containerSize == 'container' ? backgroundColor ~ spacing }} {{ containerSize == 'container' and roundedCorners ? 'rounded-4xl' }}">
             <div class="{{ render.contentWidth({width: contentWidth}) }}">
                 {% if block.eyebrow|length or block.heading|length or block.subHeading|length or block.text|length %}
                 {{ render.basicContents({
