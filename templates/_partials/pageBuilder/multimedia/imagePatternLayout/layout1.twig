@@ -1,7 +1,7 @@
 {{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
 {% import "_/includes/macros" as render %}
 
-<div class="flex justify-center">
+<div class="flex justify-center" {{ cardAnimation|raw }}>
     <div class="w-[33.75rem] flex-none lg:w-[45rem] opacity-100 transform-none">
         <div class="justify-center lg:justify-end lg:group-even/section:justify-start relative flex aspect-[719/680] w-full grayscale">
             <svg viewBox="0 0 655 680" fill="none" class="h-full">
