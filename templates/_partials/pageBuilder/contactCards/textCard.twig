@@ -4,6 +4,8 @@
 {% if block.simpleText|length %}
     {{ render.replaceElements(block.simpleText, {
         background: backgroundColorLabel,
+        opacity: overlayOpacity,
+        changeDefaultColor: true,
         paragraphFontSize: 'text-sm'
     }) }}
 {% endif %}

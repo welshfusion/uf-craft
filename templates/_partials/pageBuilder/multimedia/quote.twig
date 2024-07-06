@@ -6,14 +6,14 @@
     <div class="text-sm">
         {% if block.quote|length %}
         <blockquote>
-            <p class="{{ render.foregroundColors({background: backgroundColorLabel, type: 'subHeading'}) }}">
+            <p class="{{ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'subHeading'}) }}">
                 {{ block.quote|nl2br }}
             </p>
         </blockquote>
         {% endif %}
 
         {% if block.authorName|length or block.designation|length %}
-        <figcaption class="mt-6 font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
+        <figcaption class="mt-6 font-semibold {{ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'heading'}) }}">
             {% if block.authorName|length %}
                 {{ block.authorName|nl2br }}
                 <span>, </span>

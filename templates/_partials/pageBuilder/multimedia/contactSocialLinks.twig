@@ -5,7 +5,7 @@
 {% set color =  backgroundColorLabel in ['none', 'white'] ? 'text-cyprus-500' : 'text-white' %}
 
 {% if socialLinks|length %}
-<ul role="list" class="flex gap-x-10 {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
+<ul role="list" class="flex gap-x-10 {{ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'heading'}) }}">
     {% for socialLink in socialLinks %}
         <li>
             <a href="{{ socialLink.socialLink.getUrl() }}"

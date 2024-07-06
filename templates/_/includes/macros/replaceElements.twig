@@ -1,12 +1,14 @@
+{% set changeColorCon = changeDefaultColor ? changeDefaultColor and opacity < 55 and opacity != 'none' : false %}
+
 {% set backgroundColors = {
     'none'       : 'text-neutral-600',
     'white'      : 'text-neutral-600',
     'black-50'   : 'text-neutral-600',
     'green-50'   : 'text-neutral-800',
     'cyprus-50'  : 'text-neutral-800',
-    'green'      : 'text-white',
-    'cyprus'     : 'text-neutral-300',
-    'black'      : 'text-neutral-300',
+    'green'      : changeColorCon ? 'text-neutral-600' : 'text-white',
+    'cyprus'     : changeColorCon ? 'text-neutral-600' : 'text-neutral-300',
+    'black'      : changeColorCon ? 'text-neutral-600' : 'text-neutral-300',
 } %}
 
 {% set blockquoteColors = {
@@ -15,9 +17,9 @@
     'black-50'   : 'border-netural-950 bg-neutral-200/30',
     'green-50'   : 'border-green-500 bg-green-200/20',
     'cyprus-50'  : 'border-cyprus-500 bg-cyprus-200/20',
-    'green'      : 'border-white bg-green-100/30',
-    'cyprus'     : 'border-white bg-cyprus-200/30',
-    'black'      : 'border-white bg-neutral-600/20',
+    'green'      : changeColorCon ? 'border-green-500 bg-green-200/30' : 'border-white bg-green-100/30',
+    'cyprus'     : changeColorCon ? 'border-cyprus-500 bg-cyprus-200/20' : 'border-white bg-cyprus-200/30',
+    'black'      : changeColorCon ? 'border-neutral-500 bg-neutral-200/30' : 'border-white bg-neutral-600/20',
 } %}
 
 {% set strongtextColor = {
@@ -26,9 +28,9 @@
     'black-50'   : 'text-cyprus-500',
     'green-50'   : 'text-neutral-800',
     'cyprus-50'  : 'text-neutral-800',
-    'green'      : 'text-white',
-    'cyprus'     : 'text-white',
-    'black'      : 'text-white',
+    'green'      : changeColorCon ? 'text-neutral-600' : 'text-white',
+    'cyprus'     : changeColorCon ? 'text-neutral-600' : 'text-white',
+    'black'      : changeColorCon ? 'text-neutral-600' : 'text-white',
 } %}
 
 {% set classes = extraClasses|length ? extraClasses ~ ' ' : '' %}

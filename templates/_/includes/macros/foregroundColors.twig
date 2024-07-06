@@ -1,3 +1,5 @@
+{% set changeColorCon = changeDefaultColor ? changeDefaultColor and opacity < 55 and opacity != 'none' : false %}
+
 {% set foregroundColors = {
     'heading' : {
         'none'         :  'text-cyprus-500',
@@ -5,19 +7,19 @@
         'black-50'     :  'text-cyprus-500',
         'green-50'     :  'text-cyprus-500',
         'cyprus-50'    :  'text-cyprus-500',
-        'green'        :  'text-white',
-        'cyprus'       :  'text-white',
-        'black'        :  'text-white',
+        'green'        :  changeColorCon ? 'text-cyprus-500' : 'text-white',
+        'cyprus'       :  changeColorCon ? 'text-cyprus-500' : 'text-white',
+        'black'        :  changeColorCon ? 'text-cyprus-500' : 'text-white',
     },
     'subHeading' : {
         'none'         :  'text-neutral-600',
         'white'        :  'text-neutral-600',
         'black-50'     :  'text-neutral-600',
-        'green-50'     :  'text-neutral-300',
+        'green-50'     :  'text-neutral-800',
         'cyprus-50'    :  'text-neutral-800',
-        'green'        :  'text-white',
-        'cyprus'       :  'text-neutral-300',
-        'black'        :  'text-neutral-300',
+        'green'        :  changeColorCon ? 'text-neutral-600' : 'text-white',
+        'cyprus'       :  changeColorCon ? 'text-neutral-600' : 'text-neutral-300',
+        'black'        :  changeColorCon ? 'text-neutral-600' : 'text-neutral-300',
     },
     'border' : {
         'none'         :  'before:bg-green-500 after:bg-neutral-950/10',
@@ -25,9 +27,9 @@
         'black-50'     :  'before:bg-green-500 after:bg-neutral-950/10',
         'green-50'     :  'before:bg-cyprus-500 after:bg-neutral-950/20',
         'cyprus-50'    :  'before:bg-cyprus-500 after:bg-neutral-950/20',
-        'green'        :  'before:bg-white after:bg-white/20',
-        'cyprus'       :  'before:bg-green-500 after:bg-white/10',
-        'black'        :  'before:bg-green-500 after:bg-neutral-800',
+        'green'        :  changeColorCon ? 'before:bg-green-500 after:bg-neutral-950/20' : 'before:bg-white after:bg-white/20',
+        'cyprus'       :  changeColorCon ? 'before:bg-cyprus-500 after:bg-neutral-950/20' : 'before:bg-green-500 after:bg-white/10',
+        'black'        :  changeColorCon ? 'before:bg-neutral-600 after:bg-neutral-950/20' : 'before:bg-green-500 after:bg-neutral-800',
     },
     'detailPagelink' : {
         'none'         :  'text-cyprus-500 group-hover:text-neutral-700',

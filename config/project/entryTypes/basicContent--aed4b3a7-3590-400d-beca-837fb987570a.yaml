@@ -147,6 +147,21 @@ fieldLayouts:
             width: 50
           -
             elementCondition: null
+            fieldUid: 54a3d4c9-582f-4754-8977-4c342ef8a96e # Overlay Opacity
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 90eedd20-3b85-4019-bc2b-d1cebee9581c
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            elementCondition: null
             fieldUid: f5f3b40a-47d4-42d5-b50a-5e17eae1e600 # Content Alignment
             handle: null
             includeInCards: false
@@ -174,7 +189,7 @@ fieldLayouts:
             uid: 58e54d1a-e0b9-4bb3-b1f6-039856eba74b
             userCondition: null
             warning: null
-            width: 50
+            width: 25
           -
             elementCondition: null
             fieldUid: 0e6d4e36-9f7c-4320-bfad-dcc290f8e135 # Font Weight
@@ -189,7 +204,7 @@ fieldLayouts:
             uid: 0d82a2c4-f732-41bb-8273-7522ea917438
             userCondition: null
             warning: null
-            width: 50
+            width: 25
           -
             elementCondition: null
             type: craft\fieldlayoutelements\HorizontalRule

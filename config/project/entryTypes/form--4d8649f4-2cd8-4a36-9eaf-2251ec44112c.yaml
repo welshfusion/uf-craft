@@ -225,6 +225,21 @@ fieldLayouts:
             width: 50
           -
             elementCondition: null
+            fieldUid: 54a3d4c9-582f-4754-8977-4c342ef8a96e # Overlay Opacity
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: f86d1061-40e4-42a8-8c15-d75f0e5b1821
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            elementCondition: null
             fieldUid: f5f3b40a-47d4-42d5-b50a-5e17eae1e600 # Content Alignment
             handle: null
             includeInCards: false

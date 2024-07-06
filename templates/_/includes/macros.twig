@@ -123,6 +123,8 @@
         fontWeight: null,
         addBorder: false,
         backgroundColorLabel: null,
+        opacity: null,
+        changeDefaultColor: true,
         contentAlignment: null,
         headingSpacing: null,
         overrideParagraphFontSize: null,
@@ -221,6 +223,8 @@
         paragraphFontSize: null,
         spacingClass: null,
         extraClasses: null,
+        opacity: null,
+        changeDefaultColor: false,
         h1: null,
         h2: null,
         h3: null,
@@ -245,6 +249,8 @@
 {% macro foregroundColors(params) %}
     {% set defaultsParams = {
         background: null,
+        opacity: 'none',
+        changeDefaultColor: false,
         type: null
     } %}
 

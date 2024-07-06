@@ -38,7 +38,7 @@
                 {% set relatedClient = caseStudy.relatedClient.one() %}
 
                 <div class="swiper-slide flex p-px" {{ listingAnimation|raw }}>
-                    <a href="{{ caseStudy.getUrl() }}" class="relative flex w-full flex-col rounded-3xl p-6 ring-1 transition sm:p-8 {{ render.foregroundColors({background: backgroundColorLabel, type: 'cardHover'}) }}">
+                    <a href="{{ caseStudy.getUrl() }}" class="relative flex w-full flex-col rounded-3xl p-6 ring-1 transition sm:p-8 {{ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'cardHover'}) }}">
                         {% if relatedClient|length %}
                             {% set image = relatedClient.image.one() %}
 
@@ -52,7 +52,7 @@
                             }) }}
                             {% endif %}
 
-                            <p class="flex gap-x-2 text-sm {{ image|length ? 'mt-6' }} {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
+                            <p class="flex gap-x-2 text-sm {{ image|length ? 'mt-6' }} {{ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'heading'}) }}">
                                 {% if relatedClient.joiningDate|length %}
                                 <time datetime="2023" class="font-semibold">
                                     {{ relatedClient.joiningDate|date("Y") }}
@@ -66,7 +66,7 @@
                             </p>
                         {% endif %}
 
-                        <p class="font-display text-2xl font-semibold {{ relatedClient|length ? 'mt-6' }} {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
+                        <p class="font-display text-2xl font-semibold {{ relatedClient|length ? 'mt-6' }} {{ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'heading'}) }}">
                             {{ caseStudy.title }}
                         </p>
 
@@ -74,6 +74,8 @@
                         <div class="space-y-4 mt-4">
                             {{ render.replaceElements(caseStudy.text, {
                                 background: backgroundColorLabel,
+                                opacity: overlayOpacity,
+                                changeDefaultColor: true,
                             }) }}
                         </div>
                         {% endif %}

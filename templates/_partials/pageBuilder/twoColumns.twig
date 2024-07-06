@@ -40,6 +40,12 @@
     swatch: 'background'
 }) %}
 
+{% set overlayOpacity = block.overlayOpacity.getValue()|default('none') %}
+{% set bgOpacity = render.setOpacity({
+    opacity: overlayOpacity,
+    opacityType: 'bg'
+}) %}
+
 {% set firstDiv = {
     '3-9' : 'md:col-start-1 md:col-end-4',
     '4-8' : 'md:col-start-1 md:col-end-5',
@@ -61,7 +67,7 @@
 } %}
 {% set columns = block.twoColumns.all() %}
 {% set buttons = block.buttons.all() %}
-<section id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ backgroundColor }} {{ spacing }}">
+<section id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ backgroundColor }} {{ bgOpacity }} {{ spacing }}">
     <div class="container">
         {% if block.eyebrow|length or block.heading|length or block.subHeading|length or block.text|length %}
             <div class="{{ render.contentWidth({width: contentWidth}) }}">
@@ -73,6 +79,7 @@
                     headingTag: headingTag,
                     fontWeight: fontWeight,
                     backgroundColorLabel: backgroundColorLabel,
+                    opacity: overlayOpacity,
                     contentAlignment: contentAlignment,
                 }) }}
             </div>

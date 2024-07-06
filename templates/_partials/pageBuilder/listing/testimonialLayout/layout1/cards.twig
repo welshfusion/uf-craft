@@ -13,9 +13,9 @@
         {% for testimonial in relatedTestimonials %}
             {% set relatedClient = testimonial.relatedClient.one() %}
 
-            <div {% if relatedTestimonials|length > 1 %}class="pt-16 relative before:absolute after:absolute before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px {{ render.foregroundColors({background: backgroundColorLabel, type: 'border'}) }}"{% endif %} {{ listingAnimation|raw }}>
+            <div {% if relatedTestimonials|length > 1 %}class="pt-16 relative before:absolute after:absolute before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px {{ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'border'}) }}"{% endif %} {{ listingAnimation|raw }}>
                 {% if testimonial.quote|length %}
-                <blockquote class="relative font-display text-3xl font-medium tracking-tight sm:text-4xl {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
+                <blockquote class="relative font-display text-3xl font-medium tracking-tight sm:text-4xl {{ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'heading'}) }}">
                     {{ '“' ~ testimonial.quote|nl2br ~ '”' }}
                 </blockquote>
                 {% endif %}

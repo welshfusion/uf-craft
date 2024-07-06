@@ -51,6 +51,12 @@
     swatch: 'background'
 }) %}
 
+{% set overlayOpacity = block.overlayOpacity.getValue()|default('none') %}
+{% set bgOpacity = render.setOpacity({
+    opacity: overlayOpacity,
+    opacityType: 'bg'
+}) %}
+
 {% set contentAnimation = render.setAnimation({
     animation: block.animation,
     animationStyle: block.animationStyle.value|default('fade-up'),
@@ -81,7 +87,7 @@
 {% set children = block.listing.one() %}
 
 {% if not isAjax %}
-<section id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="relative {{ backgroundColor }} {{ spacing }} {{ block.roundedCorners ? 'rounded-4xl' }}">
+<section id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="relative {{ backgroundColor }} {{ bgOpacity }} {{ spacing }} {{ block.roundedCorners ? 'rounded-4xl' }}">
     {% if block.showPattern %}
     <svg aria-hidden="true" class="absolute inset-0 z-10 h-full w-full [mask-image:linear-gradient(to_bottom_left,white_50%,transparent_60%)] {{ render.foregroundColors({
         background: backgroundColorLabel,
@@ -115,6 +121,7 @@
                 headingTag: headingTag,
                 fontWeight: fontWeight,
                 backgroundColorLabel: backgroundColorLabel,
+                opacity: overlayOpacity,
                 contentAlignment: contentAlignment,
                 animation: block.animation,
                 contentAnimationStyle: block.animationStyle.getValue()|default('fade-up'),

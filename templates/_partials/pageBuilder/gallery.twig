@@ -60,6 +60,12 @@
     swatch: 'background'
 }) %}
 
+{% set overlayOpacity = block.overlayOpacity.getValue()|default('none') %}
+{% set bgOpacity = render.setOpacity({
+    opacity: overlayOpacity,
+    opacityType: 'bg'
+}) %}
+
 {% set rowLimit = {
     '1' : 'grid-cols-1',
     '2' : 'grid-cols-1 md:grid-cols-2',
@@ -104,7 +110,7 @@
     animationEasing: block.animationEasing2.value|default(null)
 }) | raw %}
 
-<{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ containerBgExist ? backgroundColor }} {{ spacing }} {{ childContainer ? 'relative z-20' }}">
+<{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ containerBgExist ? backgroundColor }} {{ bgOpacity }} {{ spacing }} {{ childContainer ? 'relative z-20' }}">
     <div class="{{ not childContainer ? 'container' }} {{ childContainer and containerBgExist ? 'px-4 md:px-6' }}">
         <div class="{{ render.contentWidth({width: contentWidth}) }}">
             {% if block.eyebrow|length or block.heading|length or block.subHeading|length or block.text|length %}
@@ -116,6 +122,7 @@
                 headingTag: headingTag,
                 fontWeight: fontWeight,
                 backgroundColorLabel: backgroundColorLabel,
+                opacity: overlayOpacity,
                 contentAlignment: contentAlignment,
                 animation: block.animation,
                 contentAnimationStyle: block.animationStyle2.getValue()|default('fade-up'),

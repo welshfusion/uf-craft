@@ -96,6 +96,8 @@
     {% if block.showPattern %}
     <svg aria-hidden="true" class="absolute inset-x-0 z-10 h-full w-full [mask-image:linear-gradient(to_bottom_left,white_40%,transparent_50%)] {{ render.foregroundColors({
         background: backgroundColorLabel,
+        opacity: overlayOpacity,
+        changeDefaultColor: true,
         type: 'pattern'
     }) }}">
         <rect width="100%" height="100%" fill="url(#:R6lkq:)" stroke-width="0"></rect>
@@ -127,6 +129,7 @@
                 headingTag: headingTag,
                 fontWeight: fontWeight,
                 backgroundColorLabel: backgroundColorLabel,
+                opacity: overlayOpacity,
                 contentAlignment: contentAlignment,
                 animation: block.animation,
                 contentAnimationStyle: block.animationStyle.getValue()|default('fade-up'),
@@ -142,9 +145,11 @@
             <dl class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:auto-cols-fr lg:grid-flow-col lg:grid-cols-none">
                 {% for card in cards %}
                     <div class="flex flex-col-reverse justify-end pl-8 relative before:absolute after:absolute before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px opacity-100 transform-none {{ render.foregroundColors({
-                    background: backgroundColorLabel,
-                    type: 'border'
-                }) }}" {{ contentAnimation|raw }}>
+                        background: backgroundColorLabel,
+                        opacity: overlayOpacity,
+                        changeDefaultColor: true,
+                        type: 'border'
+                    }) }}" {{ contentAnimation|raw }}>
                         {% if card.text|length %}
                         <dt class="mt-2 space-y-2">
                             {{ render.replaceElements(card.text, {
@@ -156,6 +161,8 @@
                         {% if card.heading|length %}
                         <dd class="font-display text-3xl font-semibold sm:text-4xl {{ render.foregroundColors({
                             background: backgroundColorLabel,
+                            opacity: overlayOpacity,
+                            changeDefaultColor: true,
                             type: 'heading'
                         }) }}">
                             {{ card.heading }}

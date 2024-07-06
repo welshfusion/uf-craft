@@ -17,7 +17,7 @@
                 <div class="h-px flex-auto {{ borderColorClass }}"></div>
             {% endif %}
 
-            <h6 class="block font-display text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }} {{ render.getAlignment({alignment: contentAlignment, type: 'text'}) }}" {{ contentAnimation|raw }}>
+            <h6 class="block font-display text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, opacity: opacity, changeDefaultColor: changeDefaultColor, type: 'heading'}) }} {{ render.getAlignment({alignment: contentAlignment, type: 'text'}) }}" {{ contentAnimation|raw }}>
                 {{ render.replaceUnderscores({
                     text: eyebrow,
                 }) }}
@@ -28,7 +28,7 @@
             {% endif %}
         </div>
     {% else %}
-        <h6 class="block font-display text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }} {{ render.getAlignment({alignment: contentAlignment, type: 'text'}) }}" {{ contentAnimation|raw }}>
+        <h6 class="block font-display text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, opacity: opacity, changeDefaultColor: changeDefaultColor, type: 'heading'}) }} {{ render.getAlignment({alignment: contentAlignment, type: 'text'}) }}" {{ contentAnimation|raw }}>
             {{ render.replaceUnderscores({
                 text: eyebrow,
             }) }}
@@ -46,7 +46,7 @@
     animationEasing: contentAnimationEasing,
     animationDelay: delay
 }) | raw %}
-<{{ headingTag }} class="block font-display tracking-tight [text-wrap:balance] {{ headingSpacing|length ? headingSpacing : (eyebrow|length ? 'mt-6') }} {{ render.getAlignment({alignment: contentAlignment, type: 'text'}) }} {{ render.getHeadingSize({headingTag: headingTag}) }} {{ render.getFontWeight({font: fontWeight}) }} {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}" {{ contentAnimation|raw }}>
+<{{ headingTag }} class="block font-display tracking-tight [text-wrap:balance] {{ headingSpacing|length ? headingSpacing : (eyebrow|length ? 'mt-6') }} {{ render.getAlignment({alignment: contentAlignment, type: 'text'}) }} {{ render.getHeadingSize({headingTag: headingTag}) }} {{ render.getFontWeight({font: fontWeight}) }} {{ render.foregroundColors({background: backgroundColorLabel, opacity: opacity, changeDefaultColor: changeDefaultColor, type: 'heading'}) }}" {{ contentAnimation|raw }}>
     {{ heading|nl2br }}
 </{{ headingTag }}>
 {% endif %}
@@ -61,7 +61,7 @@
     animationEasing: contentAnimationEasing,
     animationDelay: delay
 }) | raw %}
-<p class="block text-xl {{ eyebrow|length or heading|length ? 'mt-6' }} {{ render.foregroundColors({background: backgroundColorLabel, type: 'subHeading'}) }} {{ render.getAlignment({alignment: contentAlignment, type: 'text'}) }}" {{ contentAnimation|raw }}>
+<p class="block text-xl {{ eyebrow|length or heading|length ? 'mt-6' }} {{ render.foregroundColors({background: backgroundColorLabel, opacity: opacity, changeDefaultColor: changeDefaultColor, type: 'subHeading'}) }} {{ render.getAlignment({alignment: contentAlignment, type: 'text'}) }}" {{ contentAnimation|raw }}>
     {{ subHeading }}
 </p>
 {% endif %}
@@ -80,6 +80,8 @@
     {{ render.replaceElements(text, {
         background: backgroundColorLabel,
         contentAlignment: contentAlignment,
+        opacity: opacity,
+        changeDefaultColor: changeDefaultColor,
         paragraphFontSize: overrideParagraphFontSize|length ? overrideParagraphFontSize
     }) }}
 </div>

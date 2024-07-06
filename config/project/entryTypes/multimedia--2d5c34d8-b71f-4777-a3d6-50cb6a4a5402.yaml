@@ -312,6 +312,21 @@ fieldLayouts:
             width: 50
           -
             elementCondition: null
+            fieldUid: 54a3d4c9-582f-4754-8977-4c342ef8a96e # Overlay Opacity
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 30b0d9f3-f56f-4728-b96e-9cfccd60e57a
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            elementCondition: null
             fieldUid: e24737b0-c5aa-4f05-9fb5-fc42d7f31bb0 # Icon Position
             handle: imagePosition
             includeInCards: false
@@ -324,7 +339,7 @@ fieldLayouts:
             uid: 228fc937-f32a-4d53-970f-bdf846bff747
             userCondition: null
             warning: null
-            width: 50
+            width: 100
           -
             elementCondition: null
             heading: 'Content Settings'

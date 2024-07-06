@@ -156,7 +156,7 @@ fieldLayouts:
             uid: b90d442e-d85a-4b13-8a27-084edee1e87b
             userCondition: null
             warning: null
-            width: 75
+            width: 100
           -
             elementCondition: null
             fieldUid: 07f716e2-b6e5-4aaa-aa76-1a49c9929017 # Light switch
@@ -171,7 +171,22 @@ fieldLayouts:
             uid: 9e24106e-9bae-4828-ae81-089216a69f49
             userCondition: null
             warning: null
-            width: 25
+            width: 50
+          -
+            elementCondition: null
+            fieldUid: 07f716e2-b6e5-4aaa-aa76-1a49c9929017 # Light switch
+            handle: showPattern
+            includeInCards: false
+            instructions: null
+            label: 'Show Pattern?'
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: d0f292c0-f038-4684-8ab2-8e07e98242ac
+            userCondition: null
+            warning: null
+            width: 50
           -
             elementCondition: null
             fieldUid: 5b639435-9f82-4cfa-9b34-0421722361c9 # Background Color
@@ -189,16 +204,16 @@ fieldLayouts:
             width: 50
           -
             elementCondition: null
-            fieldUid: 07f716e2-b6e5-4aaa-aa76-1a49c9929017 # Light switch
-            handle: showPattern
+            fieldUid: 54a3d4c9-582f-4754-8977-4c342ef8a96e # Overlay Opacity
+            handle: null
             includeInCards: false
             instructions: null
-            label: 'Show Pattern?'
+            label: null
             providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: d0f292c0-f038-4684-8ab2-8e07e98242ac
+            uid: 5a2f524b-fe33-4f52-9abf-6b43beb49ce5
             userCondition: null
             warning: null
             width: 50

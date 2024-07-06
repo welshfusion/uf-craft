@@ -49,6 +49,12 @@
     swatch: 'background'
 }) %}
 
+{% set overlayOpacity = block.overlayOpacity.getValue()|default('none') %}
+{% set bgOpacity = render.setOpacity({
+    opacity: overlayOpacity,
+    opacityType: 'bg'
+}) %}
+
 {% set contentAnimation = render.setAnimation({
     animation: block.animation,
     animationStyle: block.animationStyle.value|default('fade-up'),
@@ -68,7 +74,7 @@
 {% set buttons = block.buttons.all() %}
 {% set textCards = block.card.all() %}
 
-<{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ containerBgExist ? backgroundColor }} {{ childContainer ? 'relative z-20' }} {{ spacing }}">
+<{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ containerBgExist ? backgroundColor }} {{ bgOpacity }} {{ childContainer ? 'relative z-20' }} {{ spacing }}">
     <div class="{{ not childContainer ? 'container' }} {{ childContainer and containerBgExist ? 'px-4 md:px-6' }}">
         {% if block.eyebrow|length or block.heading|length or block.subHeading|length or block.text|length %}
         <div class="{{ render.contentWidth({width: contentWidth}) }}">
@@ -80,6 +86,7 @@
                 headingTag: headingTag,
                 fontWeight: fontWeight,
                 backgroundColorLabel: backgroundColorLabel,
+                opacity: overlayOpacity,
                 contentAlignment: contentAlignment,
                 animation: block.animation,
                 contentAnimationStyle: block.animationStyle.getValue()|default('fade-up'),
@@ -94,17 +101,29 @@
         <div class="{{ block.eyebrow|length or block.heading|length or block.subHeading|length or block.text|length ? 'mt-10' }}">
             <div class="grid gap-10 {{ rowLimit[perRowLimit] }}" {{ contentAnimation|raw }}>
                 {% for card in textCards %}
-                <div class="flex flex-col-reverse justify-end pl-8 relative before:absolute after:absolute before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px {{ render.foregroundColors({background: backgroundColorLabel,type: 'border'}) }}">
+                <div class="flex flex-col-reverse justify-end pl-8 relative before:absolute after:absolute before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px {{ render.foregroundColors({
+                    background: backgroundColorLabel,
+                    opacity: overlayOpacity,
+                    changeDefaultColor: true,
+                    type: 'border'
+                }) }}">
                     {% if card.text|length %}
                     <div class="mt-2 space-y-2">
                         {{ render.replaceElements(card.text, {
                             background: backgroundColorLabel,
+                            opacity: overlayOpacity,
+                            changeDefaultColor: true,
                         }) }}
                     </div>
                     {% endif %}
 
                     {% if card.heading %}
-                    <div class="font-display text-3xl font-semibold sm:text-4xl {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
+                    <div class="font-display text-3xl font-semibold sm:text-4xl {{ render.foregroundColors({
+                        background: backgroundColorLabel,
+                        opacity: overlayOpacity,
+                        changeDefaultColor: true,
+                        type: 'heading'
+                    }) }}">
                         {{ card.heading }}
                     </div>
                     {% endif %}

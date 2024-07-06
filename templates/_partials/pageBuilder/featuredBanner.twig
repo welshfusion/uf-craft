@@ -49,6 +49,12 @@
     swatch: 'background'
 }) %}
 
+{% set overlayOpacity = block.overlayOpacity.getValue()|default('none') %}
+{% set bgOpacity = render.setOpacity({
+    opacity: overlayOpacity,
+    opacityType: 'bg'
+}) %}
+
 {% set image = block.image.one() %}
 {% set videos = block.backgroundVideo ?? null %}
 {% set buttons = block.buttons.all() %}
@@ -74,9 +80,9 @@
     }) %}
 {% endif %}
 
-<section id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ containerSize == 'full' ? backgroundColor ~ spacing }} {{ containerSize == 'full' and roundedCorners ? 'rounded-4xl' }}">
+<section id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ containerSize == 'full' ? backgroundColor ~ spacing ~ bgOpacity }} {{ containerSize == 'full' and roundedCorners ? 'rounded-4xl' }}">
     <div class="container">
-        <div class="{{ containerSize == 'container' and backgroundColorLabel != 'white' ? 'px-6 md:px-12' }} {{ containerSize == 'container' ? backgroundColor ~ spacing }} {{ containerSize == 'container' and roundedCorners ? 'rounded-4xl' }}">
+        <div class="{{ containerSize == 'container' and backgroundColorLabel != 'white' ? 'px-6 md:px-12' }} {{ containerSize == 'container' ? backgroundColor ~ spacing ~ bgOpacity }} {{ containerSize == 'container' and roundedCorners ? 'rounded-4xl' }}">
             <div class="{{ render.contentWidth({width: contentWidth}) }}">
                 {% if block.eyebrow|length or block.heading|length or block.subHeading|length or block.text|length %}
                 {{ render.basicContents({
@@ -87,6 +93,7 @@
                     headingTag: headingTag,
                     fontWeight: fontWeight,
                     backgroundColorLabel: backgroundColorLabel,
+                    opacity: overlayOpacity,
                     contentAlignment: contentAlignment,
                     animation: block.animation,
                     contentAnimationStyle: block.animationStyle.getValue()|default('fade-up'),
@@ -121,9 +128,9 @@
                 {% if contactInfo|length %}
                 <div class="mt-10 border-t {{ backgroundColorLabel == 'green' ? 'border-white' : 'border-green-500' }}" {{ contentAnimation|raw }}>
                     {% for item in contactInfo %}
-                        <div class="{{ loop.first ? 'mt-10' : 'mt-10 pt-10 relative before:absolute after:absolute before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px ' ~ render.foregroundColors({background: backgroundColorLabel, type: 'border'}) }}">
+                        <div class="{{ loop.first ? 'mt-10' : 'mt-10 pt-10 relative before:absolute after:absolute before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px ' ~ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'border'}) }}">
                             {% if item.heading|length %}
-                            <h2 class="font-display text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
+                            <h2 class="font-display text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'heading'}) }}">
                                 {{ item.heading|nl2br }}
                             </h2>
                             {% endif %}
