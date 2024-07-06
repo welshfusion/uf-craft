@@ -59,7 +59,7 @@
                                 }) }}
                                 {% endif %}
 
-                                <h3 class="mt-6 text-sm font-semibold sm:mt-0 lg:mt-8 {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
+                                <h3 class="mt-6 text-sm font-semibold sm:mt-0 lg:mt-8 {{ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'heading'}) }}">
                                     {{ relatedClient.title }}
                                 </h3>
                             </div>

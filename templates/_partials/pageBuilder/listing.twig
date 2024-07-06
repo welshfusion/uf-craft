@@ -91,6 +91,8 @@
     {% if block.showPattern %}
     <svg aria-hidden="true" class="absolute inset-0 z-10 h-full w-full [mask-image:linear-gradient(to_bottom_left,white_50%,transparent_60%)] {{ render.foregroundColors({
         background: backgroundColorLabel,
+        opacity: overlayOpacity,
+        changeDefaultColor: true,
         type: 'pattern'
     }) }}">
         <rect width="100%" height="100%" fill="url(#:Rpbalkq:)" stroke-width="0"></rect>
