@@ -73,7 +73,7 @@
         marginTop: block.marginTop.getValue()|default('medium'),
         marginBottom: block.marginBottom.getValue()|default('medium'),
         paddingTop: block.paddingTop.getValue()|default('medium'),
-        paddingBottom: block.paddingBottom.getValue()|default('none'),
+        paddingBottom: block.paddingBottom.getValue()|default(backgroundColorLabel == 'white' ? 'none' : 'medium'),
         currentBgColor: backgroundColorLabel
     }) %}
 {% endif %}

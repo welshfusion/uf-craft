@@ -50,11 +50,29 @@ return [
                 ]
             ],
             [
-                'label'   => 'black',
+                'label'   => 'black-50',
                 'default' => false,
                 'color'   =>  [
                     [
-                        'color' => '#000000',
+                        'color' => '#fafafa',
+                    ]
+                ]
+            ],
+            [
+                'label'   => 'green-50',
+                'default' => false,
+                'color'   =>  [
+                    [
+                        'color' => '#d8d9a0',
+                    ]
+                ]
+            ],
+            [
+                'label'   => 'cyprus-50',
+                'default' => false,
+                'color'   =>  [
+                    [
+                        'color' => '#809fa2',
                     ]
                 ]
             ],
@@ -73,6 +91,15 @@ return [
                 'color'   =>  [
                     [
                         'color' => '#003e44',
+                    ]
+                ]
+            ],
+            [
+                'label'   => 'black',
+                'default' => false,
+                'color'   =>  [
+                    [
+                        'color' => '#0a0a0a',
                     ]
                 ]
             ],
