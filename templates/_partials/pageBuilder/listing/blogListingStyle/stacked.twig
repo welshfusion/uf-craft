@@ -46,7 +46,7 @@
                 <div class="pt-16 relative before:absolute after:absolute before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px {{ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'border'}) }}">
                     <div class="relative lg:-mx-4 {{ relatedTeamMember|length ? 'lg:flex lg:justify-end' }}">
                         <div class="pt-10 lg:w-2/3 lg:flex-none lg:px-4 lg:pt-0">
-                            <a href="{{ blog.getUrl }}" class="font-display text-2xl font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
+                            <a href="{{ blog.getUrl }}" class="font-display text-2xl font-semibold {{ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'heading'}) }}">
                                 {{ blog.title }}
                             </a>
 
@@ -54,7 +54,7 @@
                                 {% set image = relatedTeamMember.image.one() %}
 
                                 <div class="lg:absolute lg:left-0 lg:top-0 lg:w-1/3 lg:px-4">
-                                    <div class="absolute left-0 top-0 text-sm lg:static {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
+                                    <div class="absolute left-0 top-0 text-sm lg:static {{ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'heading'}) }}">
                                         {{ relatedTeamMember.postDate|date('F Y') }}
                                     </div>
 
@@ -72,7 +72,7 @@
                                         {% endif %}
 
                                         {% if relatedTeamMember.title|length or relatedTeamMember.designation|length %}
-                                        <div class="text-sm {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
+                                        <div class="text-sm {{ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'heading'}) }}">
                                             {% if relatedTeamMember.title|length %}
                                             <div class="font-semibold">
                                                 {{ relatedTeamMember.title }}
@@ -94,11 +94,13 @@
                             <div class="mt-6 space-y-6 max-w-2xl">
                                 {{ render.replaceElements(blog.text, {
                                     background: backgroundColorLabel,
+                                    opacity: overlayOpacity,
+                                    changeDefaultColor: true,
                                 }) }}
                             </div>
                             {% endif %}
 
-                            <a href="{{ blog.getUrl }}" class="mt-8 inline-flex rounded-full px-4 py-1.5 text-sm font-semibold transition {{ render.foregroundColors({background: backgroundColorLabel, type: 'detailPageButton'}) }}">
+                            <a href="{{ blog.getUrl }}" class="mt-8 inline-flex rounded-full px-4 py-1.5 text-sm font-semibold transition {{ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'detailPageButton'}) }}">
                                 <span class="relative top-px">
                                     Read more
                                 </span>

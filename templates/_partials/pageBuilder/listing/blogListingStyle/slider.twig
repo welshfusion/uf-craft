@@ -54,6 +54,8 @@
                         <div class="mt-2.5 space-y-2.5">
                             {{ render.replaceElements(blog.text, {
                                 background: backgroundColorLabel,
+                                opacity: overlayOpacity,
+                                changeDefaultColor: true,
                             }) }}
                         </div>
                         {% endif %}
