@@ -56,9 +56,8 @@
 }) %}
 
 {% set image = block.image.one() %}
-{% set videos = block.backgroundVideo ?? null %}
+{% set video = block.backgroundVideo.all() %}
 {% set buttons = block.buttons.all() %}
-
 {% set contactInfo = block.contactInfo.all() %}
 
 {% set contentAnimation = render.setAnimation({
@@ -69,9 +68,31 @@
     animationEasing: block.contentAnimationEasing.value|default(null)
 }) | raw %}
 
-<section id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ containerSize == 'full' ? backgroundColor ~ spacing.paddingTop ~ ' ' ~ spacing.paddingBottom ~ bgOpacity }} {{ spacing.marginTop }} {{ spacing.marginBottom }} {{ containerSize == 'full' and roundedCorners ? 'rounded-4xl' }}">
-    <div class="container">
-        <div class="{{ containerSize == 'container' and backgroundColorLabel != 'white' ? 'px-6 md:px-12' }} {{ containerSize == 'container' ? backgroundColor ~ spacing.paddingTop ~ ' ' ~ spacing.paddingBottom ~ bgOpacity }} {{ containerSize == 'container' and roundedCorners ? 'rounded-4xl' }}">
+{% set roundedCorners = block.roundedCorners ? 'rounded-4xl' %}
+
+<section id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ containerSize == 'container' ? 'container' }} {{ spacing.marginTop }} {{ spacing.marginBottom }}">
+    <div class="relative">
+        {% if image|length or video|length %}
+        {{ render.renderVideo({
+            image: image|length ? image,
+            alt: image|length ? image.title,
+            width: image|length ? image.width,
+            height: image|length ? image.height,
+            class: "absolute object-cover w-full h-full " ~ roundedCorners,
+            lazy: false,
+            videoLazy: false,
+            videos: video,
+            videoClass: "absolute object-cover w-full h-full " ~ roundedCorners,
+            videoType: 'background',
+            videoPoster: image,
+            videoAttrs: {
+                preload: "none",
+            }
+        }) }}
+        {% endif %}
+        <div class="absolute w-full h-full {{ backgroundColor }} {{ bgOpacity }} {{ roundedCorners }}"></div>
+
+        <div class="relative z-10 {{ containerSize == 'full' ? 'container' }} {{ containerSize == 'container' and backgroundColorLabel != 'white' ? 'px-6 md:px-12' }} {{ spacing.paddingTop }} {{ spacing.paddingBottom }}">
             <div class="{{ render.contentWidth({width: contentWidth}) }}">
                 {% if block.eyebrow|length or block.heading|length or block.subHeading|length or block.text|length %}
                 {{ render.basicContents({
