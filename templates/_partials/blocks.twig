@@ -2,6 +2,7 @@
 {% import '_/includes/macros' as render %}
 
 {% set parent = parent ?? null %}
+{% set spacingGlobalBlock = spacingGlobalBlock ?? false %}
 {% set heroExist = entry is defined and entry.hero|length ? entry.hero.one() %}
 
 {% for i, block in pageBuilder %}
@@ -49,11 +50,13 @@
         {% set defaultPaddingBottom = lastBlockSpacing.defaultPaddingBottom|default(defaultPaddingBottom) %}
     {% endif %}
 
-    {# {% if first and not heroExist|length and currentBgColor and not current == 'children' %}
-        {% set defaultPaddingTop = firstBlockSpacing.defaultPaddingTop|default("extraLarge") %}
-    {% elseif first and not heroExist|length %}
-        {% set defaultMarginTop = firstBlockSpacing.defaultMarginTop|default("large") %}
-    {% endif %} #}
+    {% if first and (not heroExist|length) and (parent not in ['callToAction', 'container', 'twoColumn', 'blog', 'caseStudies']) and (not spacingGlobalBlock) %}
+        {% if currentBgColor %}
+            {% set defaultPaddingTop = "extraLarge" %}
+        {% else %}
+            {% set defaultMarginTop = "extraLarge" %}
+        {% endif %}
+    {% endif %}
 
     {% set spacing = collect({}) %}
     {% for item in ['marginTop', 'marginBottom', 'paddingTop', 'paddingBottom', 'marginPadding'] %}

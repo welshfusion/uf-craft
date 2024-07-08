@@ -16,7 +16,7 @@
 {% set cta = block.callToAction.one() %}
 
 {% if cta|length %}
-    {% set ctaBuilder = cta.pageBuilder.all() %}
+    {% set ctaBuilder = cta.pageBuilder.type(null).all() %}
 
     {#
     =============================================

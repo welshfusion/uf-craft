@@ -141,6 +141,7 @@
                     fontWeight: fontWeight,
                     headingSpacing: 'mt-2',
                     backgroundColorLabel: backgroundColorLabel,
+                    opacity: overlayOpacity,
                     animation: block.animation,
                     contentAnimationStyle: block.animationStyle2.getValue()|default('fade-up'),
                     contentAnimationDuration: block.animationDuration2.getValue()|default(1500),
@@ -152,13 +153,13 @@
                 {% if block.heading2|length or multimediaCard|length %}
                 <div {{ cardAnimation|raw }}>
                     {% if block.heading2|length %}
-                    <h3 class="mt-12 font-display text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, type: 'heading'}) }}">
+                    <h3 class="mt-12 font-display text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'heading'}) }}">
                         {{ block.heading2 }}
                     </h3>
                     {% endif %}
 
                     {% for block in multimediaCard %}
-                        <div class="mt-8 {{ not loop.first ? 'pt-8 group-first:pt-0 group-first:before:hidden group-first:after:hidden relative before:absolute after:absolute before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px ' ~ render.foregroundColors({background: backgroundColorLabel, type: 'border'}) }}">
+                        <div class="mt-8 {{ not loop.first ? 'pt-8 group-first:pt-0 group-first:before:hidden group-first:after:hidden relative before:absolute after:absolute before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px ' ~ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'border'}) }}">
                             {% include '_partials/pageBuilder/multimedia/' ~ block.type.handle ignore missing %}
                         </div>
                     {% endfor %}
