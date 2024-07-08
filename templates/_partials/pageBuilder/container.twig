@@ -45,7 +45,7 @@
 {% set fontWeight = block.fontWeight.getValue()|default('medium') %}
 {% set contentAlignment = block.contentAlignment.value|default('left') %}
 {% set containerSize = block.containerSize.getValue()|default('container') %}
-{% set contentWidth = block.contentWidth|default('2;10') %}
+{% set contentWidth = block.contentWidth|default('1;12') %}
 
 {% set backgroundColorLabel = block.backgroundColor.label|default('white') %}
 {% set backgroundColor = render.color({
@@ -59,21 +59,10 @@
     opacityType: 'bg'
 }) %}
 
-{% if block.showPattern %}
-    {% set spacing = render.spacing({
-        type: 'marginPadding',
-        marginTop: block.marginTop.getValue()|default('medium'),
-        marginBottom: block.marginBottom.getValue()|default('medium'),
-        paddingTop: block.paddingTop.getValue()|default('medium'),
-        paddingBottom: block.paddingBottom.getValue()|default(backgroundColorLabel == 'white' ? 'none' : 'medium'),
-        currentBgColor: backgroundColorLabel
-    }) %}
-{% endif %}
-
 {% set containers = block.container.all() %}
 {% set buttons = block.buttons.all() %}
 
-<section id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="relative {{ image|length or video|length ? 'overflow-hidden' }} {{ block.roundedCorners ? 'rounded-4xl' }}">
+<section id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="relative {{ spacing.marginTop }} {{ spacing.marginBottom }} {{ block.roundedCorners ? 'rounded-4xl' }}">
     {% if image|length or video|length %}
     {{ render.renderVideo({
         image: image|length ? image,
@@ -94,7 +83,7 @@
     {% endif %}
     <div class="absolute w-full h-full z-10 {{ backgroundColor }} {{ bgOpacity }} {{ block.roundedCorners ? 'rounded-4xl' }}"></div>
 
-    <div class="{{ block.showPattern ? spacing : spacing.implode(' ') }}">
+    <div class="{{ spacing.paddingTop }} {{ spacing.paddingBottom }}">
         {% if block.showPattern %}
         <svg aria-hidden="true" class="absolute inset-0 z-10 h-full w-full [mask-image:linear-gradient(to_bottom_left,white_50%,transparent_60%)] {{ render.foregroundColors({
             background: backgroundColorLabel,
@@ -130,6 +119,7 @@
                         text: block.text,
                         headingTag: headingTag,
                         fontWeight: fontWeight,
+                        contentAlignment: contentAlignment,
                         backgroundColorLabel: backgroundColorLabel,
                         opacity: overlayOpacity,
                     }) }}

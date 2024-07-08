@@ -73,21 +73,10 @@
     animationEasing: block.animationEasing2.value|default(null)
 }) | raw %}
 
-{% if block.showPattern %}
-    {% set spacing = render.spacing({
-        type: 'marginPadding',
-        marginTop: block.marginTop.getValue()|default('medium'),
-        marginBottom: block.marginBottom.getValue()|default('medium'),
-        paddingTop: block.paddingTop.getValue()|default('medium'),
-        paddingBottom: block.paddingBottom.getValue()|default(backgroundColorLabel == 'white' ? 'none' : 'medium'),
-        currentBgColor: backgroundColorLabel
-    }) %}
-{% endif %}
-
 {% set children = block.listing.one() %}
 
 {% if not isAjax %}
-<section id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="relative {{ backgroundColor }} {{ bgOpacity }} {{ block.showPattern ? spacing : spacing.implode(' ') }} {{ block.roundedCorners ? 'rounded-4xl' }}">
+<section id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="relative {{ backgroundColor }} {{ bgOpacity }} {{ spacing.implode(' ') }} {{ block.roundedCorners ? 'rounded-4xl' }}">
     {% if block.showPattern %}
     <svg aria-hidden="true" class="absolute inset-0 z-10 h-full w-full [mask-image:linear-gradient(to_bottom_left,white_50%,transparent_60%)] {{ render.foregroundColors({
         background: backgroundColorLabel,
