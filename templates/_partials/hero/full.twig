@@ -154,6 +154,8 @@
                         <dt class="mt-2 space-y-2">
                             {{ render.replaceElements(card.text, {
                                 background: backgroundColorLabel,
+                                opacity: overlayOpacity,
+                                changeDefaultColor: true,
                             }) }}
                         </dt>
                         {% endif %}
@@ -175,50 +177,3 @@
         {% endif %}
     </div>
 </section>
-
-{# <section class="{{ backgroundColor }} {{ bgOpacity }} my-24 sm:my-32 md:my-56">
-    <div class="container">
-        <div class="transform-none {{ render.contentWidth({width: contentWidth}) }}">
-            {{ render.basicContents({
-                eyebrow: block.eyebrow,
-                heading: block.heading,
-                subHeading: block.subHeading,
-                text: block.text,
-                buttons: buttons,
-                headingTag: headingTag,
-                fontWeight: fontWeight,
-                backgroundColorLabel: backgroundColorLabel,
-                contentAlignment: contentAlignment,
-                animation: block.animation,
-                contentAnimationStyle: block.animationStyle.getValue()|default('fade-up'),
-                contentAnimationDuration: block.animationDuration.getValue()|default(1500),
-                contentAnimationOffset: block.animationOffset.getValue()|default(200),
-                contentAnimationEasing: block.animationEasing.getValue()|default(null)
-            }) }}
-        </div>
-
-        {% if cards|length %}
-        <div class="mt-16">
-            <dl class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:auto-cols-fr lg:grid-flow-col lg:grid-cols-none">
-                {% for card in cards %}
-                    <div class="flex flex-col-reverse justify-end pl-8 relative before:absolute after:absolute before:bg-green-500 after:bg-neutral-950/10 before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px opacity-100 transform-none">
-                        {% if card.text|length %}
-                        <dt class="mt-2">
-                            {{ render.replaceElements(card.text, {
-                                background: backgroundColorLabel,
-                            }) }}
-                        </dt>
-                        {% endif %}
-
-                        {% if card.heading|length %}
-                        <dd class="font-display text-3xl font-semibold text-cyprus-500 sm:text-4xl">
-                            {{ card.heading }}
-                        </dd>
-                        {% endif %}
-                    </div>
-                {% endfor %}
-            </dl>
-        </div>
-        {% endif %}
-    </div>
-</section> #}
