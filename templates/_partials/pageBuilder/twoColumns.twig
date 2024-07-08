@@ -65,9 +65,11 @@
     '8-4' : 'md:col-start-9 md:col-end-13',
     '9-3' : 'md:col-start-10 md:col-end-13'
 } %}
+
 {% set columns = block.twoColumns.all() %}
 {% set buttons = block.buttons.all() %}
-<section id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ backgroundColor }} {{ bgOpacity }} {{ spacing }}">
+
+<section id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ backgroundColor }} {{ bgOpacity }} {{ spacing.implode(' ') }}">
     <div class="container">
         {% if block.eyebrow|length or block.heading|length or block.subHeading|length or block.text|length %}
             <div class="{{ render.contentWidth({width: contentWidth}) }}">

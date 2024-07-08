@@ -177,7 +177,8 @@
 
     {# Override (overwrite) defaults with passed parameters #}
     {% set options = defaults|merge(params) %}
-    {% include "_/includes/macros/spacing" with options %}
+    {% set ret %}{% include "_/includes/macros/spacing" with options %}{% endset %}
+    {% return ret|replace({ "\n": '' })|trim %}
     {# {% set ret %}{% include "_/includes/macros/spacing" with options %}{% endset %} #}
 {% endmacro %}
 

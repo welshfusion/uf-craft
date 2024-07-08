@@ -56,35 +56,30 @@
     {% endif %} #}
 
     {% set spacing = collect({}) %}
-    {% for item in ['marginPadding'] %}
-        {% set _space %}
-            {{ render.spacing({
-                type: item,
+    {% for item in ['marginTop', 'marginBottom', 'paddingTop', 'paddingBottom', 'marginPadding'] %}
+        {% set spacing = spacing.merge({ (item) : render.spacing({
+            type: item,
 
-                first: first,
-                last: last,
-                section: entry.section.handle|default(null),
-                parent: parent,
+            first: first,
+            last: last,
+            section: entry.section.handle|default(null),
+            parent: parent,
 
-                prev: prev,
-                current: current,
-                next: next,
+            prev: prev,
+            current: current,
+            next: next,
 
-                prevBgColor: prevBgColor,
-                currentBgColor: currentBgColor,
-                nextBgColor: nextBgColor,
+            prevBgColor: prevBgColor,
+            currentBgColor: currentBgColor,
+            nextBgColor: nextBgColor,
 
-                defaultSpacing: defaultSpacing,
-                marginTop: block.marginTop.value|default(defaultMarginTop),
-                paddingTop: block.paddingTop.value|default(defaultPaddingTop),
-                marginBottom: block.marginBottom.value|default(defaultMarginBottom),
-                paddingBottom: block.paddingBottom.value|default(defaultPaddingBottom),
-            }) }}
-        {% endset %}
-
-        {% set spacing = spacing.merge({ (item) : _space.__toString()|replace({ "\n": ""})|trim }) %}
+            defaultSpacing: defaultSpacing,
+            marginTop: block.marginTop.value|default(defaultMarginTop),
+            paddingTop: block.paddingTop.value|default(defaultPaddingTop),
+            marginBottom: block.marginBottom.value|default(defaultMarginBottom),
+            paddingBottom: block.paddingBottom.value|default(defaultPaddingBottom),
+        }) }) %}
     {% endfor %}
 
-    {% set spacing = spacing.implode(" ") %}
-    {% include '_partials/pageBuilder/' ~ block.type.handle ignore missing %}
+    {% include "_partials/pageBuilder/#{block.type.handle}" ignore missing %}
 {% endfor %}
