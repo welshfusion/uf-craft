@@ -16,11 +16,11 @@
         <div class="lg:container px-6">
             <div class="flex items-center justify-between">
                 {% if headerLogo|length %}
-                <a href="{{ siteUrl }}" aria-label="{{ siteName }}">
+                <a href="{{ siteUrl }}" class="flex shrink-0" aria-label="{{ siteName }}">
                     {{ render.setImage({
                         image: headerLogo,
                         alt: headerLogo.title,
-                        class: 'h-8'
+                        class: 'h-10'
                     }) }}
                 </a>
                 {% endif %}
@@ -65,11 +65,11 @@
                 <div class="lg:container px-6">
                     <div class="flex items-center justify-between">
                         {% if altLogo|length %}
-                        <a href="{{ siteUrl }}" aria-label="{{ siteName }}">
+                        <a href="{{ siteUrl }}" class="flex shrink-0" aria-label="{{ siteName }}">
                             {{ render.setImage({
                                 image: altLogo,
                                 alt: altLogo.title,
-                                class: 'hidden h-8 sm:block'
+                                class: 'h-10'
                             }) }}
                         </a>
                         {% endif %}
