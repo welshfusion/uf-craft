@@ -96,7 +96,18 @@
             </div>
         </div>
 
+        {#
+        ============================================
+            CP Links
+        ============================================
+        #}
+        {% set entryId = entry.getId() ?? null %}
+        {% set categoryId = category.getId() ?? null %}
+        {{ craft.blitz.includeDynamic('_/includes/cp-link', {entryId : entryId, categoryId : categoryId}) }}
+
         {{ craft.vite.register("src/js/app.js", false) }}
+
+        <script type="text/javascript" src="https://www.bugherd.com/sidebarv2.js?apikey=0czoxhmdpuz0j04dy72sfw" async="true"></script>
     </body>
 </html>
 {% endminify %}
