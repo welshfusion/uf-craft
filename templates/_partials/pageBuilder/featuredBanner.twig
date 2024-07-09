@@ -136,7 +136,7 @@
                 {% endfor %}
 
                 {% if contactInfo|length %}
-                <div class="mt-10 border-t {{ backgroundColorLabel == 'green' ? 'border-white' : 'border-green-500' }}" {{ contentAnimation|raw }}>
+                <div class="mt-10 border-t {{ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'simpleBorder'}) }}" {{ contentAnimation|raw }}>
                     {% for item in contactInfo %}
                         <div class="{{ loop.first ? 'mt-10' : 'mt-10 pt-10 relative before:absolute after:absolute before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px ' ~ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'border'}) }}">
                             {% if item.heading|length %}

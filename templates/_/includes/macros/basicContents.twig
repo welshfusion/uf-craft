@@ -11,10 +11,9 @@
 
 {% if eyebrow|length %}
     {% if addBorder %}
-        {% set borderColorClass = backgroundColorLabel == 'green' ? 'bg-cyprus-500' : 'bg-green-500' %}
         <div class="flex items-center gap-x-8">
             {% if contentAlignment == 'right' or contentAlignment == 'center' %}
-                <div class="h-px flex-auto {{ borderColorClass }}"></div>
+                <div class="border-t flex-auto {{ render.foregroundColors({background: backgroundColorLabel, opacity: opacity, changeDefaultColor: changeDefaultColor, type: 'simpleBorder'}) }}"></div>
             {% endif %}
 
             <h6 class="block font-display text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, opacity: opacity, changeDefaultColor: changeDefaultColor, type: 'heading'}) }} {{ render.getAlignment({alignment: contentAlignment, type: 'text'}) }}" {{ contentAnimation|raw }}>
@@ -24,7 +23,7 @@
             </h6>
 
             {% if contentAlignment == 'left' or contentAlignment == 'center' %}
-                <div class="h-px flex-auto {{ borderColorClass }}"></div>
+                <div class="border-t flex-auto {{ render.foregroundColors({background: backgroundColorLabel, opacity: opacity, changeDefaultColor: changeDefaultColor, type: 'simpleBorder'}) }}"></div>
             {% endif %}
         </div>
     {% else %}
