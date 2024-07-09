@@ -69,7 +69,7 @@
     "src": "src/js/swiper.js"
   },
   "vite/legacy-polyfills-legacy": {
-    "file": "assets/polyfills-legacy-87563d10.js",
+    "file": "assets/polyfills-legacy-c9a0d812.js",
     "isEntry": true,
     "src": "vite/legacy-polyfills-legacy"
   }
