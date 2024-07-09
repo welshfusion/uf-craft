@@ -14,20 +14,33 @@ use craft\helpers\App;
 return GeneralConfig::create()
     // Set the default week start day for date pickers (0 = Sunday, 1 = Monday, etc.)
     ->defaultWeekStartDay(1)
+
     // Prevent generated URLs from including "index.php"
     ->omitScriptNameInUrls()
+
     // Preload Single entries as Twig variables
     ->devMode(App::env('DEV_MODE') ?? false)
+
     ->allowAdminChanges(App::env('ALLOW_ADMIN_CHANGES') ?? false)
+
     ->disallowRobots(App::env('DISALLOW_ROBOTS') ?? false)
+
     ->postCpLoginRedirect('entries')
+
     ->preventUserEnumeration()
+
+    ->cpTrigger(App::env('CP_TRIGGER') ?: 'admin')
+
     ->runQueueAutomatically(App::env('RUN_QUEUE_AUTOMATICALLY') ?? true)
+
     ->sendPoweredByHeader(false)
-    // ->useEmailAsUsername(true)
+
     ->maxUploadFileSize(104857600) //100 MB
+
     ->enableGql(false)
+
     ->errorTemplatePrefix("_messages/")
+
     ->preloadSingles()
 
     // Set the @webroot alias so the clear-caches command knows where to find CP resources
