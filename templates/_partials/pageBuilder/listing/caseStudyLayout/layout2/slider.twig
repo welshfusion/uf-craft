@@ -10,6 +10,8 @@
     {% set relatedCaseStudy = craft.entries.section("caseStudies").limit(limit) %}
 {% endif %}
 
+{% set relatedCaseStudy = relatedCaseStudy.with(['relatedClient']).cache().all() %}
+
 {% set swiperPagination = "swiper-pagination-#{block.getId()}" %}
 {% set paginationBulletClass = backgroundColorLabel in ['cyprus', 'black'] ? '!bg-white' : '!bg-cyprus-500' %}
 {% set settings = {

@@ -20,6 +20,8 @@
     {% set relatedCaseStudy = craft.entries.section("caseStudies").limit(limit) %}
 {% endif %}
 
+{% set relatedCaseStudy = relatedCaseStudy.with(['relatedClient']).cache() %}
+
 {% if pagination %}
     {% paginate relatedCaseStudy as pageInfo, entries %}
 {% else %}

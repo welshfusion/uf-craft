@@ -12,6 +12,8 @@
     {% set relatedBlog = craft.entries.section("blog").limit(limit) %}
 {% endif %}
 
+{% set relatedBlog = relatedBlog.with(['relatedTeamMember']).cache() %}
+
 {% if pagination %}
     {% paginate relatedBlog as pageInfo, entries %}
 {% else %}

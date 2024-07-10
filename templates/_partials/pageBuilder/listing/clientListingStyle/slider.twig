@@ -5,10 +5,12 @@
 {% set showBorder = block.showBorder ?? null %}
 {% set limit = block.limit|default('12') %}
 
-{% set relatedClient = block.relatedClient.limit(limit).all() %}
+{% set relatedClient = block.relatedClient.limit(limit) %}
 {% if not relatedClient|length %}
-    {% set relatedClient = craft.entries.section("client").limit(limit).all() %}
+    {% set relatedClient = craft.entries.section("client").limit(limit) %}
 {% endif %}
+
+{% set relatedClient = relatedClient.with(['image2']).cache().all() %}
 
 {% set swiperPagination = "swiper-pagination-#{block.getId()}" %}
 {% set paginationBulletClass = backgroundColorLabel in ['cyprus', 'black'] ? '!bg-white' : '!bg-cyprus-500' %}

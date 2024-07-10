@@ -3,10 +3,12 @@
 
 {% set limit = block.limit|default('12') %}
 
-{% set relatedTeam = block.relatedTeamMember.limit(limit).all() %}
+{% set relatedTeam = block.relatedTeamMember.limit(limit) %}
 {% if not relatedTeam|length %}
-    {% set relatedTeam = craft.entries.section("team").limit(limit).all() %}
+    {% set relatedTeam = craft.entries.section("team").limit(limit) %}
 {% endif %}
+
+{% set relatedTeam = relatedTeam.with(['teamCategory', 'image']).cache().all() %}
 
 {% set teamCategories = craft.categories.group("teamCategory").all() %}
 

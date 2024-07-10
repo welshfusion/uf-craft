@@ -8,6 +8,8 @@
     {% set relatedTestimonials = craft.entries.section("testimonial").limit(limit) %}
 {% endif %}
 
+{% set relatedTestimonials = relatedTestimonials.with(['relatedClient']).cache().all() %}
+
 {% set swiperPagination = "swiper-pagination-#{block.getId()}" %}
 {% set paginationBulletClass = backgroundColorLabel in ['cyprus', 'black'] ? '!bg-white' : '!bg-cyprus-500' %}
 {% set settings = {

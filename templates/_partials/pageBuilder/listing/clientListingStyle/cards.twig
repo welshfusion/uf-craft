@@ -11,10 +11,12 @@
 
 {% set limit = block.limit|default('12') %}
 
-{% set relatedClient = block.relatedClient.limit(limit).all() %}
+{% set relatedClient = block.relatedClient.limit(limit) %}
 {% if not relatedClient|length %}
-    {% set relatedClient = craft.entries.section("client").limit(limit).all() %}
+    {% set relatedClient = craft.entries.section("client").limit(limit) %}
 {% endif %}
+
+{% set relatedClient = relatedClient.with(['image2']).cache().all() %}
 
 <div class="{{ parent.eyebrow|length or parent.heading|length or parent.subHeading|length or parent.text|length ? 'mt-10' }}">
     {% if block.showBorder %}
