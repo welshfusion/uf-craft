@@ -189,6 +189,12 @@ fieldLayouts:
             width: 50
           -
             elementCondition: null
+            heading: 'Content Settings'
+            type: craft\fieldlayoutelements\Heading
+            uid: 2801e326-f931-4e7e-a9e4-57089bf6eaa1
+            userCondition: null
+          -
+            elementCondition: null
             fieldUid: f5f3b40a-47d4-42d5-b50a-5e17eae1e600 # Content Alignment
             handle: null
             includeInCards: false
@@ -201,13 +207,7 @@ fieldLayouts:
             uid: 04f97be6-2cf4-40af-a45a-633b6f113121
             userCondition: null
             warning: null
-            width: 100
-          -
-            elementCondition: null
-            heading: 'Content Settings'
-            type: craft\fieldlayoutelements\Heading
-            uid: 2801e326-f931-4e7e-a9e4-57089bf6eaa1
-            userCondition: null
+            width: 50
           -
             elementCondition: null
             fieldUid: e38ac257-70df-4d50-9384-503f2133f772 # Heading Size
@@ -222,7 +222,7 @@ fieldLayouts:
             uid: 621a7c43-5be0-44dc-ac4f-dbc5f2e0e9e1
             userCondition: null
             warning: null
-            width: 50
+            width: 25
           -
             elementCondition: null
             fieldUid: 0e6d4e36-9f7c-4320-bfad-dcc290f8e135 # Font Weight
@@ -237,7 +237,7 @@ fieldLayouts:
             uid: 2e11a6c4-624f-419d-943f-f1c3efcc6d21
             userCondition: null
             warning: null
-            width: 50
+            width: 25
           -
             elementCondition: null
             type: craft\fieldlayoutelements\HorizontalRule

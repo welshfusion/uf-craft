@@ -7,10 +7,14 @@
 
     Fields:
         Content:
+            Child:
+              Text Card (textCard)
                 - Simple Text (simpleText)
+
         Auxiliary:
             - Eyebrow (eyebrow)
             - Heading (heading)
+            - Sub Heading (subHeading)
             - Text (text)
             - Buttons (buttons) [Matrix]
                 - Button Type (buttonType)
@@ -22,12 +26,12 @@
         Settings:
             - Content Width (contentWidth)
             - background Color (backgroundColor)
-            - content Alignment (contentAlignment)
-            - Per Row Limit (perRowLimit)
+            - Overlay Opacity (overlayOpacity)
             - Listing Style (listingStyle)
+            - Per Row Limit (perRowLimit)
+            - content Alignment (contentAlignment)
             - Heading Size (headingSize)
             - font Weight (fontWeight)
-            - Section Id (sectionId)
 ===============================================================================
 #}
 {{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}

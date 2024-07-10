@@ -8,23 +8,23 @@
     Fields:
         Content:
             Column 1:
-                - Images (images)
+                - Image (image)
                 - Video (video)
 
             Column 2:
                 - Eyebrow (eyebrow)
                 - Heading (heading)
+                - Sub Heading (subHeading)
                 - Text (text)
-                - Buttons (buttons) [Matrix]
-                    - Button Type (buttonType)
-                    - Button Color (buttonColor)
-                    - Icon (icon)
-                    - Icon Position (iconPosition)
-                    - Button (button)
 
             Text Blocks:
                 - Text Block Heading (heading2)
                 - Multimedia Card (multimediaCard)
+                   Child
+                    - Text (text)
+                    - Contact Social Links (contactSocialLinks)
+                    - Tags (tags)
+                    - Quote (quote)
 
         Auxiliary:
             - Eyebrow (eyebrow)
@@ -39,13 +39,14 @@
                 - Button (button)
 
         Settings:
+            - Image Pattern Layout (imagePatternLayout)
             - Content Width (contentWidth)
             - Background Color (backgroundColor)
-            - Content Alignment (contentAlignment)
+            - Overlay Opacity (overlayOpacity)
             - Image Position (imagePosition)
+            - Content Alignment (contentAlignment)
             - Heading Size (headingSize)
             - Font Weight (fontWeight)
-            - section Id (sectionId)
 ===============================================================================
 #}
 {{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}

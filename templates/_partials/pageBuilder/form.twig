@@ -7,18 +7,25 @@
 
     Fields:
         Content:
+            - Form Heading (formHeading)
             - Form (form)
+            - Sidebar Heading (sidebarHeading)
+            - Text (text2)
+            - Contact Info (contactInfo) [Matrix]
 
         Auxiliary:
             - Eyebrow (eyebrow)
             - Heading (heading)
+            - Sub Heading (subHeading)
             - Text (text)
-            - Buttons (buttons) [Matrix]
-                - Button Type (buttonType)
-                - Button Color (buttonColor)
-                - Icon (icon)
-                - Icon Position (iconPosition)
-                - Button (button)
+
+        Settings:
+            - Content Width (contentWidth)
+            - Background Color (backgroundColor)
+            - Overlay Opacity (overlayOpacity)
+            - Content Alignment (contentAlignment)
+            - Heading Size (headingSize)
+            - Font Weight (fontWeight)
 ===============================================================================
 #}
 {{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}

@@ -1,7 +1,7 @@
 columnSuffix: null
 handle: imagePatternLayout
 instructions: null
-name: 'Image pattern Layout '
+name: 'Image Pattern Layout '
 searchable: false
 settings:
   displayAsGraphic: true

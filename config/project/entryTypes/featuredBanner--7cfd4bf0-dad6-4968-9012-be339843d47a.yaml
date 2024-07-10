@@ -185,7 +185,7 @@ fieldLayouts:
             uid: 699143a0-9365-4856-983a-425802cf4ea1
             userCondition: null
             warning: null
-            width: 75
+            width: 100
           -
             elementCondition: null
             fieldUid: 4992b3d0-b6f9-447c-91fa-b2c94f97a938 # Container Size

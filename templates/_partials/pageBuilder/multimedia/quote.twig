@@ -1,3 +1,17 @@
+{#
+===============================================================================
+    Quote (quote)
+
+    Variables
+        - Block (block)
+
+    Fields:
+        Content:
+            - Quote (quote)
+            - Author Name (authorName)
+            - Designation (designation)
+===============================================================================
+#}
 {{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
 {% import "_/includes/macros" as render %}
 

@@ -1,3 +1,16 @@
+{#
+===============================================================================
+    Text (text)
+
+    Variables
+        - Block (block)
+
+    Fields:
+        Content:
+            - Card (textCard) [Matrix]
+                - Simple Text (simpleText)
+===============================================================================
+#}
 {{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
 {% import "_/includes/macros" as render %}
 
