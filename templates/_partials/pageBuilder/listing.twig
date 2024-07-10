@@ -74,7 +74,8 @@
     animationEasing: block.animationEasing2.value|default(null)
 }) | raw %}
 
-{% set children = block.listing.one() %}
+{% set child = block.listing.one() %}
+{% set childHandle = child.type.handle %}
 
 {% if not isAjax %}
 <section id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="relative {{ backgroundColor }} {{ bgOpacity }} {{ spacing.implode(' ') }} {{ block.roundedCorners ? 'rounded-4xl' }}">
@@ -104,7 +105,7 @@
 
     <div class="container relative z-10 ">
         <div class="{{ render.contentWidth({width: contentWidth}) }}">
-            {% if (children|length and children.type.handle != 'listingClient') and (block.eyebrow|length or block.heading|length or block.subHeading|length or block.text|length) %}
+            {% if (child|length and child.type.handle != 'listingClient') and (block.eyebrow|length or block.heading|length or block.subHeading|length or block.text|length) %}
             {{ render.basicContents({
                 eyebrow: block.eyebrow,
                 heading: block.heading,
@@ -124,11 +125,28 @@
             {% endif %}
 {% endif %}
 
-            {% if children|length %}
-            {% include "_partials/pageBuilder/listing/#{children.type.handle}" with {
-                parent: block,
-                block: children,
-            } %}
+            {% if child|length %}
+                {% switch childHandle %}
+                    {% case "listingTestimonials" %}
+                        {% set testimonialLayout = child.testimonialLayout.value|default('layout1') %}
+                        {% set listingStyle = child.listingStyle.value|default('cards') %}
+                        {% set listingLink = "#{childHandle}/#{testimonialLayout}/#{listingStyle}" %}
+                    {% case "listingCaseStudy" %}
+                        {% set caseStudyLayout = child.caseStudyLayout.value|default('layout1') %}
+                        {% set listingStyle = child.listingStyle2.value|default('cards') %}
+                        {% set listingLink = "#{childHandle}/#{caseStudyLayout}/#{listingStyle}" %}
+                    {% case "listingBlog" %}
+                        {% set listingStyle = child.listingStyle2.value|default('cards') %}
+                        {% set listingLink = "#{childHandle}/#{listingStyle}" %}
+                    {% default %}
+                        {% set listingStyle = child.listingStyle.value|default('cards') %}
+                        {% set listingLink = "#{childHandle}/#{listingStyle}" %}
+                {% endswitch %}
+
+                {% include "_partials/pageBuilder/listing/#{listingLink}" with {
+                    parent: block,
+                    block: child,
+                } %}
             {% endif %}
 
 {% if not isAjax %}

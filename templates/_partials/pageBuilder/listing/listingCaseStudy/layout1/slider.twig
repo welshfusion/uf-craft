@@ -1,3 +1,21 @@
+{#
+===============================================================================
+    Listing Case Study (listingCaseStudy) [Layout 1] [Slider]
+
+    Variables
+        - Block (block)
+
+    Fields:
+        Content:
+            - Related Case Study (relatedCaseStudy)
+
+        Settings:
+            - Case Study Layout (caseStudyLayout)
+            - Listing Style (listingStyle2)
+            - Limit (limit)
+            - Per Row Limit (perRowLimit)
+===============================================================================
+#}
 {{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
 {% import "_/includes/macros" as render %}
 
@@ -5,9 +23,9 @@
 {% set limit = block.limit|default('12') %}
 {% set perRowLimit = block.perRowLimit.getValue()|default('2') %}
 
-{% set relatedBlog = block.relatedBlog.limit(limit).all() %}
-{% if not relatedBlog|length %}
-    {% set relatedBlog = craft.entries.section("blog").limit(limit).all() %}
+{% set relatedCaseStudy = block.relatedCaseStudy.limit(limit).all() %}
+{% if not relatedCaseStudy|length %}
+    {% set relatedCaseStudy = craft.entries.section("caseStudies").limit(limit).all() %}
 {% endif %}
 
 {% set swiperPagination = "swiper-pagination-#{block.getId()}" %}
@@ -35,26 +53,21 @@
 <div class="relative {{ parent.eyebrow|length or parent.heading|length or parent.subHeading|length or parent.text|length ? 'mt-16' }}">
     <div class="swiper swiper-slider !pb-12" data-modulenav="1" data-modulepagination="1" data-moduleautoplay="" data-settings='{{ settings|json_encode|raw }}'>
         <div class="swiper-wrapper flex !items-stretch !h-full">
-            {% for blog in relatedBlog %}
+            {% for caseStudy in relatedCaseStudy %}
                 <div class="swiper-slide" {{ listingAnimation|raw }}>
-                    <a href="{{ blog.getUrl }}" class="h-full relative group flex flex-col justify-between items-start pl-8 relative before:absolute after:absolute before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px {{ render.foregroundColors({
-                        background: backgroundColorLabel,
-                        opacity: overlayOpacity,
-                        changeDefaultColor: true,
-                        type: 'border'
-                    }) }}">
+                    <a href="{{ caseStudy.getUrl }}" class="h-full relative group flex flex-col justify-between items-start pl-8 relative before:absolute after:absolute before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px {{ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'border'}) }}">
                         <div>
                             <div class="text-sm {{ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'subHeading'}) }}">
-                                {{ block.postDate|date('F Y') }}
+                                {{ caseStudy.postDate|date('F Y') }}
                             </div>
 
                             <h3 class="mt-6 text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'heading'}) }}">
-                                {{ blog.title }}
+                                {{ caseStudy.title }}
                             </h3>
 
-                            {% if blog.text|length %}
+                            {% if caseStudy.text %}
                             <div class="mt-2.5 space-y-2.5">
-                                {{ render.replaceElements(blog.text, {
+                                {{ render.replaceElements(caseStudy.text, {
                                     background: backgroundColorLabel,
                                     opacity: overlayOpacity,
                                     changeDefaultColor: true,

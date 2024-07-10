@@ -1,3 +1,19 @@
+{#
+===============================================================================
+    Listing Team (listingTeam) [Cards]
+
+    Variables
+        - Block (block)
+
+    Fields:
+        Content:
+            - Related Team Member (relatedTeamMember)
+
+        Settings:
+            - Limit (limit)
+            - Listing Style (listingStyle)
+===============================================================================
+#}
 {{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
 {% import "_/includes/macros" as render %}
 

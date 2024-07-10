@@ -1,3 +1,20 @@
+{#
+===============================================================================
+    Listing Blog (listingBlog) [Stacked]
+
+    Variables
+        - Block (block)
+
+    Fields:
+        Content:
+            - Related Blog (relatedBlog)
+
+        Settings:
+            - Listing Style (listingStyle2)
+            - Limit (limit)
+            - Pagination? (pagination)
+===============================================================================
+#}
 {{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
 {% import "_/includes/macros" as render %}
 

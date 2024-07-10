@@ -1,3 +1,20 @@
+{#
+===============================================================================
+    Listing Testimonials (listingTestimonials) [Layout 1] [Cards]
+
+    Variables
+        - Block (block)
+
+    Fields:
+        Content:
+            - Related Testimonials (relatedTestimonials)
+
+        Settings:
+            - Testimonial Layout (testimonialLayout)
+            - Listing Style (listingStyle)
+            - Limit (limit)
+===============================================================================
+#}
 {{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
 {% import "_/includes/macros" as render %}
 

@@ -1,3 +1,21 @@
+{#
+===============================================================================
+    Listing Client (listingClient) [Cards]
+
+    Variables
+        - Block (block)
+
+    Fields:
+        Content:
+            - Related Client (relatedClient)
+
+        Settings:
+            - Per Row Limit (perRowLimit)
+            - Limit (limit)
+            - Listing Style (listingStyle)
+            - Show Border? (showBorder)
+===============================================================================
+#}
 {{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
 {% import "_/includes/macros" as render %}
 
@@ -17,6 +35,26 @@
 {% endif %}
 
 {% set relatedClient = relatedClient.with(['image2']).cache().all() %}
+
+{% if parent.eyebrow|length or parent.heading|length or parent.subHeading|length or parent.text|length %}
+    {{ render.basicContents({
+        eyebrow: parent.eyebrow,
+        heading: parent.heading,
+        subHeading: parent.subHeading,
+        text: parent.text,
+        headingTag: headingTag,
+        fontWeight: fontWeight,
+        addBorder: not block.showBorder ? true : false,
+        backgroundColorLabel: backgroundColorLabel,
+        opacity: overlayOpacity,
+        contentAlignment: contentAlignment,
+        animation: parent.animation,
+        contentAnimationStyle: parent.animationStyle.getValue()|default('fade-up'),
+        contentAnimationDuration: parent.animationDuration.getValue()|default(1500),
+        contentAnimationOffset: parent.animationOffset.getValue()|default(200),
+        contentAnimationEasing: parent.animationEasing.getValue()|default(null)
+    }) }}
+{% endif %}
 
 <div class="{{ parent.eyebrow|length or parent.heading|length or parent.subHeading|length or parent.text|length ? 'mt-10' }}">
     {% if block.showBorder %}
