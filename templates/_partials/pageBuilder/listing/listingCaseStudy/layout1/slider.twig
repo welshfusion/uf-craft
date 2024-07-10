@@ -55,13 +55,28 @@
         <div class="swiper-wrapper flex !items-stretch !h-full">
             {% for caseStudy in relatedCaseStudy %}
                 <div class="swiper-slide" {{ listingAnimation|raw }}>
-                    <a href="{{ caseStudy.getUrl }}" class="h-full relative group flex flex-col justify-between items-start pl-8 relative before:absolute after:absolute before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px {{ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'border'}) }}">
+                    <a href="{{ caseStudy.getUrl }}" class="h-full relative group flex flex-col justify-between items-start pl-8 relative before:absolute after:absolute before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px {{ render.foregroundColors({
+                        background: backgroundColorLabel,
+                        opacity: overlayOpacity,
+                        changeDefaultColor: true,
+                        type: 'border'
+                    }) }}">
                         <div>
-                            <div class="text-sm {{ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'subHeading'}) }}">
+                            <div class="text-sm {{ render.foregroundColors({
+                                background: backgroundColorLabel,
+                                opacity: overlayOpacity,
+                                changeDefaultColor: true,
+                                type: 'subHeading'
+                            }) }}">
                                 {{ caseStudy.postDate|date('F Y') }}
                             </div>
 
-                            <h3 class="mt-6 text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'heading'}) }}">
+                            <h3 class="mt-6 text-base font-semibold {{ render.foregroundColors({
+                                background: backgroundColorLabel,
+                                opacity: overlayOpacity,
+                                changeDefaultColor: true,
+                                type: 'heading'
+                            }) }}">
                                 {{ caseStudy.title }}
                             </h3>
 
@@ -76,7 +91,12 @@
                             {% endif %}
                         </div>
 
-                        <div class="mt-6 flex gap-x-3 text-base font-semibold transition {{ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'detailPagelink'}) }}">
+                        <div class="mt-6 flex gap-x-3 text-base font-semibold transition {{ render.foregroundColors({
+                            background: backgroundColorLabel,
+                            opacity: overlayOpacity,
+                            changeDefaultColor: true,
+                            type: 'detailPagelink'
+                        }) }}">
                             Read more
                             <svg viewBox="0 0 24 6" aria-hidden="true" class="w-6 flex-none fill-current">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M24 3 18 .5v2H0v1h18v2L24 3Z"></path>

@@ -109,33 +109,33 @@
         <div class="{{ block.eyebrow|length or block.heading|length or block.subHeading|length or block.text|length ? 'mt-10' }}">
             <div class="grid gap-10 {{ rowLimit[perRowLimit] }}" {{ contentAnimation|raw }}>
                 {% for card in textCards %}
-                <div class="flex flex-col-reverse justify-end pl-8 relative before:absolute after:absolute before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px {{ render.foregroundColors({
-                    background: backgroundColorLabel,
-                    opacity: overlayOpacity,
-                    changeDefaultColor: true,
-                    type: 'border'
-                }) }}">
-                    {% if card.text|length %}
-                    <div class="mt-2 space-y-2">
-                        {{ render.replaceElements(card.text, {
-                            background: backgroundColorLabel,
-                            opacity: overlayOpacity,
-                            changeDefaultColor: true,
-                        }) }}
-                    </div>
-                    {% endif %}
-
-                    {% if card.heading %}
-                    <div class="font-display text-3xl font-semibold sm:text-4xl {{ render.foregroundColors({
+                    <div class="flex flex-col-reverse justify-end pl-8 relative before:absolute after:absolute before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px {{ render.foregroundColors({
                         background: backgroundColorLabel,
                         opacity: overlayOpacity,
                         changeDefaultColor: true,
-                        type: 'heading'
+                        type: 'border'
                     }) }}">
-                        {{ card.heading }}
+                        {% if card.text|length %}
+                        <div class="mt-2 space-y-2">
+                            {{ render.replaceElements(card.text, {
+                                background: backgroundColorLabel,
+                                opacity: overlayOpacity,
+                                changeDefaultColor: true,
+                            }) }}
+                        </div>
+                        {% endif %}
+
+                        {% if card.heading %}
+                        <div class="font-display text-3xl font-semibold sm:text-4xl {{ render.foregroundColors({
+                            background: backgroundColorLabel,
+                            opacity: overlayOpacity,
+                            changeDefaultColor: true,
+                            type: 'heading'
+                        }) }}">
+                            {{ card.heading }}
+                        </div>
+                        {% endif %}
                     </div>
-                    {% endif %}
-                </div>
                 {% endfor %}
             </div>
         </div>

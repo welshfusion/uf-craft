@@ -49,13 +49,19 @@
                 <div class="swiper-slide" {{ listingAnimation|raw }}>
                     <div class="mx-auto max-w-4xl">
                         {% if testimonial.quote|length %}
-                        <blockquote class="relative font-display text-3xl font-medium tracking-tight sm:text-4xl {{ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'heading'}) }}">
+                        <blockquote class="relative font-display text-3xl font-medium tracking-tight sm:text-4xl {{ render.foregroundColors({
+                            background: backgroundColorLabel,
+                            opacity: overlayOpacity,
+                            changeDefaultColor: true,
+                            type: 'heading'
+                        }) }}">
                             {{ '“' ~ testimonial.quote|nl2br ~ '”' }}
                         </blockquote>
                         {% endif %}
 
                         {% if relatedClient|length %}
                             {% set image = relatedClient.image2.one() %}
+
                             {% if image|length %}
                             <div class="mt-10">
                                 {{ render.setImage({

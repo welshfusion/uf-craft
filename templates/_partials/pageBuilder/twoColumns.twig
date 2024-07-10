@@ -89,19 +89,19 @@
 <section id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ backgroundColor }} {{ bgOpacity }} {{ spacing.implode(' ') }}">
     <div class="container">
         {% if block.eyebrow|length or block.heading|length or block.subHeading|length or block.text|length %}
-            <div class="{{ render.contentWidth({width: contentWidth}) }}">
-                {{ render.basicContents({
-                    eyebrow: block.eyebrow,
-                    heading: block.heading,
-                    subHeading: block.subHeading,
-                    text: block.text,
-                    headingTag: headingTag,
-                    fontWeight: fontWeight,
-                    backgroundColorLabel: backgroundColorLabel,
-                    opacity: overlayOpacity,
-                    contentAlignment: contentAlignment,
-                }) }}
-            </div>
+        <div class="{{ render.contentWidth({width: contentWidth}) }}">
+            {{ render.basicContents({
+                eyebrow: block.eyebrow,
+                heading: block.heading,
+                subHeading: block.subHeading,
+                text: block.text,
+                headingTag: headingTag,
+                fontWeight: fontWeight,
+                backgroundColorLabel: backgroundColorLabel,
+                opacity: overlayOpacity,
+                contentAlignment: contentAlignment,
+            }) }}
+        </div>
         {% endif %}
 
         {% if columns|length %}
@@ -126,24 +126,24 @@
         {% endif %}
 
         {% for button in buttons %}
-            {% if loop.first %}
-            <div class="flex flex-wrap items-center gap-5 mt-8 md:mt-10 {{ render.getAlignment({
-                alignment: contentAlignment,
-                type: 'justify'
-            }) }}"
-            >
-            {% endif %}
-                {{ render.createButton({
-                    button: button.button,
-                    buttonType: button.buttonType.getValue()|default("button"),
-                    buttonColor: button.buttonColor.label|default('cyprus'),
-                    icon: button.icon,
-                    iconPosition: button.iconPosition.getValue()|default('right'),
-                    background: backgroundColorLabel,
-                }) }}
-            {% if loop.last %}
-            </div>
-            {% endif %}
+        {% if loop.first %}
+        <div class="flex flex-wrap items-center gap-5 mt-8 md:mt-10 {{ render.getAlignment({
+            alignment: contentAlignment,
+            type: 'justify'
+        }) }}"
+        >
+        {% endif %}
+            {{ render.createButton({
+                button: button.button,
+                buttonType: button.buttonType.getValue()|default("button"),
+                buttonColor: button.buttonColor.label|default('cyprus'),
+                icon: button.icon,
+                iconPosition: button.iconPosition.getValue()|default('right'),
+                background: backgroundColorLabel,
+            }) }}
+        {% if loop.last %}
+        </div>
+        {% endif %}
         {% endfor %}
     </div>
 </section>

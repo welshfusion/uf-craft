@@ -76,6 +76,7 @@
 
 {% set child = block.listing.one() %}
 {% set childHandle = child.type.handle %}
+{% set buttons = block.buttons.all() %}
 
 {% if not isAjax %}
 <section id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="relative {{ backgroundColor }} {{ bgOpacity }} {{ spacing.implode(' ') }} {{ block.roundedCorners ? 'rounded-4xl' }}">
@@ -150,25 +151,24 @@
             {% endif %}
 
 {% if not isAjax %}
-            {% set buttons = block.buttons.all() %}
             {% for button in buttons %}
-                {% if loop.first %}
-                <div class="flex flex-wrap items-center gap-5 mt-8 md:mt-10 {{ render.getAlignment({
-                    alignment: contentAlignment,
-                    type: 'justify'
-                }) }}" {{ contentAnimation|raw }}>
-                {% endif %}
-                    {{ render.createButton({
-                        button: button.button,
-                        buttonType: button.buttonType.getValue()|default("button"),
-                        buttonColor: button.buttonColor.label|default('cyprus'),
-                        icon: button.icon,
-                        iconPosition: button.iconPosition.getValue()|default('right'),
-                        background: backgroundColorLabel,
-                    }) }}
-                {% if loop.last %}
-                </div>
-                {% endif %}
+            {% if loop.first %}
+            <div class="flex flex-wrap items-center gap-5 mt-8 md:mt-10 {{ render.getAlignment({
+                alignment: contentAlignment,
+                type: 'justify'
+            }) }}" {{ contentAnimation|raw }}>
+            {% endif %}
+                {{ render.createButton({
+                    button: button.button,
+                    buttonType: button.buttonType.getValue()|default("button"),
+                    buttonColor: button.buttonColor.label|default('cyprus'),
+                    icon: button.icon,
+                    iconPosition: button.iconPosition.getValue()|default('right'),
+                    background: backgroundColorLabel,
+                }) }}
+            {% if loop.last %}
+            </div>
+            {% endif %}
             {% endfor %}
         </div>
     </div>

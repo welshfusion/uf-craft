@@ -98,7 +98,12 @@
         <div class="grid grid-cols-1 gap-x-8 gap-y-24 lg:grid-cols-2 {{ block.eyebrow|length or block.heading|length or block.text|length ? 'mt-10' }}">
             <div class="lg:order-last" >
                 {% if block.formHeading|length %}
-                <h2 class="font-display text-base font-semibold mb-6 {{ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'heading'}) }}">
+                <h2 class="font-display text-base font-semibold mb-6 {{ render.foregroundColors({
+                    background: backgroundColorLabel,
+                    opacity: overlayOpacity,
+                    changeDefaultColor: true,
+                    type: 'heading'
+                }) }}">
                     {{ block.formHeading }}
                 </h2>
                 {% endif %}
@@ -122,7 +127,12 @@
             {% if block.sidebarHeading|length or block.text2|length or contactInfo|length %}
             <div {{ contentAnimation|raw }}>
                 {% if block.sidebarHeading|length %}
-                <h2 class="font-display text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'heading'}) }}">
+                <h2 class="font-display text-base font-semibold {{ render.foregroundColors({
+                    background: backgroundColorLabel,
+                    opacity: overlayOpacity,
+                    changeDefaultColor: true,
+                    type: 'heading'
+                }) }}">
                     {{ block.sidebarHeading }}
                 </h2>
                 {% endif %}
@@ -140,7 +150,12 @@
                 {% for item in contactInfo %}
                 <div class="{{ loop.first ? 'mt-10' : 'mt-16 pt-16 relative before:absolute after:absolute before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px ' ~ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'border'}) }}">
                     {% if item.heading|length %}
-                    <h2 class="font-display text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'heading'}) }}">
+                    <h2 class="font-display text-base font-semibold {{ render.foregroundColors({
+                        background: backgroundColorLabel,
+                        opacity: overlayOpacity,
+                        changeDefaultColor: true,
+                        type: 'heading'
+                    }) }}">
                         {{ item.heading|nl2br }}
                     </h2>
                     {% endif %}

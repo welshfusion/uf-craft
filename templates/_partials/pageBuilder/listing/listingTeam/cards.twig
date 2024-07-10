@@ -31,9 +31,19 @@
 <div class="space-y-24 {{ parent.eyebrow|length or parent.heading|length or parent.subHeading|length or parent.text|length ? 'mt-16' }}">
     {% for category in teamCategories %}
         <div>
-            <div class="relative before:absolute after:absolute before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px opacity-100 transform-none {{ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'border'}) }}"></div>
+            <div class="relative before:absolute after:absolute before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px opacity-100 transform-none {{ render.foregroundColors({
+                background: backgroundColorLabel,
+                opacity: overlayOpacity,
+                changeDefaultColor: true,
+                type: 'border'
+            }) }}"></div>
             <div class="grid grid-cols-1 gap-6 pt-12 sm:pt-16 lg:grid-cols-4 xl:gap-8">
-                <h2 class="font-display text-2xl font-semibold {{ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'heading'}) }}" {{ listingAnimation|raw }}>
+                <h2 class="font-display text-2xl font-semibold {{ render.foregroundColors({
+                    background: backgroundColorLabel,
+                    opacity: overlayOpacity,
+                    changeDefaultColor: true,
+                    type: 'heading'
+                }) }}" {{ listingAnimation|raw }}>
                     {{ category.title }}
                 </h2>
 

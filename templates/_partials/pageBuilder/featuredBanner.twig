@@ -120,33 +120,43 @@
                 {% endif %}
 
                 {% for button in buttons %}
-                    {% if loop.first %}
-                    <div class="flex flex-wrap items-center gap-5 mt-5 {{ render.getAlignment({
-                        alignment: contentAlignment,
-                        type: 'justify'
-                        }) }}" {{ contentAnimation|raw }}
-                    >
-                    {% endif %}
-                        {{ render.createButton({
-                            button: button.button,
-                            buttonType: button.buttonType.getValue()|default("button"),
-                            buttonColor: button.buttonColor.label|default('cyprus'),
-                            icon: button.icon,
-                            iconPosition: button.iconPosition.getValue()|default('right'),
-                            background: backgroundColorLabel,
-                            textSize: 'text-sm'
-                        }) }}
-                    {% if loop.last %}
-                    </div>
-                    {% endif %}
+                {% if loop.first %}
+                <div class="flex flex-wrap items-center gap-5 mt-5 {{ render.getAlignment({
+                    alignment: contentAlignment,
+                    type: 'justify'
+                    }) }}" {{ contentAnimation|raw }}
+                >
+                {% endif %}
+                    {{ render.createButton({
+                        button: button.button,
+                        buttonType: button.buttonType.getValue()|default("button"),
+                        buttonColor: button.buttonColor.label|default('cyprus'),
+                        icon: button.icon,
+                        iconPosition: button.iconPosition.getValue()|default('right'),
+                        background: backgroundColorLabel,
+                        textSize: 'text-sm'
+                    }) }}
+                {% if loop.last %}
+                </div>
+                {% endif %}
                 {% endfor %}
 
                 {% if contactInfo|length %}
-                <div class="mt-10 border-t {{ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'simpleBorder'}) }}" {{ contentAnimation|raw }}>
+                <div class="mt-10 border-t {{ render.foregroundColors({
+                    background: backgroundColorLabel,
+                    opacity: overlayOpacity,
+                    changeDefaultColor: true,
+                    type: 'simpleBorder'
+                }) }}" {{ contentAnimation|raw }}>
                     {% for item in contactInfo %}
                         <div class="{{ loop.first ? 'mt-10' : 'mt-10 pt-10 relative before:absolute after:absolute before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px ' ~ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'border'}) }}">
                             {% if item.heading|length %}
-                            <h2 class="font-display text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'heading'}) }}">
+                            <h2 class="font-display text-base font-semibold {{ render.foregroundColors({
+                                background: backgroundColorLabel,
+                                opacity: overlayOpacity,
+                                changeDefaultColor: true,
+                                type: 'heading'
+                            }) }}">
                                 {{ item.heading|nl2br }}
                             </h2>
                             {% endif %}

@@ -63,7 +63,12 @@
             {% set relatedClient = caseStudy.relatedClient.one() %}
 
             <div {{ listingAnimation|raw }}>
-                <div class="grid grid-cols-3 gap-x-8 gap-y-8 pt-16 relative before:absolute after:absolute before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px {{ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'border'}) }}">
+                <div class="grid grid-cols-3 gap-x-8 gap-y-8 pt-16 relative before:absolute after:absolute before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px {{ render.foregroundColors({
+                    background: backgroundColorLabel,
+                    opacity: overlayOpacity,
+                    changeDefaultColor: true,
+                    type: 'border'
+                }) }}">
                     {% if relatedClient|length %}
                         {% set image = relatedClient.image.one() %}
 
@@ -79,13 +84,23 @@
                                 }) }}
                                 {% endif %}
 
-                                <h3 class="mt-6 text-sm font-semibold sm:mt-0 lg:mt-8 {{ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'heading'}) }}">
+                                <h3 class="mt-6 text-sm font-semibold sm:mt-0 lg:mt-8 {{ render.foregroundColors({
+                                    background: backgroundColorLabel,
+                                    opacity: overlayOpacity,
+                                    changeDefaultColor: true,
+                                    type: 'heading'
+                                }) }}">
                                     {{ relatedClient.title }}
                                 </h3>
                             </div>
 
                             {% if relatedClient.projectType|length or relatedClient.joiningDate|length %}
-                            <div class="mt-1 flex gap-x-4 sm:mt-0 lg:block {{ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'heading'}) }}">
+                            <div class="mt-1 flex gap-x-4 sm:mt-0 lg:block {{ render.foregroundColors({
+                                background: backgroundColorLabel,
+                                opacity: overlayOpacity,
+                                changeDefaultColor: true,
+                                type: 'heading'
+                            }) }}">
                                 {% if relatedClient.projectType|length %}
                                 <p class="text-sm tracking-tight after:ml-4 after:font-semibold after:text-neutral-300 after:content-['/'] lg:mt-2 lg:after:hidden">
                                     {{ relatedClient.projectType }}
@@ -103,7 +118,12 @@
                     {% endif %}
 
                     <div class="col-span-full {{ relatedClient|length ? 'lg:col-span-2 lg:max-w-2xl' }}">
-                        <p class="font-display text-4xl font-medium {{ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'heading'}) }}">
+                        <p class="font-display text-4xl font-medium {{ render.foregroundColors({
+                            background: backgroundColorLabel,
+                            opacity: overlayOpacity,
+                            changeDefaultColor: true,
+                            type: 'heading'
+                        }) }}">
                             <a href="{{ caseStudy.getUrl }}">
                                 {{ caseStudy.title }}
                             </a>
@@ -120,7 +140,12 @@
                         {% endif %}
 
                         <div class="mt-8 flex">
-                            <a href="{{ caseStudy.getUrl }}" class="inline-flex rounded-full px-4 py-1.5 text-sm font-semibold transition {{ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'detailPageButton'}) }}">
+                            <a href="{{ caseStudy.getUrl }}" class="inline-flex rounded-full px-4 py-1.5 text-sm font-semibold transition {{ render.foregroundColors({
+                                background: backgroundColorLabel,
+                                opacity: overlayOpacity,
+                                changeDefaultColor: true,
+                                type: 'detailPageButton'
+                            }) }}">
                                 <span class="relative top-px">
                                     Read case study
                                 </span>
@@ -131,24 +156,39 @@
                             {% set relatedTestimonial = craft.entries().section('testimonial').relatedTo(relatedClient).one() %}
 
                             {% if relatedTestimonial|length %}
-                            <div class="pl-8 mt-12 relative before:absolute after:absolute before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px {{ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'border'}) }}">
+                            <div class="pl-8 mt-12 relative before:absolute after:absolute before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px {{ render.foregroundColors({
+                                background: backgroundColorLabel,
+                                opacity: overlayOpacity,
+                                changeDefaultColor: true,
+                                type: 'border'
+                            }) }}">
                                 {% if relatedTestimonial.quote|length %}
-                                    <blockquote class="text-sm {{ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'subHeading'}) }}">
-                                        {{ relatedTestimonial.quote }}
-                                    </blockquote>
+                                <blockquote class="text-sm {{ render.foregroundColors({
+                                    background: backgroundColorLabel,
+                                    opacity: overlayOpacity,
+                                    changeDefaultColor: true,
+                                    type: 'subHeading'
+                                }) }}">
+                                    {{ relatedTestimonial.quote }}
+                                </blockquote>
                                 {% endif %}
 
                                 {% if relatedTestimonial.clientName|length or relatedTestimonial.designation|length %}
-                                    <div class="mt-6 text-sm font-semibold {{ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'heading'}) }}">
-                                        {% if relatedTestimonial.clientName|length %}
-                                            {{ relatedTestimonial.clientName }}
-                                            <span>, </span>
-                                        {% endif %}
+                                <div class="mt-6 text-sm font-semibold {{ render.foregroundColors({
+                                    background: backgroundColorLabel,
+                                    opacity: overlayOpacity,
+                                    changeDefaultColor: true,
+                                    type: 'heading'
+                                }) }}">
+                                    {% if relatedTestimonial.clientName|length %}
+                                        {{ relatedTestimonial.clientName }}
+                                        <span>, </span>
+                                    {% endif %}
 
-                                        {% if relatedTestimonial.designation|length %}
-                                            {{ relatedTestimonial.designation }}
-                                        {% endif %}
-                                    </div>
+                                    {% if relatedTestimonial.designation|length %}
+                                        {{ relatedTestimonial.designation }}
+                                    {% endif %}
+                                </div>
                                 {% endif %}
                             </div>
                             {% endif %}

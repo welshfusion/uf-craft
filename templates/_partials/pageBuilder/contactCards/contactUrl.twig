@@ -16,17 +16,28 @@
 
 <div>
     {% if block.heading|length %}
-    <div class="font-semibold {{ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'heading'}) }}">
+    <div class="font-semibold {{ render.foregroundColors({
+        background: backgroundColorLabel,
+        opacity: overlayOpacity,
+        changeDefaultColor: true,
+        type: 'heading'
+    }) }}">
         {{ block.heading|nl2br }}
     </div>
     {% endif %}
 
     {% if not block.contact.isEmpty() %}
     <a href="{{ block.contact.getUrl() }}"
-        class="text-sm {{ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'subHeading'}) }} {{ block.contact.classes }}"
+        class="text-sm {{ render.foregroundColors({
+            background: backgroundColorLabel,
+            opacity: overlayOpacity,
+            changeDefaultColor: true,
+            type: 'subHeading'
+        }) }} {{ block.contact.classes }}"
         {% if block.contact.linkTitle %} title="{{ block.contact.linkTitle }}"{% endif %} {% if block.contact.target %} target="{{ block.contact.target }}" rel="noopener"{% endif %} {% for attribute in block.contact.customAttributes %} {{ attribute.attribute }}="{{ attribute.value }}" {% endfor %}
     >
         {{ block.contact.getText() }}
+
         {% if block.contact.getText()|lower in ["read more", "see more", "learn more", "click here"] %}
             <span class="sr-only"> {{ "about this"|t }}</span>
         {% endif %}

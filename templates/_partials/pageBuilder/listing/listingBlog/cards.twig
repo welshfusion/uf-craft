@@ -74,11 +74,21 @@
                     type: 'border'
                 }) }}">
                     <div>
-                        <div class="text-sm {{ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'subHeading'}) }}">
+                        <div class="text-sm {{ render.foregroundColors({
+                            background: backgroundColorLabel,
+                            opacity: overlayOpacity,
+                            changeDefaultColor: true,
+                            type: 'subHeading'
+                        }) }}">
                             {{ block.postDate|date('F Y') }}
                         </div>
 
-                        <h3 class="mt-6 text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'heading'}) }}">
+                        <h3 class="mt-6 text-base font-semibold {{ render.foregroundColors({
+                            background: backgroundColorLabel,
+                            opacity: overlayOpacity,
+                            changeDefaultColor: true,
+                            type: 'heading'
+                        }) }}">
                             {{ blog.title }}
                         </h3>
 
@@ -93,7 +103,12 @@
                         {% endif %}
                     </div>
 
-                    <div class="mt-6 flex gap-x-3 text-base font-semibold transition {{ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'detailPagelink'}) }}">
+                    <div class="mt-6 flex gap-x-3 text-base font-semibold transition {{ render.foregroundColors({
+                        background: backgroundColorLabel,
+                        opacity: overlayOpacity,
+                        changeDefaultColor: true,
+                        type: 'detailPagelink'
+                    }) }}">
                         Read more
                         <svg viewBox="0 0 24 6" aria-hidden="true" class="w-6 flex-none fill-current">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M24 3 18 .5v2H0v1h18v2L24 3Z"></path>

@@ -154,7 +154,12 @@
                 {% if block.heading2|length or multimediaCard|length %}
                 <div {{ cardAnimation|raw }}>
                     {% if block.heading2|length %}
-                    <h3 class="mt-12 font-display text-base font-semibold {{ render.foregroundColors({background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'heading'}) }}">
+                    <h3 class="mt-12 font-display text-base font-semibold {{ render.foregroundColors({
+                        background: backgroundColorLabel,
+                        opacity: overlayOpacity,
+                        changeDefaultColor: true,
+                        type: 'heading'
+                    }) }}">
                         {{ block.heading2 }}
                     </h3>
                     {% endif %}
