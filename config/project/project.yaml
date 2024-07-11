@@ -1,4 +1,4 @@
-dateModified: 1720602766
+dateModified: 1720705504
 elementSources:
   craft\elements\Entry:
     -
@@ -190,7 +190,9 @@ meta:
     c6a95503-819b-4c0f-8d9d-6099c2cdccd5: 'Footer Navigation' # Footer Navigation
     c6fb0ac5-d930-43ae-93b2-0a7be10eb31a: 'Text Cards' # Text Cards
     c8a67f3a-f81d-4fc4-a335-3817d4c32eff: 'Two Column' # Two Column
+    c8df3498-0f23-4a2b-becc-f63f6fc826dd: 'Related Clients' # Related Clients
     c8e64d8d-7d4e-4182-8bed-ec9013e8aad4: Tag # Tag
+    c9e70f29-03b1-4160-9e90-2609be52be79: 'Related Team' # Related Team
     c729cee4-a2ec-48ef-8053-907b01d1a630: Cards # Cards
     c16118bb-d24d-489d-8c5a-2deabdcd6e16: 'Padding Top' # Padding Top
     c23691fd-0f4a-4576-805e-31effcb2e66b: 'Case Study Layout' # Case Study Layout

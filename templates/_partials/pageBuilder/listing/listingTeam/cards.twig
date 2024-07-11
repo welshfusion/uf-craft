@@ -7,7 +7,7 @@
 
     Fields:
         Content:
-            - Related Team Member (relatedTeamMember)
+            - Related Team (relatedTeam)
 
         Settings:
             - Limit (limit)
@@ -19,7 +19,7 @@
 
 {% set limit = block.limit|default('12') %}
 
-{% set relatedTeam = block.relatedTeamMember.limit(limit) %}
+{% set relatedTeam = block.relatedTeam.limit(limit) %}
 {% if not relatedTeam|length %}
     {% set relatedTeam = craft.entries.section("team").limit(limit) %}
 {% endif %}

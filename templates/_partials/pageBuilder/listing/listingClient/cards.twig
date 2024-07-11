@@ -7,7 +7,7 @@
 
     Fields:
         Content:
-            - Related Client (relatedClient)
+            - Related Clients (relatedClients)
 
         Settings:
             - Per Row Limit (perRowLimit)
@@ -29,7 +29,7 @@
 
 {% set limit = block.limit|default('12') %}
 
-{% set relatedClient = block.relatedClient.limit(limit) %}
+{% set relatedClient = block.relatedClients.limit(limit) %}
 {% if not relatedClient|length %}
     {% set relatedClient = craft.entries.section("client").limit(limit) %}
 {% endif %}

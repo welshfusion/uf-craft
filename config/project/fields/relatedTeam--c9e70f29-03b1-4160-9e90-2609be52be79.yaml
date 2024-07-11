@@ -1,0 +1,23 @@
+columnSuffix: null
+handle: relatedTeam
+instructions: null
+name: 'Related Team'
+searchable: false
+settings:
+  allowSelfRelations: false
+  branchLimit: null
+  localizeRelations: false
+  maintainHierarchy: false
+  maxRelations: null
+  minRelations: null
+  selectionLabel: null
+  showCardsInGrid: false
+  showSiteMenu: false
+  sources:
+    - 'section:7c1471a7-a014-4b8f-8e10-1d6064ca6ebd' # Team
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: list
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Entries

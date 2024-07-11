@@ -61,7 +61,7 @@
     swatch: 'background'
 }) %}
 
-{% set overlayOpacity = block.overlayOpacity.getValue|default(image|length or video|length ? 0 : null) %}
+{% set overlayOpacity = block.overlayOpacity.getValue|default(image|length or video|length ? 0 : 'none') %}
 {% set bgOpacity = render.setOpacity({
     opacity: overlayOpacity,
     opacityType: 'bg'
