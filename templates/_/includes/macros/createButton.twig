@@ -78,7 +78,7 @@
 
 {% if not button.isEmpty() %}
     <a {{ attr(attributes.toArray()) }}>
-        <span class="{{ iconPosition == 'left' ? 'pl-2' : 'pr-2' }} flex-1 relative top-px">
+        <span class="flex-1 relative top-px {% if icon|length %} {{ iconPosition == 'left' ? 'pl-2' : 'pr-2' }} {% endif %}">
             {{ button.getText() }}
         </span>
 
