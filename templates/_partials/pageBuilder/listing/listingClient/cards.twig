@@ -67,21 +67,28 @@
     {% endif %}
 
     <ul role="list" class="grid gap-x-8 gap-y-12 {{ rowLimit[perRowLimit] }}">
+        {% set imageNum = 1 %}
         {% for item in relatedClient %}
             {% set image = item.image2.one() %}
 
+            {% if image|length %}
             <li class="group" {{ listingAnimation|raw }}>
                 <div class="overflow-hidden">
-                    {% if block.showBorder and loop.index > perRowLimit %}
-                    <div class="pt-12 relative before:absolute after:absolute before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px {{ render.foregroundColors({
-                        background: backgroundColorLabel,
-                        opacity: overlayOpacity,
-                        changeDefaultColor: true,
-                        type: 'border'
-                    }) }}"></div>
+                    {% if block.showBorder %}
+                    <div class="pt-12 relative before:absolute after:absolute before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px
+                        {% if imageNum <= perRowLimit %} lg:hidden {% endif %}
+                        {% if imageNum <= 2 %} sm:hidden {% endif %}
+                        {% if imageNum == 1 %}hidden{% endif %}
+
+                        {{ render.foregroundColors({
+                            background: backgroundColorLabel,
+                            opacity: overlayOpacity,
+                            changeDefaultColor: true,
+                            type: 'border'
+                        }) }}">
+                    </div>
                     {% endif %}
 
-                    {% if image|length %}
                     <div>
                         {{ render.setImage({
                             image: image,
@@ -91,9 +98,10 @@
                             class: 'text-transparent'
                         }) }}
                     </div>
-                    {% endif %}
                 </div>
             </li>
+            {% set imageNum = imageNum + 1 %}
+            {% endif %}
         {% endfor %}
     </ul>
 </div>
