@@ -1,0 +1,143 @@
+{#
+===============================================================================
+    Accordion (accordion)
+
+    Variables
+        - Block (block)
+
+    Fields:
+        Content:
+            - Accordions (accordions)
+                - Question (heading)
+                - Answer (text)
+                - Button (button)
+
+        Settings:
+            - Content Width (contentWidth)
+            - Background Color (backgroundColor)
+            - Overlay Opacity (overlayOpacity)
+            - Content Alignment (contentAlignment)
+            - Heading Size (headingSize)
+            - Font Weight (fontWeight)
+===============================================================================
+#}
+{{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
+{% import "_/includes/macros" as render %}
+
+{# Parent Block Fields Start #}
+{% set parent = parent ?? null %}
+{% set childContainer = childContainer ?? false %}
+{% set sectionTag = childContainer ? 'div' : 'section' %}
+{# Parent Block Fields End #}
+
+{% set headingTag = block.headingSize.getValue()|default('h2') %}
+{% set fontWeight = block.fontWeight.getValue()|default('medium') %}
+{% set contentAlignment = block.contentAlignment.value|default('left') %}
+{% set contentWidth = block.contentWidth|default('0;12') %}
+
+{% set conbackgroundColor = conbackgroundColor ?? null %}
+{% set backgroundColorLabel = block.backgroundColor.label|default(conbackgroundColor ?? 'none') %}
+{% set containerBgExist = conbackgroundColor != backgroundColorLabel %}
+{% set backgroundColor = render.color({
+    handle: backgroundColorLabel,
+    swatch: 'background'
+}) %}
+
+{% set overlayOpacity = block.overlayOpacity.getValue()|default('none') %}
+{% set bgOpacity = render.setOpacity({
+    opacity: overlayOpacity,
+    opacityType: 'bg'
+}) %}
+
+{% set contentAnimation = render.setAnimation({
+    animation: block.animation,
+    animationStyle: block.animationStyle.getValue()|default('fade-up'),
+    animationDuration: block.animationDuration.getValue()|default(1500),
+    animationOffset: block.animationOffset.getValue()|default(200),
+    animationEasing: block.animationEasing.getValue()|default(null)
+}) | raw %}
+
+{% set buttons = block.buttons.all() %}
+{% set accordions = block.accordions.all() %}
+
+{% if block.eyebrow|length or block.heading|length or block.subHeading|length or block.text|length or buttons|length %}
+<{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ containerBgExist ? backgroundColor }} {{ bgOpacity }} {{ spacing.implode(' ') }} {{ childContainer ? 'relative z-20' }}">
+    <div class="{{ not childContainer ? 'container' }} {{ childContainer and containerBgExist ? 'px-4 md:px-6' }}">
+        <div class="{{ render.contentWidth({width: contentWidth}) }}">
+            {{ render.basicContents({
+                eyebrow: block.eyebrow,
+                heading: block.heading,
+                subHeading: block.subHeading,
+                text: block.text,
+                buttons: buttons,
+                headingTag: headingTag,
+                fontWeight: fontWeight,
+                backgroundColorLabel: backgroundColorLabel,
+                opacity: overlayOpacity,
+                contentAlignment: contentAlignment,
+                animation: block.animation,
+                contentAnimationStyle: block.animationStyle.getValue()|default('fade-up'),
+                contentAnimationDuration: block.animationDuration.getValue()|default(1500),
+                contentAnimationOffset: block.animationOffset.getValue()|default(200),
+                contentAnimationEasing: block.animationEasing.getValue()|default(null)
+            }) }}
+
+            {% if accordions|length %}
+            <div class="grid grid-cols-1 {{ block.heading|length or block.text|length or buttons|length ? 'mt-10' }}">
+                <div x-data="{ current: '1' }" class="space-y-2.5" {{ contentAnimation|raw }}>
+                    {% set accBgColor = backgroundColorLabel == 'black-50' ? '!bg-netural-100 !border-netural-100' : '!bg-netural-50 !border-netural-50' %}
+                    {% for accordion in accordions %}
+                    {% set accButtons = accordion.button %}
+
+                    <div class="rounded border {{ render.foregroundColors({ background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true,type: 'simpleBorder'}) }}"
+                        :class="{'{{ accBgColor }}' : current === '{{ loop.index }}'}"
+                        {{ contentAnimation|raw }}
+                    >
+                        {% if accordion.heading|length %}
+                        <button type="button" class="p-5 md:p-[20px] w-full block font-display tracking-tight [text-wrap:balance] text-left text-xl sm:text-2xl font-medium text-cyprus-500 flex text-start md:items-center gap-3 {{ render.foregroundColors({ background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'heading' }) }}"
+                            {% if accordion.text|length or accButtons|length %} x-on:click="current === '{{ loop.index }}' ? current = null : current = '{{ loop.index }}'"{% endif %}
+                        >
+                            {{ accordion.heading }}
+                            {% if accordion.text|length or accButtons|length %}
+                            <div class="ml-auto shrink-0 h-11 w-11 flex items-center justify-center rounded-xl {{ render.foregroundColors({ background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'accordionIcon' }) }}">
+                                <span x-show=" current !==1" class="!block transition-all duration-300 {{ render.foregroundColors({ background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'accordionArrow' }) }}"
+                                    :class="{'rotate-90' : current === '{{ loop.index }}'}">
+                                    <svg width="20" height="20" viewBox="0 0 10 14" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M4.28571 -1.87335e-07L-6.11959e-07 0L5.71429 7L0 14L4.28571 14L10 7L4.28571 -1.87335e-07Z"></path>
+                                    </svg>
+                                </span>
+                            </div>
+                            {% endif %}
+                        </button>
+                        {% endif %}
+
+                        {% if accordion.text|length or accButtons|length %}
+                        <div x-show="current === '{{ loop.index }}'" x-collapse>
+                            <div class="p-5 md:p-[20px] !pt-0">
+                                {{ render.replaceElements(accordion.text, {
+                                    background: backgroundColorLabel,
+                                    opacity: overlayOpacity,
+                                    changeDefaultColor: true,
+                                }) }}
+
+                                {% if accButtons|length %}
+                                <div class="mt-3">
+                                    <a href="{{ accButtons.getUrl() }}" class="font-semibold items-center inline-block leading-6 text-sm w-full {{ render.foregroundColors({ background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true,type: 'heading'}) }}">
+                                        <span class="border-b-2 border-transparent transition duration-300 {{ render.foregroundColors({ background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true,type: 'accButtonsLinkHover'}) }}">
+                                        {{ accButtons.getText() }}
+                                        </span>
+                                    </a>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</{{ sectionTag }}>
+{% endif %}

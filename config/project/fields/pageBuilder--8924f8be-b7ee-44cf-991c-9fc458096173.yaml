@@ -20,6 +20,7 @@ settings:
     - 248e89b5-415a-4d5e-aaab-083bc912f7d5 # Container
     - 320dab2f-d842-4692-82a7-62c995e023e8 # Two Columns
     - dd17cf8e-f110-456a-9b87-b43be231a9c1 # Dual Cards
+    - e3023c79-2a4a-44fc-9a1c-aa16223a29e2 # Accordion
   includeTableView: false
   maxEntries: null
   minEntries: null

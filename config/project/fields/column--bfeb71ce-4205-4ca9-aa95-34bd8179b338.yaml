@@ -8,6 +8,7 @@ settings:
   entryTypes:
     - aed4b3a7-3590-400d-beca-837fb987570a # Basic Content
     - ad85443f-75fc-45e3-9a29-4592254d416f # Image
+    - e3023c79-2a4a-44fc-9a1c-aa16223a29e2 # Accordion
     - effa59c4-035a-4910-bf8c-30996bff8047 # Gallery
     - 3084c074-4de2-4a73-b801-4a44fcb68e23 # Banner Cards
     - e57b30d6-65e9-4b9e-bec9-ec5f661fefcf # Tag

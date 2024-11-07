@@ -64,9 +64,9 @@
                     </div>
 
                     {% if card.button|length %}
-                    <div class="mt-4 flex items-center">
+                    <div class="mt-2 flex items-center">
                         <div class="shrink-0">
-                            <div class="flex flex-wrap items-center gap-5 mt-2 justify-start">
+                            <div class="flex flex-wrap items-center gap-5 justify-start">
                                 <div class="text-cyprus-500 flex font-semibold border-b-2 border-transparent items-center inline-block leading-6 transition duration-300 text-base {{ render.foregroundColors({ background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'detailPagelink' }) }} {{ render.foregroundColors({ background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'linkHover' }) }}">
                                     <span class="flex-1 relative top-px ">
                                         {{ card.button.getText() }}

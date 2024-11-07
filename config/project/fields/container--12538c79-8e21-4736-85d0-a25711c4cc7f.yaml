@@ -9,8 +9,10 @@ settings:
     - aed4b3a7-3590-400d-beca-837fb987570a # Basic Content
     - ad85443f-75fc-45e3-9a29-4592254d416f # Image
     - effa59c4-035a-4910-bf8c-30996bff8047 # Gallery
+    - e3023c79-2a4a-44fc-9a1c-aa16223a29e2 # Accordion
     - bdba9605-68a0-44bf-8c48-4e37979c5560 # Text Cards
     - 3084c074-4de2-4a73-b801-4a44fcb68e23 # Banner Cards
+    - dd17cf8e-f110-456a-9b87-b43be231a9c1 # Dual Cards
     - e57b30d6-65e9-4b9e-bec9-ec5f661fefcf # Tag
     - 2d5c34d8-b71f-4777-a3d6-50cb6a4a5402 # Multimedia
     - 4d8649f4-2cd8-4a36-9eaf-2251ec44112c # Form
