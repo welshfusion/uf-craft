@@ -1,4 +1,4 @@
-dateModified: 1730987449
+dateModified: 1730987592
 elementSources:
   craft\elements\Entry:
     -
@@ -280,6 +280,10 @@ plugins:
     enabled: true
     licenseKey: GGL06FJ2I82W5UPDNWY8WXEL
     schemaVersion: 4.0.0
+  matrix-extended:
+    edition: standard
+    enabled: true
+    schemaVersion: 3.1.0
   minify:
     edition: standard
     enabled: true

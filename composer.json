@@ -32,6 +32,7 @@
         "nystudio107/craft-vite": "^5.0.0",
         "putyourlightson/craft-blitz": "5.3.1",
         "spacecatninja/imager-x": "^5.0.0",
+        "vandres/craft-matrix-extended": "^v3.6.1",
         "verbb/buttonbox": "5.0.0",
         "verbb/formie": "3.0.0-beta.14",
         "verbb/hyper": "2.0.1",
