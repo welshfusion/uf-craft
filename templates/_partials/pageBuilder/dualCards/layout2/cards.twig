@@ -1,0 +1,81 @@
+{{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
+{% import "_/includes/macros" as render %}
+
+<div class="grid gap-5 {{ rowLimit[perRowLimit] }} {{ block.eyebrow|length or block.heading|length or block.subHeading|length or block.text|length ? 'mt-10' }}">
+    {% for card in dualCards %}
+        {% set passiveLink = card.button|length ? 'a' : 'div' %}
+        <div class="flex" {{ cardAnimation|raw }}>
+            <{{ passiveLink }} {% if card.button|length %} href="{{ card.button.getUrl }}"{% endif %} class="relative group flex w-full flex-col rounded-3xl h-full p-6 ring-1 ring-neutral-950/5 transition sm:p-8 duration-300 {{ card.button.classes }} {{ render.foregroundColors({
+                    background: backgroundColorLabel,
+                    opacity: overlayOpacity,
+                    changeDefaultColor: true,
+                    type: 'cardHover'
+                }) }}"
+                {% if card.button.newWindow %} target="_blank" rel="noopener" {% endif %}
+                {% for attribute in card.button.customAttributes %} {{ attribute.attribute }}="{{ attribute.value }}" {% endfor %}
+            >
+                {% if card.icon|length %}
+                <h3>
+                    <div class="{{ render.foregroundColors({
+                        background: backgroundColorLabel,
+                        opacity: overlayOpacity,
+                        changeDefaultColor: true,
+                        type: 'iconColor'
+                    }) }}">
+                        <span class="absolute inset-0 rounded-3xl"></span>
+                        {{ svg(card.icon.path)|attr({
+                            class: 'w-12 h-12',
+                        }) }}
+                    </div>
+                </h3>
+                {% endif %}
+
+                {% if card.eyebrow|length %}
+                <div class="mt-6 flex gap-x-2 text-sm {{ render.foregroundColors({
+                    background: backgroundColorLabel,
+                    opacity: overlayOpacity,
+                    changeDefaultColor: true,
+                    type: 'heading'
+                }) }}">
+                    <div class="font-semibold">
+                        {{ card.eyebrow }}
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if card.heading|length %}
+                <h3 class="mt-2 font-display text-2xl font-semibold {{ render.foregroundColors({
+                    background: backgroundColorLabel,
+                    opacity: overlayOpacity,
+                    changeDefaultColor: true,
+                    type: 'heading'
+                }) }}">
+                    {{ card.heading }}
+                </h3>
+                {% endif %}
+
+                {% if card.text|length %}
+                {{ render.replaceElements(card.text, {
+                    background: backgroundColorLabel,
+                    opacity: overlayOpacity,
+                    changeDefaultColor: true,
+                }) }}
+                {% endif %}
+
+                {% if card.button|length %}
+                <div class="mt-6 flex items-center">
+                    <div class="shrink-0">
+                        <div class="flex flex-wrap absolute bottom-4 items-center gap-5 mt-2 justify-start">
+                            <div class="text-cyprus-500 flex border-b-2 border-transparent font-semibold items-center inline-block leading-6 transition duration-300 text-base {{ render.foregroundColors({ background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'detailPagelink' }) }} {{ render.foregroundColors({ background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'linkHover' }) }}">
+                                <span class="flex-1 relative top-px ">
+                                    {{ card.button.getText() }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </{{ passiveLink }}>
+        </div>
+    {% endfor %}
+</div>

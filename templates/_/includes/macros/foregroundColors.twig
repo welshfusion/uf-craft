@@ -90,7 +90,27 @@
         'green'        :  changeColorCon ? 'fill-white/20 stroke-white/25' : 'fill-white/5 stroke-white/10',
         'cyprus'       :  changeColorCon ? 'fill-white/20 stroke-white/25' : 'fill-white/5 stroke-white/5',
         'black'        :  changeColorCon ? 'fill-white/15 stroke-white/20' : 'fill-white/5 stroke-white/5',
-    }
+    },
+    'linkHover' : {
+        'none'         :  'group-hover:border-neutral-700',
+        'white'        :  'group-hover:border-neutral-700',
+        'black-50'     :  'group-hover:border-neutral-700',
+        'green-50'     :  'group-hover:border-neutral-700',
+        'cyprus-50'    :  'group-hover:border-neutral-700',
+        'green'        :  changeColorCon ? 'group-hover:border-neutral-700' : 'group-hover:border-neutral-200',
+        'cyprus'       :  changeColorCon ? 'group-hover:border-neutral-700' : 'group-hover:border-neutral-400',
+        'black'        :  changeColorCon ? 'group-hover:border-neutral-700' : 'group-hover:border-neutral-400',
+    },
+    'iconColor' : {
+        'none'         :  'fill-cyprus-500 text-cyprus-500',
+        'white'        :  'fill-cyprus-500 text-cyprus-500',
+        'black-50'     :  'fill-cyprus-500 text-cyprus-500',
+        'green-50'     :  'fill-cyprus-500 text-cyprus-500',
+        'cyprus-50'    :  'fill-cyprus-500 text-cyprus-500',
+        'green'        :  changeColorCon ? 'fill-cyprus-500 text-cyprus-500' : 'fill-white text-white',
+        'cyprus'       :  changeColorCon ? 'fill-cyprus-500 text-cyprus-500' : 'fill-white text-white',
+        'black'        :  changeColorCon ? 'fill-cyprus-500 text-cyprus-500' : 'fill-white text-white',
+    },
 } %}
 {% if type is iterable %}
     {% for item in type %}

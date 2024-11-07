@@ -1,0 +1,144 @@
+{#
+===============================================================================
+    Text Cards (textCards)
+
+    Variables
+        - Block (block)
+
+    Fields:
+        Content:
+            Child:
+              Text Card (textCard)
+                - Simple Text (simpleText)
+
+        Auxiliary:
+            - Eyebrow (eyebrow)
+            - Heading (heading)
+            - Sub Heading (subHeading)
+            - Text (text)
+            - Buttons (buttons) [Matrix]
+                - Button Type (buttonType)
+                - Button Color (buttonColor)
+                - Icon (icon)
+                - Icon Position (iconPosition)
+                - Button (button)
+
+        Settings:
+            - Content Width (contentWidth)
+            - background Color (backgroundColor)
+            - Overlay Opacity (overlayOpacity)
+            - Listing Style (listingStyle)
+            - Per Row Limit (perRowLimit)
+            - content Alignment (contentAlignment)
+            - Heading Size (headingSize)
+            - font Weight (fontWeight)
+===============================================================================
+#}
+{{ craft.app.config.general.devMode ? ('<!-- Template: ' ~ _self ~ ' -->') | raw }}
+{% import "_/includes/macros" as render %}
+
+{# Parent Block Fields Start #}
+{% set parent = parent ?? null %}
+{% set childContainer = childContainer ?? false %}
+{% set sectionTag = childContainer ? 'div' : 'section' %}
+{# Parent Block Fields End #}
+
+{% set headingTag = block.headingSize.getValue()|default('h2') %}
+{% set fontWeight = block.fontWeight.getValue()|default('medium') %}
+{% set contentAlignment = block.contentAlignment.value|default('left') %}
+{% set contentWidth = block.contentWidth|default('0;12') %}
+{% set listingStyle = block.listingStyle.value|default('cards') %}
+{% set cardLayout = block.cardLayout.value|default('layout1') %}
+
+{% set conbackgroundColor = conbackgroundColor ?? null %}
+{% set backgroundColorLabel = block.backgroundColor.label|default(conbackgroundColor ?? 'none') %}
+{% set containerBgExist = conbackgroundColor != backgroundColorLabel %}
+{% set backgroundColor = render.color({
+    handle: backgroundColorLabel,
+    swatch: 'background'
+}) %}
+
+{% set overlayOpacity = block.overlayOpacity.getValue()|default('none') %}
+{% set bgOpacity = render.setOpacity({
+    opacity: overlayOpacity,
+    opacityType: 'bg'
+}) %}
+
+{% set perRowLimit = block.perRowLimit2.getValue()|default('3') %}
+{% set rowLimit = {
+    '2' : 'grid-cols-1 sm:grid-cols-2',
+    '3' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3',
+    '4' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4',
+    '5' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-5'
+} %}
+
+{% set contentAnimation = render.setAnimation({
+    animation: block.animation,
+    animationStyle: block.animationStyle.value|default('fade-up'),
+    animationDuration: block.animationDuration.value|default(1500),
+    animationOffset: block.animationOffset.value|default(200),
+    animationEasing: block.animationEasing.value|default(null)
+}) | raw %}
+
+{% set cardAnimation = render.setAnimation({
+    animation: block.animation,
+    animationStyle: block.animationStyle2.value|default('fade-up'),
+    animationDuration: block.animationDuration2.value|default(1500),
+    animationOffset: block.animationOffset2.value|default(200),
+    animationEasing: block.animationEasing2.value|default(null)
+}) | raw %}
+
+{% set dualCards = block.dualCard.all() %}
+{% set buttons = block.buttons.all() %}
+
+<{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ containerBgExist ? backgroundColor }} {{ bgOpacity }} {{ childContainer ? 'relative z-20' }} {{ spacing.implode(' ') }}">
+    <div class="{{ not childContainer ? 'container' }} {{ childContainer and containerBgExist ? 'px-4 md:px-6' }}">
+        <div class="{{ render.contentWidth({width: contentWidth}) }}">
+            {% if block.eyebrow|length or block.heading|length or block.subHeading|length or block.text|length %}
+            {{ render.basicContents({
+                eyebrow: block.eyebrow,
+                heading: block.heading,
+                subHeading: block.subHeading,
+                text: block.text,
+                headingTag: headingTag,
+                fontWeight: fontWeight,
+                backgroundColorLabel: backgroundColorLabel,
+                opacity: overlayOpacity,
+                contentAlignment: contentAlignment,
+                animation: block.animation,
+                contentAnimationStyle: block.animationStyle.getValue()|default('fade-up'),
+                contentAnimationDuration: block.animationDuration.getValue()|default(700),
+                contentAnimationOffset: block.animationOffset.getValue()|default(100),
+                contentAnimationEasing: block.animationEasing.getValue()|default(null)
+            }) }}
+            {% endif %}
+
+            {% if dualCards|length %}
+                {% include "_partials/pageBuilder/dualCards/#{cardLayout}/#{listingStyle}" %}
+            {% endif %}
+
+            {% for button in buttons %}
+            {% if loop.first %}
+            <div class="flex flex-wrap items-center gap-5 mt-8 md:mt-10 {{ render.getAlignment({
+                alignment: contentAlignment,
+                type: 'justify'
+            }) }}" {{ contentAnimation|raw }}>
+            {% endif %}
+                {{ render.createButton({
+                    button: button.button,
+                    buttonType: button.buttonType.getValue()|default("button"),
+                    buttonColor: button.buttonColor.label|default('cyprus'),
+                    icon: button.icon,
+                    iconPosition: button.iconPosition.getValue()|default('right'),
+                    background: backgroundColorLabel,
+                }) }}
+            {% if loop.last %}
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</{{ sectionTag }}>
+
+{# Register Swiper JS #}
+{{ craft.vite.register("src/js/swiper.js", false) }}

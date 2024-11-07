@@ -1,4 +1,4 @@
-dateModified: 1720705504
+dateModified: 1730982222
 elementSources:
   craft\elements\Entry:
     -
@@ -112,6 +112,7 @@ meta:
     07f716e2-b6e5-4aaa-aa76-1a49c9929017: 'Light switch' # Light switch
     8bdd6695-676c-438d-8cd2-caa3a8940ccb: Full # Full
     8c84eddd-0a33-4f51-a9f8-8c5ff353066d: 'Banner Height' # Banner Height
+    8dd0f11e-a155-4824-ad92-6a326a293762: Card # Card
     8e3c2782-28f2-47a9-8b70-cd972393e4d3: 'Two Columns' # Two Columns
     9d433c43-3b96-46c7-9217-9495827131e2: 'Text Card' # Text Card
     009ed4ac-c86b-4fc7-9918-9bd7b4f8157d: Header # Header
@@ -156,6 +157,7 @@ meta:
     7705f44c-daf6-4d92-80a8-dcdc00f86f2d: 'Listing Blog' # Listing Blog
     8068b4f8-14d3-4989-9beb-01e047f658c5: 'Script Position' # Script Position
     8404f8a0-0657-4072-9900-4f9c783fed32: 'Listing Style 2' # Listing Style 2
+    8520c628-a802-4dac-a4ea-bd88e6785ecb: 'Per Row Limit' # Per Row Limit
     8924f8be-b7ee-44cf-991c-9fc458096173: 'Page Builder' # Page Builder
     12538c79-8e21-4736-85d0-a25711c4cc7f: Container # Container
     19036f8c-8350-455e-a721-9938e3cf9811: 'Related Case Study' # Related Case Study
@@ -206,7 +208,9 @@ meta:
     d5e72f4c-5e9b-4b94-b75c-b4d69e74f1a2: 'Per Row Limit' # Per Row Limit
     d5375257-05b7-4c6e-b808-81ca62e56f9f: 'Contact Social Links' # Contact Social Links
     dbcfc862-d508-4082-a32b-0a6ff36eb41a: 'Alt Logo' # Alt Logo
+    dd17cf8e-f110-456a-9b87-b43be231a9c1: 'Dual Cards' # Dual Cards
     e084ec80-7142-4f11-95cc-afaccaed2cf6: 'Column Alignment' # Column Alignment
+    e11f61eb-fec8-4ca1-bdf7-1bc2d00e68e9: 'Card Layout' # Card Layout
     e38ac257-70df-4d50-9384-503f2133f772: 'Heading Size' # Heading Size
     e57b30d6-65e9-4b9e-bec9-ec5f661fefcf: Tag # Tag
     e24737b0-c5aa-4f05-9fb5-fc42d7f31bb0: 'Icon Position' # Icon Position
@@ -220,6 +224,7 @@ meta:
     f6df5443-44eb-4d91-9232-62ccf21b3e83: Hero # Hero
     f7a03cc1-a16d-4c45-9dfd-c869032b4453: Eyebrow # Eyebrow
     feed6fe3-6e93-43c1-959b-d5c7af80a279: Tags # Tags
+    ff7e4b2d-13bf-47c1-956a-d9b687cff555: Card # Card
 plugins:
   blitz:
     edition: standard

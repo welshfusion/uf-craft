@@ -6,7 +6,7 @@
     "file": "assets/_commonjsHelpers-legacy-16634a03.js"
   },
   "src/js/app-legacy.js": {
-    "file": "assets/app-legacy-31bc4e71.js",
+    "file": "assets/app-legacy-856b5a58.js",
     "imports": [
       "__commonjsHelpers-legacy-16634a03.js"
     ],
@@ -14,14 +14,14 @@
     "src": "src/js/app-legacy.js"
   },
   "src/js/app.css": {
-    "file": "assets/app-e1cc9acc.css",
+    "file": "assets/app-feca7971.css",
     "src": "src/js/app.css"
   },
   "src/js/app.js": {
     "css": [
-      "assets/app-e1cc9acc.css"
+      "assets/app-feca7971.css"
     ],
-    "file": "assets/app-54c882de.js",
+    "file": "assets/app-d50fd736.js",
     "imports": [
       "__commonjsHelpers-725317a4.js"
     ],

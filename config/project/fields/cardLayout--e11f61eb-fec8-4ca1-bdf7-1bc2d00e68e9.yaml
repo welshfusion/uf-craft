@@ -1,0 +1,52 @@
+columnSuffix: null
+handle: cardLayout
+instructions: null
+name: 'Card Layout'
+searchable: false
+settings:
+  displayAsGraphic: null
+  displayFullwidth: null
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - 'Image Card Layout'
+        -
+          - showLabel
+          - ''
+        -
+          - value
+          - layout1
+        -
+          - imageUrl
+          - /images/buttonBox/dualCardLayout/layout1.png
+        -
+          - imageAlign
+          - left
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - 'Icon Card Layout'
+        -
+          - showLabel
+          - ''
+        -
+          - value
+          - layout2
+        -
+          - imageUrl
+          - /images/buttonBox/dualCardLayout/layout2.png
+        -
+          - imageAlign
+          - left
+        -
+          - default
+          - ''
+translationKeyFormat: null
+translationMethod: none
+type: verbb\buttonbox\fields\Buttons
