@@ -358,7 +358,7 @@ fieldLayouts:
           -
             elementCondition: null
             fieldUid: 07f716e2-b6e5-4aaa-aa76-1a49c9929017 # Light switch
-            handle: null
+            handle: animation
             includeInCards: false
             instructions: null
             label: 'Aniamtion?'
