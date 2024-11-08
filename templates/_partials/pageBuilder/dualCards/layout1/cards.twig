@@ -23,32 +23,17 @@
                 </div>
                 {% endif %}
 
-                <div class="flex flex-1 flex-col justify-between p-6 duration-300 {{ render.foregroundColors({
-                    background: backgroundColorLabel,
-                    opacity: overlayOpacity,
-                    changeDefaultColor: true,
-                    type: 'cardHover'
-                }) }}">
+                <div class="flex flex-1 flex-col justify-between p-6 duration-300 {{ render.foregroundColors({ background: backgroundColorLabel, opacity: overlayOpacity,changeDefaultColor: true, type: 'cardHover' }) }}">
                     <div class="flex-1">
                         {% if card.eyebrow|length %}
-                        <div class="block font-display text-base font-semibold text-left {{ render.foregroundColors({
-                            background: backgroundColorLabel,
-                            opacity: overlayOpacity,
-                            changeDefaultColor: true,
-                            type: 'heading'
-                        }) }}">
+                        <div class="block font-display text-base font-semibold text-left {{ render.foregroundColors({ background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'heading' }) }}">
                             {{ card.eyebrow }}
                         </div>
                         {% endif %}
 
                         <div class="mt-1 block">
                             {% if card.heading|length %}
-                                <h3 class="font-display text-2xl font-semibold mt-2 {{ render.foregroundColors({
-                                    background: backgroundColorLabel,
-                                    opacity: overlayOpacity,
-                                    changeDefaultColor: true,
-                                    type: 'heading'
-                                }) }}">
+                                <h3 class="font-display text-2xl font-semibold mt-2 {{ render.foregroundColors({ background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'heading' }) }}">
                                     {{ card.heading }}
                                 </h3>
                             {% endif %}

@@ -16,12 +16,7 @@
             >
                 {% if card.icon|length %}
                 <h3>
-                    <div class="{{ render.foregroundColors({
-                        background: backgroundColorLabel,
-                        opacity: overlayOpacity,
-                        changeDefaultColor: true,
-                        type: 'iconColor'
-                    }) }}">
+                    <div class="{{ render.foregroundColors({ background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'iconColor' }) }}">
                         <span class="absolute inset-0 rounded-3xl"></span>
                         {{ svg(card.icon.path)|attr({
                             class: 'w-12 h-12',
@@ -31,12 +26,7 @@
                 {% endif %}
 
                 {% if card.eyebrow|length %}
-                <div class="mt-6 flex gap-x-2 text-sm {{ render.foregroundColors({
-                    background: backgroundColorLabel,
-                    opacity: overlayOpacity,
-                    changeDefaultColor: true,
-                    type: 'heading'
-                }) }}">
+                <div class="mt-6 flex gap-x-2 text-sm {{ render.foregroundColors({ background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'heading' }) }}">
                     <div class="font-semibold">
                         {{ card.eyebrow }}
                     </div>
@@ -44,12 +34,7 @@
                 {% endif %}
 
                 {% if card.heading|length %}
-                <h3 class="mt-2 font-display text-2xl font-semibold {{ render.foregroundColors({
-                    background: backgroundColorLabel,
-                    opacity: overlayOpacity,
-                    changeDefaultColor: true,
-                    type: 'heading'
-                }) }}">
+                <h3 class="mt-2 font-display text-2xl font-semibold {{ render.foregroundColors({ background: backgroundColorLabel, opacity: overlayOpacity, changeDefaultColor: true, type: 'heading' }) }}">
                     {{ card.heading }}
                 </h3>
                 {% endif %}
