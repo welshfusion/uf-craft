@@ -75,14 +75,14 @@
                         <div class="col-span-full sm:flex sm:items-center sm:justify-between sm:gap-x-8 lg:col-span-1 lg:block">
                             <div class="sm:flex sm:items-center sm:gap-x-6 lg:block">
                                 {% if image|length %}
-                                {{ render.setImage({
-                                    image: image,
-                                    alt: image.title,
-                                    width: 36,
-                                    height: 36,
-                                    class: 'h-16 w-16 flex-none text-transparent'
-                                }) }}
+                                    {{ render.setImage({
+                                        image: image,
+                                        alt: image.title,
+                                        height: 36,
+                                        class: 'h-16 flex-none text-transparent object-contain'
+                                    }) }}
                                 {% endif %}
+
 
                                 <h3 class="mt-6 text-sm font-semibold sm:mt-0 lg:mt-8 {{ render.foregroundColors({
                                     background: backgroundColorLabel,

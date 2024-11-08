@@ -44,11 +44,29 @@
                 </blockquote>
                 {% endif %}
 
+                {% if testimonial.clientName|length or testimonial.designation|length %}
+                <div class="mt-4 text-base font-semibold {{ render.foregroundColors({
+                    background: backgroundColorLabel,
+                    opacity: overlayOpacity,
+                    changeDefaultColor: true,
+                    type: 'heading'
+                }) }}">
+                    {% if testimonial.clientName|length %}
+                        {{ testimonial.clientName }}
+                        <span>, </span>
+                    {% endif %}
+
+                    {% if testimonial.designation|length %}
+                        {{ testimonial.designation }}
+                    {% endif %}
+                </div>
+                {% endif %}
+
                 {% if relatedClient|length %}
                     {% set image = relatedClient.image2.one() %}
 
                     {% if image|length %}
-                    <div class="mt-10">
+                    <div class="mt-6">
                         {{ render.setImage({
                             image: image,
                             alt: image.title,
