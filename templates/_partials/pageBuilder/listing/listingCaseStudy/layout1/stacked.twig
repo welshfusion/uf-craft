@@ -79,7 +79,7 @@
                                         image: image,
                                         alt: image.title,
                                         height: 36,
-                                        class: 'h-16 flex-none text-transparent object-contain'
+                                        class: 'h-8 flex-none text-transparent object-contain'
                                     }) }}
                                 {% endif %}
 
@@ -151,48 +151,6 @@
                                 </span>
                             </a>
                         </div>
-
-                        {% if relatedClient|length %}
-                            {% set relatedTestimonial = craft.entries().section('testimonial').relatedTo(relatedClient).one() %}
-
-                            {% if relatedTestimonial|length %}
-                            <div class="pl-8 mt-12 relative before:absolute after:absolute before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px {{ render.foregroundColors({
-                                background: backgroundColorLabel,
-                                opacity: overlayOpacity,
-                                changeDefaultColor: true,
-                                type: 'border'
-                            }) }}">
-                                {% if relatedTestimonial.quote|length %}
-                                <blockquote class="text-sm {{ render.foregroundColors({
-                                    background: backgroundColorLabel,
-                                    opacity: overlayOpacity,
-                                    changeDefaultColor: true,
-                                    type: 'subHeading'
-                                }) }}">
-                                    {{ relatedTestimonial.quote }}
-                                </blockquote>
-                                {% endif %}
-
-                                {% if relatedTestimonial.clientName|length or relatedTestimonial.designation|length %}
-                                <div class="mt-6 text-sm font-semibold {{ render.foregroundColors({
-                                    background: backgroundColorLabel,
-                                    opacity: overlayOpacity,
-                                    changeDefaultColor: true,
-                                    type: 'heading'
-                                }) }}">
-                                    {% if relatedTestimonial.clientName|length %}
-                                        {{ relatedTestimonial.clientName }}
-                                        <span>, </span>
-                                    {% endif %}
-
-                                    {% if relatedTestimonial.designation|length %}
-                                        {{ relatedTestimonial.designation }}
-                                    {% endif %}
-                                </div>
-                                {% endif %}
-                            </div>
-                            {% endif %}
-                        {% endif %}
                     </div>
                 </div>
             </div>
