@@ -80,19 +80,17 @@
                 type: 'cardHover'
             }) }}">
                 {% if relatedClient|length %}
-                    {% set image = relatedClient.image.one() %}
+                    {# {% set image = relatedClient.image.one() %}
 
                     {% if image|length %}
                     {{ render.setImage({
                         image: image,
                         alt: image.title,
-                        width: 36,
-                        height: 36,
-                        class: 'h-16 w-16 flex-none text-transparent'
+                        class: 'h-20 flex-none text-transparent'
                     }) }}
-                    {% endif %}
+                    {% endif %} #}
 
-                    <p class="flex gap-x-2 text-sm {{ image|length ? 'mt-6' }} {{ render.foregroundColors({
+                    <p class="flex gap-x-2 text-sm {{ render.foregroundColors({
                         background: backgroundColorLabel,
                         opacity: overlayOpacity,
                         changeDefaultColor: true,
