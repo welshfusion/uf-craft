@@ -2,9 +2,14 @@
 {% extends "_/layouts/main" %}
 {% import "_/includes/macros" as render %}
 
+{% set limit = entry.limit|default(2) %}
 {% set blogBuilder = entry.pageBuilder.all() %}
 {% set relatedClient = entry.relatedClient.one() %}
-{% set recommendedCaseStudies = craft.entries.section('caseStudies').id('not ' ~ entry.getId()).all() %}
+
+{% set recommendedCaseStudies = entry.relatedCaseStudy.all() %}
+{% if not recommendedCaseStudies|length %}
+{% set recommendedCaseStudies = craft.entries.section('caseStudies').id('not ' ~ entry.getId()).limit(limit).all() %}
+{% endif %}
 
 {% block content %}
 <div>
@@ -134,8 +139,8 @@
     </div>
     {% endif %}
 
-    {% if recommendedCaseStudies|length %}
-    <div class="relative pt-24 sm:pt-32 lg:pt-40 mt-24 sm:mt-32 lg:mt-40">
+    {% if recommendedCaseStudies|length and entry.showCaseStudies %}
+    <div class="relative pt-24 sm:pt-32 lg:pt-40 pb-24 mt-24 sm:mt-32 lg:mt-40">
         <div class="absolute inset-x-0 top-0 -z-10 h-[884px] overflow-hidden rounded-t-4xl bg-gradient-to-b from-neutral-50">
             <svg aria-hidden="true" class="absolute inset-0 h-full w-full fill-neutral-100 stroke-neutral-950/5 [mask-image:linear-gradient(to_bottom_left,white_40%,transparent_50%)]">
                 <rect width="100%" height="100%" fill="url(#:Rdbbbalkq:)" stroke-width="0"></rect>
@@ -196,6 +201,26 @@
             </div>
         </div>
     </div>
+    {% endif %}
+
+    {#
+    ============================================
+        Include CTA
+    ============================================
+    #}
+    {% set overrideCta = entry|default(null)|length ? entry.overrideCta|default(null) %}
+    {% set entryOverrideCta = entry|default(null)|length ? entry.callToAction.one()|default(null) %}
+    {% set relatedCta = callToAction.callToAction2.one() %}
+    {% set relatedCta = overrideCta and entryOverrideCta|length ? entryOverrideCta : relatedCta %}
+    {% if relatedCta|length %}
+        {% set ctaBuilder = relatedCta.pageBuilder.all() %}
+        {% if ctaBuilder|length %}
+            {% include "_partials/blocks" with {
+                pageBuilder: ctaBuilder,
+                childContainer: false,
+                spacingGlobalBlock: true
+            } %}
+        {% endif %}
     {% endif %}
 </div>
 {% endblock %}

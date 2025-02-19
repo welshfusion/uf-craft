@@ -1,4 +1,4 @@
-dateModified: 1739956946
+dateModified: 1739968382
 elementSources:
   craft\elements\Entry:
     -
@@ -107,6 +107,7 @@ meta:
     7c1471a7-a014-4b8f-8e10-1d6064ca6ebd: Team # Team
     7c8987af-e9f1-42e8-930e-4a16028b925d: Button # Button
     7cfd4bf0-dad6-4968-9012-be339843d47a: 'Featured Banner' # Featured Banner
+    7e031956-6581-4ca0-8543-f84eca882b06: 'Show Case Studies?' # Show Case Studies?
     7e835274-c615-428f-bb84-0acaedf10a47: 'Gallery Layout' # Gallery Layout
     7ef67d6e-85ac-42a0-a25d-e7b1c064b81a: Client # Client
     7f96d468-e2f9-40b4-9c10-6fbe07d9aafc: Tag # Tag
@@ -162,6 +163,7 @@ meta:
     8924f8be-b7ee-44cf-991c-9fc458096173: 'Page Builder' # Page Builder
     12538c79-8e21-4736-85d0-a25711c4cc7f: Container # Container
     19036f8c-8350-455e-a721-9938e3cf9811: 'Related Case Study' # Related Case Study
+    22931d1e-b9cf-4371-84e1-5c465efccf3d: 'Override CTA' # Override CTA
     025101ef-e8fd-4542-bd7f-d5d127b6789f: 'Tracking Scripts' # Tracking Scripts
     86035a0d-51de-4bb2-b452-4bfc32cfc03e: 'Margin Top' # Margin Top
     292523b0-bad0-4ce1-9542-3fe9faffcd40: Blog # Blog

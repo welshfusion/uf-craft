@@ -106,6 +106,108 @@ fieldLayouts:
         elementCondition: null
         elements:
           -
+            dateAdded: '2025-02-19T10:22:40+00:00'
+            elementCondition: null
+            fieldUid: cc5e2abd-42a9-498e-a6f6-d6596c99d2c5 # Limit
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 9e9627cc-731e-4c46-b5ae-ec9cef530b65
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-19T10:22:40+00:00'
+            elementCondition: null
+            fieldUid: 7e031956-6581-4ca0-8543-f84eca882b06 # Show Case Studies?
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 3910a265-85e6-4820-b4c4-6f6b6afc0fcb
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2025-02-19T10:22:40+00:00'
+            elementCondition: null
+            fieldUid: 19036f8c-8350-455e-a721-9938e3cf9811 # Related Case Study
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 4c0822ae-8aed-4b31-b40b-644e6a4b936e
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2025-02-19T12:33:02+00:00'
+            elementCondition: null
+            type: craft\fieldlayoutelements\HorizontalRule
+            uid: 68102d66-3089-498c-a989-60e64e72ce38
+            userCondition: null
+          -
+            dateAdded: '2025-02-19T12:31:11+00:00'
+            elementCondition: null
+            fieldUid: 22931d1e-b9cf-4371-84e1-5c465efccf3d # Override CTA
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 19cc4823-5a3a-40fc-a009-13ab47f49ce9
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2025-02-19T12:31:11+00:00'
+            elementCondition:
+              class: craft\elements\conditions\entries\EntryCondition
+              conditionRules:
+                -
+                  class: craft\fields\conditions\LightswitchFieldConditionRule
+                  fieldUid: 22931d1e-b9cf-4371-84e1-5c465efccf3d # Override CTA
+                  layoutElementUid: 19cc4823-5a3a-40fc-a009-13ab47f49ce9
+                  uid: b2d4e072-aeb0-49e9-9875-f9d15a978bf8
+                  value: true
+              elementType: craft\elements\Entry
+              fieldContext: global
+            fieldUid: 3103da10-e23c-4bc6-8d50-79ecfca1013e # Call To Action
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 8f5678fc-e338-4fa1-bf6f-83f6f11f7042
+            userCondition: null
+            warning: null
+            width: 50
+        name: Meta
+        uid: 78a9ce07-6f84-4075-8ea5-a72dfc46ec8b
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
             dateAdded: '2025-02-19T09:20:59+00:00'
             elementCondition: null
             fieldUid: b3c80522-1b2a-44ca-954e-be2e2544ebd9 # SEO

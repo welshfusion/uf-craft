@@ -1,0 +1,12 @@
+columnSuffix: null
+handle: overrideCta
+instructions: null
+name: 'Override CTA'
+searchable: false
+settings:
+  default: false
+  offLabel: 'NO'
+  onLabel: 'YES'
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Lightswitch
