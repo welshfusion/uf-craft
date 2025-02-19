@@ -97,7 +97,7 @@
     animationDelay: delay
 }) | raw %}
 {% if loop.first %}
-<div class="flex flex-wrap items-center gap-5 {{ eyebrow|length or heading|length or subHeading|length or text|length ? 'mt-5' }} {{ render.getAlignment({
+<div class="flex flex-wrap items-center gap-5 {{ eyebrow|length or heading|length or subHeading|length or text|length ? 'mt-8' }} {{ render.getAlignment({
     alignment: contentAlignment,
     type: 'justify'
 }) }}" {{ contentAnimation|raw }}>
