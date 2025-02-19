@@ -10,6 +10,7 @@ fieldLayouts:
             autocomplete: false
             autocorrect: true
             class: null
+            dateAdded: '2025-02-19T09:20:59+00:00'
             disabled: false
             elementCondition: null
             id: null
@@ -35,6 +36,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
+            dateAdded: '2025-02-19T09:20:59+00:00'
             elementCondition: null
             fieldUid: 6343b9b3-faa9-4f99-b112-fdec9bd6d770 # Related Client
             handle: null
@@ -50,6 +52,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
+            dateAdded: '2025-02-19T09:20:59+00:00'
             elementCondition: null
             fieldUid: 4998b347-a2ba-4814-8789-53adb5d61a41 # Text
             handle: null
@@ -65,6 +68,23 @@ fieldLayouts:
             warning: null
             width: 100
           -
+            dateAdded: '2025-02-19T09:22:26+00:00'
+            elementCondition: null
+            fieldUid: 1f8f6d28-a4f1-4472-9791-ecc7e78635b9 # Company Tagline
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e423eb81-985c-41c7-a026-bd70ab32b0c7
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-19T09:20:59+00:00'
             elementCondition: null
             fieldUid: 8924f8be-b7ee-44cf-991c-9fc458096173 # Page Builder
             handle: null
@@ -86,6 +106,7 @@ fieldLayouts:
         elementCondition: null
         elements:
           -
+            dateAdded: '2025-02-19T09:20:59+00:00'
             elementCondition: null
             fieldUid: b3c80522-1b2a-44ca-954e-be2e2544ebd9 # SEO
             handle: null

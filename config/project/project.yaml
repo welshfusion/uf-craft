@@ -1,4 +1,4 @@
-dateModified: 1730988507
+dateModified: 1739956946
 elementSources:
   craft\elements\Entry:
     -
@@ -79,6 +79,7 @@ meta:
     1d563f74-0673-4d93-9848-cfbf74332e88: 'Animation Style' # Animation Style
     1dd3a6ac-82ac-4ebb-8097-c66521644b0b: 'Team Category' # Team Category
     1eaebe24-9727-4d24-969d-6c0a6012f7c5: Listing # Listing
+    1f8f6d28-a4f1-4472-9791-ecc7e78635b9: 'Company Tagline' # Company Tagline
     1fa0a156-5d07-4afa-a05a-7f48cebc4c97: Client # Client
     2ba320e0-e879-4969-b03c-211b60735a5a: 'Section ID' # Section ID
     2d5c34d8-b71f-4777-a3d6-50cb6a4a5402: Multimedia # Multimedia

@@ -5,6 +5,7 @@ fieldLayouts:
         elementCondition: null
         elements:
           -
+            dateAdded: '2025-02-19T07:05:16+00:00'
             elementCondition: null
             fieldUid: 05af4b17-93ed-4027-a039-96c368e5b585 # Image
             handle: logo
@@ -18,8 +19,25 @@ fieldLayouts:
             uid: 9f571e06-58fe-48d0-bd15-9b86116fb162
             userCondition: null
             warning: null
-            width: 100
+            width: 50
           -
+            dateAdded: '2025-02-19T07:09:08+00:00'
+            elementCondition: null
+            fieldUid: ec70c780-286c-4027-8904-ecdb25e3e1c1 # Heading
+            handle: copyrightDescription
+            includeInCards: false
+            instructions: null
+            label: 'Copyright Description'
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: f6a7021c-9b91-46b1-b992-7fc9d23c4e0d
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2025-02-19T07:05:16+00:00'
             elementCondition: null
             fieldUid: 0423d9a0-74e7-4a3d-afc5-a78d494caab4 # Navigation
             handle: null
@@ -35,6 +53,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
+            dateAdded: '2025-02-19T07:05:16+00:00'
             elementCondition: null
             fieldUid: ec70c780-286c-4027-8904-ecdb25e3e1c1 # Heading
             handle: null
@@ -50,6 +69,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
+            dateAdded: '2025-02-19T07:05:16+00:00'
             elementCondition: null
             fieldUid: 4998b347-a2ba-4814-8789-53adb5d61a41 # Text
             handle: null
@@ -65,6 +85,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
+            dateAdded: '2025-02-19T07:05:16+00:00'
             elementCondition: null
             fieldUid: 07973944-8eb1-4911-962e-d81e1787b026 # Form
             handle: null
