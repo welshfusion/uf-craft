@@ -41,7 +41,7 @@
                         @click="isOpen = !isOpen"
                         :aria-expanded="isOpen"
                     >
-                        <svg viewBox="0 0 24 24" aria-hidden="true" class="h-6 w-6 fill-neutral-950 group-hover:fill-neutral-700">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" class="h-6 w-6 {{ entry.isHomepage ? 'fill-white group-hover:fill-white' : 'fill-neutral-950 group-hover:fill-neutral-700' }}">
                             <path d="M2 6h20v2H2zM2 16h20v2H2z"></path>
                         </svg>
                     </button>
