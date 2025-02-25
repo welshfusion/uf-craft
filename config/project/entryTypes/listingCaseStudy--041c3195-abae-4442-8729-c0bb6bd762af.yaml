@@ -10,6 +10,7 @@ fieldLayouts:
             autocomplete: false
             autocorrect: true
             class: null
+            dateAdded: '2025-02-25T13:33:39+00:00'
             disabled: false
             elementCondition: null
             id: null
@@ -35,6 +36,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
+            dateAdded: '2025-02-25T13:33:39+00:00'
             elementCondition: null
             fieldUid: 19036f8c-8350-455e-a721-9938e3cf9811 # Related Case Study
             handle: null
@@ -48,7 +50,35 @@ fieldLayouts:
             uid: d624309c-5be3-40ff-b2f0-1eafab4406da
             userCondition: null
             warning: null
-            width: 100
+            width: 50
+          -
+            dateAdded: '2025-02-25T13:34:55+00:00'
+            elementCondition:
+              class: craft\elements\conditions\entries\EntryCondition
+              conditionRules:
+                -
+                  class: craft\fields\conditions\OptionsFieldConditionRule
+                  fieldUid: c23691fd-0f4a-4576-805e-31effcb2e66b # Case Study Layout
+                  layoutElementUid: 54bdff6a-8b9d-4b2e-95b1-7c9de5408343
+                  operator: in
+                  uid: 42e4b1f5-5cbc-4c8f-9ce0-89c8ba5eb30a
+                  values:
+                    - layout2
+              elementType: craft\elements\Entry
+              fieldContext: global
+            fieldUid: b699cd31-959a-4434-8491-f7a9af2931a5 # Show Logos?
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: d84b27f6-5627-446c-8159-9730de198cf8
+            userCondition: null
+            warning: null
+            width: 50
         name: Content
         uid: 2fe7bb59-45a6-45b7-8250-47c3d21b1e9f
         userCondition: null
@@ -56,6 +86,7 @@ fieldLayouts:
         elementCondition: null
         elements:
           -
+            dateAdded: '2025-02-25T13:33:39+00:00'
             elementCondition: null
             fieldUid: c23691fd-0f4a-4576-805e-31effcb2e66b # Case Study Layout
             handle: null
@@ -71,6 +102,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
+            dateAdded: '2025-02-25T13:33:39+00:00'
             elementCondition: null
             fieldUid: 8404f8a0-0657-4072-9900-4f9c783fed32 # Listing Style 2
             handle: null
@@ -86,6 +118,7 @@ fieldLayouts:
             warning: null
             width: 50
           -
+            dateAdded: '2025-02-25T13:33:39+00:00'
             elementCondition: null
             fieldUid: cc5e2abd-42a9-498e-a6f6-d6596c99d2c5 # Limit
             handle: null
@@ -101,6 +134,7 @@ fieldLayouts:
             warning: null
             width: 50
           -
+            dateAdded: '2025-02-25T13:33:39+00:00'
             elementCondition:
               class: craft\elements\conditions\entries\EntryCondition
               conditionRules:
@@ -128,6 +162,7 @@ fieldLayouts:
             warning: null
             width: 50
           -
+            dateAdded: '2025-02-25T13:33:39+00:00'
             elementCondition:
               class: craft\elements\conditions\entries\EntryCondition
               conditionRules:

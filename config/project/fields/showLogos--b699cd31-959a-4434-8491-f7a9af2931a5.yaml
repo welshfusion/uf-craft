@@ -1,0 +1,12 @@
+columnSuffix: null
+handle: showLogos
+instructions: null
+name: 'Show Logos?'
+searchable: false
+settings:
+  default: false
+  offLabel: 'No'
+  onLabel: 'Yes'
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Lightswitch
