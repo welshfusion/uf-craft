@@ -73,7 +73,7 @@
 
             {% if image|length %}
             <li class="group flex flex-col justify-center items-center relative" {{ listingAnimation|raw }}>
-                <div class="overflow-hidden">
+                <div class="overflow-hidden w-full h-full">
                     {% if block.showBorder %}
                     <div class="pt-12 relative before:absolute after:absolute before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px
                         {% if imageNum <= perRowLimit %} lg:hidden {% endif %}
@@ -89,14 +89,14 @@
                     </div>
                     {% endif %}
 
-                    <div>
+                    <div class="h-full flex items-center justify-center">
+                    <div class="max-w-[200px]">
                         {{ render.setImage({
                             image: image,
                             alt: image.title,
-                            width: 184,
-                            height: 36,
-                            class: 'h-16 object-contain text-transparent'
+                            class: 'text-transparent mx-auto object-cover'
                         }) }}
+                    </div>
                     </div>
                 </div>
             </li>
