@@ -64,6 +64,17 @@
 {% set tr = tr|default("border-b even:bg-gray-100 #{tableBorder}") %}
 {% set img = img|default('rounded-4xl aspect-[16/10] h-full w-full object-cover grayscale-[0.485642] duration-300 hover:grayscale-0') %}
 
+{% set fontSizeClasses = {
+    'text-tiny': 'text-xs',
+    'text-small': 'text-sm',
+    'text-default': 'text-base',
+    'text-big': 'text-lg',
+    'text-huge': 'text-xl'
+} %}
+
+{# Directly replace CKEditor font-size classes with Tailwind classes #}
+{% set text = text|replace(fontSizeClasses) %}
+
 {{ text|replace({
     "<h1": "<h1 class='#{h1} #{classes} #{color}'",
     "<h2": "<h2 class='#{h2} #{classes} #{color}'",

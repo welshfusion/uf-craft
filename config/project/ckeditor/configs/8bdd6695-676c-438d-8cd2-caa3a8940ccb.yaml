@@ -11,10 +11,18 @@ options:
     options:
       - left
       - right
+  fontSize:
+    options:
+      - tiny
+      - small
+      - default
+      - big
+      - huge
 toolbar:
   - sourceEditing
   - heading
   - '|'
+  - fontSize
   - bold
   - italic
   - underline
