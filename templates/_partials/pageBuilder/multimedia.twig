@@ -99,7 +99,7 @@
 {% set auxiliaryExists = block.eyebrow2|length or block.heading3|length or block.subHeading2|length or block.text2|length or buttons|length %}
 {% set basicContentsExist2 = block.eyebrow|length or block.heading|length or block.subHeading|length or block.text|length %}
 
-<{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ containerBgExist ? backgroundColor }} {{ bgOpacity }} {{ spacing.implode(' ') }} {{ childContainer ? 'relative z-20' }}">
+<{{ sectionTag }} id="{{ block.sectionIds|length ? block.sectionIds : 'block-' ~ block.getId() }}" class="{{ containerBgExist ? backgroundColor }} {{ bgOpacity }} {{ spacing.implode(' ') }} {{ childContainer ? 'relative z-20' }}">
     <div class="{{ not childContainer ? 'container' }} {{ childContainer and containerBgExist ? 'px-4 md:px-6' }}">
         {% if auxiliaryExists|length %}
         <div class="{{ render.contentWidth({width: contentWidth}) }}">

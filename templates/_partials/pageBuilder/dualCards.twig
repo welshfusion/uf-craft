@@ -96,7 +96,7 @@
 {% set dualCards = block.dualCard.all() %}
 {% set buttons = block.buttons.all() %}
 
-<{{ sectionTag }} id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ containerBgExist ? backgroundColor }} {{ bgOpacity }} {{ childContainer ? 'relative z-20' }} {{ spacing.implode(' ') }}">
+<{{ sectionTag }} id="{{ block.sectionIds|length ? block.sectionIds : 'block-' ~ block.getId() }}" class="{{ containerBgExist ? backgroundColor }} {{ bgOpacity }} {{ childContainer ? 'relative z-20' }} {{ spacing.implode(' ') }}">
     <div class="{{ not childContainer ? 'container' }} {{ childContainer and containerBgExist ? 'px-4 md:px-6' }}">
         <div class="{{ render.contentWidth({width: contentWidth}) }}">
             {% if block.eyebrow|length or block.heading|length or block.subHeading|length or block.text|length %}

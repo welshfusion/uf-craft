@@ -10,6 +10,7 @@ fieldLayouts:
             autocomplete: false
             autocorrect: true
             class: null
+            dateAdded: '2024-11-07T14:23:11+00:00'
             disabled: false
             elementCondition: null
             id: null
@@ -35,6 +36,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
+            dateAdded: '2024-11-07T14:23:11+00:00'
             elementCondition: null
             fieldUid: d55f11cd-5d19-4a1d-a318-e6a53750a168 # Accordions
             handle: null
@@ -56,6 +58,7 @@ fieldLayouts:
         elementCondition: null
         elements:
           -
+            dateAdded: '2024-11-07T14:23:11+00:00'
             elementCondition: null
             fieldUid: f7a03cc1-a16d-4c45-9dfd-c869032b4453 # Eyebrow
             handle: null
@@ -71,6 +74,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
+            dateAdded: '2024-11-07T14:23:11+00:00'
             elementCondition: null
             fieldUid: ec70c780-286c-4027-8904-ecdb25e3e1c1 # Heading
             handle: null
@@ -86,6 +90,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
+            dateAdded: '2024-11-07T14:23:11+00:00'
             elementCondition: null
             fieldUid: 0f5da106-4758-4a32-806f-a95ba43b826b # Sub Heading
             handle: null
@@ -101,6 +106,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
+            dateAdded: '2024-11-07T14:23:11+00:00'
             elementCondition: null
             fieldUid: 4998b347-a2ba-4814-8789-53adb5d61a41 # Text
             handle: null
@@ -116,6 +122,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
+            dateAdded: '2024-11-07T14:23:11+00:00'
             elementCondition: null
             fieldUid: b725ddfa-71d5-44fd-b67b-d2291907d5fd # Buttons
             handle: null
@@ -137,12 +144,14 @@ fieldLayouts:
         elementCondition: null
         elements:
           -
+            dateAdded: '2024-11-07T14:23:11+00:00'
             elementCondition: null
             heading: 'Block Settings'
             type: craft\fieldlayoutelements\Heading
             uid: 83f39667-6a5e-4f8a-9955-0636da785bfb
             userCondition: null
           -
+            dateAdded: '2024-11-07T14:23:11+00:00'
             elementCondition: null
             fieldUid: 4daa21a6-7d9e-4652-b72d-4b86d193b8cd # Content Width
             handle: null
@@ -158,6 +167,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
+            dateAdded: '2024-11-07T14:23:11+00:00'
             elementCondition: null
             fieldUid: 5b639435-9f82-4cfa-9b34-0421722361c9 # Background Color
             handle: null
@@ -173,6 +183,7 @@ fieldLayouts:
             warning: null
             width: 50
           -
+            dateAdded: '2024-11-07T14:23:11+00:00'
             elementCondition: null
             fieldUid: 54a3d4c9-582f-4754-8977-4c342ef8a96e # Overlay Opacity
             handle: null
@@ -188,12 +199,14 @@ fieldLayouts:
             warning: null
             width: 50
           -
+            dateAdded: '2024-11-07T14:23:11+00:00'
             elementCondition: null
             heading: 'Content Settings'
             type: craft\fieldlayoutelements\Heading
             uid: 0a6c0d6c-47dc-4461-9dbe-96dcf1a566dd
             userCondition: null
           -
+            dateAdded: '2024-11-07T14:23:11+00:00'
             elementCondition: null
             fieldUid: f5f3b40a-47d4-42d5-b50a-5e17eae1e600 # Content Alignment
             handle: null
@@ -209,6 +222,7 @@ fieldLayouts:
             warning: null
             width: 50
           -
+            dateAdded: '2024-11-07T14:23:11+00:00'
             elementCondition: null
             fieldUid: e38ac257-70df-4d50-9384-503f2133f772 # Heading Size
             handle: null
@@ -224,6 +238,7 @@ fieldLayouts:
             warning: null
             width: 25
           -
+            dateAdded: '2024-11-07T14:23:11+00:00'
             elementCondition: null
             fieldUid: 0e6d4e36-9f7c-4320-bfad-dcc290f8e135 # Font Weight
             handle: null
@@ -239,11 +254,13 @@ fieldLayouts:
             warning: null
             width: 25
           -
+            dateAdded: '2024-11-07T14:23:11+00:00'
             elementCondition: null
             type: craft\fieldlayoutelements\HorizontalRule
             uid: 2f339c20-d253-414a-9cd9-6e9d05ed4d22
             userCondition: null
           -
+            dateAdded: '2025-03-03T14:32:35+00:00'
             elementCondition: null
             fieldUid: 2ba320e0-e879-4969-b03c-211b60735a5a # Section ID
             handle: null
@@ -254,7 +271,7 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 5f5b91f2-5e82-4f56-ae51-1b072b9f4b9c
+            uid: 94048352-1575-43b0-8dda-1a2f22f02c03
             userCondition: null
             warning: null
             width: 100
@@ -265,6 +282,7 @@ fieldLayouts:
         elementCondition: null
         elements:
           -
+            dateAdded: '2024-11-07T14:23:11+00:00'
             elementCondition: null
             fieldUid: 86035a0d-51de-4bb2-b452-4bfc32cfc03e # Margin Top
             handle: null
@@ -280,6 +298,7 @@ fieldLayouts:
             warning: null
             width: 50
           -
+            dateAdded: '2024-11-07T14:23:11+00:00'
             elementCondition: null
             fieldUid: f4be19c5-ac47-4a53-808f-46357722601c # Margin Bottom
             handle: null
@@ -295,6 +314,7 @@ fieldLayouts:
             warning: null
             width: 50
           -
+            dateAdded: '2024-11-07T14:23:11+00:00'
             elementCondition: null
             fieldUid: c16118bb-d24d-489d-8c5a-2deabdcd6e16 # Padding Top
             handle: null
@@ -310,6 +330,7 @@ fieldLayouts:
             warning: null
             width: 50
           -
+            dateAdded: '2024-11-07T14:23:11+00:00'
             elementCondition: null
             fieldUid: bff0694b-0a96-4afa-ba0e-b4e834e9a153 # Padding Bottom
             handle: null
@@ -331,6 +352,7 @@ fieldLayouts:
         elementCondition: null
         elements:
           -
+            dateAdded: '2024-11-07T14:23:11+00:00'
             elementCondition: null
             fieldUid: 07f716e2-b6e5-4aaa-aa76-1a49c9929017 # Light switch
             handle: animation
@@ -346,11 +368,13 @@ fieldLayouts:
             warning: null
             width: 100
           -
+            dateAdded: '2024-11-07T14:23:11+00:00'
             elementCondition: null
             type: craft\fieldlayoutelements\HorizontalRule
             uid: 50113607-8620-4732-a0a7-5682fcd6ee62
             userCondition: null
           -
+            dateAdded: '2024-11-07T14:23:11+00:00'
             elementCondition: null
             fieldUid: 1d563f74-0673-4d93-9848-cfbf74332e88 # Animation Style
             handle: null
@@ -366,6 +390,7 @@ fieldLayouts:
             warning: null
             width: 50
           -
+            dateAdded: '2024-11-07T14:23:11+00:00'
             elementCondition: null
             fieldUid: ed742f3d-8fc4-44e1-b975-1b03cb9ab839 # Animation Easing
             handle: null
@@ -381,6 +406,7 @@ fieldLayouts:
             warning: null
             width: 50
           -
+            dateAdded: '2024-11-07T14:23:11+00:00'
             elementCondition: null
             fieldUid: 86da9d1c-79b6-4b38-bfe8-d608e36d610c # Animation Duration
             handle: null
@@ -396,6 +422,7 @@ fieldLayouts:
             warning: null
             width: 50
           -
+            dateAdded: '2024-11-07T14:23:11+00:00'
             elementCondition: null
             fieldUid: 703a980f-eab2-4276-a815-17e7b6f5095a # Animation Offset
             handle: null

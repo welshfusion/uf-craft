@@ -86,7 +86,7 @@
 {% set columns = block.twoColumns.all() %}
 {% set buttons = block.buttons.all() %}
 
-<section id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ backgroundColor }} {{ bgOpacity }} {{ spacing.implode(' ') }}">
+<section id="{{ block.sectionIds|length ? block.sectionIds : 'block-' ~ block.getId() }}" class="{{ backgroundColor }} {{ bgOpacity }} {{ spacing.implode(' ') }}">
     <div class="container">
         {% if block.eyebrow|length or block.heading|length or block.subHeading|length or block.text|length %}
         <div class="{{ render.contentWidth({width: contentWidth}) }}">

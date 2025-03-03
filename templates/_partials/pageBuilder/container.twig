@@ -70,7 +70,7 @@
 {% set containers = block.container.all() %}
 {% set buttons = block.buttons.all() %}
 
-<section id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="relative {{ spacing.marginTop }} {{ spacing.marginBottom }} {{ block.roundedCorners ? 'rounded-4xl' }}">
+<section id="{{ block.sectionIds|length ? block.sectionIds : 'block-' ~ block.getId() }}" class="relative {{ spacing.marginTop }} {{ spacing.marginBottom }} {{ block.roundedCorners ? 'rounded-4xl' }}">
     {% if image|length or video|length %}
     {{ render.renderVideo({
         image: image|length ? image,

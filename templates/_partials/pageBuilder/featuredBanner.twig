@@ -76,7 +76,7 @@
 
 {% set roundedCorners = block.roundedCorners ? 'rounded-4xl' %}
 
-<section id="{{ block.sectionId|length ? block.sectionId : 'block-' ~ block.getId() }}" class="{{ containerSize == 'container' ? 'container' }} {{ spacing.marginTop }} {{ spacing.marginBottom }}">
+<section id="{{ block.sectionIds|length ? block.sectionIds : 'block-' ~ block.getId() }}" class="{{ containerSize == 'container' ? 'container' }} {{ spacing.marginTop }} {{ spacing.marginBottom }}">
     <div class="relative">
         {% if image|length or video|length %}
         {{ render.renderVideo({

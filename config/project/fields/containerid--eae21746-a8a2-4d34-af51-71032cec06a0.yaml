@@ -1,7 +1,7 @@
 columnSuffix: null
-handle: sectionId
-instructions: 'Reference this block as a jump to target.'
-name: 'Section ID'
+handle: containerid
+instructions: null
+name: ContainerID
 searchable: false
 settings:
   byteLimit: null
