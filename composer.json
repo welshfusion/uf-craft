@@ -31,6 +31,7 @@
         "nystudio107/craft-seomatic": "5.1.5",
         "nystudio107/craft-vite": "5.0.1",
         "putyourlightson/craft-blitz": "5.9.2",
+        "putyourlightson/craft-sendgrid": "^3.0.0",
         "spacecatninja/imager-x": "5.0.3",
         "vandres/craft-matrix-extended": "^v3.6.1",
         "verbb/buttonbox": "5.0.0",

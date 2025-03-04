@@ -1,4 +1,4 @@
-dateModified: 1741012355
+dateModified: 1741064060
 elementSources:
   craft\elements\Entry:
     -
@@ -42,7 +42,12 @@ elementSources:
 email:
   fromEmail: n.williams@userfusion.com
   fromName: Userfusion
-  transportType: craft\mail\transportadapters\Sendmail
+  replyToEmail: null
+  template: null
+  transportSettings:
+    apiKey: $SENDGRID_API_KEY
+    categories: ''
+  transportType: putyourlightson\sendgrid\mail\SendgridAdapter
 fs:
   images:
     hasUrls: true
@@ -302,6 +307,10 @@ plugins:
     edition: standard
     enabled: true
     schemaVersion: 1.0.1
+  sendgrid:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
   seomatic:
     edition: standard
     enabled: true
