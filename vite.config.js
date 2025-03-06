@@ -24,6 +24,7 @@ export default ({ command }) => ({
                 app: path.resolve(__dirname, "src/js/app.js"),
                 glightbox: path.resolve(__dirname, "src/js/glightbox.js"),
                 swiper: path.resolve(__dirname, "src/js/swiper.js"),
+                cookieConsent: path.resolve(__dirname, "src/js/cookie-consent.js"),
             },
         },
         commonjsOptions: {

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3048aa62392af323fa4a01780c1b95cb",
+    "content-hash": "16367f0b5420a02fd189a9d567de4bf6",
     "packages": [
         {
             "name": "amici/craft-super-dynamic-fields",
@@ -2082,6 +2082,52 @@
                 "validator"
             ],
             "time": "2024-12-27T00:36:43+00:00"
+        },
+        {
+            "name": "elleracompany/craft-cookie-consent",
+            "version": "5.0.4",
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/elleracompany/craft-cookie-consent/zipball/c2e445b3c86c8217f954cb5364415cc35147b739",
+                "reference": "c2e445b3c86c8217f954cb5364415cc35147b739",
+                "shasum": ""
+            },
+            "require": {
+                "craftcms/cms": "^5.1",
+                "ext-json": "*"
+            },
+            "type": "craft-plugin",
+            "extra": {
+                "name": "Cookie Consent",
+                "handle": "cookie-consent",
+                "documentationUrl": "https://github.com/elleracompany/craft-cookie-consent/blob/master/README.md",
+                "changelogUrl": "https://github.com/elleracompany/craft-cookie-consent/blob/master/CHANGELOG.md",
+                "class": "elleracompany\\cookieconsent\\CookieConsent"
+            },
+            "autoload": {
+                "psr-4": {
+                    "elleracompany\\cookieconsent\\": "src/"
+                }
+            },
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "Ellera AS",
+                    "homepage": "https://ellera.no"
+                }
+            ],
+            "description": "Craft Cookie Consent Plugin",
+            "keywords": [
+                "consent",
+                "cookies",
+                "gdpr"
+            ],
+            "support": {
+                "email": "support@ellera.no"
+            },
+            "time": "2024-11-07T07:25:25+00:00"
         },
         {
             "name": "elvanto/litemoji",

@@ -21,6 +21,9 @@
 
         {% block seo %}{% hook 'seo' %}{% endblock %}
 
+        {{ craft.vite.register("src/js/app.js", false) }}
+        {{ craft.vite.register("src/js/cookie-consent.js", false) }}
+
         {# {{ head() }} #}
 
         {# Include Tracking Scripts Head #}
@@ -83,6 +86,9 @@
                             {% endif %}
                         {% endif %}
                 {% endif %}
+
+                {{ craft.blitz.includeDynamic("_/includes/cookie-consent") }}
+
                 {#
                 ============================================
                     Include Footer

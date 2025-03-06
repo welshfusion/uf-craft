@@ -1,0 +1,69 @@
+<section id="elc-cookie-consent" class="elc-small{% if craft.cookieConsent.consentGiven == 1 %} elc-hidden{% endif %}">
+    <form id="elc-cookie-consent-form" action="" data-url="{{ actionUrl() }}" {{ craft.cookieConsent.getRefreshDataAttr }} data-show="{{ siteUrl('cookie-consent/show') }}" method="post" accept-charset="UTF-8">
+
+        <input type="hidden" name="action" value="cookie-consent/consent/update">
+        <input type="hidden" name="site_id" value="{{ currentSite.id }}">
+
+        {% if craft.cookieConsent.consentGiven == 1 %}
+            <input type="hidden" name="uid" value="{{ craft.cookieConsent.getUid }}">
+        {% endif %}
+
+        {{ csrfInput() }}
+
+        <header class="elc-header">
+            <h3 class="elc-primary-heading !font-display !font-semibold !mb-3 !text-xl lg:!text-2xl !text-cyprus-500">{{ craft.cookieConsent.headline }}</h3>
+            <p class="elc-header-description !mb-6 !text-base !text-neutral-600">{{ craft.cookieConsent.description }}</p>
+        </header>
+
+        <div id="elc-cookie-consent-settings" class="{% if craft.cookieConsent.hideCheckboxes %} elc-hide-when-small{% else %}flex flex-wrap gap-8 !mb-4{% endif %}">
+            {% for group in craft.cookieConsent.groups %}
+                <div class="elc-cookie-group">
+                    <div class="elc-row elc-cookie-headline">
+                        <input type="checkbox" id="elc-checkbox-{{loop.index}}" class="elc-cookie-checkbox" name="group-{{ group.slug }}"{{ group.required == 1 ? ' disabled="disabled"' : "" }}{{ ((craft.cookieConsent.consentGiven != 1 and group.default == 1) or craft.cookieConsent.getConsent(group.slug)) ? " checked" : "" }}>
+                        <label class="elc-cookie-name !font-bold !text-neutral-600 !text-base" for="elc-checkbox-{{loop.index}}">{{ group.name }}{% if group.required == 1 %} <small>({{ "Required" }})</small>{% endif %}</label>
+                    </div>
+                    <div class="elc-row elc-cookie-description !text-sm !text-neutral-600">
+                        {{ group.description }}
+                    </div>
+                    {% for cookie in group.cookies|json_decode %}
+                        <div class="elc-cookie">
+                            <div class="elc-cookie-field !text-neutral-600">
+                                <strong>{{ "Name" | t("cookie-consent") }}</strong>: {{ cookie.name }}
+                            </div>
+                            <div class="elc-cookie-field !text-neutral-600">
+                                <strong>{{ "Description" | t("cookie-consent") }}</strong>: {{ cookie.description }}
+                            </div>
+                            <div class="elc-cookie-field !text-neutral-600">
+                                <strong>{{ "Provider" | t("cookie-consent") }}</strong>: {{ cookie.provider }}
+                            </div>
+                            <div class="elc-cookie-field !text-neutral-600">
+                                <strong>{{ "Expiry" | t("cookie-consent") }}</strong>: {{ cookie.expiry }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="button-container">
+            <a href="#" id="elc-detail-link" class="elc-text-link !text-cyprus-500 text-sm font-semibold transition-all duration-300 uppercase px-6 inline-flex items-center">
+                <span class="pr-2 flex-1">{{ "Details"|t('cookie-consent') }}</span>
+                <svg class="h-4 w-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"></path></svg>
+            </a>
+            <a href="#" id="elc-hide-detail-link" class="elc-text-link !text-cyprus-500 text-sm font-semibold transition-all duration-300 uppercase px-6 inline-flex items-center">{{ "Hide Details"|t('cookie-consent') }}</a>
+
+            <button id="elc-save-link" class="{% if craft.cookieConsent.showAcceptAllButton == 1 %}elc-secondary-button-link{% else %}elc-button-link{% endif %} !text-white !bg-cyprus-500 !text-lg uppercase inline-flex items-center justify-center px-6 py-2 transition-all duration-300" type="submit">{{ "Save"|t('cookie-consent') }}</button>
+            {% if craft.cookieConsent.showAcceptAllButton == 1 %}
+                <button id="elc-accept-link" class="elc-secondary-button-link !text-white !bg-cyprus-500 !text-lg uppercase inline-flex items-center justify-center px-6 py-2 transition-all duration-300" type="submit">{{ "Save"|t('cookie-consent') }}</button>
+                <button id="elc-accept-all-link" class="elc-button-link !text-white !bg-primary-500 hover:!bg-cyprus-500 !text-lg uppercase inline-flex items-center justify-center px-6 py-2 transition-all duration-300" type="submit">{{ "Accept All"|t('cookie-consent') }}</button>
+            {% else %}
+                <button id="elc-accept-link" class="elc-button-link !text-white !bg-cyprus-500 !text-lg uppercase inline-flex items-center justify-center px-6 py-2 transition-all duration-300" type="submit">{{ "OK"|t('cookie-consent') }}</button>
+            {% endif %}
+        </div>
+    </form>
+</section>
+{# {% if craft.cookieConsent.showAfterConsent == 1 %} #}
+<div id="elc-cookie-tab" class="{% if not craft.cookieConsent.consentGiven == 1 %}elc-hidden {% endif %}hidden !text-white !bg-primary-500 hover:!bg-primary-700 _inline-flex font-semibold px-6 py-2 items-center shadow-md transition-all">
+    <a href="#" id="elc-tab-link">{{ "COOKIES"|t('cookie-consent') }}</a>
+</div>
+{# {% endif %} #}
