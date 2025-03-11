@@ -1,4 +1,4 @@
-dateModified: 1741239444
+dateModified: 1741692760
 elementSources:
   craft\elements\Entry:
     -
@@ -259,6 +259,7 @@ plugins:
   cookie-consent:
     edition: standard
     enabled: true
+    licenseKey: 2CA6FRTNG48PUBAAAL9YDBG8
     schemaVersion: 1.5.0
   craft-range-slider:
     edition: standard

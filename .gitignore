@@ -23,6 +23,6 @@ storage/*
 !storage/rebrand
 
 /web/imager/*
-
 /web/uploads/*
 /web/transforms/*
+/web/cache/*

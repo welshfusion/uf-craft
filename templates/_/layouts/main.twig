@@ -21,9 +21,6 @@
 
         {% block seo %}{% hook 'seo' %}{% endblock %}
 
-        {{ craft.vite.register("src/js/app.js", false) }}
-        {{ craft.vite.register("src/js/cookie-consent.js", false) }}
-
         {# {{ head() }} #}
 
         {# Include Tracking Scripts Head #}
@@ -122,6 +119,7 @@
         }) }}
 
         {{ craft.vite.register("src/js/app.js", false) }}
+        {{ craft.vite.register("src/js/cookie-consent.js", false) }}
 
         {% if currentUser and currentUser.can('accessCp') %}
             <script type="text/javascript" src="https://www.bugherd.com/sidebarv2.js?apikey=0czoxhmdpuz0j04dy72sfw" async="true"></script>
