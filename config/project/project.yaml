@@ -1,4 +1,4 @@
-dateModified: 1741784211
+dateModified: 1742283300
 elementSources:
   craft\elements\Entry:
     -
@@ -252,6 +252,10 @@ plugins:
     edition: standard
     enabled: true
     schemaVersion: 3.0.0.0
+  cloudflare:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.1
   colour-swatches:
     edition: standard
     enabled: true
