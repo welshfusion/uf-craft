@@ -33,9 +33,13 @@ return GeneralConfig::create()
 
     ->runQueueAutomatically(App::env('RUN_QUEUE_AUTOMATICALLY') ?? true)
 
+    ->generateTransformsBeforePageLoad(true)
+
     ->sendPoweredByHeader(false)
 
     ->maxUploadFileSize(104857600) //100 MB
+
+    ->maxRevisions(10)
 
     ->enableGql(false)
 

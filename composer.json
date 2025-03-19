@@ -34,6 +34,7 @@
         "putyourlightson/craft-blitz": "5.9.11",
         "putyourlightson/craft-cloudflare": "^3.0.2",
         "putyourlightson/craft-sendgrid": "^3.0.0",
+        "siebird/craft-watchtower": "^5.0.2",
         "spacecatninja/imager-x": "5.1.2",
         "vandres/craft-matrix-extended": "v3.6.4",
         "verbb/buttonbox": "5.0.0",

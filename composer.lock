@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "baaac92f00330dc94ad2570783b10a25",
+    "content-hash": "560d848941c531f96de9e261bf9b6cc0",
     "packages": [
         {
             "name": "amici/craft-super-dynamic-fields",
@@ -6989,6 +6989,66 @@
             "time": "2020-12-15T21:32:01+00:00"
         },
         {
+            "name": "siebird/craft-watchtower",
+            "version": "5.0.2",
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/siebird/craft-watchtower/zipball/21ff8abdd57bdffea26a0e52fc6974d50cb69191",
+                "reference": "21ff8abdd57bdffea26a0e52fc6974d50cb69191",
+                "shasum": ""
+            },
+            "require": {
+                "craftcms/cms": "^5.0.0"
+            },
+            "type": "craft-plugin",
+            "extra": {
+                "handle": "watchtower",
+                "name": "Watchtower",
+                "developer": "Siebird",
+                "developerUrl": "https://www.siebird.com/",
+                "documentationUrl": "https://github.com/siebird/craft-watchtower/blob/master/README.md",
+                "changelogUrl": "https://github.com/siebird/craft-watchtower/blob/master/CHANGELOG.md",
+                "downloadUrl": "https://github.com/siebird/craft-watchtower/archive/refs/heads/master.zip",
+                "class": "siebird\\WatchTower\\WatchTower"
+            },
+            "autoload": {
+                "psr-4": {
+                    "siebird\\WatchTower\\": "src/"
+                }
+            },
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "Siebird",
+                    "homepage": "https://www.siebird.com/"
+                }
+            ],
+            "description": "Monitors the Craft queue manager for bottlenecks and send notifications emails",
+            "keywords": [
+                "cms",
+                "craft",
+                "craft-plugin",
+                "craft-queue",
+                "craftcms",
+                "cron-job",
+                "monitoring",
+                "oh-dear",
+                "ohdear",
+                "queue",
+                "queue-manager",
+                "siebird"
+            ],
+            "support": {
+                "email": "austin@siebird.com",
+                "issues": "https://github.com/siebird/craft-watchtower/issues?state=open",
+                "source": "https://github.com/siebird/craft-watchtower",
+                "docs": "https://github.com/siebird/craft-watchtower"
+            },
+            "time": "2025-01-29T06:52:14+00:00"
+        },
+        {
             "name": "spacecatninja/imager-x",
             "version": "5.1.2",
             "dist": {
@@ -11439,5 +11499,5 @@
     "platform-overrides": {
         "php": "8.2"
     },
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.3.0"
 }

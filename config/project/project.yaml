@@ -1,4 +1,4 @@
-dateModified: 1742377021
+dateModified: 1742378754
 elementSources:
   craft\elements\Entry:
     -
@@ -596,6 +596,18 @@ plugins:
     edition: standard
     enabled: true
     schemaVersion: 1.0.0
+  watchtower:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+    settings:
+      emails: 'mufi@userfusion.com, n.williams@userfusion.com'
+      failedQueueLimit: '5'
+      ignoreRepeated: '1'
+      ohDearPingUrl: ''
+      overrideEmailTemplate: ''
+      pileUpQueueLimit: '50'
+      pluginName: 'Watch Tower'
 system:
   edition: solo
   live: true
