@@ -60,10 +60,6 @@ return [
         ],
         [
             // 'siteId' => 1,
-            'uriPattern' => 'blockId=',
-        ],
-        [
-            // 'siteId' => 1,
             'uriPattern' => '\?p=actions/*',
         ],
         [
@@ -72,19 +68,15 @@ return [
         ],
         [
             // 'siteId' => 1,
+            'uriPattern' => 'blockId=',
+        ],
+        [
+            // 'siteId' => 1,
             'uriPattern' => '\?blockId=',
         ],
         [
             // 'siteId' => 1,
             'uriPattern' => '&blockId=',
-        ],
-        [
-            // 'siteId' => 1,
-            'uriPattern' => '\?q=',
-        ],
-        [
-            // 'siteId' => 1,
-            'uriPattern' => '&q=',
         ]
     ],
 
@@ -97,22 +89,12 @@ return [
         // Items added so we dont cache at all
         [
             'siteId' => '',
-            'queryStringParam' => '^q$',
-        ],
-        [
-            'siteId' => '',
             'queryStringParam' => '^blockId$',
-        ],
-        [
-            'siteId' => '',
-            'queryStringParam' => '^search$',
-        ],
+        ]
+    ],
 
-        // Items added so we cache query param as unique page
-        [
-            'siteId' => '',
-            'queryStringParam' => '^category$',
-        ],
+    'excludedQueryStringParams' => [
+
     ],
 
     'cacheStorageSettings' => [
@@ -133,10 +115,7 @@ return [
     // The purger settings (zone ID keys are site UIDs).
     'cachePurgerSettings' => [
         'zoneIds' => [
-            '46fe9b46-ce01-4705-b05f-741105d1bb32' => [
-                'zoneId' => App::env('CF_ZONE_ID'),
-            ],
-            '9d851ed9-34fe-4044-8f52-cf43c9cef747' => [
+            '5bdbc0ac-c142-4128-a741-e438819f43c5' => [
                 'zoneId' => App::env('CF_ZONE_ID'),
             ],
         ],

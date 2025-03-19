@@ -1,4 +1,4 @@
-dateModified: 1742288810
+dateModified: 1742367605
 elementSources:
   craft\elements\Entry:
     -
@@ -256,6 +256,19 @@ plugins:
     edition: standard
     enabled: true
     schemaVersion: 1.0.1
+    settings:
+      apiKey: null
+      apiToken: $CF_ACCESS_TOKEN
+      authType: token
+      email: null
+      purgeElements:
+        - craft\elements\Asset
+        - craft\elements\Category
+        - craft\elements\Entry
+        - craft\elements\Tag
+      userServiceKey: ''
+      zone: $CF_ZONE_ID
+      zoneName: userfusion.com
   colour-swatches:
     edition: standard
     enabled: true
