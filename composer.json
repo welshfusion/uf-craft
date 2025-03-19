@@ -31,6 +31,7 @@
         "nystudio107/craft-minify": "^5.0.0",
         "nystudio107/craft-seomatic": "5.1.11",
         "nystudio107/craft-vite": "5.0.1",
+        "omnilight/yii2-scheduling": "*",
         "putyourlightson/craft-blitz": "5.9.11",
         "putyourlightson/craft-cloudflare": "^3.0.2",
         "putyourlightson/craft-sendgrid": "^3.0.0",
@@ -77,12 +78,25 @@
         }
     ],
     "scripts": {
+        "craft-update": [
+            "@post-craft-update"
+        ],
+        "post-craft-update": [
+            "@php craft install/check && php craft clear-caches/all --interactive=0 || exit 0",
+            "@php craft install/check && php craft invalidate-tags/all --interactive=0 || return 0",
+            "@php craft install/check && php craft up --interactive=0 || exit 0"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
         "post-create-project-cmd": [
             "@php -r \"file_exists('.env') || copy('.env.example.dev', '.env');\"",
             "@php -r \"unlink('composer.json');\"",
             "@php -r \"rename('composer.json.default', 'composer.json');\"",
             "@composer dump-autoload -o",
             "@php craft setup/welcome"
-        ]
+        ],
+        "post-update-cmd": "@post-craft-update",
+        "post-install-cmd": "@post-craft-update"
     }
 }
