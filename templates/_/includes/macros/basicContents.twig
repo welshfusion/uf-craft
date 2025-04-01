@@ -45,9 +45,11 @@
     animationEasing: contentAnimationEasing,
     animationDelay: delay
 }) | raw %}
-<{{ headingTag }} class="block font-display tracking-tight [text-wrap:balance] {{ headingSpacing|length ? headingSpacing : (eyebrow|length ? 'mt-6') }} {{ render.getAlignment({alignment: contentAlignment, type: 'text'}) }} {{ render.getHeadingSize({headingTag: headingTag}) }} {{ render.getFontWeight({font: fontWeight}) }} {{ render.foregroundColors({background: backgroundColorLabel, opacity: opacity, changeDefaultColor: changeDefaultColor, type: 'heading'}) }}" {{ contentAnimation|raw }}>
+{% set headingtag = isHero and headingTag == 'h2' ? 'h1' : headingTag %}
+
+<{{ headingtag }} class="block font-display tracking-tight [text-wrap:balance] {{ headingSpacing|length ? headingSpacing : (eyebrow|length ? 'mt-6') }} {{ render.getAlignment({alignment: contentAlignment, type: 'text'}) }} {{ render.getHeadingSize({headingTag: headingTag}) }} {{ render.getFontWeight({font: fontWeight}) }} {{ render.foregroundColors({background: backgroundColorLabel, opacity: opacity, changeDefaultColor: changeDefaultColor, type: 'heading'}) }}" {{ contentAnimation|raw }}>
     {{ heading|nl2br }}
-</{{ headingTag }}>
+</{{ headingtag }}>
 {% endif %}
 
 {% if subHeading|length %}
