@@ -129,7 +129,6 @@
         headingSpacing: null,
         overrideParagraphFontSize: null,
         textSpacing: null,
-        isHero: false,
         animation: null,
         contentAnimationStyle: null,
         contentAnimationDuration: null,
@@ -302,4 +301,19 @@
     {# Override (overwrite) defaults with passed parameters #}
     {% set options = defaultsParams|merge(params) %}
     {% include "_/includes/macros/xModalContentListingFilter" with options %}
+{% endmacro %}
+
+{% macro trackingMacro(params) %}
+    {% set defaultsParams = {
+        script: null,
+        scriptHeading: null,
+        scriptFiles: null,
+        javascriptCode: null,
+        htmlCode: null,
+        gdprTrackingGroup: null
+    } %}
+
+    {# Override (overwrite) defaults with passed parameters #}
+    {% set options = defaultsParams|merge(params) %}
+    {% include "_/includes/macros/trackingMacro" with options %}
 {% endmacro %}
