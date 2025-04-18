@@ -1,4 +1,4 @@
-dateModified: 1742378754
+dateModified: 1744983349
 elementSources:
   craft\elements\Entry:
     -
@@ -243,7 +243,7 @@ plugins:
     edition: standard
     enabled: true
     licenseKey: J6V10JGXF98U0VGG1OA4JILV
-    schemaVersion: 5.9.0
+    schemaVersion: 5.10.0
   buttonbox:
     edition: standard
     enabled: true
@@ -612,7 +612,7 @@ system:
   edition: solo
   live: true
   name: Userfusion
-  schemaVersion: 5.6.0.2
+  schemaVersion: 5.7.0.3
   timeZone: America/Los_Angeles
 users:
   allowPublicRegistration: false
