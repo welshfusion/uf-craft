@@ -1,4 +1,4 @@
-dateModified: 1744983349
+dateModified: 1746773911
 elementSources:
   craft\elements\Entry:
     -
@@ -582,7 +582,7 @@ plugins:
     edition: standard
     enabled: true
     licenseKey: VEOYNRVPT3AZRQIEIGG9OI5Q
-    schemaVersion: 3.0.12
+    schemaVersion: 3.0.13
   super-dynamic-fields:
     edition: standard
     enabled: true
