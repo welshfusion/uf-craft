@@ -1,4 +1,4 @@
-dateModified: 1746773911
+dateModified: 1748863359
 elementSources:
   craft\elements\Entry:
     -
@@ -243,7 +243,9 @@ plugins:
     edition: standard
     enabled: true
     licenseKey: J6V10JGXF98U0VGG1OA4JILV
-    schemaVersion: 5.10.0
+    schemaVersion: 5.11.0
+    settings:
+      maxUriLength: 2048
   buttonbox:
     edition: standard
     enabled: true
