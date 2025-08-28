@@ -1,4 +1,4 @@
-dateModified: 1748863359
+dateModified: 1751884619
 elementSources:
   craft\elements\Entry:
     -
@@ -614,7 +614,7 @@ system:
   edition: solo
   live: true
   name: Userfusion
-  schemaVersion: 5.7.0.3
+  schemaVersion: 5.8.0.3
   timeZone: America/Los_Angeles
 users:
   allowPublicRegistration: false
