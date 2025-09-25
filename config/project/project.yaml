@@ -1,4 +1,4 @@
-dateModified: 1758794426
+dateModified: 1758798633
 elementSources:
   craft\elements\Entry:
     -
@@ -40,14 +40,14 @@ elementSources:
       key: 'section:3f060ced-9de9-4e6c-ada9-05cddd5d7c03' # Testimonial
       type: native
 email:
-  fromEmail: $CRAFT_SYSTEM_EMAIL_ADDRESS
+  fromEmail: $SYSTEM_EMAIL_ADDRESS
   fromName: Userfusion
   replyToEmail: null
   template: null
   transportSettings:
-    apiKey: $CRAFT_MAILGUN_API
-    domain: $CRAFT_MAILGUN_DOMAIN
-    endpoint: $CRAFT_MAILGUN_ENDPOINT
+    apiKey: $MAILGUN_API_KEY
+    domain: $MAILGUN_DOMAIN
+    endpoint: $MAILGUN_ENDPOINT
   transportType: craft\mailgun\MailgunAdapter
 fs:
   images:

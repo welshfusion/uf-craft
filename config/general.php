@@ -35,6 +35,8 @@ return GeneralConfig::create()
 
     ->generateTransformsBeforePageLoad(true)
 
+    // ->testToEmailAddress('mufi@userfusion.com')
+
     ->sendPoweredByHeader(false)
 
     ->maxUploadFileSize(104857600) //100 MB
