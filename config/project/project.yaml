@@ -1,4 +1,4 @@
-dateModified: 1756378591
+dateModified: 1758794426
 elementSources:
   craft\elements\Entry:
     -
@@ -40,14 +40,15 @@ elementSources:
       key: 'section:3f060ced-9de9-4e6c-ada9-05cddd5d7c03' # Testimonial
       type: native
 email:
-  fromEmail: n.williams@userfusion.com
+  fromEmail: $CRAFT_SYSTEM_EMAIL_ADDRESS
   fromName: Userfusion
   replyToEmail: null
   template: null
   transportSettings:
-    apiKey: $SENDGRID_API_KEY
-    categories: ''
-  transportType: putyourlightson\sendgrid\mail\SendgridAdapter
+    apiKey: $CRAFT_MAILGUN_API
+    domain: $CRAFT_MAILGUN_DOMAIN
+    endpoint: $CRAFT_MAILGUN_ENDPOINT
+  transportType: craft\mailgun\MailgunAdapter
 fs:
   images:
     hasUrls: true
@@ -559,6 +560,10 @@ plugins:
     enabled: true
     licenseKey: GGL06FJ2I82W5UPDNWY8WXEL
     schemaVersion: 4.0.0
+  mailgun:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
   matrix-extended:
     edition: standard
     enabled: true
@@ -571,7 +576,7 @@ plugins:
     edition: standard
     enabled: true
     licenseKey: F2B5O0X9MYHV941V3SAP806S
-    schemaVersion: 2.1.0
+    schemaVersion: 2.1.1
   oembed:
     edition: standard
     enabled: true
