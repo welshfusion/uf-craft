@@ -1,4 +1,4 @@
-dateModified: 1758798633
+dateModified: 1764162601
 elementSources:
   craft\elements\Entry:
     -
@@ -290,7 +290,7 @@ plugins:
     edition: standard
     enabled: true
     licenseKey: NU5DKSGXHK7BA1FCMGWNA4AV
-    schemaVersion: 3.4.10
+    schemaVersion: 3.4.11
     settings:
       ajaxTimeout: 10
       alertEmails: null
