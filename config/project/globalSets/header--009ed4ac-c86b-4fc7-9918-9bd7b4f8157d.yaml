@@ -8,10 +8,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: 05af4b17-93ed-4027-a039-96c368e5b585 # Image
             handle: logo
-            includeInCards: false
             instructions: null
             label: Logo
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -23,10 +21,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: dbcfc862-d508-4082-a32b-0a6ff36eb41a # Alt Logo
             handle: null
-            includeInCards: false
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -38,10 +34,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: 0423d9a0-74e7-4a3d-afc5-a78d494caab4 # Navigation
             handle: null
-            includeInCards: false
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -53,10 +47,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: b725ddfa-71d5-44fd-b67b-d2291907d5fd # Buttons
             handle: null
-            includeInCards: false
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -73,10 +65,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: ec70c780-286c-4027-8904-ecdb25e3e1c1 # Heading
             handle: null
-            includeInCards: false
             instructions: null
             label: 'Our office'
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -88,10 +78,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: 4998b347-a2ba-4814-8789-53adb5d61a41 # Text
             handle: null
-            includeInCards: false
             instructions: null
             label: Address
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -103,10 +91,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: b266d78b-963a-4c95-a2c8-3dadd5595399 # Telephone
             handle: null
-            includeInCards: false
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -123,10 +109,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: ec70c780-286c-4027-8904-ecdb25e3e1c1 # Heading
             handle: heading2
-            includeInCards: false
             instructions: null
             label: 'Social Links Heading'
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -138,10 +122,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: 134a2c99-8e12-4d05-b077-5957f5e835ce # Social Links
             handle: null
-            includeInCards: false
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField

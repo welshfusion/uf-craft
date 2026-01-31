@@ -8,10 +8,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: 025101ef-e8fd-4542-bd7f-d5d127b6789f # Tracking Scripts
             handle: null
-            includeInCards: false
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
