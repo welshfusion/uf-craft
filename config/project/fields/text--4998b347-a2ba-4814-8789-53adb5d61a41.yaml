@@ -6,15 +6,55 @@ searchable: false
 settings:
   availableTransforms: ''
   availableVolumes: '*'
-  ckeConfig: 8bdd6695-676c-438d-8cd2-caa3a8940ccb # Full
-  createButtonLabel: null
+  css: null
+  cssFile: null
   defaultTransform: null
   enableSourceEditingForNonAdmins: false
+  fullGraphqlData: false
+  headingLevels:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+  js: null
+  jsFile: null
+  options:
+    alignment:
+      options:
+        - left
+        - right
+    fontSize:
+      options:
+        - tiny
+        - small
+        - default
+        - big
+        - huge
   purifierConfig: null
   purifyHtml: true
   showUnpermittedFiles: false
   showUnpermittedVolumes: false
   showWordCount: false
+  toolbar:
+    - sourceEditing
+    - heading
+    - '|'
+    - fontSize
+    - bold
+    - italic
+    - underline
+    - strikethrough
+    - bulletedList
+    - numberedList
+    - link
+    - insertImage
+    - mediaEmbed
+    - horizontalLine
+    - blockQuote
+    - insertTable
+    - alignment
   wordLimit: null
 translationKeyFormat: null
 translationMethod: none

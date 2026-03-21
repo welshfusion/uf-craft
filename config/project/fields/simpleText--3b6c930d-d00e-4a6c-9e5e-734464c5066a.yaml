@@ -6,15 +6,32 @@ searchable: false
 settings:
   availableTransforms: ''
   availableVolumes: '*'
-  ckeConfig: d5b54786-d550-43a6-bc46-0e9b8edbae51 # Simple
-  createButtonLabel: null
+  css: null
+  cssFile: null
   defaultTransform: null
   enableSourceEditingForNonAdmins: false
+  fullGraphqlData: false
+  headingLevels:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+  js: null
+  jsFile: null
+  options: null
   purifierConfig: null
   purifyHtml: true
   showUnpermittedFiles: false
   showUnpermittedVolumes: false
   showWordCount: false
+  toolbar:
+    - heading
+    - '|'
+    - bold
+    - italic
+    - link
   wordLimit: null
 translationKeyFormat: null
 translationMethod: none
