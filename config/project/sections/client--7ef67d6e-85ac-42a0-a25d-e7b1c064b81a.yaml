@@ -1,22 +1,17 @@
 defaultPlacement: end
 enableVersioning: true
 entryTypes:
-  - 1fa0a156-5d07-4afa-a05a-7f48cebc4c97 # Client
+  -
+    uid: 1fa0a156-5d07-4afa-a05a-7f48cebc4c97 # Client
 handle: client
 maxAuthors: 1
+minAuthors: 1
 name: Client
 previewTargets:
   -
-    __assoc__:
-      -
-        - label
-        - 'Primary entry page'
-      -
-        - urlFormat
-        - '{url}'
-      -
-        - refresh
-        - '1'
+    label: 'Primary entry page'
+    refresh: '1'
+    urlFormat: '{url}'
 propagationMethod: all
 siteSettings:
   5bdbc0ac-c142-4128-a741-e438819f43c5: # Userfusion

@@ -1,22 +1,17 @@
 defaultPlacement: end
 enableVersioning: true
 entryTypes:
-  - 2f9ca775-608e-4f5c-9269-282385ed2641 # Page Builder
+  -
+    uid: 2f9ca775-608e-4f5c-9269-282385ed2641 # Page Builder
 handle: callToAction
 maxAuthors: 1
+minAuthors: 1
 name: 'Call To Action'
 previewTargets:
   -
-    __assoc__:
-      -
-        - label
-        - 'Primary entry page'
-      -
-        - urlFormat
-        - '{url}'
-      -
-        - refresh
-        - '1'
+    label: 'Primary entry page'
+    refresh: '1'
+    urlFormat: '{url}'
 propagationMethod: all
 siteSettings:
   5bdbc0ac-c142-4128-a741-e438819f43c5: # Userfusion

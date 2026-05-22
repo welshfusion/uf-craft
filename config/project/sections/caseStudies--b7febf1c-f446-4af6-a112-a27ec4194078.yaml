@@ -1,22 +1,17 @@
 defaultPlacement: end
 enableVersioning: true
 entryTypes:
-  - 5816eb09-d316-4d3a-ac94-403833383582 # Case study
+  -
+    uid: 5816eb09-d316-4d3a-ac94-403833383582 # Case study
 handle: caseStudies
 maxAuthors: 1
+minAuthors: 1
 name: 'Case studies'
 previewTargets:
   -
-    __assoc__:
-      -
-        - label
-        - 'Primary entry page'
-      -
-        - urlFormat
-        - '{url}'
-      -
-        - refresh
-        - '1'
+    label: 'Primary entry page'
+    refresh: '1'
+    urlFormat: '{url}'
 propagationMethod: all
 siteSettings:
   5bdbc0ac-c142-4128-a741-e438819f43c5: # Userfusion
