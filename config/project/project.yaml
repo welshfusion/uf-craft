@@ -1,4 +1,4 @@
-dateModified: 1779445654
+dateModified: 1787132127
 elementSources:
   craft\elements\Entry:
     -
@@ -278,7 +278,7 @@ plugins:
     edition: standard
     enabled: true
     licenseKey: 2CA6FRTNG48PUBAAAL9YDBG8
-    schemaVersion: 1.5.0
+    schemaVersion: 1.8.0
   craft-range-slider:
     edition: standard
     enabled: true
@@ -592,7 +592,7 @@ plugins:
     edition: standard
     enabled: true
     licenseKey: 2I944PAYO1BQGRPP6ACH0DDH
-    schemaVersion: 5.0.1
+    schemaVersion: 5.1.0
   twig-perversion:
     edition: standard
     enabled: true

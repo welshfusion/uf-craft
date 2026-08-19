@@ -5,11 +5,7 @@ name: 'Column Alignment'
 searchable: false
 settings:
   cachedOptions: true
-  element: null
-  genError: ''
-  json: ''
   template: _/sdf/columnAlignment.json
-  templateData: ''
 translationKeyFormat: null
 translationMethod: none
-type: amici\SuperDynamicFields\fields\SueprDynamicDropdownField
+type: amici\SuperDynamicFields\fields\SuperDynamicDropdownField
